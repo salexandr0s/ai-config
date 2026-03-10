@@ -1,28 +1,28 @@
 # ── Deny: destructive operations (matches Claude Code deny list) ──
 # Destructive git
-prefix_rule(pattern=["git", "push", "--force"], decision="deny")
-prefix_rule(pattern=["git", "push", "-f"], decision="deny")
-prefix_rule(pattern=["git", "reset", "--hard"], decision="deny")
-prefix_rule(pattern=["git", "clean", "-f"], decision="deny")
-prefix_rule(pattern=["git", "branch", "-D"], decision="deny")
-prefix_rule(pattern=["git", "stash", "drop"], decision="deny")
-prefix_rule(pattern=["git", "stash", "clear"], decision="deny")
-prefix_rule(pattern=["git", "checkout", "."], decision="deny")
-prefix_rule(pattern=["git", "restore", "."], decision="deny")
+prefix_rule(pattern=["git", "push", "--force"], decision="forbidden")
+prefix_rule(pattern=["git", "push", "-f"], decision="forbidden")
+prefix_rule(pattern=["git", "reset", "--hard"], decision="forbidden")
+prefix_rule(pattern=["git", "clean", "-f"], decision="forbidden")
+prefix_rule(pattern=["git", "branch", "-D"], decision="forbidden")
+prefix_rule(pattern=["git", "stash", "drop"], decision="forbidden")
+prefix_rule(pattern=["git", "stash", "clear"], decision="forbidden")
+prefix_rule(pattern=["git", "checkout", "."], decision="forbidden")
+prefix_rule(pattern=["git", "restore", "."], decision="forbidden")
 
 # Destructive system commands
-prefix_rule(pattern=["sudo"], decision="deny")
-prefix_rule(pattern=["dd"], decision="deny")
-prefix_rule(pattern=["mkfs"], decision="deny")
-prefix_rule(pattern=["diskutil"], decision="deny")
-prefix_rule(pattern=["killall"], decision="deny")
-prefix_rule(pattern=["pkill"], decision="deny")
-prefix_rule(pattern=["rm", "-rf"], decision="deny")
-prefix_rule(pattern=["rm", "-r"], decision="deny")
+prefix_rule(pattern=["sudo"], decision="forbidden")
+prefix_rule(pattern=["dd"], decision="forbidden")
+prefix_rule(pattern=["mkfs"], decision="forbidden")
+prefix_rule(pattern=["diskutil"], decision="forbidden")
+prefix_rule(pattern=["killall"], decision="forbidden")
+prefix_rule(pattern=["pkill"], decision="forbidden")
+prefix_rule(pattern=["rm", "-rf"], decision="forbidden")
+prefix_rule(pattern=["rm", "-r"], decision="forbidden")
 
 # Dangerous publishing
-prefix_rule(pattern=["npm", "unpublish"], decision="deny")
-prefix_rule(pattern=["docker", "push"], decision="deny")
+prefix_rule(pattern=["npm", "unpublish"], decision="forbidden")
+prefix_rule(pattern=["docker", "push"], decision="forbidden")
 
 # Package managers
 prefix_rule(pattern=["brew"], decision="allow")
