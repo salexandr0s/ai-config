@@ -83,15 +83,16 @@ cp codex/config.example.toml ~/.codex/config.toml
 
 ## Workflows
 
-Five predefined multi-agent workflows available in both tools:
+Six predefined multi-agent workflows available in both tools:
 
-| Workflow         | Phases                                                       | Approval gate    | Fix cycles |
-| ---------------- | ------------------------------------------------------------ | ---------------- | ---------- |
-| **feature**      | research → plan → implement → review → closeout              | Before implement | Max 3      |
-| **bugfix**       | investigate → fix → review → closeout                        | None             | Max 2      |
-| **refactor**     | map impact → plan → review plan → implement → review → close | Before implement | Max 2      |
-| **review-only**  | explore → review → report                                    | N/A (read-only)  | N/A        |
-| **blind-review** | 3 parallel reviewers → combine → validate                    | N/A (read-only)  | N/A        |
+| Workflow              | Phases                                                       | Approval gate    | Fix cycles |
+| --------------------- | ------------------------------------------------------------ | ---------------- | ---------- |
+| **feature**           | research → plan → implement → review → closeout              | Before implement | Max 3      |
+| **bugfix**            | investigate → fix → review → closeout                        | None             | Max 2      |
+| **refactor**          | map impact → plan → review plan → implement → review → close | Before implement | Max 2      |
+| **review-only**       | explore → review → report                                    | N/A (read-only)  | N/A        |
+| **blind-review**      | 3 parallel reviewers → combine → validate                    | N/A (read-only)  | N/A        |
+| **ball-buster-party** | scout → parallel ball-busters (1 per feature) → combine      | N/A (read-only)  | N/A        |
 
 ### Usage
 
