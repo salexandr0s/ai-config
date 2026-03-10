@@ -17,3 +17,29 @@ sandbox_mode = "danger-full-access"
 # Add your project paths here
 # [projects."/path/to/project"]
 # trust_level = "trusted"
+
+# --- Multi-Agent Configuration ---
+
+[features]
+multi_agent = true
+
+[agents]
+max_threads = 6
+max_depth = 1
+job_max_runtime_seconds = 1800
+
+[agents.explorer]
+description = "Read-only codebase explorer — maps architecture, patterns, dependencies"
+config_file = "agents/explorer.toml"
+
+[agents.planner]
+description = "Technical planner — designs implementation approaches with steps and testing"
+config_file = "agents/planner.toml"
+
+[agents.reviewer]
+description = "Quality reviewer — critiques plans and verifies implementations"
+config_file = "agents/reviewer.toml"
+
+[agents.worker]
+description = "Implementation specialist — executes plans, writes code, runs verification"
+config_file = "agents/worker.toml"
