@@ -58,7 +58,7 @@ cp codex/config.example.toml ~/.codex/config.toml
 
 ## Agents
 
-### Claude Code (7 agents)
+### Claude Code (8 agents)
 
 | Agent               | Role                                                            | Writes code |
 | ------------------- | --------------------------------------------------------------- | ----------- |
@@ -69,15 +69,17 @@ cp codex/config.example.toml ~/.codex/config.toml
 | `reviewer`          | Critiques plans and reviews code (Must Fix / Should Fix / Nits) | No          |
 | `review-fix`        | Reviews and autonomously patches safe issues                    | Yes         |
 | `phase-implementer` | Self-plans and executes a scoped task without team overhead     | Yes         |
+| `ball-buster`       | Brutally honest codebase critic — questions every decision      | No          |
 
-### Codex CLI (4 agents)
+### Codex CLI (5 agents)
 
-| Agent      | Maps to Claude's | Sandbox           |
-| ---------- | ---------------- | ----------------- |
-| `explorer` | `researcher`     | `read-only`       |
-| `planner`  | `planner`        | `read-only`       |
-| `reviewer` | `reviewer`       | `read-only`       |
-| `worker`   | `coder`          | `workspace-write` |
+| Agent         | Maps to Claude's | Sandbox           |
+| ------------- | ---------------- | ----------------- |
+| `explorer`    | `researcher`     | `read-only`       |
+| `planner`     | `planner`        | `read-only`       |
+| `reviewer`    | `reviewer`       | `read-only`       |
+| `worker`      | `coder`          | `workspace-write` |
+| `ball-buster` | `ball-buster`    | `read-only`       |
 
 ## Workflows
 
