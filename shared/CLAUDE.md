@@ -274,8 +274,7 @@ A task is done when ALL of:
 
 **Ending a session with incomplete work:**
 
-1. Run `/handoff` to generate SESSION_HANDOFF.md
-2. Run journal script for the memory system
+1. Run `/handoff` — generates SESSION_HANDOFF.md, writes journal entry, syncs memory index
 
 ---
 

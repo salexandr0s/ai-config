@@ -4,7 +4,7 @@
     "name": "Apple Minimal Tokens",
     "id": "tokens.apple-minimal.v1",
     "version": "1.0.0",
-    "updated": "2026-02-23",
+    "updated": "2026-03-10",
     "notes": "Token set tuned for Apple-inspired minimalism + shadcn-like UI density."
   },
   "breakpoint": {
