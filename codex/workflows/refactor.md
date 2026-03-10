@@ -14,7 +14,7 @@ You are orchestrating a safe refactoring workflow using your available agents. T
 
 ### Phase 1: Map Impact
 
-Spawn the **explorer** agent to map the refactoring scope:
+Spawn the **researcher** agent to map the refactoring scope:
 
 - Identify all code affected (direct and indirect)
 - Map dependency chains — imports, callers, consumers
@@ -22,11 +22,11 @@ Spawn the **explorer** agent to map the refactoring scope:
 - Identify the riskiest parts of the change
 - Note external API contracts that must be preserved
 
-Wait for explorer to complete before proceeding.
+Wait for researcher to complete before proceeding.
 
 ### Phase 2: Plan Atomic Steps
 
-Spawn the **planner** agent with the explorer's impact report:
+Spawn the **planner** agent with the researcher's impact report:
 
 - Design strictly atomic steps (each leaves codebase valid)
 - Each step must be independently revertable
@@ -49,7 +49,7 @@ Spawn the **reviewer** agent to critique the refactoring plan:
 
 ### Phase 4: Implement (Atomic)
 
-After user approval, spawn the **worker** agent with the approved plan:
+After user approval, spawn the **coder** agent with the approved plan:
 
 - Execute ONE step at a time
 - Run `dev-verify` (full, not --quick) after EVERY step
@@ -68,7 +68,7 @@ Spawn the **reviewer** agent to review the complete refactoring:
 - Verify naming consistency
 - Confirm tests still cover refactored paths
 
-If "Must Fix" items found: worker fixes, reviewer re-reviews (max 2 cycles).
+If "Must Fix" items found: coder fixes, reviewer re-reviews (max 2 cycles).
 
 ### Phase 6: Closeout
 

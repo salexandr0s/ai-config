@@ -14,18 +14,18 @@ You are orchestrating a read-only code review using your available agents. No fi
 
 ### Phase 1: Explore
 
-Spawn the **explorer** agent to map the code area:
+Spawn the **researcher** agent to map the code area:
 
 - Map architecture and key patterns in the specified area
 - Identify dependencies and consumers
 - Note anything unusual, fragile, or concerning
 - List relevant test coverage
 
-Wait for explorer to complete before proceeding.
+Wait for researcher to complete before proceeding.
 
 ### Phase 2: Review
 
-Spawn the **reviewer** agent with the explorer's findings:
+Spawn the **reviewer** agent with the researcher's findings:
 
 - Assess correctness and logic issues
 - Check for security vulnerabilities (injection, auth, data exposure)
@@ -48,7 +48,7 @@ Present the complete review to the user:
 ## Rules
 
 - This is a **READ-ONLY** workflow — no files may be modified
-- Only explorer and reviewer agents are used — no worker
+- Only researcher and reviewer agents are used — no coder
 - Focus on actionable findings, not style preferences
 - Cite specific file:line references, not vague concerns
 - If scope is unclear, ask the user before starting

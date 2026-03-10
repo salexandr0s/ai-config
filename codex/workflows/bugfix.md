@@ -14,7 +14,7 @@ You are orchestrating a bugfix workflow using your available agents. Follow thes
 
 ### Phase 1: Investigate
 
-Spawn the **explorer** agent to track down the bug:
+Spawn the **researcher** agent to track down the bug:
 
 - Reproduce or confirm the bug from code analysis
 - Trace execution paths to find the root cause
@@ -22,11 +22,11 @@ Spawn the **explorer** agent to track down the bug:
 - Check for the same pattern elsewhere
 - Note existing test coverage
 
-Wait for explorer to complete before proceeding.
+Wait for researcher to complete before proceeding.
 
 ### Phase 2: Fix
 
-Spawn the **worker** agent with the explorer's investigation report:
+Spawn the **coder** agent with the researcher's investigation report:
 
 - Write a mini-plan (3-5 lines) before implementing
 - Fix the root cause, not just the symptom
@@ -46,7 +46,7 @@ Spawn the **reviewer** agent to validate the fix:
 
 If the reviewer finds "Must Fix" items:
 
-1. Spawn worker to address the issues
+1. Spawn coder to address the issues
 2. Spawn reviewer to re-review (max 2 cycles)
 
 ### Phase 4: Closeout
