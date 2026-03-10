@@ -1,28 +1,67 @@
 # ai-config
 
-Shared configuration for AI coding assistants — [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and [Codex CLI](https://github.com/openai/codex). One repo, symlinked into each tool's config directory.
+Shared configuration for AI coding assistants — [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and [Codex CLI](https://github.com/openai/codex). One repo, symlinked into each tool's config directory. Both tools share the same 8 agents, 6 workflows, and workspace standards.
 
 ## Structure
 
 ```
 ai-config/
-├── claude/                     # Claude Code configuration
-│   ├── agents/                 # 7 agent definitions (team-lead, researcher, planner, coder, reviewer, review-fix, phase-implementer)
-│   ├── commands/               # 35 slash commands + 5 workflow commands
-│   ├── hooks.json              # Auto-format on save, publish warnings
-│   ├── skills/                 # Custom skills (visual-explainer)
-│   ├── uiux-contract/          # Design system tokens, component specs, quality gates
-│   ├── mcp.example.json        # MCP server config (copy + customize)
-│   └── settings.example.json   # Editor settings (copy + customize)
-├── codex/                      # Codex CLI configuration
-│   ├── agents/                 # 4 agent definitions (explorer, planner, reviewer, worker)
-│   ├── rules/                  # Command approval rules (allow/prompt/forbidden)
-│   ├── workflows/              # 5 workflow prompt templates
-│   └── config.example.toml     # Full config with multi-agent setup (copy + customize)
+├── claude/                          # Claude Code configuration
+│   ├── agents/                      # 8 agent definitions (.md)
+│   │   ├── team-lead.md
+│   │   ├── researcher.md
+│   │   ├── planner.md
+│   │   ├── coder.md
+│   │   ├── reviewer.md
+│   │   ├── review-fix.md
+│   │   ├── phase-implementer.md
+│   │   └── ball-buster.md
+│   ├── commands/                    # 30 slash commands + 6 workflow commands
+│   │   ├── workflow-feature.md
+│   │   ├── workflow-bugfix.md
+│   │   ├── workflow-refactor.md
+│   │   ├── workflow-review-only.md
+│   │   ├── workflow-blind-review.md
+│   │   ├── workflow-ball-buster-party.md
+│   │   ├── commands.md              # Command reference table
+│   │   └── ... (24 more commands)
+│   ├── skills/
+│   │   └── visual-explainer/        # HTML visualization skill (diagrams, slides, diffs)
+│   ├── uiux-contract/              # Design system for agent-built UIs
+│   │   ├── agent_contract.yaml      # High-level design rules
+│   │   ├── design_tokens.json       # Colors, spacing, typography, motion (light + dark)
+│   │   ├── quality_gates.yaml       # 6 blocker + 4 major self-check gates
+│   │   ├── components/              # 11 component specs (button, input, modal, etc.)
+│   │   └── schemas/                 # JSON schemas for tokens and contracts
+│   ├── hooks.json                   # Auto-format on save, publish warnings
+│   ├── mcp.example.json             # MCP servers: Playwright, Context7, shadcn
+│   └── settings.example.json        # Permissions, env flags, effort level
+├── codex/                           # Codex CLI configuration
+│   ├── agents/                      # 8 agent definitions (.toml)
+│   │   ├── team-lead.toml
+│   │   ├── researcher.toml
+│   │   ├── planner.toml
+│   │   ├── coder.toml
+│   │   ├── reviewer.toml
+│   │   ├── review-fix.toml
+│   │   ├── phase-implementer.toml
+│   │   └── ball-buster.toml
+│   ├── workflows/                   # 6 workflow prompt templates
+│   │   ├── feature.md
+│   │   ├── bugfix.md
+│   │   ├── refactor.md
+│   │   ├── review-only.md
+│   │   ├── blind-review.md
+│   │   └── ball-buster-party.md
+│   ├── rules/
+│   │   └── default.rules            # Command approval rules (Starlark)
+│   └── config.example.toml          # Full config with multi-agent setup
 ├── shared/
-│   └── CLAUDE.md               # Workspace-level standards (symlinked to ~/GitHub/CLAUDE.md)
-└── install.sh                  # Symlink installer
+│   └── CLAUDE.md                    # Workspace-level standards (→ ~/GitHub/CLAUDE.md)
+└── install.sh                       # Symlink installer (idempotent, backs up existing)
 ```
+
+---
 
 ## Installation
 
@@ -43,6 +82,7 @@ The installer creates symlinks from each tool's config directory into this repo.
 | `claude/uiux-contract/`          | `~/.claude/uiux-contract/`          |
 | `claude/hooks.json`              | `~/.claude/hooks.json`              |
 | `claude/skills/visual-explainer` | `~/.claude/skills/visual-explainer` |
+| `codex/agents/`                  | `~/.codex/agents/`                  |
 | `codex/rules/`                   | `~/.codex/rules/`                   |
 | `shared/CLAUDE.md`               | `~/GitHub/CLAUDE.md`                |
 
@@ -56,37 +96,34 @@ cp claude/mcp.example.json ~/.claude/.mcp.json
 cp codex/config.example.toml ~/.codex/config.toml
 ```
 
+---
+
 ## Agents
 
-### Claude Code (8 agents)
+Both tools share the same 8-agent roster with identical roles. Claude Code agents are defined in Markdown (`.md`), Codex agents in TOML (`.toml`).
 
-| Agent               | Role                                                            | Writes code |
-| ------------------- | --------------------------------------------------------------- | ----------- |
-| `team-lead`         | Orchestrates teams, manages phases and gates                    | No          |
-| `researcher`        | Read-only codebase explorer                                     | No          |
-| `planner`           | Designs implementation plans with steps and testing             | No          |
-| `coder`             | Implements approved plans                                       | Yes         |
-| `reviewer`          | Critiques plans and reviews code (Must Fix / Should Fix / Nits) | No          |
-| `review-fix`        | Reviews and autonomously patches safe issues                    | Yes         |
-| `phase-implementer` | Self-plans and executes a scoped task without team overhead     | Yes         |
-| `ball-buster`       | Brutally honest codebase critic — questions every decision      | No          |
+| Agent               | Role                                                             | Writes code | Sandbox (Codex)   |
+| ------------------- | ---------------------------------------------------------------- | ----------- | ----------------- |
+| `team-lead`         | Orchestrates teams, manages phases and gates                     | No          | `read-only`       |
+| `researcher`        | Read-only codebase explorer — maps architecture and dependencies | No          | `read-only`       |
+| `planner`           | Designs implementation plans with steps and testing              | No          | `read-only`       |
+| `coder`             | Implements approved plans, runs verification checks              | Yes         | `workspace-write` |
+| `reviewer`          | Critiques plans and reviews code (Must Fix / Should Fix / Nits)  | No          | `read-only`       |
+| `review-fix`        | Reviews code and autonomously patches safe issues                | Yes         | `workspace-write` |
+| `phase-implementer` | Self-plans and executes a scoped task without team overhead      | Yes         | `workspace-write` |
+| `ball-buster`       | Brutally honest codebase critic — questions every decision       | No          | `read-only`       |
 
-### Codex CLI (8 agents)
+### Agent categories
 
-| Agent               | Maps to Claude's    | Sandbox           |
-| ------------------- | ------------------- | ----------------- |
-| `team-lead`         | `team-lead`         | `read-only`       |
-| `researcher`        | `researcher`        | `read-only`       |
-| `planner`           | `planner`           | `read-only`       |
-| `coder`             | `coder`             | `workspace-write` |
-| `reviewer`          | `reviewer`          | `read-only`       |
-| `review-fix`        | `review-fix`        | `workspace-write` |
-| `phase-implementer` | `phase-implementer` | `workspace-write` |
-| `ball-buster`       | `ball-buster`       | `read-only`       |
+- **Read-only** (team-lead, researcher, planner, reviewer, ball-buster) — explore, plan, and critique without modifying files
+- **Write-capable** (coder, review-fix, phase-implementer) — implement changes and run verification
+- **Autonomous** (review-fix, phase-implementer) — self-direct within defined boundaries without needing team coordination
+
+---
 
 ## Workflows
 
-Six predefined multi-agent workflows available in both tools:
+Six predefined multi-agent workflows, available in both tools:
 
 | Workflow              | Phases                                                       | Approval gate    | Fix cycles |
 | --------------------- | ------------------------------------------------------------ | ---------------- | ---------- |
@@ -105,6 +142,9 @@ Six predefined multi-agent workflows available in both tools:
 /workflow-feature add dark mode toggle to the settings page
 /workflow-bugfix login fails when email contains a plus sign
 /workflow-refactor extract auth logic into a shared module
+/workflow-review-only the authentication module
+/workflow-blind-review
+/workflow-ball-buster-party the entire frontend
 ```
 
 **Codex CLI** — workflows are prompt templates:
@@ -112,36 +152,138 @@ Six predefined multi-agent workflows available in both tools:
 ```bash
 codex "Follow the workflow in workflows/feature.md to implement: dark mode toggle"
 codex "Follow the workflow in workflows/bugfix.md to fix: login plus sign bug"
+codex "Follow the workflow in workflows/refactor.md to refactor: extract auth module"
+codex "Follow the workflow in workflows/review-only.md to review: auth module"
+codex "Follow the workflow in workflows/blind-review.md to blind-review changes"
+codex "Follow the workflow in workflows/ball-buster-party.md to roast: the frontend"
 ```
+
+---
 
 ## Slash Commands
 
-Run `/commands` in Claude Code to see the full list. Categories:
+36 slash commands available in Claude Code. Run `/commands` to see the full reference.
 
-- **Workflows** — multi-agent orchestrated flows (feature, bugfix, refactor, review-only, blind-review)
-- **Planning** — spec, interview, dod, reqwording, storygen, phase
-- **Quality** — closeout, lint, test, deploy-check, fact-check, condense
-- **Security** — auditdeep, securecoding, threatmodel, supplychain, green
-- **Operations** — debug, refactor, focus, doctor, release, pr
-- **Documentation** — adr, postmortem, handoff, visualize
-- **Project** — new-project, commands, openclaw-triage
+| Category          | Commands                                                                                                                      |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| **Workflows**     | workflow-feature, workflow-bugfix, workflow-refactor, workflow-review-only, workflow-blind-review, workflow-ball-buster-party |
+| **Planning**      | spec, interview, dod, reqwording, storygen, phase                                                                             |
+| **Quality**       | closeout, lint, test, deploy-check, fact-check, condense                                                                      |
+| **Security**      | auditdeep, securecoding, threatmodel, supplychain, green                                                                      |
+| **Operations**    | debug, refactor, focus, doctor, release, pr                                                                                   |
+| **Documentation** | adr, postmortem, handoff, visualize                                                                                           |
+| **Project**       | new-project, commands, openclaw-triage                                                                                        |
+
+---
+
+## Hooks
+
+`claude/hooks.json` configures two Claude Code hooks:
+
+- **PostToolUse** (Write/Edit/NotebookEdit) — auto-formats saved files with Prettier (JS/TS) or Ruff (Python)
+- **PreToolUse** (Bash) — warns before commands that publish externally (`npm publish`, `git tag`, `docker push`)
+
+---
+
+## MCP Servers
+
+`claude/mcp.example.json` configures three MCP plugins:
+
+| Plugin         | Purpose                            |
+| -------------- | ---------------------------------- |
+| **Playwright** | Browser automation and E2E testing |
+| **Context7**   | Up-to-date library documentation   |
+| **shadcn**     | Component registry browse/install  |
+
+---
 
 ## Codex Rules
 
-`codex/rules/default.rules` defines command-level permissions using Starlark syntax:
+`codex/rules/default.rules` defines command-level permissions using Starlark `prefix_rule()` syntax. Rules are evaluated most-restrictive-wins: `forbidden > prompt > allow`.
 
-- **`forbidden`** — destructive operations (force push, rm -rf, sudo, etc.)
-- **`allow`** — safe dev tools (git, npm, linters, test runners, file utilities)
+| Decision      | Applies to                                                                                                                                           |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **forbidden** | Destructive operations — force push, rm -rf, sudo, dd, mkfs, killall, npm unpublish                                                                  |
+| **allow**     | Safe dev tools — git (non-destructive), npm, node, linters, test runners, file utilities, Docker (non-destructive), dev-verify/dev-format/dev-status |
 
-Rules are evaluated most-restrictive-wins: `forbidden > prompt > allow`.
+---
+
+## Codex Multi-Agent Config
+
+`codex/config.example.toml` includes the full multi-agent setup:
+
+```toml
+[features]
+multi_agent = true
+
+[agents]
+max_threads = 6          # Max concurrent agent threads
+max_depth = 1            # Agent nesting depth
+job_max_runtime_seconds = 1800   # 30-minute timeout per agent job
+
+[agents.<name>]
+description = "..."
+config_file = "agents/<name>.toml"
+```
+
+Each agent TOML defines: `model`, `model_reasoning_effort`, `sandbox_mode`, and `developer_instructions`.
+
+---
+
+## UI/UX Design System
+
+`claude/uiux-contract/` is a machine-readable design system (Apple Minimal) that agents must follow for any UI work:
+
+| File                    | Purpose                                                                                               |
+| ----------------------- | ----------------------------------------------------------------------------------------------------- |
+| `agent_contract.yaml`   | High-level design rules and principles                                                                |
+| `design_tokens.json`    | Colors, spacing, radii, shadows, typography, motion (light + dark modes)                              |
+| `quality_gates.yaml`    | 6 blocker + 4 major self-check gates                                                                  |
+| `components/*.yaml`     | 11 component specs (button, input, dropdown, modal, navbar, sidebar, table, tabs, toast, card, badge) |
+| `schemas/*.schema.json` | JSON schemas for validation                                                                           |
+
+Agents must never hardcode arbitrary visual values — all colors, spacing, radii, shadows, font sizes, and motion timings must use design tokens.
+
+---
+
+## Skills
+
+### visual-explainer
+
+Custom Claude Code skill for generating self-contained HTML visualizations:
+
+- Architecture diagrams
+- Slide decks
+- Diff reviews
+- Plan reviews
+- Project recaps
+- Data tables
+- Fact-check reports
+
+Includes Mermaid.js support, responsive templates, and CSS pattern references. Invoked via `/visualize <type>`.
+
+---
 
 ## Shared Standards
 
-`shared/CLAUDE.md` is the workspace-level instruction file symlinked to `~/GitHub/CLAUDE.md`. It defines:
+`shared/CLAUDE.md` is the workspace-level instruction file symlinked to `~/GitHub/CLAUDE.md`. It governs all agent behavior across both tools:
 
-- Hard rules for all agents (verification frequency, no mass renames, no blanket suppressions)
-- Session protocol (start/end checklists, shared memory)
-- Default dev stack (TypeScript, Next.js, Fastify, TailwindCSS, Vitest)
-- Git conventions and commit format
-- Team workflow phases and gates
-- UI/UX design system contract
+- **Hard rules** — verification frequency, no mass renames, no blanket type suppressions, no weakening rules to pass checks
+- **Session protocol** — start/end checklists, shared memory at `~/GitHub/.memory/`
+- **Dev stack defaults** — TypeScript (strict), Next.js, Fastify, TailwindCSS, Radix UI, Zod, Prisma, Vitest, Playwright
+- **Git conventions** — branch naming, conventional commits, small reviewable changes
+- **Team workflow** — phase gates, user approval before implementation, verification before completion
+- **Coding style** — strict mode, no `any`, Zod at boundaries, kebab-case files, named exports
+- **UI/UX contract** — all UI work must follow design tokens and quality gates
+- **Dev scripts** — `dev-verify`, `dev-format`, `dev-status` (auto-detect project type)
+- **Secrets** — macOS Keychain vault (`claudecodex.keychain-db`), per-project `.env` files
+
+---
+
+## Settings
+
+`claude/settings.example.json` configures:
+
+- **Environment** — `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` (enables team orchestration)
+- **Permissions** — allow-list for all tools (Bash, Read, Edit, Write, Glob, Grep, WebFetch, WebSearch, Team/Task tools) and deny-list for destructive operations (force push, rm -rf, sudo, etc.)
+- **Effort level** — `high`
