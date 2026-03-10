@@ -28,21 +28,33 @@ max_threads = 6
 max_depth = 1
 job_max_runtime_seconds = 1800
 
-[agents.explorer]
+[agents.team-lead]
+description = "Orchestrates multi-agent teams — manages phases, enforces gates, communicates with user"
+config_file = "agents/team-lead.toml"
+
+[agents.researcher]
 description = "Read-only codebase explorer — maps architecture, patterns, dependencies"
-config_file = "agents/explorer.toml"
+config_file = "agents/researcher.toml"
 
 [agents.planner]
 description = "Technical planner — designs implementation approaches with steps and testing"
 config_file = "agents/planner.toml"
 
+[agents.coder]
+description = "Implementation specialist — executes plans, writes code, runs verification"
+config_file = "agents/coder.toml"
+
 [agents.reviewer]
 description = "Quality reviewer — critiques plans and verifies implementations"
 config_file = "agents/reviewer.toml"
 
-[agents.worker]
-description = "Implementation specialist — executes plans, writes code, runs verification"
-config_file = "agents/worker.toml"
+[agents.review-fix]
+description = "Reviews code and autonomously patches safe issues — reviewer + coder combined"
+config_file = "agents/review-fix.toml"
+
+[agents.phase-implementer]
+description = "Autonomous bounded task execution — self-plans, implements, and verifies a scoped task"
+config_file = "agents/phase-implementer.toml"
 
 [agents.ball-buster]
 description = "Brutally honest codebase critic — tears apart every component and questions every decision"

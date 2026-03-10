@@ -50,6 +50,7 @@ echo ""
 
 # ── Codex ──
 echo "Codex:"
+link "$REPO_DIR/codex/agents"           "$HOME/.codex/agents"
 link "$REPO_DIR/codex/rules"            "$HOME/.codex/rules"
 
 echo ""

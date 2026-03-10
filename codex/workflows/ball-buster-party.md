@@ -14,7 +14,7 @@ You are orchestrating a parallel codebase critique. Multiple ball-buster agents 
 
 ### Phase 0: Scout
 
-Spawn the **explorer** agent to map the codebase into distinct features or modules:
+Spawn the **researcher** agent to map the codebase into distinct features or modules:
 
 - Read project config, entry points, directory structure
 - Identify 3-7 logical boundaries (features, modules, layers)

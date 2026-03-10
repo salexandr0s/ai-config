@@ -71,15 +71,18 @@ cp codex/config.example.toml ~/.codex/config.toml
 | `phase-implementer` | Self-plans and executes a scoped task without team overhead     | Yes         |
 | `ball-buster`       | Brutally honest codebase critic — questions every decision      | No          |
 
-### Codex CLI (5 agents)
+### Codex CLI (8 agents)
 
-| Agent         | Maps to Claude's | Sandbox           |
-| ------------- | ---------------- | ----------------- |
-| `explorer`    | `researcher`     | `read-only`       |
-| `planner`     | `planner`        | `read-only`       |
-| `reviewer`    | `reviewer`       | `read-only`       |
-| `worker`      | `coder`          | `workspace-write` |
-| `ball-buster` | `ball-buster`    | `read-only`       |
+| Agent               | Maps to Claude's    | Sandbox           |
+| ------------------- | ------------------- | ----------------- |
+| `team-lead`         | `team-lead`         | `read-only`       |
+| `researcher`        | `researcher`        | `read-only`       |
+| `planner`           | `planner`           | `read-only`       |
+| `coder`             | `coder`             | `workspace-write` |
+| `reviewer`          | `reviewer`          | `read-only`       |
+| `review-fix`        | `review-fix`        | `workspace-write` |
+| `phase-implementer` | `phase-implementer` | `workspace-write` |
+| `ball-buster`       | `ball-buster`       | `read-only`       |
 
 ## Workflows
 
