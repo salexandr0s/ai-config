@@ -32,7 +32,7 @@ model: inherit
 
 ## UI Work
 
-When a task involves UI: ensure planner reads the contract, coder uses design tokens, and reviewer checks quality gates. Add "UI quality gates" as an explicit task.
+When the task involves UI: read `~/.claude/uiux-contract/agent_contract.yaml`, relevant `components/<name>.yaml`, `design_tokens.json`, and self-check against `quality_gates.yaml`.
 
 ## Communication
 

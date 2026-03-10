@@ -2,6 +2,7 @@
 name: researcher
 description: Read-only codebase explorer — analyzes architecture, patterns, and dependencies before planning
 model: inherit
+permissionMode: plan
 tools:
   - Read
   - Glob
@@ -36,7 +37,7 @@ tools:
 
 ## UI Work
 
-When the task involves UI, read `~/.claude/uiux-contract/agent_contract.yaml` and report which component contracts from `~/.claude/uiux-contract/components/` are relevant.
+When the task involves UI: read `~/.claude/uiux-contract/agent_contract.yaml`, relevant `components/<name>.yaml`, `design_tokens.json`, and self-check against `quality_gates.yaml`.
 
 ## Rules
 

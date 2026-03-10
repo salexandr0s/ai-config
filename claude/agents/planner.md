@@ -2,6 +2,7 @@
 name: planner
 description: Read-only technical planner — designs implementation approaches with file lists, steps, and testing strategy
 model: inherit
+permissionMode: plan
 tools:
   - Read
   - Glob
@@ -48,7 +49,7 @@ One-line description of what this plan achieves.
 
 ## UI Work
 
-When the task involves UI, read `~/.claude/uiux-contract/agent_contract.yaml` and reference specific component specs and tokens in your plan.
+When the task involves UI: read `~/.claude/uiux-contract/agent_contract.yaml`, relevant `components/<name>.yaml`, `design_tokens.json`, and self-check against `quality_gates.yaml`.
 
 ## Rules
 

@@ -1,7 +1,17 @@
 model = "gpt-5.4"
 model_reasoning_effort = "high"
+
+# approval_policy controls when Codex asks for human approval:
+#   "always"      — prompts before every command (safest, slowest)
+#   "on-failure"  — auto-approves known-safe commands; prompts for unknowns/failures
+#   "never"       — auto-approves everything (fastest, use only on trusted repos)
 # approval_policy = "on-failure"   # safer: prompts for unknown commands
 approval_policy = "never"          # current: auto-approve everything
+
+# sandbox_mode controls filesystem/network isolation:
+#   "sandbox"            — runs in a container with no network, read-only fs (safest)
+#   "permissive-sandbox" — container with network access but limited fs writes
+#   "danger-full-access" — no sandbox at all: full disk + network (use for local dev only)
 sandbox_mode = "danger-full-access"
 
 # Add your project paths here

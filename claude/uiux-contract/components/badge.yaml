@@ -1,0 +1,66 @@
+# uiux-contract/components/badge.yaml
+component:
+  name: "Badge"
+  id: "badge.v1"
+  purpose: "Displays a short status label or count"
+  tokens_required:
+    - "color.semantic.(mode).*"
+    - "color.palette.*"
+    - "space.*"
+    - "radius.*"
+    - "font.size.*"
+    - "font.weight.*"
+  anatomy:
+    - "container"
+    - "label"
+    - "dot (optional)"
+    - "icon (optional)"
+  sizes:
+    sm:
+      height: "20px"
+      padding_x: "{space.1_5}"
+      font_size: "{font.size.xs}"
+      radius: "{radius.full}"
+    md:
+      height: "24px"
+      padding_x: "{space.2}"
+      font_size: "{font.size.xs}"
+      radius: "{radius.full}"
+  variants:
+    default:
+      bg: "{color.semantic.(mode).bgMuted}"
+      fg: "{color.semantic.(mode).fg}"
+      border: "{color.semantic.(mode).border}"
+    primary:
+      bg: "{color.palette.blue.100}"
+      fg: "{color.palette.blue.700}"
+      border: "transparent"
+    success:
+      bg: "{color.palette.green.100}"
+      fg: "{color.palette.green.700}"
+      border: "transparent"
+    warning:
+      bg: "{color.palette.amber.100}"
+      fg: "{color.palette.amber.700}"
+      border: "transparent"
+    danger:
+      bg: "{color.palette.red.100}"
+      fg: "{color.palette.red.700}"
+      border: "transparent"
+    outline:
+      bg: "transparent"
+      fg: "{color.semantic.(mode).fg}"
+      border: "{color.semantic.(mode).borderStrong}"
+  states:
+    default:
+      font_weight: "{font.weight.medium}"
+    dot:
+      rule: "A small circle before the label indicating live status."
+      dot_size: "6px"
+      dot_margin_right: "{space.1}"
+  content_rules:
+    - "Label uses sentence case; keep text short (1-2 words or a number)."
+    - "For counts > 99, display '99+'."
+    - "Dot variant is for live/active status indicators."
+  overflow_rules:
+    - "Never wrap or truncate — if text doesn't fit, shorten the label."
