@@ -1,4 +1,4 @@
-Generate a session handoff document for the current project.
+Generate a session handoff document and close the session.
 
 Context (optional): $ARGUMENTS
 
@@ -38,8 +38,18 @@ Context (optional): $ARGUMENTS
    - [non-obvious choices and rationale]
    ```
 
-4. JOURNAL:
-   - Run ~/GitHub/.memory/scripts/journal.sh with summary
+4. CLOSE SESSION — **MUST** run this command after writing the handoff:
+
+   ```bash
+   ~/GitHub/.memory/scripts/session-end.sh "<tool>" "<project>" "<one-line summary>"
+   ```
+
+   Where:
+   - `<tool>` = `claude-code`, `codex`, or `openclaw`
+   - `<project>` = project directory name (lowercase)
+   - `<summary>` = one sentence describing what was accomplished
+
+   This writes the journal entry and syncs the memory index. **Do NOT skip this step.**
 
 Rules:
 
@@ -47,3 +57,4 @@ Rules:
 - Include specific file paths, not vague descriptions
 - The handoff must be usable by a different agent with zero prior context
 - Overwrite any existing SESSION_HANDOFF.md (it's always for the latest session)
+- Step 4 is mandatory — a handoff without a journal entry is incomplete
