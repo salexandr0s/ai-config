@@ -32,10 +32,9 @@ Key words: **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, **MAY** per RFC 2
 
 ### End (when files were modified)
 
-1. Agent **MUST** run `/handoff` to generate SESSION_HANDOFF.md
-2. Agent **MUST** run `~/GitHub/.memory/scripts/journal.sh "<tool>" "<project>" "<summary>"`
-3. Agent **MUST** note unfinished work in the journal summary and the handoff document
-4. Agent **SHOULD** update project/topic memory files if durable knowledge was gained
+1. Agent **MUST** run `/handoff` — this writes SESSION_HANDOFF.md **and** calls `session-end.sh` (journal + index sync)
+2. Agent **MUST** note unfinished work in the journal summary and the handoff document
+3. Agent **SHOULD** update project/topic memory files if durable knowledge was gained
 
 ### Shared Memory
 
