@@ -124,6 +124,10 @@
       "$type": "shadow",
       "$value": "none"
     },
+    "xs": {
+      "$type": "shadow",
+      "$value": "0 1px 1px rgba(0,0,0,0.04)"
+    },
     "sm": {
       "$type": "shadow",
       "$value": "0 1px 2px rgba(0,0,0,0.06)"
@@ -135,6 +139,10 @@
     "lg": {
       "$type": "shadow",
       "$value": "0 18px 50px rgba(0,0,0,0.16)"
+    },
+    "xl": {
+      "$type": "shadow",
+      "$value": "0 24px 60px rgba(0,0,0,0.20)"
     }
   },
   "motion": {
@@ -253,6 +261,80 @@
         "$type": "letterSpacing",
         "$value": "0.01em"
       }
+    },
+    "preset": {
+      "body": {
+        "$type": "typography",
+        "$value": {
+          "fontSize": "{font.size.base}",
+          "lineHeight": "{font.lineHeight.normal}",
+          "fontWeight": "{font.weight.regular}",
+          "letterSpacing": "{font.letterSpacing.normal}"
+        }
+      },
+      "bodySmall": {
+        "$type": "typography",
+        "$value": {
+          "fontSize": "{font.size.sm}",
+          "lineHeight": "{font.lineHeight.normal}",
+          "fontWeight": "{font.weight.regular}",
+          "letterSpacing": "{font.letterSpacing.normal}"
+        }
+      },
+      "label": {
+        "$type": "typography",
+        "$value": {
+          "fontSize": "{font.size.sm}",
+          "lineHeight": "{font.lineHeight.snug}",
+          "fontWeight": "{font.weight.medium}",
+          "letterSpacing": "{font.letterSpacing.normal}"
+        }
+      },
+      "labelSmall": {
+        "$type": "typography",
+        "$value": {
+          "fontSize": "{font.size.xs}",
+          "lineHeight": "{font.lineHeight.snug}",
+          "fontWeight": "{font.weight.medium}",
+          "letterSpacing": "{font.letterSpacing.wide}"
+        }
+      },
+      "heading1": {
+        "$type": "typography",
+        "$value": {
+          "fontSize": "{font.size.4xl}",
+          "lineHeight": "{font.lineHeight.tight}",
+          "fontWeight": "{font.weight.semibold}",
+          "letterSpacing": "{font.letterSpacing.tight}"
+        }
+      },
+      "heading2": {
+        "$type": "typography",
+        "$value": {
+          "fontSize": "{font.size.3xl}",
+          "lineHeight": "{font.lineHeight.tight}",
+          "fontWeight": "{font.weight.semibold}",
+          "letterSpacing": "{font.letterSpacing.tight}"
+        }
+      },
+      "heading3": {
+        "$type": "typography",
+        "$value": {
+          "fontSize": "{font.size.2xl}",
+          "lineHeight": "{font.lineHeight.snug}",
+          "fontWeight": "{font.weight.semibold}",
+          "letterSpacing": "{font.letterSpacing.normal}"
+        }
+      },
+      "heading4": {
+        "$type": "typography",
+        "$value": {
+          "fontSize": "{font.size.xl}",
+          "lineHeight": "{font.lineHeight.snug}",
+          "fontWeight": "{font.weight.semibold}",
+          "letterSpacing": "{font.letterSpacing.normal}"
+        }
+      }
     }
   },
   "zIndex": {
@@ -338,6 +420,26 @@
         }
       },
       "blue": {
+        "50": {
+          "$type": "color",
+          "$value": "#EFF6FF"
+        },
+        "100": {
+          "$type": "color",
+          "$value": "#DBEAFE"
+        },
+        "200": {
+          "$type": "color",
+          "$value": "#BFDBFE"
+        },
+        "300": {
+          "$type": "color",
+          "$value": "#93C5FD"
+        },
+        "400": {
+          "$type": "color",
+          "$value": "#60A5FA"
+        },
         "500": {
           "$type": "color",
           "$value": "#0A84FF"
@@ -349,9 +451,37 @@
         "700": {
           "$type": "color",
           "$value": "#0062BF"
+        },
+        "800": {
+          "$type": "color",
+          "$value": "#004A99"
+        },
+        "900": {
+          "$type": "color",
+          "$value": "#003373"
         }
       },
       "green": {
+        "50": {
+          "$type": "color",
+          "$value": "#F0FDF4"
+        },
+        "100": {
+          "$type": "color",
+          "$value": "#DCFCE7"
+        },
+        "200": {
+          "$type": "color",
+          "$value": "#BBF7D0"
+        },
+        "300": {
+          "$type": "color",
+          "$value": "#86EFAC"
+        },
+        "400": {
+          "$type": "color",
+          "$value": "#4ADE80"
+        },
         "500": {
           "$type": "color",
           "$value": "#34C759"
@@ -359,9 +489,41 @@
         "600": {
           "$type": "color",
           "$value": "#28A745"
+        },
+        "700": {
+          "$type": "color",
+          "$value": "#15803D"
+        },
+        "800": {
+          "$type": "color",
+          "$value": "#166534"
+        },
+        "900": {
+          "$type": "color",
+          "$value": "#14532D"
         }
       },
       "amber": {
+        "50": {
+          "$type": "color",
+          "$value": "#FFFBEB"
+        },
+        "100": {
+          "$type": "color",
+          "$value": "#FEF3C7"
+        },
+        "200": {
+          "$type": "color",
+          "$value": "#FDE68A"
+        },
+        "300": {
+          "$type": "color",
+          "$value": "#FCD34D"
+        },
+        "400": {
+          "$type": "color",
+          "$value": "#FBBF24"
+        },
         "500": {
           "$type": "color",
           "$value": "#FF9F0A"
@@ -369,9 +531,41 @@
         "600": {
           "$type": "color",
           "$value": "#E38700"
+        },
+        "700": {
+          "$type": "color",
+          "$value": "#B45309"
+        },
+        "800": {
+          "$type": "color",
+          "$value": "#92400E"
+        },
+        "900": {
+          "$type": "color",
+          "$value": "#78350F"
         }
       },
       "red": {
+        "50": {
+          "$type": "color",
+          "$value": "#FEF2F2"
+        },
+        "100": {
+          "$type": "color",
+          "$value": "#FEE2E2"
+        },
+        "200": {
+          "$type": "color",
+          "$value": "#FECACA"
+        },
+        "300": {
+          "$type": "color",
+          "$value": "#FCA5A5"
+        },
+        "400": {
+          "$type": "color",
+          "$value": "#F87171"
+        },
         "500": {
           "$type": "color",
           "$value": "#FF3B30"
@@ -379,6 +573,18 @@
         "600": {
           "$type": "color",
           "$value": "#E02A21"
+        },
+        "700": {
+          "$type": "color",
+          "$value": "#B91C1C"
+        },
+        "800": {
+          "$type": "color",
+          "$value": "#991B1B"
+        },
+        "900": {
+          "$type": "color",
+          "$value": "#7F1D1D"
         }
       }
     },

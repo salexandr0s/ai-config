@@ -1,0 +1,70 @@
+# uiux-contract/components/card.yaml
+component:
+  name: "Card"
+  id: "card.v1"
+  purpose: "Groups related content with a visual boundary"
+  tokens_required:
+    - "color.semantic.(mode).*"
+    - "space.*"
+    - "radius.*"
+    - "shadow.*"
+    - "borderWidth.*"
+  anatomy:
+    - "container"
+    - "header (optional)"
+    - "body"
+    - "footer (optional)"
+    - "media (optional)"
+  variants:
+    default:
+      bg: "{color.semantic.(mode).surface}"
+      border: "{color.semantic.(mode).border}"
+      border_width: "{borderWidth.hairline}"
+      radius: "{radius.lg}"
+      shadow: "{shadow.xs}"
+      padding: "{space.6}"
+    elevated:
+      bg: "{color.semantic.(mode).surfaceElevated}"
+      border: "transparent"
+      border_width: "0"
+      radius: "{radius.lg}"
+      shadow: "{shadow.md}"
+      padding: "{space.6}"
+    outline:
+      bg: "transparent"
+      border: "{color.semantic.(mode).borderStrong}"
+      border_width: "{borderWidth.hairline}"
+      radius: "{radius.lg}"
+      shadow: "{shadow.none}"
+      padding: "{space.6}"
+    ghost:
+      bg: "transparent"
+      border: "transparent"
+      border_width: "0"
+      radius: "{radius.lg}"
+      shadow: "{shadow.none}"
+      padding: "{space.6}"
+  states:
+    default:
+      transition:
+        duration: "{motion.duration.base}"
+        easing: "{motion.easing.standard}"
+    hover:
+      rule: "Only apply if card is clickable (interactive variant)."
+      shadow_mod:
+        default: "{shadow.sm}"
+        elevated: "{shadow.lg}"
+      border_mod:
+        outline: "{color.semantic.(mode).accent}"
+    focus_visible:
+      ring_color: "{color.semantic.(mode).ring}"
+      ring_width: "{borderWidth.thick}"
+      ring_offset: "2px"
+  content_rules:
+    - "Header text uses font.preset.heading4 or font.preset.label."
+    - "Body text uses font.preset.body."
+    - "Footer content is separated by a top border using color.semantic.(mode).border."
+    - "Media images fill container width with overflow hidden + border radius on top."
+  overflow_rules:
+    - "Card height is content-driven by default; constrain with max-height + scroll if needed."
+    - "Body text should truncate or clamp for fixed-height card grids."

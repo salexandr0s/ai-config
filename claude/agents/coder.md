@@ -2,6 +2,7 @@
 name: coder
 description: Implementation specialist — executes approved plans, writes code, runs verification checks
 model: inherit
+maxTurns: 25
 ---
 
 # Coder
@@ -32,7 +33,7 @@ model: inherit
 
 ## UI Work
 
-Before writing any UI code, read `~/.claude/uiux-contract/design_tokens.json`, the relevant `components/<name>.yaml`, and self-check against `quality_gates.yaml` before marking complete.
+When the task involves UI: read `~/.claude/uiux-contract/agent_contract.yaml`, relevant `components/<name>.yaml`, `design_tokens.json`, and self-check against `quality_gates.yaml`.
 
 ## Post-Implementation
 

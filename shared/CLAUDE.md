@@ -85,20 +85,12 @@ New projects **SHOULD** use this stack unless requirements dictate otherwise:
 - Agents **SHOULD** prefer `interface` for object shapes, `type` for unions/intersections/utility types
 - Agents **SHOULD** use named exports over default exports — easier to refactor and grep
 
-### React
-
-- Related files **SHOULD** be colocated — component + hook + types in same directory
-- Reusable logic **SHOULD** be extracted into hooks — prefix with `use`
-- Agents **SHOULD** prefer composition over prop drilling — use children and slots
-
 ### Naming
 
 - Files **MUST** use `kebab-case.ts` (e.g., `user-profile.tsx`)
 - Components **MUST** use `PascalCase` in code, `kebab-case` file (e.g., `user-card.tsx` → `UserCard`)
 - Hooks **MUST** use `use-` prefix file (e.g., `use-auth.ts` → `useAuth`)
 - Types **SHOULD** be colocated in same file, or `types.ts` if shared
-- Constants **MUST** use `SCREAMING_SNAKE_CASE`
-- Test files **MUST** use `*.test.ts` next to source
 
 ### Project Structure
 
@@ -148,17 +140,12 @@ Per-project keys **MUST** go in `.env` files (never committed).
 
 ### MCP Plugins
 
-| Plugin         | Purpose                     | Auth                           |
-| -------------- | --------------------------- | ------------------------------ |
-| **GitHub**     | PR/issue management         | `GITHUB_PERSONAL_ACCESS_TOKEN` |
-| **Playwright** | Browser automation & E2E    | Auto-managed                   |
-| **Supabase**   | DB/auth management          | OAuth                          |
-| **Stripe**     | Payment integration         | OAuth                          |
-| **Firebase**   | Cloud services              | Firebase CLI                   |
-| **Slack**      | Team messaging              | OAuth                          |
-| **Linear**     | Issue tracking              | OAuth                          |
-| **Greptile**   | AI code search across repos | `GREPTILE_API_KEY`             |
-| **Context7**   | Up-to-date library docs     | None                           |
+| Plugin         | Purpose                  | Auth         |
+| -------------- | ------------------------ | ------------ |
+| **Playwright** | Browser automation & E2E | Auto-managed |
+| **Context7**   | Up-to-date library docs  | None         |
+
+Additional MCP servers can be configured per-project in `.mcp.json`.
 
 ### OpenClaw Gateway
 
@@ -167,8 +154,8 @@ Brave Search · QMD Memory · TTS (OpenAI Shimmer) · Agent-to-Agent messaging
 
 ### QMD — Knowledge Search (NOT Code Search)
 
-`qmd` (v1.1.5) is a hybrid search tool (BM25 + vector + LLM reranking) for markdown files.
-Binary: `/Users/savorgserver/.bun/bin/qmd`
+`qmd` (run `qmd --version` to check) is a hybrid search tool (BM25 + vector + LLM reranking) for markdown files.
+Binary: `qmd` (on PATH)
 
 Agents **MUST NOT** use qmd for code search — use Grep/Glob/LSP instead (faster, more precise).
 

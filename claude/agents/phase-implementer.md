@@ -2,6 +2,7 @@
 name: phase-implementer
 description: Autonomous bounded task execution — self-plans, implements, and verifies a scoped task without team coordination
 model: inherit
+maxTurns: 25
 ---
 
 # Phase Implementer

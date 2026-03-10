@@ -1,0 +1,79 @@
+# uiux-contract/components/tabs.yaml
+component:
+  name: "Tabs"
+  id: "tabs.v1"
+  purpose: "Switches between related views within a single context"
+  tokens_required:
+    - "color.semantic.(mode).*"
+    - "space.*"
+    - "radius.*"
+    - "font.size.*"
+    - "font.weight.*"
+    - "motion.duration.*"
+    - "motion.easing.*"
+    - "borderWidth.*"
+  anatomy:
+    - "tabList (container for triggers)"
+    - "trigger (individual tab button)"
+    - "indicator (active state marker)"
+    - "content (tab panel)"
+  sizes:
+    sm:
+      height: "{component.control.height.sm}"
+      font_size: "{font.size.sm}"
+      padding_x: "{space.3}"
+    md:
+      height: "{component.control.height.md}"
+      font_size: "{font.size.sm}"
+      padding_x: "{space.4}"
+  variants:
+    underline:
+      tabList:
+        border_bottom: "{borderWidth.hairline} solid {color.semantic.(mode).border}"
+      trigger:
+        bg: "transparent"
+        fg: "{color.semantic.(mode).fgMuted}"
+        border: "transparent"
+      indicator:
+        type: "bottom-border"
+        color: "{color.semantic.(mode).accent}"
+        width: "{borderWidth.thick}"
+    pills:
+      tabList:
+        bg: "{color.semantic.(mode).bgMuted}"
+        padding: "{space.0_5}"
+        radius: "{radius.md}"
+      trigger:
+        bg: "transparent"
+        fg: "{color.semantic.(mode).fgMuted}"
+        radius: "{radius.sm}"
+      indicator:
+        type: "background"
+        bg: "{color.semantic.(mode).surface}"
+        shadow: "{shadow.xs}"
+  states:
+    default:
+      transition:
+        duration: "{motion.duration.base}"
+        easing: "{motion.easing.standard}"
+    active:
+      fg: "{color.semantic.(mode).fg}"
+      font_weight: "{font.weight.medium}"
+    hover:
+      rule: "Subtle background on non-active triggers."
+      bg: "{color.semantic.(mode).bgMuted}"
+    focus_visible:
+      ring_color: "{color.semantic.(mode).ring}"
+      ring_width: "{borderWidth.thick}"
+      ring_offset: "2px"
+    disabled:
+      opacity: 0.55
+      cursor: "not-allowed"
+  content_rules:
+    - "Trigger labels use sentence case; keep short (1-2 words)."
+    - "Active tab MUST have aria-selected='true'."
+    - "Tab panels MUST use role='tabpanel' with aria-labelledby pointing to trigger."
+    - "Icon-only triggers MUST have aria-label."
+  overflow_rules:
+    - "If tabs overflow, use horizontal scroll with fade indicators — never wrap to second line."
+    - "Consider a 'more' dropdown for > 6 tabs in constrained widths."

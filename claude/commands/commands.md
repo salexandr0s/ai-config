@@ -14,7 +14,7 @@ Print the following command reference table exactly as shown:
 | /fact-check      | Verify document accuracy against the actual codebase                                     |
 | /focus           | Figure out what to work on next — scans git state, TODOs, open branches                  |
 | /green           | Get a security-focused architecture review of an idea                                    |
-| /greeniv         | Get a product-focused architecture review of an idea                                     |
+| /interview       | Run a greenfield interview to clarify ambiguity before scoping                           |
 | /handoff         | Generate session handoff document for continuity                                         |
 | /lint            | Run linters and auto-fix code quality issues                                             |
 | /new-project     | Scaffold a new project from scratch                                                      |
@@ -31,5 +31,4 @@ Print the following command reference table exactly as shown:
 | /test            | Auto-detect project type and run the test suite                                          |
 | /threatmodel     | Map out threats and attack surfaces for a system                                         |
 | /visualize       | Generate visual HTML pages — diagrams, plans, slides, diff reviews, plan reviews, recaps |
-| /build-pnevma    | Pnevma-specific build cycle with diagnosis and recovery                                  |
 | /openclaw-triage | OpenClaw/ClawControl health diagnostics and repair                                       |

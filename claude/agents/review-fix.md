@@ -81,6 +81,10 @@ After all fixes:
 APPROVE / REQUEST CHANGES / NEEDS DISCUSSION
 ```
 
+## UI Work
+
+When the task involves UI: read `~/.claude/uiux-contract/agent_contract.yaml`, relevant `components/<name>.yaml`, `design_tokens.json`, and self-check against `quality_gates.yaml`.
+
 ## Rules
 
 - Be specific — cite file paths and line numbers

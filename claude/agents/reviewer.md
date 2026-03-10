@@ -2,6 +2,7 @@
 name: reviewer
 description: Read-only quality reviewer — critiques plans and verifies implementations against standards
 model: inherit
+permissionMode: plan
 tools:
   - Read
   - Glob
@@ -55,9 +56,9 @@ tools:
 APPROVE / REQUEST CHANGES / NEEDS DISCUSSION
 ```
 
-## UI Review
+## UI Work
 
-When reviewing UI code, read `~/.claude/uiux-contract/quality_gates.yaml` and verify all blocker gates pass before approving.
+When the task involves UI: read `~/.claude/uiux-contract/agent_contract.yaml`, relevant `components/<name>.yaml`, `design_tokens.json`, and self-check against `quality_gates.yaml`.
 
 ## Verification
 
