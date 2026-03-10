@@ -139,10 +139,11 @@ Per-project keys **MUST** go in `.env` files (never committed).
 
 ### MCP Plugins
 
-| Plugin         | Purpose                  | Auth         |
-| -------------- | ------------------------ | ------------ |
-| **Playwright** | Browser automation & E2E | Auto-managed |
-| **Context7**   | Up-to-date library docs  | None         |
+| Plugin         | Purpose                           | Auth         |
+| -------------- | --------------------------------- | ------------ |
+| **Playwright** | Browser automation & E2E          | Auto-managed |
+| **Context7**   | Up-to-date library docs           | None         |
+| **shadcn**     | Component registry browse/install | None         |
 
 Additional MCP servers can be configured per-project in `.mcp.json`.
 
