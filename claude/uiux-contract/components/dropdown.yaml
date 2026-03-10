@@ -1,0 +1,44 @@
+# uiux-contract/components/dropdown.yaml
+component:
+  name: "Dropdown / Menu"
+  id: "dropdown.v1"
+  purpose: "Context menu or list of actions/options"
+  container:
+    min_width: "180px"
+    max_width: "min(320px, 90vw)"
+    padding: "{space.1}"
+    radius: "{radius.md}"
+    shadow: "{shadow.md}"
+    border: "{color.semantic.(mode).border}"
+    bg: "{color.semantic.(mode).surfaceElevated}"
+    z_index: "{zIndex.dropdown}"
+  item:
+    height: "36px"
+    padding_x: "{space.3}"
+    gap: "{space.2}"
+    radius: "{radius.sm}"
+    font_size: "{font.size.sm}"
+    fg: "{color.semantic.(mode).fg}"
+  item_states:
+    hover:
+      bg: "{color.semantic.(mode).bgMuted}"
+    active:
+      bg: "{color.semantic.(mode).bgMuted}"
+    focus_visible:
+      ring_color: "{color.semantic.(mode).ring}"
+      ring_width: "{borderWidth.thick}"
+      ring_offset: "1px"
+    disabled:
+      opacity: 0.5
+      cursor: "not-allowed"
+  separators:
+    height: "1px"
+    color: "{color.semantic.(mode).border}"
+    margin_y: "{space.1}"
+  overflow_rules:
+    - "If list is long: max-height 320px and scroll with visible scrollbar on hover."
+    - "Labels can truncate; show tooltip for full label if truncated."
+  keyboard_rules:
+    - "Arrow keys move selection"
+    - "Enter selects"
+    - "Esc closes"

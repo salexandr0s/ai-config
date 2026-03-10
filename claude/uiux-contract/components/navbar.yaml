@@ -1,0 +1,29 @@
+# uiux-contract/components/navbar.yaml
+component:
+  name: "Navbar"
+  id: "navbar.v1"
+  purpose: "Top-level navigation and global actions"
+  sizes:
+    desktop_height: "56px"
+    mobile_height: "52px"
+  layout:
+    max_width: "1200px"
+    padding_x:
+      mobile: "{space.4}"
+      desktop: "{space.6}"
+    gap: "{space.4}"
+  visuals:
+    bg: "{color.semantic.(mode).bg}"
+    border_bottom: "{color.semantic.(mode).border}"
+    blur:
+      enabled: true
+      rule: "Use subtle blur only when overlaying content (e.g., sticky)."
+  behavior:
+    sticky:
+      enabled: true
+      z_index: "{zIndex.sticky}"
+    responsive:
+      - "Collapse primary links into menu at < md."
+      - "Keep at least one primary CTA visible if product requires."
+  accessibility:
+    - "Skip-to-content link required on complex pages."

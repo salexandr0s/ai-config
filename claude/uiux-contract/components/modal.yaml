@@ -1,0 +1,31 @@
+# uiux-contract/components/modal.yaml
+component:
+  name: "Modal / Dialog"
+  id: "modal.v1"
+  purpose: "Interrupts flow to request decision or show critical content"
+  overlay:
+    color: "{color.semantic.(mode).overlay}"
+    z_index: "{zIndex.modal}"
+  container:
+    width:
+      default: "min(560px, 92vw)"
+      small: "min(420px, 92vw)"
+      large: "min(720px, 94vw)"
+    radius: "{radius.lg}"
+    bg: "{color.semantic.(mode).surfaceElevated}"
+    border: "{color.semantic.(mode).border}"
+    shadow: "{shadow.lg}"
+    padding: "{space.6}"
+  behavior:
+    close:
+      - "Esc closes"
+      - "Outside click closes (unless destructive/critical confirm)"
+    focus_trap: true
+    initial_focus: "First focusable element"
+  typography:
+    title_size: "{font.size.xl}"
+    body_size: "{font.size.base}"
+  footer:
+    gap: "{space.3}"
+    alignment: "right"
+    rule: "Primary action rightmost; destructive is styled destructive."

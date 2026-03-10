@@ -1,0 +1,68 @@
+# uiux-contract/quality_gates.yaml
+# Purpose: machine-readable checklist gates for agents to self-verify before shipping UI.
+
+gates:
+  - id: "QG-ACCESS-001"
+    name: "Contrast"
+    severity: "blocker"
+    rule: "Text and UI controls must meet WCAG contrast (AA minimum)."
+    how_to_check:
+      - "Measure contrast of fg/bg pairs for body text and controls."
+      - "If uncertain, choose higher-contrast semantic tokens."
+    common_ai_failures:
+      - "Using muted text on muted backgrounds"
+      - "Light gray text on white"
+  - id: "QG-ACCESS-002"
+    name: "Keyboard navigation"
+    severity: "blocker"
+    rule: "All interactive elements must be reachable and operable via keyboard."
+    how_to_check:
+      - "Tab through the page: order is logical, no traps."
+      - "Enter/Space activate buttons; Esc closes modals; arrow keys in menus."
+  - id: "QG-ACCESS-003"
+    name: "Focus-visible"
+    severity: "blocker"
+    rule: "Focus ring must be clearly visible and not removed."
+    how_to_check:
+      - "Use :focus-visible ring token; ensure ring not clipped."
+  - id: "QG-LAYOUT-001"
+    name: "Responsive widths"
+    severity: "blocker"
+    rule: "No horizontal scrolling at 360px, 768px, 1024px, 1440px (except intentional code blocks)."
+    how_to_check:
+      - "Check small viewport: nav collapses, tables scroll responsibly."
+  - id: "QG-TEXT-001"
+    name: "No text overflow"
+    severity: "blocker"
+    rule: "No clipped text in buttons, chips, table cells, cards, nav items."
+    how_to_check:
+      - "Test long labels + localized strings."
+      - "Use truncation with tooltip OR wrapping where appropriate."
+    patterns:
+      - "Buttons: allow min-width and horizontal padding; avoid fixed width."
+      - "Cards: clamp titles to 2 lines; show full title on hover/tooltip."
+  - id: "QG-STATE-001"
+    name: "All states exist"
+    severity: "blocker"
+    rule: "Default/hover/active/focus-visible/disabled/loading defined for each control."
+  - id: "QG-CONSIST-001"
+    name: "Token usage"
+    severity: "major"
+    rule: "Spacing, colors, radii, shadows, font sizes must be tokenized."
+    common_ai_failures:
+      - "Hardcoding 13px padding or random hex colors"
+  - id: "QG-MOTION-001"
+    name: "Motion discipline"
+    severity: "major"
+    rule: "Transitions 120–220ms and use standard easing; motion reflects state."
+    common_ai_failures:
+      - "Slow, floaty animations"
+      - "Multiple properties animating at once"
+  - id: "QG-FORM-001"
+    name: "Form errors"
+    severity: "major"
+    rule: "Error states must show message + field highlight + aria-describedby."
+  - id: "QG-NAV-001"
+    name: "Navigation clarity"
+    severity: "major"
+    rule: "Active route is clearly indicated; hover states are subtle but obvious."

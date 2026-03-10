@@ -1,0 +1,9 @@
+model = "gpt-5.4"
+model_reasoning_effort = "high"
+# approval_policy = "on-failure"   # safer: prompts for unknown commands
+approval_policy = "never"          # current: auto-approve everything
+sandbox_mode = "danger-full-access"
+
+# Add your project paths here
+# [projects."/path/to/project"]
+# trust_level = "trusted"

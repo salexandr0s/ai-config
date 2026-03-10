@@ -1,0 +1,27 @@
+# uiux-contract/components/table.yaml
+component:
+  name: "Data Table"
+  id: "table.v1"
+  purpose: "Display structured data with sorting/filtering"
+  density:
+    row_height: "44px"
+    cell_padding_x: "{space.4}"
+    header_font_weight: "{font.weight.medium}"
+    font_size: "{font.size.sm}"
+  visuals:
+    border: "{color.semantic.(mode).border}"
+    header_bg: "{color.semantic.(mode).bgMuted}"
+    zebra:
+      enabled: false
+      rule: "Prefer subtle hover highlight over zebra unless dense data."
+  behavior:
+    overflow:
+      - "On narrow screens: allow horizontal scroll; keep first column sticky only if necessary."
+    empty_state:
+      required: true
+      includes:
+        - "short explanation"
+        - "suggested next step"
+  text_rules:
+    - "Numeric columns right-aligned; text columns left-aligned."
+    - "Truncate long text with tooltip; avoid multi-line rows unless necessary."

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Component Contract Schema (simplified)",
+  "type": "object",
+  "required": ["component"],
+  "properties": {
+    "component": {
+      "type": "object",
+      "required": ["name", "id", "purpose"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "purpose": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
