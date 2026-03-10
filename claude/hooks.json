@@ -1,0 +1,28 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=\"$CLAUDE_FILE_PATH\"; EXT=\"${FILE##*.}\"; case \"$EXT\" in ts|tsx|js|jsx) npx prettier --write \"$FILE\" 2>/dev/null ;; py) ruff format \"$FILE\" 2>/dev/null ;; esac; exit 0",
+            "timeout": 10000
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if echo \"$CLAUDE_TOOL_INPUT\" | grep -qiE '(npm publish|git tag|docker push)'; then echo 'WARN: This publishes externally. Confirm with user first.' >&2; fi; exit 0",
+            "timeout": 5000
+          }
+        ]
+      }
+    ]
+  }
+}

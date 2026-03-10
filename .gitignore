@@ -1,0 +1,22 @@
+# Secrets — never commit
+.credentials.json
+.env
+*.keychain*
+auth.json
+secrets/
+
+# Personal state
+.claude.json
+config.toml
+settings.json
+settings.local.json
+.mcp.json
+
+# Runtime
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+telemetry/
+debug/
+sessions/
+cache/

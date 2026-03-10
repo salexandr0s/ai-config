@@ -1,0 +1,53 @@
+# uiux-contract/components/input.yaml
+component:
+  name: "Input"
+  id: "input.v1"
+  purpose: "Text entry control"
+  anatomy:
+    - "container"
+    - "label (optional but recommended)"
+    - "input field"
+    - "leading icon (optional)"
+    - "trailing icon / clear (optional)"
+    - "help text (optional)"
+    - "error text (optional)"
+  sizes:
+    sm:
+      height: "{component.control.height.sm}"
+      padding_x: "{space.3}"
+      font_size: "{font.size.sm}"
+      radius: "{radius.sm}"
+    md:
+      height: "{component.control.height.md}"
+      padding_x: "{space.4}"
+      font_size: "{font.size.sm}"
+      radius: "{radius.md}"
+    lg:
+      height: "{component.control.height.lg}"
+      padding_x: "{space.5}"
+      font_size: "{font.size.base}"
+      radius: "{radius.md}"
+  visuals:
+    bg: "{color.semantic.(mode).surface}"
+    fg: "{color.semantic.(mode).fg}"
+    border: "{color.semantic.(mode).border}"
+    placeholder: "{color.semantic.(mode).fgMuted}"
+  states:
+    hover:
+      border: "{color.semantic.(mode).borderStrong}"
+    focus_visible:
+      ring_color: "{color.semantic.(mode).ring}"
+      ring_width: "{borderWidth.thick}"
+      ring_offset: "2px"
+      border: "{color.semantic.(mode).ring}"
+    disabled:
+      opacity: 0.55
+      cursor: "not-allowed"
+    error:
+      border: "{color.semantic.(mode).danger}"
+      help_text_color: "{color.semantic.(mode).danger}"
+      aria:
+        required: ["aria-invalid=true", "aria-describedby=<error-id>"]
+  behavior_rules:
+    - "Do not set fixed widths; use fluid width within layout."
+    - "Support long values: horizontal scroll within input is acceptable; label/help text should wrap."

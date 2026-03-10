@@ -1,0 +1,24 @@
+# uiux-contract/components/toast.yaml
+component:
+  name: "Toast"
+  id: "toast.v1"
+  purpose: "Non-blocking ephemeral feedback"
+  placement:
+    default: "bottom-right"
+    mobile: "bottom-center"
+  container:
+    width: "min(360px, 92vw)"
+    padding: "{space.4}"
+    radius: "{radius.md}"
+    shadow: "{shadow.md}"
+    border: "{color.semantic.(mode).border}"
+    bg: "{color.semantic.(mode).surfaceElevated}"
+    z_index: "{zIndex.toast}"
+  durations:
+    success: "3000ms"
+    info: "3500ms"
+    warning: "4500ms"
+    error: "6000ms"
+  rules:
+    - "Do not stack more than 3; collapse older ones."
+    - "Provide action button when remediation is possible."

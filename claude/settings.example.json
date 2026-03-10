@@ -1,0 +1,53 @@
+{
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "permissions": {
+    "allow": [
+      "Bash",
+      "Read",
+      "Edit",
+      "Write",
+      "Glob",
+      "Grep",
+      "WebFetch",
+      "WebSearch",
+      "Task",
+      "NotebookEdit",
+      "EnterWorktree",
+      "TeamCreate",
+      "SendMessage",
+      "TaskCreate",
+      "TaskUpdate",
+      "TaskGet",
+      "TaskList"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(rm -r *)",
+      "Bash(git push --force*)",
+      "Bash(git push -f *)",
+      "Bash(git push * --force*)",
+      "Bash(git push * -f *)",
+      "Bash(git reset --hard*)",
+      "Bash(git clean -f*)",
+      "Bash(git clean * -f*)",
+      "Bash(git branch -D *)",
+      "Bash(git checkout -- .)",
+      "Bash(git checkout .)",
+      "Bash(git restore .)",
+      "Bash(git restore -- .)",
+      "Bash(git stash drop*)",
+      "Bash(git stash clear*)",
+      "Bash(sudo *)",
+      "Bash(dd *)",
+      "Bash(mkfs *)",
+      "Bash(diskutil eraseDisk *)",
+      "Bash(diskutil eraseVolume *)",
+      "Bash(killall *)",
+      "Bash(pkill *)",
+      "Bash(npm unpublish *)"
+    ]
+  },
+  "effortLevel": "high"
+}

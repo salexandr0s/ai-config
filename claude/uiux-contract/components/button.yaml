@@ -1,0 +1,97 @@
+# uiux-contract/components/button.yaml
+component:
+  name: "Button"
+  id: "button.v1"
+  purpose: "Triggers an action"
+  tokens_required:
+    - "color.semantic.(mode).*"
+    - "space.*"
+    - "radius.*"
+    - "motion.duration.*"
+    - "motion.easing.*"
+    - "component.control.height.*"
+    - "component.control.paddingX.*"
+  anatomy:
+    - "container"
+    - "label"
+    - "icon (optional)"
+    - "spinner (optional)"
+  sizes:
+    sm:
+      height: "{component.control.height.sm}"
+      padding_x: "{component.control.paddingX.sm}"
+      font_size: "{font.size.sm}"
+      radius: "{radius.sm}"
+    md:
+      height: "{component.control.height.md}"
+      padding_x: "{component.control.paddingX.md}"
+      font_size: "{font.size.sm}"
+      radius: "{radius.md}"
+    lg:
+      height: "{component.control.height.lg}"
+      padding_x: "{component.control.paddingX.lg}"
+      font_size: "{font.size.base}"
+      radius: "{radius.md}"
+    icon:
+      height: "{component.control.height.md}"
+      width: "{component.control.height.md}"
+      padding_x: "{space.0}"
+      radius: "{radius.md}"
+  variants:
+    primary:
+      bg: "{color.semantic.(mode).accent}"
+      fg: "{color.palette.neutral.0}"
+      border: "transparent"
+    secondary:
+      bg: "{color.semantic.(mode).bgMuted}"
+      fg: "{color.semantic.(mode).fg}"
+      border: "{color.semantic.(mode).border}"
+    outline:
+      bg: "transparent"
+      fg: "{color.semantic.(mode).fg}"
+      border: "{color.semantic.(mode).borderStrong}"
+    ghost:
+      bg: "transparent"
+      fg: "{color.semantic.(mode).fg}"
+      border: "transparent"
+    destructive:
+      bg: "{color.semantic.(mode).danger}"
+      fg: "{color.palette.neutral.0}"
+      border: "transparent"
+    link:
+      bg: "transparent"
+      fg: "{color.semantic.(mode).accent}"
+      border: "transparent"
+  states:
+    default:
+      transition:
+        duration: "{motion.duration.base}"
+        easing: "{motion.easing.standard}"
+      shadow: "{shadow.none}"
+    hover:
+      rule: "Increase contrast slightly; never change layout."
+      bg_mod:
+        primary: "{color.semantic.(mode).accentHover}"
+        secondary: "{color.semantic.(mode).surface}"
+        outline: "{color.semantic.(mode).bgMuted}"
+        ghost: "{color.semantic.(mode).bgMuted}"
+        destructive: "{color.palette.red.600}"
+        link: "transparent"
+    active:
+      rule: "Slight press effect; optional 1px translateY and darker bg."
+      translate_y: "1px"
+    focus_visible:
+      ring_color: "{color.semantic.(mode).ring}"
+      ring_width: "{borderWidth.thick}"
+      ring_offset: "2px"
+    disabled:
+      opacity: 0.55
+      cursor: "not-allowed"
+    loading:
+      rule: "Show spinner; keep button width stable; disable pointer events."
+  content_rules:
+    - "Label uses sentence case; avoid ALL CAPS."
+    - "Icon-only buttons MUST have accessible label (aria-label)."
+    - "Min touch target 44px on mobile (increase padding or height)."
+  overflow_rules:
+    - "Never clip label. Prefer truncation with max-width + tooltip for dense toolbars."

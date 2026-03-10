@@ -1,0 +1,99 @@
+# uiux-contract/agent_contract.yaml
+# Purpose: High-level, machine-readable contract that an LLM/agent must follow
+# when designing UI/UX for new projects in an Apple-inspired / shadcn-like style.
+
+contract:
+  id: "uiux.apple-minimal.v1"
+  version: "1.0.0"
+  status: "active"
+  last_updated: "2026-02-23"
+  owner: "YOU"
+  scope:
+    includes:
+      - "Web apps (desktop + mobile)"
+      - "Dashboards, marketing pages, internal tools"
+      - "Component libraries (React/Vue/Svelte/etc.)"
+    excludes:
+      - "Highly ornamental / skeuomorphic UI"
+      - "Non-accessible color-only signaling"
+
+design_philosophy:
+  style_keywords:
+    - "Apple-inspired"
+    - "Minimal"
+    - "Crisp typography"
+    - "Subtle depth"
+    - "High clarity, low noise"
+    - "shadcn-like component density"
+  principles:
+    - id: "P1"
+      name: "Clarity over cleverness"
+      rule: "UI must be instantly legible; avoid novelty patterns."
+    - id: "P2"
+      name: "Consistency is a feature"
+      rule: "Spacing, radii, typography, and component states must be token-driven."
+    - id: "P3"
+      name: "Accessible by default"
+      rule: "All interactive elements must meet contrast + focus + keyboard navigation requirements."
+    - id: "P4"
+      name: "Motion is feedback"
+      rule: "Motion is subtle, short, and communicates state change (never decorative)."
+
+implementation_directives:
+  tokens:
+    required_files:
+      - "design_tokens.json"
+    rule: "All colors, typography, spacing, radii, shadows, motion timings MUST use tokens."
+  components:
+    required_dir: "components/"
+    rule: "Component specs define default sizing, padding, and states. Do not invent new patterns."
+  responsiveness:
+    rule: "Design mobile-first. Layout must adapt across breakpoints and fluid widths."
+  accessibility:
+    rule: "Keyboard navigation, focus-visible, ARIA, and error messaging are mandatory."
+
+decision_rules:
+  - id: "D1"
+    when: "A new visual value is needed (color/space/radius/shadow/type)"
+    then: "Add/extend tokens first; do not hardcode arbitrary values."
+  - id: "D2"
+    when: "Choosing between two designs"
+    then: "Prefer the one with fewer variants, clearer hierarchy, and better accessibility."
+  - id: "D3"
+    when: "Spacing is uncertain"
+    then: "Use spacing scale steps; prefer 8pt rhythm; avoid odd pixel values unless justified."
+  - id: "D4"
+    when: "A component may overflow"
+    then: "Design for truncation/wrapping. Provide min/max widths and responsive rules."
+
+hard_requirements:
+  - id: "R1"
+    name: "No text overflow"
+    rule: "Text must not clip. Use wrapping, truncation, or dynamic sizing."
+    enforcement: "quality_gates.yaml"
+  - id: "R2"
+    name: "All interactive states"
+    rule: "Default, hover, active, focus-visible, disabled, loading must be defined."
+    enforcement: "components/*.yaml"
+  - id: "R3"
+    name: "Keyboard + focus"
+    rule: "Every interactive control reachable via keyboard with visible focus ring."
+    enforcement: "quality_gates.yaml"
+  - id: "R4"
+    name: "Responsive"
+    rule: "Works from 360px to 1440px; no horizontal scroll on common layouts."
+    enforcement: "quality_gates.yaml"
+
+anti_patterns:
+  - id: "A1"
+    name: "Random spacing"
+    avoid: "Mixing 10px/14px/18px margins without token steps."
+  - id: "A2"
+    name: "Color-only meaning"
+    avoid: "Status conveyed only by color without icon/text."
+  - id: "A3"
+    name: "No hover/focus differentiation"
+    avoid: "Clickable things that don't look clickable or provide feedback."
+  - id: "A4"
+    name: "Over-animated UI"
+    avoid: "Long, bouncy transitions; motion that competes with content."

@@ -1,0 +1,25 @@
+# uiux-contract/components/sidebar.yaml
+component:
+  name: "Sidebar"
+  id: "sidebar.v1"
+  purpose: "Secondary navigation, usually for dashboards"
+  widths:
+    collapsed: "72px"
+    expanded: "260px"
+  layout:
+    padding: "{space.3}"
+    item_height: "40px"
+    item_padding_x: "{space.3}"
+    item_radius: "{radius.md}"
+    section_gap: "{space.4}"
+  visuals:
+    bg: "{color.semantic.(mode).surface}"
+    border_right: "{color.semantic.(mode).border}"
+    active_item:
+      bg: "{color.semantic.(mode).bgMuted}"
+      fg: "{color.semantic.(mode).fg}"
+    hover_item:
+      bg: "{color.semantic.(mode).bgMuted}"
+  responsive:
+    - "On < md: sidebar becomes overlay drawer with scrim."
+    - "Overlay drawer must close with Esc and outside click."

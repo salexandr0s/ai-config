@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Design Tokens Schema (simplified)",
+  "type": "object",
+  "required": ["meta", "color", "space", "radius", "font"],
+  "properties": {
+    "meta": {
+      "type": "object"
+    },
+    "color": {
+      "type": "object"
+    },
+    "space": {
+      "type": "object"
+    },
+    "radius": {
+      "type": "object"
+    },
+    "font": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}
