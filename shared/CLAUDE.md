@@ -154,7 +154,7 @@ Brave Search · QMD Memory · TTS (OpenAI Shimmer) · Agent-to-Agent messaging
 
 ### QMD — Knowledge Search (NOT Code Search)
 
-`qmd` (run `qmd --version` to check) is a hybrid search tool (BM25 + vector + LLM reranking) for markdown files.
+`qmd` (run `qmd --version` to check; expected major version: `2.x`) is a hybrid search tool (BM25 + vector + LLM reranking) for markdown files.
 Binary: `qmd` (on PATH)
 
 Agents **MUST NOT** use qmd for code search — use Grep/Glob/LSP instead (faster, more precise).
@@ -162,6 +162,7 @@ Agents **MUST NOT** use qmd for code search — use Grep/Glob/LSP instead (faste
 Agents **SHOULD** use qmd for knowledge recall — past decisions, project context, documentation:
 
 ```bash
+qmd query "query"                           # Hybrid retrieval with expansion + reranking (default for broad recall)
 qmd search "query"                          # BM25 full-text (fast, deterministic)
 qmd search "query" -c memory                # Search a specific collection
 qmd vsearch "query"                         # Semantic vector search
@@ -170,7 +171,7 @@ qmd get "#docid"                            # Retrieve a specific document
 
 Indexed collections: `memory` (`~/openclaw/memory`) · `knowledge-graph` (`~/openclaw/life/areas`) · `workspace` (`~/openclaw`, `*.md` only)
 
-Agents **SHOULD** query relevant context before planning a task (e.g., `qmd search "auth decisions"`) to surface past decisions or domain knowledge.
+Agents **SHOULD** query relevant context before planning a task (e.g., `qmd query "auth decisions"`) to surface past decisions or domain knowledge.
 
 ### Dev Scripts
 
