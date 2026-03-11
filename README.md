@@ -1,6 +1,6 @@
 # ai-config
 
-Shared configuration for AI coding assistants — [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and [Codex CLI](https://github.com/openai/codex). One repo, symlinked into each tool's config directory. Both tools share the same 8 agents, 6 workflows, and workspace standards.
+Shared configuration for AI coding assistants — [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and [Codex CLI](https://github.com/openai/codex). One repo, symlinked into each tool's config directory. Both tools share the same 8 agents, 6 core workflows, and workspace standards. The repo also includes a Claude `/config-editor` command with a matching Codex `config-editor` skill.
 
 ## Structure
 
@@ -16,7 +16,7 @@ ai-config/
 │   │   ├── review-fix.md
 │   │   ├── phase-implementer.md
 │   │   └── ball-buster.md
-│   ├── commands/                    # 30 slash commands + 6 workflow commands
+│   ├── commands/                    # 31 slash commands + 6 workflow commands
 │   │   ├── workflow-feature.md
 │   │   ├── workflow-bugfix.md
 │   │   ├── workflow-refactor.md
@@ -24,7 +24,7 @@ ai-config/
 │   │   ├── workflow-blind-review.md
 │   │   ├── workflow-ball-buster-party.md
 │   │   ├── commands.md              # Command reference table
-│   │   └── ... (24 more commands)
+│   │   └── ... (25 more commands)
 │   ├── skills/
 │   │   └── visual-explainer/        # HTML visualization skill (diagrams, slides, diffs)
 │   ├── uiux-contract/              # Design system for agent-built UIs
@@ -46,13 +46,15 @@ ai-config/
 │   │   ├── review-fix.toml
 │   │   ├── phase-implementer.toml
 │   │   └── ball-buster.toml
-│   ├── workflows/                   # 6 workflow prompt templates
+│   ├── workflows/                   # 6 core workflow prompt templates
 │   │   ├── feature.md
 │   │   ├── bugfix.md
 │   │   ├── refactor.md
 │   │   ├── review-only.md
 │   │   ├── blind-review.md
 │   │   └── ball-buster-party.md
+│   ├── skills/
+│   │   └── config-editor/           # Codex skill for AI config audit/edit/parity checks
 │   ├── rules/
 │   │   └── default.rules            # Command approval rules (Starlark)
 │   └── config.example.toml          # Full config with multi-agent setup
@@ -84,6 +86,7 @@ The installer creates symlinks from each tool's config directory into this repo.
 | `claude/skills/visual-explainer` | `~/.claude/skills/visual-explainer` |
 | `codex/agents/`                  | `~/.codex/agents/`                  |
 | `codex/rules/`                   | `~/.codex/rules/`                   |
+| `codex/skills/config-editor`     | `~/.codex/skills/config-editor`     |
 | `shared/CLAUDE.md`               | `~/GitHub/CLAUDE.md`                |
 
 ### Manual setup (not symlinked)
@@ -123,7 +126,7 @@ Both tools share the same 8-agent roster with identical roles. Claude Code agent
 
 ## Workflows
 
-Six predefined multi-agent workflows, available in both tools:
+Six predefined multi-agent workflows are available in both tools:
 
 | Workflow              | Phases                                                       | Approval gate    | Fix cycles |
 | --------------------- | ------------------------------------------------------------ | ---------------- | ---------- |
@@ -133,6 +136,22 @@ Six predefined multi-agent workflows, available in both tools:
 | **review-only**       | explore → review → report                                    | N/A (read-only)  | N/A        |
 | **blind-review**      | 3 parallel reviewers → combine → validate                    | N/A (read-only)  | N/A        |
 | **ball-buster-party** | scout → parallel ball-busters (1 per feature) → combine      | N/A (read-only)  | N/A        |
+
+### Config Audit Capability
+
+Claude Code provides this as a slash command:
+
+```
+/config-editor
+/config-editor apply
+```
+
+Codex provides the equivalent as a skill:
+
+```bash
+codex "$config-editor audit the current AI config"
+codex "$config-editor audit the current AI config and apply fixes"
+```
 
 ### Usage
 
@@ -162,13 +181,14 @@ codex "Follow the workflow in workflows/ball-buster-party.md to roast: the front
 
 ## Slash Commands
 
-36 slash commands available in Claude Code. Run `/commands` to see the full reference.
+37 slash commands available in Claude Code. Run `/commands` to see the full reference.
 
 | Category          | Commands                                                                                                                      |
 | ----------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | **Workflows**     | workflow-feature, workflow-bugfix, workflow-refactor, workflow-review-only, workflow-blind-review, workflow-ball-buster-party |
 | **Planning**      | spec, interview, dod, reqwording, storygen, phase                                                                             |
 | **Quality**       | closeout, lint, test, deploy-check, fact-check, condense                                                                      |
+| **Config**        | config-editor                                                                                                                  |
 | **Security**      | auditdeep, securecoding, threatmodel, supplychain, green                                                                      |
 | **Operations**    | debug, refactor, focus, doctor, release, pr                                                                                   |
 | **Documentation** | adr, postmortem, handoff, visualize                                                                                           |
