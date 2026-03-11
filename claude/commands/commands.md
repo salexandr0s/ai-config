@@ -6,6 +6,7 @@ Print the following command reference table exactly as shown:
 | /auditdeep                  | Thorough security and engineering audit (OWASP+ASVS)                                     |
 | /closeout                   | Post-implementation quality gate: review, fix, verify, commit                            |
 | /commands                   | Show this list                                                                           |
+| /config-editor              | Audit and improve AI config docs, counts, MCPs, skills, and RFC 2119 wording             |
 | /condense                   | Make code shorter without changing behavior — dead code, duplication, verbosity          |
 | /debug                      | Track down a bug systematically                                                          |
 | /deploy-check               | Verify everything is ready before deploying (does not deploy)                            |

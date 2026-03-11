@@ -52,6 +52,8 @@ echo ""
 echo "Codex:"
 link "$REPO_DIR/codex/agents"           "$HOME/.codex/agents"
 link "$REPO_DIR/codex/rules"            "$HOME/.codex/rules"
+mkdir -p "$HOME/.codex/skills"
+link "$REPO_DIR/codex/skills/config-editor" "$HOME/.codex/skills/config-editor"
 
 echo ""
 

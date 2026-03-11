@@ -196,6 +196,15 @@ dev-verify --quick      # Skip tests for rapid iteration
 
 Agents **MUST** run `dev-verify --quick` after every 3–5 file changes. Agents **MUST** run full `dev-verify` before commits and before marking tasks complete.
 
+## Bug Handling
+
+- When an agent identifies a bug, the agent **MUST** report the suspected root cause, the proposed fix, and the agent's confidence in that fix.
+- Confidence **SHOULD** be stated plainly (`high`, `medium`, or `low`) and **SHOULD** note any key assumptions or unknowns.
+- A bug **MAY** be treated as simple only when the root cause is narrow, the fix is localized, and regression risk is low.
+- For any bug that is not simple, the agent **SHOULD** create or identify a test that reproduces the bug before implementing the fix.
+- If the agent does not add a reproducing test for a non-simple bug, the agent **MUST** explain why.
+- For a simple bug, the agent **MAY** fix first and add or update regression coverage immediately after, but the agent **SHOULD** still add regression coverage when practical.
+
 ---
 
 ## Team Workflow

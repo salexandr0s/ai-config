@@ -1,0 +1,7 @@
+interface:
+  display_name: "Config Editor"
+  short_description: "Audit AI config and parity drift"
+  default_prompt: "Use $config-editor to audit the active Claude and Codex config, check parity drift, and rewrite weak policy text into RFC 2119 wording."
+
+policy:
+  allow_implicit_invocation: true
