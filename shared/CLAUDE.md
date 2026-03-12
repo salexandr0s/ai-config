@@ -1,7 +1,7 @@
 # Workspace Standards & Agent Team Workflow
 
 Dev standards and agent coordination for all projects in `~/GitHub`.
-Key words: **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, **MAY** per RFC 2119.
+This document uses BCP 14 keywords as described in RFC 2119 and RFC 8174. Only uppercase instances of **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, and **MAY** are normative.
 
 ---
 
@@ -32,7 +32,7 @@ Key words: **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, **MAY** per RFC 2
 
 ### End (when files were modified)
 
-1. Agent **MUST** run `/handoff` — this writes SESSION_HANDOFF.md **and** calls `session-end.sh` (journal + index sync)
+1. If the runtime supports `/handoff`, the agent **MUST** run it. Otherwise, the agent **MUST** write `SESSION_HANDOFF.md` and run the runtime's equivalent session-end workflow
 2. Agent **MUST** note unfinished work in the journal summary and the handoff document
 3. Agent **SHOULD** update project/topic memory files if durable knowledge was gained
 
@@ -216,15 +216,15 @@ Agents **MUST** run `dev-verify --quick` after every 3–5 file changes. Agents 
 
 ### Formation
 
-Agents **MUST** use `TeamCreate` with agents from `~/.claude/agents/`:
+When a runtime supports explicit team orchestration, agents **SHOULD** use the runtime's equivalent of `TeamCreate` with agents from `~/.claude/agents/`:
 
-| Role       | Agent        | When                                                       |
-| ---------- | ------------ | ---------------------------------------------------------- |
-| Lead       | `team-lead`  | Always — **MUST** include                                  |
-| Researcher | `researcher` | **SHOULD** include when codebase exploration needed        |
-| Planner    | `planner`    | **SHOULD** include for multi-file or architectural changes |
-| Coder      | `coder`      | **MUST** include for all implementation                    |
-| Reviewer   | `reviewer`   | **MUST** include for plan review and code review           |
+| Role       | Agent        | When                                                |
+| ---------- | ------------ | --------------------------------------------------- |
+| Lead       | `team-lead`  | Required when team workflow is used                 |
+| Researcher | `researcher` | Recommended when codebase exploration is needed     |
+| Planner    | `planner`    | Recommended for multi-file or architectural changes |
+| Coder      | `coder`      | Required for implementation                         |
+| Reviewer   | `reviewer`   | Required for plan review and code review            |
 
 ### Phases
 
@@ -239,10 +239,10 @@ Agents **MUST** use `TeamCreate` with agents from `~/.claude/agents/`:
 
 ### Communication
 
-- Agents **MUST** use `SendMessage` for direct messages; `broadcast` **SHOULD** only be used for critical blockers
+- Agents **MUST** use the runtime's direct-message primitive for point-to-point coordination; `broadcast` **SHOULD** be reserved for critical blockers when the runtime supports it
 - Agents **MUST** announce phase transitions: `[Phase N: Name]`
 - Agents **MUST** gate on user approval before implementation (Phase 3 → 4)
-- All agents **MUST** use shared task list (`TaskCreate` / `TaskUpdate`)
+- All agents **MUST** track the shared task list using the runtime's equivalent of `TaskCreate` / `TaskUpdate` when team workflow is used
 
 ---
 
@@ -261,7 +261,7 @@ Agents **MUST** use `TeamCreate` with agents from `~/.claude/agents/`:
 - A plan **MUST** exist before implementation starts (even 3 lines counts)
 - Verification **MUST** pass before marking any task complete
 - Scope changes **MUST** be flagged to user — never silently expand
-- If verification fails 3 times on the same issue → **STOP** and escalate
+- If verification fails 3 times on the same issue, the agent **MUST** stop and escalate
 
 ### Default Definition of Done
 
@@ -284,7 +284,7 @@ A task is done when ALL of:
 
 **Ending a session with incomplete work:**
 
-1. Run `/handoff` — generates SESSION_HANDOFF.md, writes journal entry, syncs memory index
+1. If the runtime supports `/handoff`, the agent **MUST** run it. Otherwise, the agent **MUST** write `SESSION_HANDOFF.md` and run the equivalent session-end workflow
 
 ---
 
