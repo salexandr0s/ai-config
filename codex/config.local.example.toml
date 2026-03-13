@@ -1,0 +1,5 @@
+# Add machine-specific trust and local-only integrations here.
+# This file is appended to the generated ~/.codex/config.toml.
+
+[projects."/Users/your-user/GitHub"]
+trust_level = "trusted"

@@ -9,6 +9,7 @@ set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
 BACKUP_SUFFIX=".bak-$(date +%Y%m%d%H%M%S)"
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 
 link() {
   local src="$1" dst="$2"
@@ -32,6 +33,19 @@ link() {
   echo "  → $dst"
 }
 
+copy_if_missing() {
+  local src="$1" dst="$2"
+
+  mkdir -p "$(dirname "$dst")"
+  if [ -e "$dst" ] || [ -L "$dst" ]; then
+    echo "  ✓ $dst (already present)"
+    return
+  fi
+
+  cp "$src" "$dst"
+  echo "  + created $dst"
+}
+
 echo "Installing ai-config symlinks..."
 echo ""
 
@@ -40,20 +54,27 @@ echo "Claude Code:"
 link "$REPO_DIR/claude/agents"          "$HOME/.claude/agents"
 link "$REPO_DIR/claude/commands"        "$HOME/.claude/commands"
 link "$REPO_DIR/claude/uiux-contract"   "$HOME/.claude/uiux-contract"
+link "$REPO_DIR/claude/output-styles"   "$HOME/.claude/output-styles"
 link "$REPO_DIR/claude/hooks.json"      "$HOME/.claude/hooks.json"
+link "$REPO_DIR/claude/settings.json"   "$HOME/.claude/settings.json"
+link "$REPO_DIR/claude/statusline-command.sh" "$HOME/.claude/statusline-command.sh"
 
 # Skills: link individual items (shadcn may be managed separately)
 mkdir -p "$HOME/.claude/skills"
 link "$REPO_DIR/claude/skills/visual-explainer" "$HOME/.claude/skills/visual-explainer"
+copy_if_missing "$REPO_DIR/claude/settings.local.example.json" "$HOME/.claude/settings.local.json"
 
 echo ""
 
 # ── Codex ──
 echo "Codex:"
 link "$REPO_DIR/codex/agents"           "$HOME/.codex/agents"
+link "$REPO_DIR/codex/instructions"     "$HOME/.codex/instructions"
 link "$REPO_DIR/codex/rules"            "$HOME/.codex/rules"
 mkdir -p "$HOME/.codex/skills"
 link "$REPO_DIR/codex/skills/config-editor" "$HOME/.codex/skills/config-editor"
+copy_if_missing "$REPO_DIR/codex/config.local.example.toml" "$XDG_CONFIG_HOME/codex/config.local.toml"
+"$REPO_DIR/scripts/render-codex-config.sh"
 
 echo ""
 
@@ -77,7 +98,8 @@ else
 fi
 
 echo ""
-echo "Done. Example configs (not symlinked — copy and customize):"
-echo "  $REPO_DIR/claude/settings.example.json  →  ~/.claude/settings.json"
-echo "  $REPO_DIR/claude/mcp.example.json       →  ~/.claude/.mcp.json"
-echo "  $REPO_DIR/codex/config.example.toml     →  ~/.codex/config.toml"
+echo "Done."
+echo "  Claude base: $REPO_DIR/claude/settings.json"
+echo "  Claude local overlay: ~/.claude/settings.local.json"
+echo "  Codex base: $REPO_DIR/codex/config.base.toml"
+echo "  Codex local overlay: $XDG_CONFIG_HOME/codex/config.local.toml"
