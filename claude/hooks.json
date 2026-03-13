@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "FILE=\"$CLAUDE_FILE_PATH\"; EXT=\"${FILE##*.}\"; case \"$EXT\" in ts|tsx|js|jsx) npx prettier --write \"$FILE\" 2>/dev/null ;; py) ruff format \"$FILE\" 2>/dev/null ;; esac; exit 0",
+            "command": "\"$HOME/GitHub/ai-config/scripts/claude-post-edit-format.sh\" \"$CLAUDE_FILE_PATH\"",
             "timeout": 10000
           }
         ]
@@ -18,7 +18,19 @@
         "hooks": [
           {
             "type": "command",
-            "command": "if echo \"$CLAUDE_TOOL_INPUT\" | grep -qiE '(npm publish|git tag|docker push)'; then echo 'WARN: This publishes externally. Confirm with user first.' >&2; fi; exit 0",
+            "command": "\"$HOME/GitHub/ai-config/scripts/claude-pre-bash-guard.sh\"",
+            "timeout": 5000
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/GitHub/terminal-config/bin/ai-notify\" claude stop >/dev/null 2>&1 || true",
             "timeout": 5000
           }
         ]
