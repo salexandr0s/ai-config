@@ -1,3 +1,5 @@
+<!-- Source of truth: claude/commands/workflow-ball-buster-party.md — keep phases and rules in sync -->
+
 # Ball-Buster Party Workflow
 
 Spawn multiple ball-buster agents in parallel — one per feature/module — to tear apart the entire codebase, then combine into a unified roast report.

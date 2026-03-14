@@ -22,3 +22,13 @@ Then convert the spec into:
 - Add a minimal "Definition of Done" checklist for each story (tests, docs, security, reviews).
 
 Output in Markdown with headings and checklists. Keep it concise.
+
+Example acceptance criterion:
+
+- **Given** a user on the settings page
+- **When** they toggle dark mode
+- **Then** the UI switches theme within 200ms and the preference persists across sessions
+
+Example non-functional requirement:
+
+- MUST: P95 latency < 500ms for all API endpoints under 100 concurrent users

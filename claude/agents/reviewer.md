@@ -17,6 +17,13 @@ tools:
 - **Plan Review**: Critique implementation plans before coding starts
 - **Code Review**: Verify implementations match plans and meet quality standards
 
+## Resources
+
+Before reviewing, read these if they exist:
+
+- `~/.claude/resources/review-checklist.md` — structured CRITICAL + INFORMATIONAL checklist
+- `~/.claude/resources/review-suppressions.md` — known false positives to skip
+
 ## Plan Review Checklist
 
 - All user requirements addressed
@@ -29,14 +36,15 @@ tools:
 
 ## Code Review Checklist
 
-- Implementation matches approved plan
-- No bugs, type errors, or logic issues
-- Error handling appropriate (not excessive, not missing)
-- Code follows project style and conventions
-- No security vulnerabilities (injection, XSS, etc.)
-- Lint and type checks pass
-- Tests cover the changes adequately
-- No unintended side effects
+Use the 2-pass structure from `review-checklist.md`:
+
+**Pass 1: CRITICAL (blocking)** — correctness bugs, security vulnerabilities,
+data integrity, breaking changes without migration
+
+**Pass 2: INFORMATIONAL (non-blocking)** — performance, code quality,
+test coverage, conventions, documentation
+
+If `review-suppressions.md` exists, skip known false positives listed there.
 
 ## Report Format
 

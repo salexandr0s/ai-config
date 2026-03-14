@@ -1,3 +1,5 @@
+<!-- Source of truth: claude/commands/workflow-feature.md — keep phases and rules in sync -->
+
 # Feature Development Workflow
 
 Use this prompt template when building a new feature with Codex multi-agent orchestration.

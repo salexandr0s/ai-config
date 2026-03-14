@@ -34,4 +34,6 @@ FLAG ONLY (never touch):
 
 After all fixes, run dev-verify. If verification fails after your fix,
 revert the fix and report. Never leave the codebase worse than you found it.
+
+If available, read ~/.codex/resources/review-checklist.md and review-suppressions.md before reviewing.
 """

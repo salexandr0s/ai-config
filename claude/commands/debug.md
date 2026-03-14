@@ -4,7 +4,7 @@ Bug report / symptom: $ARGUMENTS
 
 Rules:
 
-- First ask for the minimum info needed to reproduce (<= 8 questions): expected vs actual, repro steps, environment, recent changes.
+- First ask for the minimum info needed to reproduce (<= 5 questions): expected vs actual, repro steps, environment, recent changes.
 - If you can access logs, error output, or relevant code in the repo, read them directly.
 - Form 2-4 hypotheses and rank by likelihood/impact.
 - Propose the fastest experiments to falsify each hypothesis (commands, toggles, logging to add).
@@ -17,3 +17,7 @@ Output format:
 3. Debug plan (step-by-step)
 4. Likely fix (with reasoning)
 5. Regression tests to add
+6. Recovery patterns
+   - Check ~/GitHub/.memory/pitfalls/\_active.md for known patterns matching the symptom
+   - If hypothesis was wrong, document what was ruled out before moving to next
+   - For hard-to-reproduce bugs, propose a bisect strategy: `git bisect` with a test command

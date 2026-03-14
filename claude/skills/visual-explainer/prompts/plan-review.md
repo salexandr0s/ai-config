@@ -84,6 +84,4 @@ Follow the visual-explainer skill workflow. Read the reference template, CSS pat
 
 Include responsive section navigation. Use a current-vs-planned visual language throughout: blue/neutral for current state, green/purple for planned additions, amber for areas of concern, red for gaps or risks. Write to `~/.agent/diagrams/` and open in browser.
 
-Ultrathink.
-
 $@
