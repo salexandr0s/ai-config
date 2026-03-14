@@ -9,6 +9,7 @@ secrets/
 .claude.json
 config.toml
 settings.json
+!claude/settings.json
 settings.local.json
 .mcp.json
 

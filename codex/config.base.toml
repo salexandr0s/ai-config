@@ -55,4 +55,4 @@ config_file = "agents/ball-buster.toml"
 
 [mcp_servers.shadcn]
 command = "npx"
-args = ["shadcn@latest", "mcp"]
+args = ["shadcn@4.0.6", "mcp"]
