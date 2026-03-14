@@ -1,3 +1,5 @@
+<!-- Source of truth: claude/commands/workflow-refactor.md — keep phases and rules in sync -->
+
 # Safe Refactor Workflow
 
 Use this prompt template for safe, atomic refactoring with Codex multi-agent orchestration.

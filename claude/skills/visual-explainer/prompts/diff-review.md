@@ -69,6 +69,4 @@ Follow the visual-explainer skill workflow. Read the reference template, CSS pat
 
 Include responsive section navigation. Use diff-style visual language throughout: red for removed/before, green for added/after, yellow for modified, blue for neutral context. Write to `~/.agent/diagrams/` and open in browser.
 
-Ultrathink.
-
 $@

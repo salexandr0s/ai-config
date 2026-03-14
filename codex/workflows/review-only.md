@@ -1,3 +1,5 @@
+<!-- Source of truth: claude/commands/workflow-review-only.md — keep phases and rules in sync -->
+
 # Read-Only Code Review Workflow
 
 Use this prompt template for thorough code review without making any changes, using Codex multi-agent orchestration.
@@ -34,7 +36,13 @@ Spawn the **reviewer** agent with the researcher's findings:
 - Find test coverage gaps
 - Check convention adherence
 
-Output format: Must Fix / Should Fix / Nits / Verdict
+Use 2-pass structure:
+
+Pass 1: CRITICAL (blocking) — correctness bugs, security vulnerabilities,
+data integrity, breaking changes without migration
+
+Pass 2: INFORMATIONAL (non-blocking) — performance, code quality,
+test coverage, conventions, documentation
 
 ### Phase 3: Report
 

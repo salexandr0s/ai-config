@@ -55,8 +55,6 @@ Generate a comprehensive visual implementation plan as a self-contained HTML pag
 
 Code blocks: always use `white-space: pre-wrap` and `word-break: break-word`. Overflow prevention: `min-width: 0` on grid/flex children, `overflow-wrap: break-word` on text containers, never `display: flex` on `<li>` for markers.
 
-Ultrathink.
-
 ---
 
 ## Type: `slides`
@@ -96,8 +94,6 @@ Generate a visual HTML diff review — before/after architecture comparison with
 
 **Visual hierarchy:** Sections 1-3 hero depth. Sections 6+ lighter/collapsible. Diff color language: red=removed, green=added, yellow=modified, blue=neutral.
 
-Ultrathink.
-
 ---
 
 ## Type: `plan-review`
@@ -118,8 +114,6 @@ Generate a visual HTML plan review — current codebase state vs. proposed imple
 **Diagram structure:** Plan summary (hero — intuition + scope) → Impact dashboard (files modify/create/delete, completeness indicators) → Current architecture (Mermaid, zoom) → Planned architecture (same node names/layout as current, highlight new/removed/changed) → Change-by-change breakdown (side-by-side current vs. planned with rationale, flag discrepancies and missing rationale) → Dependency & ripple analysis (callers/importers, color: green=covered, amber=likely affected, red=missed) → Risk assessment (edge cases, assumptions, ordering, rollback, cognitive complexity with severity + mitigation) → Plan review (Good/Bad/Ugly/Questions cards) → Understanding gaps (rationale gap counts, complexity flags, recommendations).
 
 **Visual hierarchy:** Sections 1-4 hero/elevated. Sections 6+ lighter/collapsible. Color language: blue=current, green/purple=planned, amber=concerns, red=gaps.
-
-Ultrathink.
 
 ---
 
@@ -145,7 +139,5 @@ Generate a visual HTML project recap — rebuild mental model of a project's cur
 **Diagram structure:** Project identity (current-state summary, not README blurb) → Architecture snapshot (Mermaid, zoom, hero depth — the visual anchor) → Recent activity (human-readable narrative grouped by theme with timeline) → Decision log (what/why/alternatives from time window) → State of things (KPI cards: working/in-progress/broken/blocked with trend indicators) → Mental model essentials (invariants, non-obvious coupling, gotchas, naming conventions) → Cognitive debt hotspots (amber cards with severity: undocumented changes, untested modules, overlapping edits, poorly understood files, each with concrete suggestion) → Next steps (inferred from momentum + TODOs + progress docs).
 
 Overflow prevention on grid/side-by-side sections. Responsive section navigation. Color language: muted blues/greens for architecture, amber for cognitive debt, green/blue/amber/red for status.
-
-Ultrathink.
 
 $@

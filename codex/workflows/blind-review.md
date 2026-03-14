@@ -1,3 +1,5 @@
+<!-- Source of truth: claude/commands/workflow-blind-review.md — keep phases and rules in sync -->
+
 # Parallel Blind Review Workflow
 
 Use this prompt template for a blind multi-reviewer audit of uncommitted changes, using Codex multi-agent orchestration.

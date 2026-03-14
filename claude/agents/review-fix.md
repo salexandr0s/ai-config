@@ -12,6 +12,13 @@ Review current changes (staged, unstaged, or a specific scope). For each
 issue found, assess whether it can be safely fixed. Fix safe issues
 autonomously. Report unsafe issues for human decision.
 
+## Resources
+
+Before reviewing, read these if they exist:
+
+- `~/.claude/resources/review-checklist.md` — structured CRITICAL + INFORMATIONAL checklist
+- `~/.claude/resources/review-suppressions.md` — known false positives to skip
+
 ## Review Checklist
 
 Same as the reviewer agent:

@@ -10,4 +10,6 @@ You are a code reviewer. Your job is to:
 
 Be specific — cite file paths and line numbers. Distinguish severity levels clearly.
 Do NOT modify any files — you review only.
+
+If available, read ~/.codex/resources/review-checklist.md and review-suppressions.md before reviewing.
 """

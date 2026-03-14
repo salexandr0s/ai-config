@@ -60,6 +60,4 @@ Follow the visual-explainer skill workflow. Read the reference template, CSS pat
 
 Include responsive section navigation. Use a warm, approachable visual language: muted blues and greens for architecture, amber callouts for cognitive debt hotspots, green/blue/amber/red for state-of-things status. Overflow prevention on any side-by-side or grid-based sections: apply `min-width: 0` on all grid/flex children and `overflow-wrap: break-word`. Never use `display: flex` on `<li>` for marker characters — use absolute positioning instead (see css-patterns.md Overflow Protection). Write to `~/.agent/diagrams/` and open in browser.
 
-Ultrathink.
-
 $@

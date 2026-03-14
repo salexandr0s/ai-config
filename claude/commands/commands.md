@@ -19,18 +19,21 @@ Print the following command reference table exactly as shown:
 | /handoff                    | Generate session handoff document for continuity                                         |
 | /lint                       | Run linters and auto-fix code quality issues                                             |
 | /new-project                | Scaffold a new project from scratch                                                      |
-| /phase                      | Run a full plan-implement-review-closeout loop with explicit gates                       |
+| /phase                      | Solo plan-implement-review-closeout loop (no team overhead)                              |
 | /postmortem                 | Write a blameless incident postmortem                                                    |
 | /pr                         | Create a pull request for the current branch                                             |
-| /refactor                   | Plan a safe refactor with minimal risk                                                   |
+| /qa                         | Systematic QA with health scoring (0-100)                                                |
 | /release                    | Manage a release (changelog, version, tags)                                              |
 | /reqwording                 | Rewrite vague requirements into clear, testable ones                                     |
+| /retro                      | Engineering retrospective from git history                                               |
 | /securecoding               | Check code against secure coding best practices                                          |
+| /ship                       | Automated pre-merge pipeline: verify, review, version, PR                                |
 | /spec                       | Turn an idea into a clear, testable spec                                                 |
 | /storygen                   | Turn rough notes into user stories with acceptance criteria                              |
 | /supplychain                | Audit dependencies for supply chain risks                                                |
 | /test                       | Auto-detect project type and run the test suite                                          |
 | /threatmodel                | Map out threats and attack surfaces for a system                                         |
+| /upgrade                    | Self-update ai-config and reinstall symlinks                                             |
 | /visualize                  | Generate visual HTML pages — diagrams, plans, slides, diff reviews, plan reviews, recaps |
 | /workflow-feature           | Full feature workflow: research → plan → approve → implement → review → closeout         |
 | /workflow-bugfix            | Streamlined bugfix: investigate → fix → review → closeout                                |

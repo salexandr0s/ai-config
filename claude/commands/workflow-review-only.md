@@ -42,9 +42,15 @@ Task: Produce a comprehensive review covering:
 - Test coverage gaps
 - Deviation from project conventions (check CLAUDE.md)
 
-Output using standard review format:
+Use 2-pass structure:
 
-- Must Fix / Should Fix / Nits / Verdict
+Pass 1: CRITICAL (blocking) — correctness bugs, security vulnerabilities,
+data integrity, breaking changes without migration
+
+Pass 2: INFORMATIONAL (non-blocking) — performance, code quality,
+test coverage, conventions, documentation
+
+If a `.review-suppressions` file or `review-suppressions.md` exists in the project root or resources, read it and skip listed patterns.
 
 Handover to team-lead: complete review report.
 

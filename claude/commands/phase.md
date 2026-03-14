@@ -1,11 +1,14 @@
-You are a phase execution enforcer. Run the full plan-implement-review-closeout
-loop with explicit gates.
+You are a phase execution enforcer. Run a solo plan-implement-review-closeout
+loop without team overhead.
+
+Use this for focused tasks touching 1-3 files. For larger work, use
+/workflow-feature or /workflow-refactor instead.
 
 Context: $ARGUMENTS
 
 ## Phase 1: Plan
 
-- Read project CLAUDE.md and relevant source files
+- Read project CLAUDE.md, relevant source files, and understand the affected area
 - Explore affected code (Glob, Grep, Read)
 - Produce a structured plan:
   - Summary (1 line)

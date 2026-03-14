@@ -1,3 +1,5 @@
+<!-- Source of truth: claude/commands/workflow-bugfix.md — keep phases and rules in sync -->
+
 # Bugfix Workflow
 
 Use this prompt template for streamlined bug investigation and fixing with Codex multi-agent orchestration.

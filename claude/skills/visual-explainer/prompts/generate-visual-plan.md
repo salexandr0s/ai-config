@@ -109,5 +109,3 @@ Follow the visual-explainer skill workflow. Read the reference template, CSS pat
 - Test tables with wide content don't overflow their container
 
 Write to `~/.agent/diagrams/` with a descriptive filename (e.g., `feature-name-plan.html`). Open the result in the browser. Tell the user the file path.
-
-Ultrathink.
