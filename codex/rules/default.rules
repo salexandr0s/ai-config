@@ -156,3 +156,8 @@ prefix_rule(pattern=["dev-status"], decision="allow")
 
 # Note: destructive commands (rm -rf, sudo, dd, git push --force, etc.)
 # are explicitly denied at the top of this file, matching Claude Code's deny list.
+
+# Note: pipe-to-shell attacks (e.g., `curl ... | bash`) cannot be blocked here.
+# Codex prefix_rule() only matches command prefixes, not mid-command pipe patterns.
+# Denying `sh` or `bash` as prefixes would be too broad.
+# Claude Code's deny list and pre-bash guard script provide this protection instead.
