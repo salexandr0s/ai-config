@@ -58,6 +58,7 @@ link "$REPO_DIR/claude/output-styles"   "$HOME/.claude/output-styles"
 link "$REPO_DIR/claude/hooks.json"      "$HOME/.claude/hooks.json"
 link "$REPO_DIR/claude/settings.json"   "$HOME/.claude/settings.json"
 link "$REPO_DIR/claude/statusline-command.sh" "$HOME/.claude/statusline-command.sh"
+link "$REPO_DIR/claude/resources"       "$HOME/.claude/resources"
 
 # Skills: link individual items (shadcn may be managed separately)
 mkdir -p "$HOME/.claude/skills"

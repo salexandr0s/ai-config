@@ -16,7 +16,7 @@ ai-config/
 │   │   ├── review-fix.md
 │   │   ├── phase-implementer.md
 │   │   └── ball-buster.md
-│   ├── commands/                    # 31 slash commands + 6 workflow commands
+│   ├── commands/                    # 34 slash commands + 6 workflow commands
 │   │   ├── workflow-feature.md
 │   │   ├── workflow-bugfix.md
 │   │   ├── workflow-refactor.md
@@ -24,7 +24,10 @@ ai-config/
 │   │   ├── workflow-blind-review.md
 │   │   ├── workflow-ball-buster-party.md
 │   │   ├── commands.md              # Command reference table
-│   │   └── ... (25 more commands)
+│   │   └── ... (28 more commands)
+│   ├── resources/                   # Shared review resources
+│   │   ├── review-checklist.md     # Structured CRITICAL + INFORMATIONAL checklist
+│   │   └── review-suppressions.md  # Known false positive tracker
 │   ├── skills/
 │   │   └── visual-explainer/        # HTML visualization skill (diagrams, slides, diffs)
 │   ├── uiux-contract/              # Design system for agent-built UIs
@@ -49,13 +52,14 @@ ai-config/
 │   │   ├── review-fix.toml
 │   │   ├── phase-implementer.toml
 │   │   └── ball-buster.toml
-│   ├── workflows/                   # 6 core workflow prompt templates
+│   ├── workflows/                   # 7 core workflow prompt templates
 │   │   ├── feature.md
 │   │   ├── bugfix.md
 │   │   ├── refactor.md
 │   │   ├── review-only.md
 │   │   ├── blind-review.md
-│   │   └── ball-buster-party.md
+│   │   ├── ball-buster-party.md
+│   │   └── ship.md
 │   ├── skills/
 │   │   └── config-editor/           # Codex skill for AI config audit/edit/parity checks
 │   ├── rules/
@@ -64,7 +68,9 @@ ai-config/
 │   ├── config.base.toml             # Shared base config
 │   └── config.local.example.toml    # Optional machine-local overlay
 ├── scripts/
-│   └── render-codex-config.sh       # Builds ~/.codex/config.toml from base + overlay
+│   ├── render-codex-config.sh       # Builds ~/.codex/config.toml from base + overlay
+│   ├── claude-post-edit-format.sh   # External hook: auto-format edited files
+│   └── claude-pre-bash-guard.sh     # External hook: warn/block on publish/deploy/push commands
 ├── shared/
 │   ├── assistant-ux.md              # Cross-tool UX contract
 │   └── CLAUDE.md                    # Workspace-level standards (→ ~/GitHub/CLAUDE.md)
@@ -94,6 +100,7 @@ The installer creates symlinks from each tool's config directory into this repo,
 | `claude/output-styles/`          | `~/.claude/output-styles/`          |
 | `claude/settings.json`           | `~/.claude/settings.json`           |
 | `claude/statusline-command.sh`   | `~/.claude/statusline-command.sh`   |
+| `claude/resources/`              | `~/.claude/resources/`              |
 | `claude/skills/visual-explainer` | `~/.claude/skills/visual-explainer` |
 | `codex/agents/`                  | `~/.codex/agents/`                  |
 | `codex/instructions/`            | `~/.codex/instructions/`            |
@@ -145,7 +152,7 @@ Both tools share the same 8-agent roster with identical roles. Claude Code agent
 
 ## Workflows
 
-Six predefined multi-agent workflows are available in both tools:
+Seven predefined multi-agent workflows are available in both tools:
 
 | Workflow              | Phases                                                       | Approval gate    | Fix cycles |
 | --------------------- | ------------------------------------------------------------ | ---------------- | ---------- |
@@ -155,6 +162,7 @@ Six predefined multi-agent workflows are available in both tools:
 | **review-only**       | explore → review → report                                    | N/A (read-only)  | N/A        |
 | **blind-review**      | 3 parallel reviewers → combine → validate                    | N/A (read-only)  | N/A        |
 | **ball-buster-party** | scout → parallel ball-busters (1 per feature) → combine      | N/A (read-only)  | N/A        |
+| **ship**              | verify → review → version → PR                               | Before PR        | Max 2      |
 
 ### Config Audit Capability
 
@@ -200,16 +208,16 @@ codex "Follow the workflow in workflows/ball-buster-party.md to roast: the front
 
 ## Slash Commands
 
-37 slash commands available in Claude Code. Run `/commands` to see the full reference.
+40 slash commands available in Claude Code. Run `/commands` to see the full reference.
 
 | Category          | Commands                                                                                                                      |
 | ----------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | **Workflows**     | workflow-feature, workflow-bugfix, workflow-refactor, workflow-review-only, workflow-blind-review, workflow-ball-buster-party |
 | **Planning**      | spec, interview, dod, reqwording, storygen, phase                                                                             |
-| **Quality**       | closeout, lint, test, deploy-check, fact-check, condense                                                                      |
-| **Config**        | config-editor                                                                                                                  |
+| **Quality**       | closeout, lint, test, qa, deploy-check, fact-check, condense                                                                  |
+| **Config**        | config-editor, upgrade                                                                                                        |
 | **Security**      | auditdeep, securecoding, threatmodel, supplychain, green                                                                      |
-| **Operations**    | debug, refactor, focus, doctor, release, pr                                                                                   |
+| **Operations**    | debug, focus, doctor, release, pr, ship, retro                                                                                |
 | **Documentation** | adr, postmortem, handoff, visualize                                                                                           |
 | **Project**       | new-project, commands, openclaw-triage                                                                                        |
 
@@ -220,7 +228,7 @@ codex "Follow the workflow in workflows/ball-buster-party.md to roast: the front
 `claude/hooks.json` configures three Claude Code hooks:
 
 - **PostToolUse** (Write/Edit/NotebookEdit) — runs `scripts/claude-post-edit-format.sh` to detect and invoke the repo's formatter (`biome`, `prettier`, `ruff`, `swiftformat`, `rustfmt`) on the edited file
-- **PreToolUse** (Bash) — runs `scripts/claude-pre-bash-guard.sh` to warn before production deploys, schema pushes, default-branch pushes, and external publishing commands
+- **PreToolUse** (Bash) — runs `scripts/claude-pre-bash-guard.sh` to warn or block before production deploys, infrastructure changes, schema pushes, default-branch pushes, and external publishing commands
 - **Stop** (`*`) — calls `~/GitHub/terminal-config/bin/ai-notify` for smart completion sound with local cooldown support
 
 `claude/statusline-command.sh` provides a shared AI-only micro-dashboard with:
@@ -336,6 +344,19 @@ Custom Claude Code skill for generating self-contained HTML visualizations:
 - Fact-check reports
 
 Includes Mermaid.js support, responsive templates, and CSS pattern references. Invoked via `/visualize <type>`.
+
+---
+
+## Resources
+
+`claude/resources/` contains shared review resources used by reviewer agents:
+
+| File                     | Purpose                                                                      |
+| ------------------------ | ---------------------------------------------------------------------------- |
+| `review-checklist.md`    | Structured 2-pass review: CRITICAL (blocking) + INFORMATIONAL (non-blocking) |
+| `review-suppressions.md` | Known false positive tracker — prevents repeated noise                       |
+
+Resources are symlinked to `~/.claude/resources/` by the installer.
 
 ---
 
