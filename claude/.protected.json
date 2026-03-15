@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0",
+  "description": "Files that agents must never auto-modify without explicit user approval",
+  "protected": [
+    "user/MISSION.md",
+    "user/BELIEFS.md",
+    "user/NARRATIVES.md",
+    "hooks.json",
+    "settings.json",
+    "settings.local.json"
+  ]
+}

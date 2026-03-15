@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0",
+  "classification": {
+    "system": {
+      "description": "Auto-upgradeable by install.sh — managed by ai-config repo",
+      "paths": [
+        "agents/",
+        "commands/",
+        "hooks.json",
+        "settings.json",
+        "statusline-command.sh",
+        "statusline-debug.sh",
+        "output-styles/",
+        "uiux-contract/",
+        "skills/",
+        ".manifest.json",
+        ".env.example"
+      ]
+    },
+    "user": {
+      "description": "Preserved on upgrade — user-owned content",
+      "paths": [
+        "user/",
+        "settings.local.json",
+        ".protected.json"
+      ]
+    }
+  }
+}
