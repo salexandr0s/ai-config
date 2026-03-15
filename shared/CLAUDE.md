@@ -14,7 +14,7 @@ Key words: **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, **MAY** per RFC 2
 5. Agents **MUST** respect project-level `CLAUDE.md` — project rules override workspace rules on conflict
 6. Agents **MUST NOT** weaken rules to pass checks — fix the code, not the rules
 7. Agents **MUST** verify their own work — run verification commands before marking complete
-8. Agents **SHOULD** log repeatable errors to `~/GitHub/.memory/pitfalls/_active.md`
+8. Agents **SHOULD** log repeatable errors to `~/.claude/MEMORY/LEARNINGS/what-fails.md`
 
 ---
 
@@ -22,33 +22,31 @@ Key words: **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, **MAY** per RFC 2
 
 ### Start
 
-1. Agent **MUST** read `~/GitHub/.memory/_index.md` for available memory files
-2. Agent **MUST** identify current project from working directory
-3. Agent **MUST** read project memory (`~/GitHub/.memory/projects/<name>.md`) if it exists
-4. If project file says "Pending first session documentation" → agent **MUST** run `~/GitHub/.memory/scripts/populate-project.sh <project-path>`
-5. Agent **SHOULD** read last 2 journal entries for recent cross-tool context
-6. Agent **MUST** check for project-level `CLAUDE.md` — it overrides this file on conflict
-7. Agent **SHOULD** detect stack from `package.json` / `pyproject.toml` / `Cargo.toml`
+1. Agent **MUST** identify current project from working directory
+2. Agent **SHOULD** read recent session logs in `~/.claude/MEMORY/SESSIONS/` for cross-tool context
+3. Agent **MUST** check for project-level `CLAUDE.md` — it overrides this file on conflict
+4. Agent **SHOULD** detect stack from `package.json` / `pyproject.toml` / `Cargo.toml`
+5. Agent **SHOULD** read `~/.claude/USER/MISSION.md` and `~/.claude/USER/GOALS.md` for user context
 
 ### End (when files were modified)
 
-1. Agent **MUST** run `/handoff` — this writes SESSION_HANDOFF.md **and** calls `session-end.sh` (journal + index sync)
-2. Agent **MUST** note unfinished work in the journal summary and the handoff document
-3. Agent **SHOULD** update project/topic memory files if durable knowledge was gained
+1. Agent **MUST** run `/handoff` — this writes SESSION_HANDOFF.md (session-capture hook handles journaling automatically)
+2. Agent **MUST** note unfinished work in the handoff document
+3. Agent **SHOULD** extract any explicit user feedback and append to `~/.claude/MEMORY/SIGNALS/ratings.jsonl`
 
-### Shared Memory
+### MEMORY System
 
-All agents (Claude Code, Codex, OpenClaw) share `~/GitHub/.memory/`:
+All agents share `~/.claude/MEMORY/`:
 
-| Directory    | Purpose                                   | Limit         |
-| ------------ | ----------------------------------------- | ------------- |
-| `topics/`    | Durable knowledge by topic                | 80 lines/file |
-| `projects/`  | Per-project context                       | 60 lines/file |
-| `decisions/` | ADR-lite records (immutable once created) | —             |
-| `pitfalls/`  | Error patterns and fixes                  | 15 active     |
-| `journal/`   | Chronological session notes (append-only) | —             |
+| Directory      | Purpose                                    | Format         |
+| -------------- | ------------------------------------------ | -------------- |
+| `SESSIONS/`    | Session summaries (auto-captured by hook)   | JSONL per day  |
+| `SIGNALS/`     | Ratings + sentiment from user feedback      | JSONL          |
+| `LEARNINGS/`   | Extracted patterns (what works, what fails) | Markdown       |
+| `STATE/`       | System state and event logs                 | JSONL          |
+| `RESEARCH/`    | Knowledge artifacts                         | Markdown       |
 
-Agents **SHOULD** run `~/GitHub/.memory/scripts/sync-stubs.sh` periodically for maintenance.
+Run `~/.claude/MEMORY/scripts/rotate.sh` periodically for maintenance.
 
 ---
 

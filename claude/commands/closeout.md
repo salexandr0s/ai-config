@@ -23,9 +23,12 @@ Context: $ARGUMENTS
    - Present to user before committing
    - After commit: `git log --oneline -1` to confirm
 
-5. JOURNAL (if ~/GitHub/.memory/scripts/journal.sh exists):
-   - Run journal script with summary
-   - Note any follow-ups
+5. FEEDBACK CAPTURE:
+   - If the user gave explicit feedback during this session (ratings, "great work", "that's wrong"):
+     Append to `~/.claude/MEMORY/SIGNALS/ratings.jsonl`:
+     `{"timestamp":"...","session_id":"...","score":N,"trigger_phrase":"...","context":"..."}`
+   - If sentiment is detectable, append to `~/.claude/MEMORY/SIGNALS/sentiment.jsonl`:
+     `{"timestamp":"...","session_id":"...","polarity":"positive|negative|neutral","confidence":"high|medium|low","trigger_phrase":"..."}`
 
 Output a closeout report:
 

@@ -64,6 +64,27 @@ link "$REPO_DIR/claude/resources"       "$HOME/.claude/resources"
 mkdir -p "$HOME/.claude/skills"
 link "$REPO_DIR/claude/skills/visual-explainer" "$HOME/.claude/skills/visual-explainer"
 copy_if_missing "$REPO_DIR/claude/settings.local.example.json" "$HOME/.claude/settings.local.json"
+copy_if_missing "$REPO_DIR/claude/.env.example" "$HOME/.claude/.env"
+
+# USER/ directory: copy if missing (preserve user content on upgrade)
+if [ -d "$REPO_DIR/claude/user" ]; then
+  if [ ! -e "$HOME/.claude/USER" ] && [ ! -L "$HOME/.claude/USER" ]; then
+    cp -r "$REPO_DIR/claude/user" "$HOME/.claude/USER"
+    echo "  + created ~/.claude/USER/ (TELOS identity files)"
+  else
+    echo "  ✓ ~/.claude/USER/ (already present — preserved)"
+  fi
+fi
+
+# ── MEMORY scaffold ──
+echo ""
+echo "MEMORY:"
+"$REPO_DIR/scripts/setup-memory.sh"
+echo "  ✓ ~/.claude/MEMORY/ scaffold ready"
+
+# ── Cache directories ──
+mkdir -p "$HOME/.cache/ai-statusline"
+echo "  ✓ ~/.cache/ai-statusline/ ready"
 
 echo ""
 
@@ -96,6 +117,19 @@ if [ -d "$GITHUB_DIR" ]; then
   cd - > /dev/null
 else
   echo "  ⚠ ~/GitHub not found — skipping shared CLAUDE.md"
+fi
+
+# ── LaunchAgents ──
+echo ""
+echo "LaunchAgents:"
+mkdir -p "$HOME/Library/LaunchAgents"
+plist_src="$REPO_DIR/launchagents/com.ai-config.memory-rotate.plist"
+plist_dst="$HOME/Library/LaunchAgents/com.ai-config.memory-rotate.plist"
+if [ -f "$plist_src" ]; then
+  launchctl unload "$plist_dst" 2>/dev/null || true
+  sed "s|\$HOME|$HOME|g" "$plist_src" > "$plist_dst"
+  launchctl load "$plist_dst" 2>/dev/null || true
+  echo "  ✓ memory-rotate LaunchAgent (weekly Sunday 3am)"
 fi
 
 echo ""

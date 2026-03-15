@@ -10,6 +10,16 @@
             "timeout": 10000
           }
         ]
+      },
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/GitHub/ai-config/scripts/tab-title-update.sh\"",
+            "timeout": 2000
+          }
+        ]
       }
     ],
     "PreToolUse": [
@@ -22,12 +32,27 @@
             "timeout": 5000
           }
         ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/GitHub/ai-config/scripts/version-check.sh\"",
+            "timeout": 5000
+          }
+        ]
       }
     ],
     "Stop": [
       {
         "matcher": "*",
         "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/GitHub/ai-config/scripts/session-capture.sh\"",
+            "timeout": 10000
+          },
           {
             "type": "command",
             "command": "\"$HOME/GitHub/terminal-config/bin/ai-notify\" claude stop >/dev/null 2>&1 || true",
