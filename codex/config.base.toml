@@ -55,4 +55,5 @@ config_file = "agents/ball-buster.toml"
 
 [mcp_servers.shadcn]
 command = "npx"
-args = ["shadcn@4.0.6", "mcp"]
+args = ["--yes", "shadcn@4.0.6", "mcp"]
+startup_timeout_sec = 25
