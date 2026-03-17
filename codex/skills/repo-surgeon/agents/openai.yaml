@@ -1,0 +1,7 @@
+interface:
+  display_name: "Repo Surgeon"
+  short_description: "Deep structural audit and modernization for messy codebases"
+  default_prompt: "Use $repo-surgeon to perform a full structural audit of this codebase: dead code detection, folder restructuring, naming cleanup, scalability risks, worst-file rewrite, and README draft."
+
+policy:
+  allow_implicit_invocation: true
