@@ -63,6 +63,7 @@ link "$REPO_DIR/claude/resources"       "$HOME/.claude/resources"
 # Skills: link individual items (shadcn may be managed separately)
 mkdir -p "$HOME/.claude/skills"
 link "$REPO_DIR/claude/skills/visual-explainer" "$HOME/.claude/skills/visual-explainer"
+link "$REPO_DIR/claude/skills/repo-surgeon"    "$HOME/.claude/skills/repo-surgeon"
 copy_if_missing "$REPO_DIR/claude/settings.local.example.json" "$HOME/.claude/settings.local.json"
 copy_if_missing "$REPO_DIR/claude/.env.example" "$HOME/.claude/.env"
 
@@ -94,7 +95,8 @@ link "$REPO_DIR/codex/agents"           "$HOME/.codex/agents"
 link "$REPO_DIR/codex/instructions"     "$HOME/.codex/instructions"
 link "$REPO_DIR/codex/rules"            "$HOME/.codex/rules"
 mkdir -p "$HOME/.codex/skills"
-link "$REPO_DIR/codex/skills/config-editor" "$HOME/.codex/skills/config-editor"
+link "$REPO_DIR/codex/skills/config-editor"  "$HOME/.codex/skills/config-editor"
+link "$REPO_DIR/codex/skills/repo-surgeon"  "$HOME/.codex/skills/repo-surgeon"
 copy_if_missing "$REPO_DIR/codex/config.local.example.toml" "$XDG_CONFIG_HOME/codex/config.local.toml"
 "$REPO_DIR/scripts/render-codex-config.sh"
 
