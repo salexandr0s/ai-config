@@ -40,6 +40,11 @@ When the task involves UI: read `~/.claude/uiux-contract/agent_contract.yaml`, r
 1. Run the project's full verification sequence (type-check → lint → test → build)
 2. Fix anything that broke — do not mark complete with failing checks
 3. Tighten verbose patterns, dead code, or unnecessary abstractions if >10 lines of new logic
+4. Report completion status:
+   - **DONE** — All steps completed, verification passes
+   - **DONE_WITH_CONCERNS** — Completed but with issues (list each)
+   - **BLOCKED** — Cannot proceed (state blocker, what was tried)
+   - **NEEDS_CONTEXT** — Missing information (state exactly what is needed)
 
 ## What NOT to Do
 

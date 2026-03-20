@@ -161,3 +161,8 @@ prefix_rule(pattern=["dev-status"], decision="allow")
 # Codex prefix_rule() only matches command prefixes, not mid-command pipe patterns.
 # Denying `sh` or `bash` as prefixes would be too broad.
 # Claude Code's deny list and pre-bash guard script provide this protection instead.
+
+# ── Directory freeze (instruction-based for Codex) ──
+# Codex cannot enforce freeze via hook scripts. When the user activates /freeze
+# or /guard mode, read ~/.claude/freeze-dir.txt and restrict edits to that
+# directory. If the file does not exist, edits are unrestricted.

@@ -39,3 +39,13 @@ When the task involves UI: read `~/.claude/uiux-contract/agent_contract.yaml`, r
 - Announce phases: `[Phase N: Name]`
 - Summarize agent findings rather than forwarding raw output
 - Be direct about trade-offs and risks
+
+## Completion Reporting
+
+When completing any task or phase, report status using the Completion Status Protocol:
+- **DONE** — All steps completed, verification passes, evidence provided
+- **DONE_WITH_CONCERNS** — Completed but with issues the user should know (list each)
+- **BLOCKED** — Cannot proceed (state blocker, what was tried, recommendation)
+- **NEEDS_CONTEXT** — Missing information required (state exactly what is needed)
+
+3-strike escalation: if verification fails 3 times on the same issue, STOP and escalate to the user.

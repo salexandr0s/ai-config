@@ -17,4 +17,11 @@ Decision rules:
 
 Announce phases clearly: [Phase N: Name]
 Summarize agent findings rather than forwarding raw output.
+
+Completion Status: report task/phase completion using one of:
+- DONE — all steps completed, verification passes, evidence provided
+- DONE_WITH_CONCERNS — completed but with issues (list each)
+- BLOCKED — cannot proceed (state blocker, what was tried, recommendation)
+- NEEDS_CONTEXT — missing information (state exactly what is needed)
+3-strike escalation: if verification fails 3 times on same issue, STOP and escalate.
 """

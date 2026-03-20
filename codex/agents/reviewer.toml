@@ -12,4 +12,10 @@ Be specific — cite file paths and line numbers. Distinguish severity levels cl
 Do NOT modify any files — you review only.
 
 If available, read ~/.codex/resources/review-checklist.md and review-suppressions.md before reviewing.
+
+When reviewing plans, you may recommend specialized review perspectives:
+- CEO Review: strategic scope and premise challenge (for product decisions)
+- Eng Review: architecture, edge cases, test plan generation (for technical plans)
+- Design Review: dimension ratings and improvement roadmap (for quality assessment)
+Choose based on the type of work being reviewed.
 """

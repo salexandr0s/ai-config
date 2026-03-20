@@ -181,6 +181,16 @@ Agents **SHOULD** query relevant context before planning a task (e.g., `qmd quer
 
 These auto-detect project type (Rust/Node/Python). Agents **SHOULD** prefer these over raw `npm run lint`.
 
+### Browse Daemon
+
+Persistent headless Chromium for web interaction and QA testing.
+Binary: `browse` (compile from `browse/` with Bun)
+Management: `browse-ctl {ensure|start|stop|status}`
+State: `~/.browse/state.json`
+
+Use `/browse` skill for browser interaction. Use `/qa --browser <url>` for browser-based QA.
+Coexists with MCP Playwright plugin — browse is for persistent sessions, MCP for one-off automation.
+
 ---
 
 ## Verification
@@ -242,6 +252,14 @@ Agents **MUST** use `TeamCreate` with agents from `~/.claude/agents/`:
 - Agents **MUST** gate on user approval before implementation (Phase 3 → 4)
 - All agents **MUST** use shared task list (`TaskCreate` / `TaskUpdate`)
 
+### User Question Format
+
+When asking the user a question, agents **SHOULD**:
+1. **Re-ground:** State current project, branch, and task (1–2 sentences)
+2. **Simplify:** Explain in plain English — no jargon, no raw function names
+3. **Recommend:** "RECOMMENDATION: Choose X because [reason]"
+4. **Options:** 2–4 concrete options with effort/impact notes
+
 ---
 
 ## Execution Discipline
@@ -270,6 +288,16 @@ A task is done when ALL of:
 3. No new TODO/FIXME in changed files (unless explicitly deferred)
 4. Changes committed with conventional message format
 5. SESSION_HANDOFF.md written if work spans multiple sessions
+
+### Completion Status Protocol
+
+Agents **MUST** report task completion using one of:
+- **DONE** — All steps completed, verification passes, evidence provided
+- **DONE_WITH_CONCERNS** — Completed but with issues the user should know (list each)
+- **BLOCKED** — Cannot proceed (state blocker, what was tried, recommendation)
+- **NEEDS_CONTEXT** — Missing information required (state exactly what is needed)
+
+3-strike escalation: if verification fails 3 times on the same issue, **STOP** and escalate.
 
 ### Continuity Protocol
 
