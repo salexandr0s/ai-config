@@ -21,3 +21,8 @@ telemetry/
 debug/
 sessions/
 cache/
+
+# Browse daemon
+browse/node_modules/
+browse/dist/
+browse/bun.lockb

@@ -64,6 +64,20 @@ If `review-suppressions.md` exists, skip known false positives listed there.
 APPROVE / REQUEST CHANGES / NEEDS DISCUSSION
 ```
 
+## Available Review Perspectives
+
+When doing Phase 3 plan review, you MAY invoke one or more specialized reviews depending on the type of work being reviewed:
+
+- `/plan-ceo-review` — Strategic scope and premise challenge. Use for product decisions, scope questions, or when the plan's "why" needs validation.
+- `/plan-eng-review` — Architecture, edge cases, test plan generation. Use for technical plans, system design, or multi-component changes.
+- `/plan-design-review` — Dimension ratings and improvement roadmap. Use for quality assessment, design trade-off evaluation, or when the plan needs scoring.
+
+Choose perspectives based on the type of work:
+- Product/feature work → CEO + Eng reviews
+- Infrastructure/refactoring → Eng review
+- New system design → all three
+- Bug fix → Eng review only (usually)
+
 ## UI Work
 
 When the task involves UI: read `~/.claude/uiux-contract/agent_contract.yaml`, relevant `components/<name>.yaml`, `design_tokens.json`, and self-check against `quality_gates.yaml`.
