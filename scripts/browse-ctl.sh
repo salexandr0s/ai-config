@@ -3,15 +3,22 @@ set -euo pipefail
 
 STATE_FILE="$HOME/.browse/state.json"
 
-# Resolve real script location (follows symlinks)
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd -P)"
-if [ -L "$0" ]; then
-  REAL_SCRIPT="$(readlink "$0")"
-  case "$REAL_SCRIPT" in
-    /*) SCRIPT_DIR="$(cd "$(dirname "$REAL_SCRIPT")" && pwd -P)" ;;
-    *)  SCRIPT_DIR="$(cd "$(dirname "$0")/$(dirname "$REAL_SCRIPT")" && pwd -P)" ;;
-  esac
-fi
+# Resolve real script location (follows all symlink levels, portable)
+resolve_path() {
+  local target="$1"
+  while [ -L "$target" ]; do
+    local dir
+    dir="$(cd "$(dirname "$target")" && pwd -P)"
+    local link
+    link="$(readlink "$target")"
+    case "$link" in
+      /*) target="$link" ;;
+      *)  target="$dir/$link" ;;
+    esac
+  done
+  echo "$(cd "$(dirname "$target")" && pwd -P)"
+}
+SCRIPT_DIR="$(resolve_path "$0")"
 
 BROWSE_BIN="${BROWSE_BIN:-$SCRIPT_DIR/../browse/dist/browse}"
 

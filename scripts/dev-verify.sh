@@ -46,6 +46,16 @@ elif [ -f "package.json" ]; then
   fi
   echo "    Package manager: $PM"
 
+  # Helper: check if a script exists in package.json
+  has_script() {
+    if command -v jq >/dev/null 2>&1; then
+      jq -e ".scripts.\"$1\"" package.json >/dev/null 2>&1
+    else
+      # Fallback: check scripts block with python3
+      python3 -c "import json; s=json.load(open('package.json')).get('scripts',{}); exit(0 if '$1' in s else 1)" 2>/dev/null
+    fi
+  }
+
   # Install deps if node_modules missing
   if [ ! -d "node_modules" ]; then
     echo "==> Installing dependencies..."
@@ -53,23 +63,23 @@ elif [ -f "package.json" ]; then
   fi
 
   # Typecheck
-  if grep -q '"typecheck"' package.json 2>/dev/null; then
+  if has_script typecheck; then
     echo "==> Running typecheck..."
     $PM run typecheck
-  elif grep -q '"tsc"' package.json 2>/dev/null || [ -f "tsconfig.json" ]; then
+  elif [ -f "tsconfig.json" ]; then
     echo "==> Running tsc --noEmit..."
     npx tsc --noEmit
   fi
 
   # Lint
-  if grep -q '"lint"' package.json 2>/dev/null; then
+  if has_script lint; then
     echo "==> Running lint..."
     $PM run lint
   fi
 
   # Tests
   if [ "$QUICK" = false ]; then
-    if grep -q '"test"' package.json 2>/dev/null; then
+    if has_script test; then
       echo "==> Running tests..."
       $PM run test
     fi

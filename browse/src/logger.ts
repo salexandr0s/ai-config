@@ -1,4 +1,4 @@
-import { appendFileSync, mkdirSync, renameSync, statSync } from "fs";
+import { appendFileSync, existsSync, mkdirSync, renameSync, statSync, unlinkSync } from "fs";
 
 type LogLevel = "debug" | "info" | "warn" | "error";
 
@@ -6,6 +6,7 @@ interface LoggerConfig {
   logDir: string;
   logFile: string;
   maxBytes: number;
+  maxBackups: number;
   minLevel: LogLevel;
 }
 
@@ -20,6 +21,7 @@ let config: LoggerConfig = {
   logDir: `${process.env.HOME}/.browse`,
   logFile: "daemon.log",
   maxBytes: 5 * 1024 * 1024, // 5 MB
+  maxBackups: 2,
   minLevel: "info",
 };
 
@@ -37,11 +39,25 @@ function rotate(): void {
   const logPath = `${config.logDir}/${config.logFile}`;
   try {
     const stats = statSync(logPath);
-    if (stats.size >= config.maxBytes) {
-      renameSync(logPath, `${logPath}.1`);
-    }
+    if (stats.size < config.maxBytes) return;
   } catch {
-    // File doesn't exist yet — nothing to rotate
+    return; // File doesn't exist yet
+  }
+
+  // Shift backups: .2 → delete, .1 → .2, current → .1
+  for (let i = config.maxBackups; i >= 1; i--) {
+    const src = i === 1 ? logPath : `${logPath}.${i - 1}`;
+    const dst = `${logPath}.${i}`;
+    try {
+      if (i === config.maxBackups && existsSync(dst)) {
+        unlinkSync(dst);
+      }
+      if (existsSync(src)) {
+        renameSync(src, dst);
+      }
+    } catch {
+      // Best-effort rotation — never crash the daemon
+    }
   }
 }
 
