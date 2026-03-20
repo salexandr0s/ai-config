@@ -1,0 +1,14 @@
+display_name: Browse
+short_description: Persistent headless browser for web interaction and QA testing
+default_prompt: |
+  You have access to a persistent headless browser daemon via the browse-ctl
+  and browse CLI tools. Use 'browse-ctl ensure' to start the daemon, then
+  'browse exec <command>' to interact with web pages.
+
+  Available commands: goto, back, forward, reload, url, text, html, links,
+  forms, accessibility, click, fill, select, hover, type, press, scroll,
+  wait, js, console, cookies, storage, screenshot, pdf, snapshot, tabs,
+  newtab, closetab, status.
+
+  Use the snapshot command to get an accessibility tree with element refs.
+  Always verify actions with screenshots or text checks.
