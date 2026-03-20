@@ -1,9 +1,13 @@
 #!/bin/bash
 set -euo pipefail
 
-# Statusline for Claude Code — 4 responsive modes
-# Reads JSON from stdin with model, style, context, cost fields.
-# Modes: nano (<=60), micro (<=80), mini (<=120), normal (>120)
+# Statusline v2 for Claude Code — 5 responsive modes, multi-line
+# Reads JSON from stdin with model, style, context, cost, rate_limits fields.
+# Modes: nano (<=60), micro (<=80), mini (<=120), normal (<=160), wide (>160)
+#
+# Line 1: Identity — model, project/branch, style, context bar, agent, worktree
+# Line 2: Metrics — duration, cost, lines changed, cache %, rate limits
+# Line 3: Environment — git details, mode, session, signals, weather
 
 input=$(cat)
 
@@ -31,42 +35,39 @@ format_ms() {
   fi
 }
 
-join_with_separator() {
-  local separator="$1"
-  shift
-  local result='' item
-  for item in "$@"; do
-    [ -z "$item" ] && continue
-    if [ -n "$result" ]; then
-      result="${result}${separator}${item}"
-    else
-      result="$item"
-    fi
-  done
-  printf '%s' "$result"
-}
-
 compact_style_name() {
   local value="$1"
   value="${value#House }"
-  printf '%s\n' "$value"
+  printf '%s' "$value"
 }
 
 get_terminal_width() {
   if [ -n "${CLAUDE_STATUS_COLUMNS:-}" ]; then
-    printf '%s\n' "$CLAUDE_STATUS_COLUMNS"
+    printf '%s' "$CLAUDE_STATUS_COLUMNS"
     return
   fi
   if [ -n "${COLUMNS:-}" ]; then
-    printf '%s\n' "$COLUMNS"
+    printf '%s' "$COLUMNS"
     return
   fi
   if [ -t 1 ] && command -v tput >/dev/null 2>&1; then
-    tput cols 2>/dev/null || printf '0\n'
+    tput cols 2>/dev/null || printf '0'
     return
   fi
-  printf '0\n'
+  printf '0'
 }
+
+# ── Colors ──
+
+cyan=$'\033[36m'
+green=$'\033[32m'
+yellow=$'\033[33m'
+orange=$'\033[38;5;208m'
+red=$'\033[31m'
+dim=$'\033[90m'
+reset=$'\033[0m'
+
+sep=" ${dim}|${reset} "
 
 # ── Cache functions ──
 
@@ -94,12 +95,34 @@ read_cache() {
 refresh_bg() {
   local file="$1"
   shift
-  # Run command in background, write output to cache file
   ( "$@" > "$file" 2>/dev/null ) &
   disown 2>/dev/null || true
 }
 
-# ── Section: Git status ──
+# ── Section: Project/Branch (always shown) ──
+
+project_branch_section() {
+  local project_dir branch project_name
+  project_dir=$(json_field '.workspace.project_dir // ""')
+  if [ -z "$project_dir" ]; then
+    project_dir=$(json_field '.cwd // ""')
+  fi
+  project_name="${project_dir##*/}"
+  [ -z "$project_name" ] && project_name="?"
+
+  branch=""
+  if command -v git >/dev/null 2>&1; then
+    branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null || echo "")
+  fi
+
+  if [ -n "$branch" ]; then
+    printf '%s' "${dim}${project_name}${reset}/${green}${branch}${reset}"
+  else
+    printf '%s' "${dim}${project_name}${reset}"
+  fi
+}
+
+# ── Section: Git status (detailed) ──
 
 git_section() {
   if ! command -v git >/dev/null 2>&1; then
@@ -122,7 +145,6 @@ git_section() {
   local branch commit_age_color commit_age_str modified untracked stash_count parts
   branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null || echo "?")
 
-  # Commit age
   local last_commit_ts now age_seconds
   last_commit_ts=$(git log -1 --format='%ct' 2>/dev/null || echo "0")
   now=$(date +%s)
@@ -156,16 +178,130 @@ git_section() {
     parts="${parts} ${dim}s${stash_count}${reset}"
   fi
 
-  # Write to cache (includes ANSI — same terminal assumed)
   printf '%s' "$parts" > "$cache_file"
   printf '%s' "$parts"
 }
 
-# ── Section: Weather ──
+# ── Section: Lines changed ──
 
-_fetch_geo() {
-  curl -s --max-time 3 "https://ipinfo.io/json" 2>/dev/null | jq -r '"\(.loc // "0,0")|\(.city // "")"' 2>/dev/null || echo ""
+lines_section() {
+  local added="${1:-0}" removed="${2:-0}"
+  added=${added%.*}
+  removed=${removed%.*}
+  if [ "$added" -eq 0 ] && [ "$removed" -eq 0 ]; then
+    return
+  fi
+  printf '%s' "${green}+${added}${reset}${dim}/${reset}${red}-${removed}${reset}"
 }
+
+lines_section_verbose() {
+  local added="${1:-0}" removed="${2:-0}"
+  added=${added%.*}
+  removed=${removed%.*}
+  if [ "$added" -eq 0 ] && [ "$removed" -eq 0 ]; then
+    return
+  fi
+  printf '%s' "${green}+${added}${reset}${dim}/${reset}${red}-${removed}${reset} ${dim}lines${reset}"
+}
+
+# ── Section: Cache hit ratio ──
+
+cache_section() {
+  local cache_read="${1:-0}" total_input="${2:-0}"
+  cache_read=${cache_read%.*}
+  total_input=${total_input%.*}
+  if [ "$total_input" -eq 0 ]; then
+    return
+  fi
+  local pct color
+  pct=$((cache_read * 100 / total_input))
+  if [ "$pct" -ge 60 ]; then
+    color=$green
+  elif [ "$pct" -ge 30 ]; then
+    color=$yellow
+  else
+    color=$red
+  fi
+  printf '%s' "${dim}cache ${color}${pct}%${reset}"
+}
+
+# ── Section: Rate limits ──
+
+rate_limits_section() {
+  local five_hr="${1:-}" seven_day="${2:-}"
+  local parts=""
+
+  if [ -n "$five_hr" ] && [ "$five_hr" != "null" ] && [ "$five_hr" != "0" ]; then
+    five_hr=${five_hr%.*}
+    local color
+    if [ "$five_hr" -lt 50 ]; then
+      color=$green
+    elif [ "$five_hr" -lt 80 ]; then
+      color=$orange
+    else
+      color=$red
+    fi
+    parts="${dim}5hr ${color}${five_hr}%${reset}"
+  fi
+
+  if [ -n "$seven_day" ] && [ "$seven_day" != "null" ] && [ "$seven_day" != "0" ]; then
+    seven_day=${seven_day%.*}
+    local color
+    if [ "$seven_day" -lt 50 ]; then
+      color=$green
+    elif [ "$seven_day" -lt 80 ]; then
+      color=$orange
+    else
+      color=$red
+    fi
+    if [ -n "$parts" ]; then
+      parts="${parts} ${dim}7d ${color}${seven_day}%${reset}"
+    else
+      parts="${dim}7d ${color}${seven_day}%${reset}"
+    fi
+  fi
+
+  printf '%s' "$parts"
+}
+
+rate_limits_section_verbose() {
+  local five_hr="${1:-}" seven_day="${2:-}"
+  local parts=""
+
+  if [ -n "$five_hr" ] && [ "$five_hr" != "null" ] && [ "$five_hr" != "0" ]; then
+    five_hr=${five_hr%.*}
+    local color
+    if [ "$five_hr" -lt 50 ]; then
+      color=$green
+    elif [ "$five_hr" -lt 80 ]; then
+      color=$orange
+    else
+      color=$red
+    fi
+    parts="${dim}5hr: ${color}${five_hr}%${reset}"
+  fi
+
+  if [ -n "$seven_day" ] && [ "$seven_day" != "null" ] && [ "$seven_day" != "0" ]; then
+    seven_day=${seven_day%.*}
+    local color
+    if [ "$seven_day" -lt 50 ]; then
+      color=$green
+    elif [ "$seven_day" -lt 80 ]; then
+      color=$orange
+    else
+      color=$red
+    fi
+    if [ -n "$parts" ]; then
+      parts="${parts}${sep}${dim}7d: ${color}${seven_day}%${reset}"
+    else
+      parts="${dim}7d: ${color}${seven_day}%${reset}"
+    fi
+  fi
+
+  printf '%s' "$parts"
+}
+
+# ── Section: Weather ──
 
 weather_section() {
   if [ "${AI_STATUSLINE_WEATHER:-1}" = "0" ]; then
@@ -178,7 +314,6 @@ weather_section() {
     printf '%s' "${dim}${cached}${reset}"
     return
   fi
-  # Trigger background refresh, show nothing until cache is populated
   refresh_bg "$cache_file" /bin/bash -c '_fetch_weather_standalone() {
     geo_file="/tmp/ai-statusline-geo"
     geo_data=""
@@ -253,7 +388,7 @@ signals_section() {
     local avg
     avg=$(tail -50 "$ratings_file" 2>/dev/null | jq -r '.score // empty' 2>/dev/null | awk '{ sum += $1; n++ } END { if (n>0) printf "%.1f", sum/n }' 2>/dev/null || echo "")
     if [ -n "$avg" ]; then
-      result="${yellow}*${reset} ${avg} avg"
+      result="${yellow}*${reset} ${avg}"
     fi
   fi
 
@@ -268,7 +403,7 @@ signals_section() {
         *) arrow="${dim}-${reset}" ;;
       esac
       if [ -n "$result" ]; then
-        result="${result} | ${arrow} ${trend}"
+        result="${result}${sep}${arrow} ${trend}"
       else
         result="${arrow} ${trend}"
       fi
@@ -284,6 +419,7 @@ signals_section() {
 # ── Section: Session duration ──
 
 session_duration() {
+  local verbose="${1:-false}"
   local start_ts="${AI_SESSION_START_TS:-}"
   if [ -z "$start_ts" ]; then
     return
@@ -296,10 +432,12 @@ session_duration() {
   fi
   hours=$((elapsed / 3600))
   minutes=$(((elapsed % 3600) / 60))
+  local suffix=""
+  [ "$verbose" = "true" ] && suffix=" session"
   if [ "$hours" -gt 0 ]; then
-    printf '%s' "${dim}${hours}h ${minutes}m${reset}"
+    printf '%s' "${dim}${hours}h ${minutes}m${suffix}${reset}"
   else
-    printf '%s' "${dim}${minutes}m${reset}"
+    printf '%s' "${dim}${minutes}m${suffix}${reset}"
   fi
 }
 
@@ -317,7 +455,6 @@ build_context_bar() {
   local seg=1
   while [ "$seg" -le "$bar_width" ]; do
     if [ "$seg" -le "$filled" ]; then
-      # Color thresholds: green <50%, orange 50-80%, red >80%
       local seg_pct=$(( (seg * 100) / bar_width ))
       if [ "$seg_pct" -le 50 ]; then
         bar="${bar}${green}#"
@@ -334,6 +471,21 @@ build_context_bar() {
   printf '%s' "$bar"
 }
 
+# ── Append helper (adds separator if target non-empty) ──
+
+append() {
+  local target="$1" addition="$2"
+  if [ -z "$addition" ]; then
+    printf '%s' "$target"
+    return
+  fi
+  if [ -n "$target" ]; then
+    printf '%s' "${target}${sep}${addition}"
+  else
+    printf '%s' "$addition"
+  fi
+}
+
 # ── Extract fields ──
 
 model=$(json_field '.model.display_name // "Claude"')
@@ -341,21 +493,18 @@ style=$(json_field '.output_style.name // "Default"')
 style=$(compact_style_name "$style")
 used=$(json_field '.context_window.used_percentage // 0')
 duration_ms=$(json_field '.cost.total_duration_ms // 0')
-api_duration_ms=$(json_field '.cost.total_api_duration_ms // 0')
 total_cost=$(json_field '.cost.total_cost_usd // 0')
+lines_added=$(json_field '.cost.total_lines_added // 0')
+lines_removed=$(json_field '.cost.total_lines_removed // 0')
+cache_read=$(json_field '.context_window.current_usage.cache_read_input_tokens // 0')
+total_input=$(json_field '.context_window.total_input_tokens // 0')
+rate_5hr=$(json_field '.rate_limits.five_hour.used_percentage // ""')
+rate_7d=$(json_field '.rate_limits.seven_day.used_percentage // ""')
+agent_name=$(json_field '.agent.name // ""')
+wt_branch=$(json_field '.worktree.branch // ""')
 
 mode="${AI_HOUSE_MODE:-normal}"
 used=${used%.*}
-
-# ── Colors ──
-
-cyan=$'\033[36m'
-green=$'\033[32m'
-yellow=$'\033[33m'
-orange=$'\033[38;5;208m'
-red=$'\033[31m'
-dim=$'\033[90m'
-reset=$'\033[0m'
 
 # ── Context color ──
 
@@ -371,7 +520,7 @@ fi
 
 cost_display=$(printf '$%.2f' "$total_cost")
 time_display=$(format_ms "$duration_ms")
-meta_separator=" ${dim}|${reset} "
+proj_branch=$(project_branch_section)
 
 # ── Determine responsive mode ──
 
@@ -385,72 +534,120 @@ elif [ "$terminal_width" -le 80 ]; then
   display_mode="micro"
 elif [ "$terminal_width" -le 120 ]; then
   display_mode="mini"
-else
+elif [ "$terminal_width" -le 160 ]; then
   display_mode="normal"
+else
+  display_mode="wide"
 fi
 
 # ── Build output by mode ──
 
 case "$display_mode" in
+
   nano)
-    # Model + Context bar (10 segments)
+    # 1 line: Model | project/branch | context bar (10 segments)
     bar=$(build_context_bar 10 "$used")
-    printf "%b" "${cyan}${model}${reset}${meta_separator}${ctx_color}${used}%${reset} [${bar}${reset}]"
+    printf "%b" "${cyan}${model}${reset}${sep}${proj_branch}${sep}${ctx_color}${used}%${reset} [${bar}${reset}]"
     ;;
 
   micro)
-    # + Cost, Duration (20 segment bar)
+    # 2 lines
+    # L1: Model | project/branch | style | context bar (20 segments)
+    # L2: duration | cost | lines changed
     bar=$(build_context_bar 20 "$used")
-    ctx_block="${ctx_color}${used}%${reset} [${bar}${reset}]"
-    telemetry_block="${dim}${time_display}${reset}${meta_separator}${dim}${cost_display}${reset}"
-    printf "%b" "${cyan}${model}${reset}${meta_separator}${ctx_block}${meta_separator}${telemetry_block}"
+    L1="${cyan}${model}${reset}${sep}${proj_branch}${sep}${dim}${style}${reset}${sep}${ctx_color}${used}%${reset} [${bar}${reset}]"
+
+    L2="${dim}${time_display}${reset}${sep}${dim}${cost_display}${reset}"
+    lines_block=$(lines_section "$lines_added" "$lines_removed")
+    [ -n "$lines_block" ] && L2="${L2}${sep}${lines_block}"
+
+    printf "%b\n%b" "$L1" "$L2"
     ;;
 
   mini)
-    # + Mode, Git status, Session timer (20 segment bar)
+    # 2 lines
+    # L1: Model | project/branch | style | context bar (20) | duration | cost
+    # L2: git details | lines | cache | rate limits | mode
     bar=$(build_context_bar 20 "$used")
-    ctx_block="${ctx_color}${used}%${reset} [${bar}${reset}]"
-    telemetry_block="${dim}${time_display}${reset}${meta_separator}${dim}${cost_display}${reset}"
-    mode_block="${dim}${mode}${reset}"
-    git_block=$(git_section)
-    session_block=$(session_duration)
+    L1="${cyan}${model}${reset}${sep}${proj_branch}${sep}${dim}${style}${reset}${sep}${ctx_color}${used}%${reset} [${bar}${reset}]${sep}${dim}${time_display}${reset}${sep}${dim}${cost_display}${reset}"
 
-    output="${cyan}${model}${reset}${meta_separator}${ctx_block}${meta_separator}${telemetry_block}"
-    output="${output}${meta_separator}${mode_block}"
-    if [ -n "$git_block" ]; then
-      output="${output}${meta_separator}${git_block}"
-    fi
-    if [ -n "$session_block" ]; then
-      output="${output}${meta_separator}${session_block}"
-    fi
-    printf "%b" "$output"
+    git_block=$(git_section)
+    lines_block=$(lines_section "$lines_added" "$lines_removed")
+    cache_block=$(cache_section "$cache_read" "$total_input")
+    rate_block=$(rate_limits_section "$rate_5hr" "$rate_7d")
+
+    L2=""
+    [ -n "$git_block" ] && L2=$(append "$L2" "$git_block")
+    [ -n "$lines_block" ] && L2=$(append "$L2" "$lines_block")
+    [ -n "$cache_block" ] && L2=$(append "$L2" "$cache_block")
+    [ -n "$rate_block" ] && L2=$(append "$L2" "$rate_block")
+    L2=$(append "$L2" "${dim}${mode}${reset}")
+
+    printf "%b\n%b" "$L1" "$L2"
     ;;
 
   normal)
-    # + Signals, Weather/Location (20 segment bar)
+    # 3 lines
+    # L1: Model | project/branch | style | context bar (20) | agent | worktree
+    # L2: duration | cost | lines | cache | rate limits
+    # L3: git details | mode | session | signals | weather
     bar=$(build_context_bar 20 "$used")
-    ctx_block="${ctx_color}${used}%${reset} [${bar}${reset}]"
-    telemetry_block="${dim}${time_display}${reset}${meta_separator}${dim}${cost_display}${reset}"
-    mode_block="${dim}${mode}${reset}"
+    L1="${cyan}${model}${reset}${sep}${proj_branch}${sep}${dim}${style}${reset}${sep}${ctx_color}${used}%${reset} [${bar}${reset}]"
+    [ -n "$agent_name" ] && L1="${L1}${sep}${cyan}@${agent_name}${reset}"
+    [ -n "$wt_branch" ] && L1="${L1}${sep}${yellow}wt:${wt_branch}${reset}"
+
+    L2="${dim}${time_display}${reset}${sep}${dim}${cost_display}${reset}"
+    lines_block=$(lines_section "$lines_added" "$lines_removed")
+    cache_block=$(cache_section "$cache_read" "$total_input")
+    rate_block=$(rate_limits_section "$rate_5hr" "$rate_7d")
+    [ -n "$lines_block" ] && L2="${L2}${sep}${lines_block}"
+    [ -n "$cache_block" ] && L2="${L2}${sep}${cache_block}"
+    [ -n "$rate_block" ] && L2="${L2}${sep}${rate_block}"
+
     git_block=$(git_section)
     session_block=$(session_duration)
     signals_block=$(signals_section)
     weather_block=$(weather_section)
 
-    output="${cyan}${model}${reset}${meta_separator}${ctx_block}${meta_separator}${telemetry_block}"
-    output="${output}${meta_separator}${mode_block}"
-    if [ -n "$git_block" ]; then
-      output="${output}${meta_separator}${git_block}"
-    fi
-    if [ -n "$session_block" ]; then
-      output="${output}${meta_separator}${session_block}"
-    fi
-    if [ -n "$signals_block" ]; then
-      output="${output}${meta_separator}${signals_block}"
-    fi
-    if [ -n "$weather_block" ]; then
-      output="${output}${meta_separator}${weather_block}"
-    fi
-    printf "%b" "$output"
+    L3="${dim}${mode}${reset}"
+    [ -n "$git_block" ] && L3=$(append "$L3" "$git_block")
+    [ -n "$session_block" ] && L3=$(append "$L3" "$session_block")
+    [ -n "$signals_block" ] && L3=$(append "$L3" "$signals_block")
+    [ -n "$weather_block" ] && L3=$(append "$L3" "$weather_block")
+
+    printf "%b\n%b\n%b" "$L1" "$L2" "$L3"
     ;;
+
+  wide)
+    # 3 lines — spacious, full labels
+    # L1: Model (full) | project/branch | style | context bar (32) | agent | worktree
+    # L2: duration | cost | lines (verbose) | cache | rate limits (verbose)
+    # L3: git details | mode | session (verbose) | signals | weather
+    bar=$(build_context_bar 32 "$used")
+    L1="${cyan}${model}${reset}${sep}${proj_branch}${sep}${dim}${style}${reset}${sep}${ctx_color}${used}%${reset} [${bar}${reset}]"
+    [ -n "$agent_name" ] && L1="${L1}${sep}${cyan}@${agent_name}${reset}"
+    [ -n "$wt_branch" ] && L1="${L1}${sep}${yellow}wt:${wt_branch}${reset}"
+
+    L2="${dim}${time_display}${reset}${sep}${dim}${cost_display}${reset}"
+    lines_block=$(lines_section_verbose "$lines_added" "$lines_removed")
+    cache_block=$(cache_section "$cache_read" "$total_input")
+    rate_block=$(rate_limits_section_verbose "$rate_5hr" "$rate_7d")
+    [ -n "$lines_block" ] && L2="${L2}${sep}${lines_block}"
+    [ -n "$cache_block" ] && L2="${L2}${sep}${cache_block}"
+    [ -n "$rate_block" ] && L2="${L2}${sep}${rate_block}"
+
+    git_block=$(git_section)
+    session_block=$(session_duration true)
+    signals_block=$(signals_section)
+    weather_block=$(weather_section)
+
+    L3="${dim}${mode}${reset}"
+    [ -n "$git_block" ] && L3=$(append "$L3" "$git_block")
+    [ -n "$session_block" ] && L3=$(append "$L3" "$session_block")
+    [ -n "$signals_block" ] && L3=$(append "$L3" "$signals_block")
+    [ -n "$weather_block" ] && L3=$(append "$L3" "$weather_block")
+
+    printf "%b\n%b\n%b" "$L1" "$L2" "$L3"
+    ;;
+
 esac
