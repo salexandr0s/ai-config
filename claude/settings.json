@@ -62,6 +62,11 @@
     "command": "~/.claude/statusline-command.sh",
     "padding": 1
   },
+  "enabledPlugins": {
+    "swift-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true
+  },
   "outputStyle": "House Concise",
-  "effortLevel": "max"
+  "effortLevel": "max",
+  "skipDangerousModePermissionPrompt": true
 }
