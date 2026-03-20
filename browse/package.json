@@ -1,0 +1,22 @@
+{
+  "name": "@ai-config/browse",
+  "version": "1.0.0",
+  "description": "Persistent headless browser daemon for web interaction and QA testing",
+  "type": "module",
+  "scripts": {
+    "build": "bun build --compile src/cli.ts --outfile dist/browse",
+    "dev": "bun run src/cli.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "verify": "tsc --noEmit && vitest run"
+  },
+  "dependencies": {
+    "playwright": "^1.52.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.8.0",
+    "vitest": "^3.0.0"
+  }
+}
