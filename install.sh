@@ -64,6 +64,7 @@ link "$REPO_DIR/claude/resources"       "$HOME/.claude/resources"
 mkdir -p "$HOME/.claude/skills"
 link "$REPO_DIR/claude/skills/visual-explainer" "$HOME/.claude/skills/visual-explainer"
 link "$REPO_DIR/claude/skills/repo-surgeon"    "$HOME/.claude/skills/repo-surgeon"
+link "$REPO_DIR/claude/skills/browse"        "$HOME/.claude/skills/browse"
 copy_if_missing "$REPO_DIR/claude/settings.local.example.json" "$HOME/.claude/settings.local.json"
 copy_if_missing "$REPO_DIR/claude/.env.example" "$HOME/.claude/.env"
 
@@ -97,6 +98,7 @@ link "$REPO_DIR/codex/rules"            "$HOME/.codex/rules"
 mkdir -p "$HOME/.codex/skills"
 link "$REPO_DIR/codex/skills/config-editor"  "$HOME/.codex/skills/config-editor"
 link "$REPO_DIR/codex/skills/repo-surgeon"  "$HOME/.codex/skills/repo-surgeon"
+link "$REPO_DIR/codex/skills/browse"         "$HOME/.codex/skills/browse"
 copy_if_missing "$REPO_DIR/codex/config.local.example.toml" "$XDG_CONFIG_HOME/codex/config.local.toml"
 "$REPO_DIR/scripts/render-codex-config.sh"
 
@@ -132,6 +134,29 @@ if [ -f "$plist_src" ]; then
   sed "s|\$HOME|$HOME|g" "$plist_src" > "$plist_dst"
   launchctl load "$plist_dst" 2>/dev/null || true
   echo "  ✓ memory-rotate LaunchAgent (weekly Sunday 3am)"
+fi
+
+echo ""
+echo "Dev scripts:"
+link "$REPO_DIR/scripts/dev-verify.sh" "$HOME/.local/bin/dev-verify"
+link "$REPO_DIR/scripts/dev-format.sh" "$HOME/.local/bin/dev-format"
+link "$REPO_DIR/scripts/dev-status.sh" "$HOME/.local/bin/dev-status"
+
+echo ""
+echo "Browse daemon:"
+mkdir -p "$HOME/.browse"
+if command -v bun >/dev/null 2>&1; then
+  "$REPO_DIR/scripts/build-browse.sh"
+  # Symlink browse and browse-ctl onto PATH
+  mkdir -p "$HOME/.local/bin"
+  link "$REPO_DIR/scripts/browse-ctl.sh" "$HOME/.local/bin/browse-ctl"
+  if [ -x "$REPO_DIR/browse/dist/browse" ]; then
+    link "$REPO_DIR/browse/dist/browse" "$HOME/.local/bin/browse"
+  fi
+else
+  echo "  ⚠ Bun not found — browse daemon not compiled."
+  echo "    Install Bun (https://bun.sh) then re-run install.sh"
+  echo "    Note: browse and browse-ctl will not be on PATH until compiled."
 fi
 
 echo ""
