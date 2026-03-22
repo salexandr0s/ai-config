@@ -116,9 +116,9 @@ project_branch_section() {
   fi
 
   if [ -n "$branch" ]; then
-    printf '%s' "${dim}${project_name}${reset}/${green}${branch}${reset}"
+    printf '%s' "${orange}${project_name}${reset}/${green}${branch}${reset}"
   else
-    printf '%s' "${dim}${project_name}${reset}"
+    printf '%s' "${orange}${project_name}${reset}"
   fi
 }
 
