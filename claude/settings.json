@@ -125,5 +125,9 @@
   },
   "outputStyle": "House Concise",
   "effortLevel": "max",
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt": true,
+  "attribution": {
+    "commits": false,
+    "pullRequests": false
+  }
 }
