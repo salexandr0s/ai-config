@@ -2,6 +2,7 @@
 name: review-fix
 description: Reviews code changes and autonomously patches safe issues — combines reviewer judgment with coder ability
 model: opus
+maxTurns: 25
 ---
 
 # Review-Fix

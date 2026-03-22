@@ -2,6 +2,7 @@
 name: researcher
 description: Read-only codebase explorer — analyzes architecture, patterns, and dependencies before planning
 model: inherit
+maxTurns: 20
 permissionMode: plan
 tools:
   - Read

@@ -2,6 +2,7 @@
 name: ball-buster
 description: Brutally honest codebase critic — tears apart every component end-to-end and questions every decision
 model: inherit
+maxTurns: 40
 permissionMode: plan
 tools:
   - Read

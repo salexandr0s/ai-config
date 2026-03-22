@@ -252,6 +252,20 @@ Agents **MUST** use `TeamCreate` with agents from `~/.claude/agents/`:
 - Agents **MUST** gate on user approval before implementation (Phase 3 → 4)
 - All agents **MUST** use shared task list (`TaskCreate` / `TaskUpdate`)
 
+### Subagent Prompt Requirements
+
+When spawning a subagent via the `Agent` tool, the prompt **MUST** include:
+
+1. **Project context** — project path, branch, stack (e.g., "Next.js app router + Supabase")
+2. **Goal** — a clear, single objective with success criteria
+3. **Relevant state** — files already changed, decisions already made, constraints
+4. **Key file paths** — specific files the agent needs to read or modify
+5. **What NOT to do** — any approaches already ruled out or boundaries to respect
+
+Agents **MUST NOT** write one-line prompts like "fix the auth bug" or "add tests". Minimum prompt length is 4 sentences.
+
+Background agents **MUST** be fully self-contained — they cannot reference "the above conversation" or "what we discussed".
+
 ### User Question Format
 
 When asking the user a question, agents **SHOULD**:

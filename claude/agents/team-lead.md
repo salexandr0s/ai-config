@@ -2,6 +2,18 @@
 name: team-lead
 description: Orchestrates multi-agent teams — forms teams, manages phases, enforces gates, communicates with user
 model: inherit
+maxTurns: 50
+tools:
+  - TeamCreate
+  - SendMessage
+  - TaskCreate
+  - TaskUpdate
+  - TaskGet
+  - TaskList
+  - Read
+  - Glob
+  - Grep
+  - Bash
 ---
 
 # Team Lead

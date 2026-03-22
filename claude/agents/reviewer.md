@@ -2,6 +2,7 @@
 name: reviewer
 description: Read-only quality reviewer — critiques plans and verifies implementations against standards
 model: inherit
+maxTurns: 15
 permissionMode: plan
 tools:
   - Read
