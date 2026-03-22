@@ -2,6 +2,7 @@
 name: planner
 description: Read-only technical planner — designs implementation approaches with file lists, steps, and testing strategy
 model: inherit
+maxTurns: 15
 permissionMode: plan
 tools:
   - Read
