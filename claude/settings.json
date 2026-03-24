@@ -4,6 +4,10 @@
     "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "85",
     "CLAUDE_CODE_AUTO_COMPACT_WINDOW": "400000"
   },
+  "attribution": {
+    "commits": false,
+    "pullRequests": false
+  },
   "permissions": {
     "allow": [
       "Bash",
@@ -68,6 +72,7 @@
     "swift-lsp@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true
   },
+  "outputStyle": "House Concise",
   "spinnerVerbs": {
     "mode": "replace",
     "verbs": [
@@ -123,11 +128,6 @@
       "bruléeing the sugar"
     ]
   },
-  "outputStyle": "House Concise",
   "effortLevel": "max",
-  "skipDangerousModePermissionPrompt": true,
-  "attribution": {
-    "commits": false,
-    "pullRequests": false
-  }
+  "skipDangerousModePermissionPrompt": true
 }

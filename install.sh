@@ -65,6 +65,53 @@ mkdir -p "$HOME/.claude/skills"
 link "$REPO_DIR/claude/skills/visual-explainer" "$HOME/.claude/skills/visual-explainer"
 link "$REPO_DIR/claude/skills/repo-surgeon"    "$HOME/.claude/skills/repo-surgeon"
 link "$REPO_DIR/claude/skills/browse"        "$HOME/.claude/skills/browse"
+
+# Impeccable design skills (from sibling repo ~/GitHub/impeccable)
+# Renames: audit → auditui (avoids conflict with ai-config's /audit skill)
+IMPECCABLE_DIR="$REPO_DIR/../impeccable"
+IMPECCABLE_RENAMES="audit:auditui"
+if [ -d "$IMPECCABLE_DIR/.claude/skills" ]; then
+  echo ""
+  echo "Impeccable (Claude Code):"
+  for skill_dir in "$IMPECCABLE_DIR"/.claude/skills/*/; do
+    skill_name="$(basename "$skill_dir")"
+    # Apply renames (format: "original:renamed original2:renamed2")
+    dst_name="$skill_name"
+    for rename in $IMPECCABLE_RENAMES; do
+      from="${rename%%:*}"; to="${rename##*:}"
+      [ "$skill_name" = "$from" ] && dst_name="$to"
+    done
+    link "$(cd "$skill_dir" && pwd)" "$HOME/.claude/skills/$dst_name"
+  done
+else
+  echo "  ⚠ impeccable repo not found at $IMPECCABLE_DIR — skipping design skills"
+  echo "    Clone it: git clone https://github.com/pbakaus/impeccable.git $IMPECCABLE_DIR"
+fi
+
+# iOS Simulator skill (from sibling repo ~/GitHub/ios-simulator-skill)
+IOS_SIM_DIR="$REPO_DIR/../ios-simulator-skill"
+if [ -d "$IOS_SIM_DIR/ios-simulator-skill" ]; then
+  echo ""
+  echo "iOS Simulator Skill (Claude Code):"
+  link "$(cd "$IOS_SIM_DIR/ios-simulator-skill" && pwd)" "$HOME/.claude/skills/ios-simulator-skill"
+else
+  echo "  ⚠ ios-simulator-skill repo not found — skipping"
+fi
+
+# Platform Design Skills — HIG rules (from sibling repo ~/GitHub/platform-design-skills)
+PLATFORM_DESIGN_DIR="$REPO_DIR/../platform-design-skills"
+if [ -d "$PLATFORM_DESIGN_DIR/skills" ]; then
+  echo ""
+  echo "Platform Design Skills (Claude Code):"
+  for skill_dir in "$PLATFORM_DESIGN_DIR"/skills/*/; do
+    skill_name="$(basename "$skill_dir")"
+    # Prefix with "hig-" to namespace (e.g., hig-ios, hig-macos)
+    link "$(cd "$skill_dir" && pwd)" "$HOME/.claude/skills/hig-$skill_name"
+  done
+else
+  echo "  ⚠ platform-design-skills repo not found — skipping"
+fi
+
 copy_if_missing "$REPO_DIR/claude/settings.local.example.json" "$HOME/.claude/settings.local.json"
 copy_if_missing "$REPO_DIR/claude/.env.example" "$HOME/.claude/.env"
 
@@ -99,6 +146,46 @@ mkdir -p "$HOME/.codex/skills"
 link "$REPO_DIR/codex/skills/config-editor"  "$HOME/.codex/skills/config-editor"
 link "$REPO_DIR/codex/skills/repo-surgeon"  "$HOME/.codex/skills/repo-surgeon"
 link "$REPO_DIR/codex/skills/browse"         "$HOME/.codex/skills/browse"
+
+# Impeccable design skills for Codex (from sibling repo ~/GitHub/impeccable)
+if [ -d "$IMPECCABLE_DIR/.codex/skills" ]; then
+  echo ""
+  echo "Impeccable (Codex):"
+  for skill_dir in "$IMPECCABLE_DIR"/.codex/skills/*/; do
+    skill_name="$(basename "$skill_dir")"
+    # Apply same renames as Claude
+    dst_name="$skill_name"
+    for rename in $IMPECCABLE_RENAMES; do
+      from="${rename%%:*}"; to="${rename##*:}"
+      [ "$skill_name" = "$from" ] && dst_name="$to"
+    done
+    link "$(cd "$skill_dir" && pwd)" "$HOME/.codex/skills/$dst_name"
+  done
+else
+  echo "  ⚠ impeccable repo not found — skipping Codex design skills"
+fi
+
+# iOS Simulator skill for Codex
+if [ -d "$IOS_SIM_DIR/ios-simulator-skill" ]; then
+  echo ""
+  echo "iOS Simulator Skill (Codex):"
+  link "$(cd "$IOS_SIM_DIR/ios-simulator-skill" && pwd)" "$HOME/.codex/skills/ios-simulator-skill"
+else
+  echo "  ⚠ ios-simulator-skill repo not found — skipping"
+fi
+
+# Platform Design Skills for Codex
+if [ -d "$PLATFORM_DESIGN_DIR/skills" ]; then
+  echo ""
+  echo "Platform Design Skills (Codex):"
+  for skill_dir in "$PLATFORM_DESIGN_DIR"/skills/*/; do
+    skill_name="$(basename "$skill_dir")"
+    link "$(cd "$skill_dir" && pwd)" "$HOME/.codex/skills/hig-$skill_name"
+  done
+else
+  echo "  ⚠ platform-design-skills repo not found — skipping"
+fi
+
 copy_if_missing "$REPO_DIR/codex/config.local.example.toml" "$XDG_CONFIG_HOME/codex/config.local.toml"
 "$REPO_DIR/scripts/render-codex-config.sh"
 
