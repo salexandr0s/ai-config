@@ -66,27 +66,15 @@ link "$REPO_DIR/claude/skills/visual-explainer" "$HOME/.claude/skills/visual-exp
 link "$REPO_DIR/claude/skills/repo-surgeon"    "$HOME/.claude/skills/repo-surgeon"
 link "$REPO_DIR/claude/skills/browse"        "$HOME/.claude/skills/browse"
 
-# Impeccable design skills (from sibling repo ~/GitHub/impeccable)
-# Renames: audit → auditui (avoids conflict with ai-config's /audit skill)
-IMPECCABLE_DIR="$REPO_DIR/../impeccable"
-IMPECCABLE_RENAMES="audit:auditui"
-if [ -d "$IMPECCABLE_DIR/.claude/skills" ]; then
-  echo ""
-  echo "Impeccable (Claude Code):"
-  for skill_dir in "$IMPECCABLE_DIR"/.claude/skills/*/; do
-    skill_name="$(basename "$skill_dir")"
-    # Apply renames (format: "original:renamed original2:renamed2")
-    dst_name="$skill_name"
-    for rename in $IMPECCABLE_RENAMES; do
-      from="${rename%%:*}"; to="${rename##*:}"
-      [ "$skill_name" = "$from" ] && dst_name="$to"
-    done
-    link "$(cd "$skill_dir" && pwd)" "$HOME/.claude/skills/$dst_name"
-  done
-else
-  echo "  ⚠ impeccable repo not found at $IMPECCABLE_DIR — skipping design skills"
-  echo "    Clone it: git clone https://github.com/pbakaus/impeccable.git $IMPECCABLE_DIR"
-fi
+# Impeccable design skills (bundled in ai-config)
+IMPECCABLE_SKILLS=(adapt animate arrange auditui bolder clarify colorize critique delight distill extract frontend-design harden normalize onboard optimize overdrive polish quieter teach-impeccable typeset)
+echo ""
+echo "Design skills (Claude Code):"
+for skill_name in "${IMPECCABLE_SKILLS[@]}"; do
+  if [ -d "$REPO_DIR/claude/skills/$skill_name" ]; then
+    link "$REPO_DIR/claude/skills/$skill_name" "$HOME/.claude/skills/$skill_name"
+  fi
+done
 
 # iOS Simulator skill (from sibling repo ~/GitHub/ios-simulator-skill)
 IOS_SIM_DIR="$REPO_DIR/../ios-simulator-skill"
@@ -147,23 +135,14 @@ link "$REPO_DIR/codex/skills/config-editor"  "$HOME/.codex/skills/config-editor"
 link "$REPO_DIR/codex/skills/repo-surgeon"  "$HOME/.codex/skills/repo-surgeon"
 link "$REPO_DIR/codex/skills/browse"         "$HOME/.codex/skills/browse"
 
-# Impeccable design skills for Codex (from sibling repo ~/GitHub/impeccable)
-if [ -d "$IMPECCABLE_DIR/.codex/skills" ]; then
-  echo ""
-  echo "Impeccable (Codex):"
-  for skill_dir in "$IMPECCABLE_DIR"/.codex/skills/*/; do
-    skill_name="$(basename "$skill_dir")"
-    # Apply same renames as Claude
-    dst_name="$skill_name"
-    for rename in $IMPECCABLE_RENAMES; do
-      from="${rename%%:*}"; to="${rename##*:}"
-      [ "$skill_name" = "$from" ] && dst_name="$to"
-    done
-    link "$(cd "$skill_dir" && pwd)" "$HOME/.codex/skills/$dst_name"
-  done
-else
-  echo "  ⚠ impeccable repo not found — skipping Codex design skills"
-fi
+# Impeccable design skills for Codex (bundled in ai-config)
+echo ""
+echo "Design skills (Codex):"
+for skill_name in "${IMPECCABLE_SKILLS[@]}"; do
+  if [ -d "$REPO_DIR/codex/skills/$skill_name" ]; then
+    link "$REPO_DIR/codex/skills/$skill_name" "$HOME/.codex/skills/$skill_name"
+  fi
+done
 
 # iOS Simulator skill for Codex
 if [ -d "$IOS_SIM_DIR/ios-simulator-skill" ]; then
