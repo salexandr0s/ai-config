@@ -66,6 +66,16 @@ link "$REPO_DIR/claude/skills/visual-explainer" "$HOME/.claude/skills/visual-exp
 link "$REPO_DIR/claude/skills/repo-surgeon"    "$HOME/.claude/skills/repo-surgeon"
 link "$REPO_DIR/claude/skills/browse"        "$HOME/.claude/skills/browse"
 
+# OpenSpec skills (spec-driven development)
+OPENSPEC_SKILLS=(openspec-apply-change openspec-archive-change openspec-explore openspec-propose)
+echo ""
+echo "OpenSpec skills (Claude Code):"
+for skill_name in "${OPENSPEC_SKILLS[@]}"; do
+  if [ -d "$REPO_DIR/claude/skills/$skill_name" ]; then
+    link "$REPO_DIR/claude/skills/$skill_name" "$HOME/.claude/skills/$skill_name"
+  fi
+done
+
 # Impeccable design skills (bundled in ai-config)
 IMPECCABLE_SKILLS=(adapt animate arrange auditui bolder clarify colorize critique delight distill extract frontend-design harden normalize onboard optimize overdrive polish quieter teach-impeccable typeset)
 echo ""
@@ -134,6 +144,15 @@ mkdir -p "$HOME/.codex/skills"
 link "$REPO_DIR/codex/skills/config-editor"  "$HOME/.codex/skills/config-editor"
 link "$REPO_DIR/codex/skills/repo-surgeon"  "$HOME/.codex/skills/repo-surgeon"
 link "$REPO_DIR/codex/skills/browse"         "$HOME/.codex/skills/browse"
+
+# OpenSpec skills for Codex
+echo ""
+echo "OpenSpec skills (Codex):"
+for skill_name in "${OPENSPEC_SKILLS[@]}"; do
+  if [ -d "$REPO_DIR/codex/skills/$skill_name" ]; then
+    link "$REPO_DIR/codex/skills/$skill_name" "$HOME/.codex/skills/$skill_name"
+  fi
+done
 
 # Impeccable design skills for Codex (bundled in ai-config)
 echo ""
