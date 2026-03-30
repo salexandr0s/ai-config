@@ -16,7 +16,7 @@ This repo standardizes cross-tool interaction modes without forcing identical im
 | Shared Mode | Claude | Codex | Intent |
 | --- | --- | --- | --- |
 | `fast` | `--effort low` | `model_reasoning_effort = "low"` | Lowest-friction implementation and routine edits |
-| `normal` | `--effort high` | `model_reasoning_effort = "high"` | Default working mode |
+| `normal` | `--effort high` | `model_reasoning_effort = "xhigh"` | Default working mode |
 | `deep` | `--effort max` | `model_reasoning_effort = "xhigh"` | Heavier planning, debugging, and review |
 
 ## Style Mapping

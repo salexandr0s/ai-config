@@ -300,8 +300,10 @@ The generated live config also adds three profiles backed by files in `codex/ins
 Terminal launchers layer the shared execution mode on top of those style profiles:
 
 - `cx-fast` -> `concise` profile + `model_reasoning_effort = "low"`
-- `cx` -> `concise` profile + `model_reasoning_effort = "high"`
+- `cx` -> `concise` profile + `model_reasoning_effort = "xhigh"`
 - `cx-deep` -> `concise` profile + `model_reasoning_effort = "xhigh"`
+
+Codex plan mode is also pinned separately via `plan_mode_reasoning_effort = "high"`.
 
 Each agent TOML defines: `model`, `model_reasoning_effort`, `sandbox_mode`, and `developer_instructions`.
 
