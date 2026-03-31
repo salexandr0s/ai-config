@@ -15,6 +15,8 @@ Key words: **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, **MAY** per RFC 2
 6. Agents **MUST NOT** weaken rules to pass checks — fix the code, not the rules
 7. Agents **MUST** verify their own work — run verification commands before marking complete
 8. Agents **SHOULD** log repeatable errors to `~/.claude/MEMORY/LEARNINGS/what-fails.md`
+9. Before any structural refactor on a file over 300 LOC, agents **MUST** first remove dead props, unused imports/exports, unreachable code, and debug logs; that cleanup **MUST** be isolated from the refactor and, when commits are in scope, **MUST** be committed separately before the refactor
+10. Agents **MUST NOT** use "simplest approach" or "stay in scope" as a reason to preserve flawed architecture, duplicated state, or inconsistent patterns — propose the structural fix a senior reviewer would expect and get approval if scope expands
 
 ---
 
@@ -36,17 +38,7 @@ Key words: **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, **MAY** per RFC 2
 
 ### MEMORY System
 
-All agents share `~/.claude/MEMORY/`:
-
-| Directory      | Purpose                                    | Format         |
-| -------------- | ------------------------------------------ | -------------- |
-| `SESSIONS/`    | Session summaries (auto-captured by hook)   | JSONL per day  |
-| `SIGNALS/`     | Ratings + sentiment from user feedback      | JSONL          |
-| `LEARNINGS/`   | Extracted patterns (what works, what fails) | Markdown       |
-| `STATE/`       | System state and event logs                 | JSONL          |
-| `RESEARCH/`    | Knowledge artifacts                         | Markdown       |
-
-Run `~/.claude/MEMORY/scripts/rotate.sh` periodically for maintenance.
+All agents share `~/.claude/MEMORY/`: `SESSIONS/` (session summaries), `SIGNALS/` (user feedback), `LEARNINGS/` (patterns), `STATE/` (system/event logs), and `RESEARCH/` (knowledge artifacts). Run `~/.claude/MEMORY/scripts/rotate.sh` periodically for maintenance.
 
 ---
 
@@ -54,21 +46,12 @@ Run `~/.claude/MEMORY/scripts/rotate.sh` periodically for maintenance.
 
 New projects **SHOULD** use this stack unless requirements dictate otherwise:
 
-| Layer         | Choice                                      | Why                                   |
-| ------------- | ------------------------------------------- | ------------------------------------- |
-| Language      | **TypeScript** (strict mode)                | Type safety, catches bugs early       |
-| Web Framework | **Next.js** (app router)                    | Server components, file-based routing |
-| API Framework | **Fastify**                                 | Faster than Express, schema-first     |
-| Desktop       | **Electron + Vite**                         | Cross-platform, web tech reuse        |
-| Styling       | **TailwindCSS**                             | Utility-first, no CSS files to manage |
-| Components    | **Radix UI**                                | Accessible primitives, unstyled       |
-| Validation    | **Zod**                                     | Runtime + TypeScript type inference   |
-| Database      | **Prisma** (Postgres/SQLite) or **Drizzle** | Type-safe queries                     |
-| Auth          | **Supabase**                                | Auth + DB + storage in one            |
-| Testing       | **Vitest** (unit) + **Playwright** (E2E)    | Fast, modern, Vite-native             |
-| Linting       | **ESLint 9** + **Prettier**                 | Flat config, consistent formatting    |
-| Monorepo      | **Turbo** + npm workspaces                  | Fast builds, dependency management    |
-| Python        | **Python 3.10+** with **Ruff**              | For Clawdbot skills only              |
+- Language: **TypeScript** (strict mode)
+- Web/API/Desktop: **Next.js** (app router), **Fastify**, **Electron + Vite**
+- Styling/UI: **TailwindCSS** + **Radix UI**
+- Validation/Data/Auth: **Zod**, **Prisma** or **Drizzle**, **Supabase**
+- Testing/Linting/Monorepo: **Vitest** + **Playwright**, **ESLint 9** + **Prettier**, **Turbo** + npm workspaces
+- Python: **Python 3.10+** with **Ruff** (Clawdbot skills only)
 
 ---
 
@@ -84,7 +67,7 @@ New projects **SHOULD** use this stack unless requirements dictate otherwise:
 
 ### Naming
 
-- Files **MUST** use `kebab-case.ts` (e.g., `user-profile.tsx`)
+- Files **MUST** use `kebab-case` filenames (e.g., `user-profile.ts`, `user-profile.tsx`)
 - Components **MUST** use `PascalCase` in code, `kebab-case` file (e.g., `user-card.tsx` → `UserCard`)
 - Hooks **MUST** use `use-` prefix file (e.g., `use-auth.ts` → `useAuth`)
 - Types **SHOULD** be colocated in same file, or `types.ts` if shared
@@ -131,65 +114,31 @@ Types: `feat` · `fix` · `chore` · `refactor` · `test` · `docs` · `style` �
 
 ### Secrets — claudecodex Vault
 
-Keys in macOS Keychain (`claudecodex.keychain-db`), auto-loaded via `.zprofile`.
-Usage: `~/.claude/claudecodex-vault.sh [set|get|list|delete|export] <key> <value>`
-Per-project keys **MUST** go in `.env` files (never committed).
+Keys live in macOS Keychain (`claudecodex.keychain-db`) and auto-load via `.zprofile`; use `~/.claude/claudecodex-vault.sh [set|get|list|delete|export] <key> <value>`. Per-project keys **MUST** go in `.env` files (never committed).
 
 ### MCP Plugins
 
-| Plugin         | Purpose                           | Auth         |
-| -------------- | --------------------------------- | ------------ |
-| **Playwright** | Browser automation & E2E          | Auto-managed |
-| **Context7**   | Up-to-date library docs           | None         |
-| **shadcn**     | Component registry browse/install | None         |
-
-Additional MCP servers can be configured per-project in `.mcp.json`.
+Installed MCP plugins: **Playwright** (browser automation & E2E), **Context7** (up-to-date library docs), and **shadcn** (component registry browse/install). Additional MCP servers can be configured per-project in `.mcp.json`.
 
 ### OpenClaw Gateway
 
-Local agent orchestration on `127.0.0.1:18789`:
-Brave Search · QMD Memory · TTS (OpenAI Shimmer) · Agent-to-Agent messaging
+Local agent orchestration on `127.0.0.1:18789`: Brave Search, QMD Memory, TTS (OpenAI Shimmer), and agent-to-agent messaging.
 
 ### QMD — Knowledge Search (NOT Code Search)
 
-`qmd` (run `qmd --version` to check; expected major version: `2.x`) is a hybrid search tool (BM25 + vector + LLM reranking) for markdown files.
-Binary: `qmd` (on PATH)
-
-Agents **MUST NOT** use qmd for code search — use Grep/Glob/LSP instead (faster, more precise).
-
-Agents **SHOULD** use qmd for knowledge recall — past decisions, project context, documentation:
-
-```bash
-qmd query "query"                           # Hybrid retrieval with expansion + reranking (default for broad recall)
-qmd search "query"                          # BM25 full-text (fast, deterministic)
-qmd search "query" -c memory                # Search a specific collection
-qmd vsearch "query"                         # Semantic vector search
-qmd get "#docid"                            # Retrieve a specific document
-```
-
-Indexed collections: `memory` (`~/openclaw/memory`) · `knowledge-graph` (`~/openclaw/life/areas`) · `workspace` (`~/openclaw`, `*.md` only)
-
-Agents **SHOULD** query relevant context before planning a task (e.g., `qmd query "auth decisions"`) to surface past decisions or domain knowledge.
+`qmd` is a hybrid markdown search tool (BM25 + vector + reranking); binary: `qmd`; expected major version: `2.x`.
+Agents **MUST NOT** use qmd for code search — use Grep/Glob/LSP instead.
+Agents **SHOULD** use qmd for knowledge recall and **SHOULD** query relevant context before planning a task (e.g., `qmd query "auth decisions"`).
+Collections: `memory` (`~/openclaw/memory`), `knowledge-graph` (`~/openclaw/life/areas`), and `workspace` (`~/openclaw`, `*.md` only).
 
 ### Dev Scripts
 
-| Script       | Purpose                                       | Usage                                |
-| ------------ | --------------------------------------------- | ------------------------------------ |
-| `dev-verify` | Full quality check (lint + typecheck + tests) | `dev-verify` or `dev-verify --quick` |
-| `dev-format` | Format all files for current project type     | `dev-format`                         |
-| `dev-status` | Git state + quick quality snapshot            | `dev-status`                         |
-
-These auto-detect project type (Rust/Node/Python). Agents **SHOULD** prefer these over raw `npm run lint`.
+Use `dev-verify` (full quality check), `dev-format` (format files), and `dev-status` (git + quality snapshot). These auto-detect project type (Rust/Node/Python), and agents **SHOULD** prefer them over raw `npm run lint`.
 
 ### Browse Daemon
 
-Persistent headless Chromium for web interaction and QA testing.
-Binary: `browse` (compile from `browse/` with Bun)
-Management: `browse-ctl {ensure|start|stop|status}`
-State: `~/.browse/state.json`
-
-Use `/browse` skill for browser interaction. Use `/qa --browser <url>` for browser-based QA.
-Coexists with MCP Playwright plugin — browse is for persistent sessions, MCP for one-off automation.
+Persistent headless Chromium for web interaction and QA testing. Binary: `browse` (compile from `browse/` with Bun); manage with `browse-ctl {ensure|start|stop|status}`; state lives at `~/.browse/state.json`.
+Use `/browse` for persistent browser interaction and `/qa --browser <url>` for browser-based QA; use MCP Playwright for one-off automation.
 
 ---
 
@@ -203,6 +152,8 @@ dev-verify --quick      # Skip tests for rapid iteration
 ```
 
 Agents **MUST** run `dev-verify --quick` after every 3–5 file changes. Agents **MUST** run full `dev-verify` before commits and before marking tasks complete.
+
+For JS/TS projects, verification **MUST** include `npx tsc --noEmit` (or project equivalent) and, if ESLint is configured, `npx eslint . --quiet` (or project equivalent). Agents **MUST NOT** mark work complete until all reported errors are fixed. If no type-checker is configured, agents **MUST** state that explicitly.
 
 ## Bug Handling
 
@@ -221,6 +172,7 @@ Agents **MUST** run `dev-verify --quick` after every 3–5 file changes. Agents 
 
 - Teams **SHOULD** be used for: new features, multi-file changes, refactoring, architectural changes, bugs requiring investigation, anything touching 3+ files
 - Teams **SHOULD NOT** be used for: single-line fixes, typos, config tweaks, pure research, or when user says "quick mode"
+- Tasks touching more than 5 independent files **MUST** be split across parallel subagents with disjoint ownership; each subagent **SHOULD** own 5–8 files or one bounded subsystem. If safe parallelization is blocked by dependencies or tooling, the agent **MUST** state that explicitly
 
 ### Formation
 
@@ -244,6 +196,9 @@ Agents **MUST** use `TeamCreate` with agents from `~/.claude/agents/`:
 | 4   | Implement   | `coder`      | —                                        |
 | 5   | Review Code | `reviewer`   | —                                        |
 | 6   | Polish      | `coder`      | All items **MUST** be resolved           |
+
+- Multi-file refactors **MUST NOT** be attempted in a single response; they **MUST** be split into explicit phases touching no more than 5 files per phase
+- Each phase **MUST** end with verification and user approval before the next phase begins
 
 ### Communication
 
@@ -286,9 +241,17 @@ When asking the user a question, agents **SHOULD**:
 | **Bounded**    | Assigned to `phase-implementer` | Self-plans and executes within stated scope       |
 | **Autonomous** | Assigned to `review-fix`        | Reviews and patches within fix policy             |
 
+### Mechanical Safety Overrides
+
+- Before every file edit, agents **MUST** re-read the file; after editing, agents **MUST** read it again to confirm the applied change. Agents **MUST NOT** make more than 3 edits to the same file without an intervening verification read
+- After 10+ messages or any long pause, agents **MUST** re-read any file before editing it. Agents **MUST NOT** trust memory of file contents after compaction risk
+- Each file read **MUST** stay under roughly 2,000 lines. Files over 500 LOC **MUST** be read in sequential chunks using offset/limit-style reads. Agents **MUST NOT** assume a single read captured the full file
+- Agents **MUST** suspect truncation when a large tool result looks incomplete or unexpectedly short. When truncation is suspected, agents **MUST** rerun with narrower scope and state that truncation is suspected
+- Grep **MUST NOT** be treated as semantic analysis. On any rename or signature change, agents **MUST** separately search direct calls, type references, string literals, dynamic imports, `require()` calls, re-exports, barrel files, and test mocks. Agents **MUST** assume grep missed something
+
 ### Phase Gates
 
-- A plan **MUST** exist before implementation starts (even 3 lines counts)
+- A plan **MUST** exist before implementation starts (even a 3-line plan counts)
 - Verification **MUST** pass before marking any task complete
 - Scope changes **MUST** be flagged to user — never silently expand
 - If verification fails 3 times on the same issue → **STOP** and escalate
@@ -315,16 +278,8 @@ Agents **MUST** report task completion using one of:
 
 ### Continuity Protocol
 
-**Resuming work:**
-
-1. Read SESSION_HANDOFF.md if it exists in the project root
-2. Run the "Resume Commands" from the handoff
-3. Check `git log` for recent context
-4. Then begin new work
-
-**Ending a session with incomplete work:**
-
-1. Run `/handoff` — generates SESSION_HANDOFF.md, writes journal entry, syncs memory index
+To resume work: read `SESSION_HANDOFF.md` if it exists, run the resume commands from the handoff, check `git log`, then begin new work.
+To end a session with incomplete work: run `/handoff` — it generates `SESSION_HANDOFF.md`, writes a journal entry, and syncs the memory index.
 
 ---
 
@@ -332,10 +287,5 @@ Agents **MUST** report task completion using one of:
 
 Design system contract: `~/.claude/uiux-contract/`
 
-**Before any UI work**, agents **MUST** read:
-
-- `design_tokens.json` — spacing, colors, radii, shadows, typography, motion
-- `quality_gates.yaml` — 6 blocker + 4 major gates to self-check
-- `components/<name>.yaml` — specs for button, input, dropdown, navbar, sidebar, modal, toast, table
-
+**Before any UI work**, agents **MUST** read `design_tokens.json`, `quality_gates.yaml`, and the relevant `components/<name>.yaml` spec.
 Agents **MUST NOT** use arbitrary visual values — all colors, spacing, radii, shadows, font sizes, and motion timings **MUST** use design tokens.
