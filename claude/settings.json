@@ -4,10 +4,7 @@
     "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "85",
     "CLAUDE_CODE_AUTO_COMPACT_WINDOW": "400000"
   },
-  "attribution": {
-    "commits": false,
-    "pullRequests": false
-  },
+  "attribution": {},
   "permissions": {
     "allow": [
       "Bash",
@@ -128,6 +125,6 @@
       "bruléeing the sugar"
     ]
   },
-  "effortLevel": "max",
+  "effortLevel": "high",
   "skipDangerousModePermissionPrompt": true
 }
