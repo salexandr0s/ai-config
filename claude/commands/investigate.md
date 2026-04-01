@@ -55,21 +55,20 @@ Commit to a root cause.
 
 ## Phase 4 — Implement
 
-Fix the root cause with minimal changes.
+Fix the root cause with the narrowest reviewer-acceptable change.
 
 1. **Auto-scope-lock:** Write the affected directory to `~/.claude/freeze-dir.txt` to prevent accidental edits elsewhere
-2. Write a regression test that **fails before** the fix and **passes after**
-3. Apply the minimal fix — change only what is necessary
+2. Write a regression test that **fails before** the fix and **passes after** when practical; if the bug is non-simple and no reproducer is added, explain why
+3. Apply the narrowest reviewer-acceptable fix at the root cause — avoid symptom-only band-aids
 4. Run the regression test to confirm it passes
-5. Run `dev-verify` to check for collateral damage
-6. If the fix is non-simple: explain why no reproducing test was added (per Bug Handling rules)
+5. Run `dev-verify`, or the targeted fallback if no unified verify entrypoint exists, to check for collateral damage
 
 ---
 
 ## Closeout
 
 1. **Unfreeze:** Delete `~/.claude/freeze-dir.txt`
-2. Run `dev-verify` — full verification
+2. Run `dev-verify` — full verification, or the targeted equivalent if no unified verify entrypoint exists
 3. Report status using one of:
    - **DONE** — Root cause identified, fix applied, tests pass, verification passes
    - **DONE_WITH_CONCERNS** — Fixed but with caveats (list each concern)
@@ -90,5 +89,5 @@ Before declaring done, verify:
 - [ ] Fix addresses root cause, not just the symptom
 - [ ] No new `any` types, type suppressions, or weakened checks
 - [ ] Regression test actually fails without the fix
-- [ ] `dev-verify` passes clean
+- [ ] `dev-verify` passes clean, or targeted fallback validation passes and is reported explicitly
 - [ ] Freeze has been removed

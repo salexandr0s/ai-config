@@ -4,7 +4,7 @@ Context: $ARGUMENTS
 
 ## Why This Workflow
 
-Refactors are high-risk — they change structure without changing behavior, so regressions are silent. This workflow enforces atomic steps with verification after EVERY step (not every 3-5), reviewer approval of the plan before implementation, and automatic revert on failure.
+Refactors are high-risk — they change structure without changing behavior, so regressions are silent. This workflow enforces Step 0 cleanup where needed, atomic steps with verification after EVERY step, reviewer approval of the plan before implementation, and automatic revert on failure.
 
 ## Team Formation
 
@@ -15,6 +15,8 @@ Create a team using `TeamCreate` with:
 - **planner** — designs atomic refactoring steps
 - **reviewer** — reviews plan AND code (used twice)
 - **coder** — executes atomic steps
+
+If the refactor touches more than 5 independent files, the team-lead **MUST** split it into explicit phases or parallel owners before implementation starts.
 
 ## Phase 1: Map Impact
 
@@ -28,6 +30,8 @@ Task: Thoroughly map the refactoring scope:
 - Catalog existing test coverage for affected areas
 - Identify the riskiest parts of the change
 - Note any external API contracts that must be preserved
+- Flag files over 300 LOC that require Step 0 cleanup before structural refactoring
+- Flag any rename/signature-change search surface beyond direct refs
 
 Handover to team-lead: impact report with complete dependency map and file:line references.
 
@@ -44,6 +48,9 @@ Task: Design a refactoring plan with strictly atomic steps:
 - Each step **MUST** leave the codebase in a valid, passing state
 - Each step **MUST** be independently revertable
 - Order steps to minimize risk (safest first)
+- Keep each phase bounded to 5 independent files or less, or define disjoint parallel ownership
+- Insert a dedicated Step 0 cleanup phase before any structural refactor on a file over 300 LOC
+- Specify targeted fallback verification if `dev-verify` is unavailable for the repo shape
 - For each step, specify:
   - What changes
   - Why this order
@@ -58,7 +65,7 @@ Output format:
 ### Summary
 [1-2 sentences]
 
-### Steps
+### Steps / Phases
 1. [Step name]
    - Changes: [files and what changes]
    - Verify: [specific check command]
@@ -85,6 +92,8 @@ Task: Critique the refactoring plan:
 - Is the ordering safe? (Dependencies respected?)
 - Are any affected areas missing from the plan?
 - Are revert strategies viable?
+- Is Step 0 cleanup present where needed?
+- Are rename/signature-change searches broad enough?
 - Could any step silently break something not covered by tests?
 
 Produce report: Must Fix / Should Fix / Observations / Verdict on plan quality.
@@ -103,12 +112,14 @@ Task: Execute the plan one step at a time with verification after EVERY step:
 
 For each step in the plan:
 
-1. Implement the step's changes
-2. Run `dev-verify` (full, not --quick) immediately
-3. If verification **passes** → report success, proceed to next step
-4. If verification **fails** → **STOP immediately**:
+1. Re-read the files you are about to change
+2. Implement the step's changes
+3. Re-read the changed files to confirm the applied change
+4. Run `dev-verify` (full, not --quick) immediately, or the plan's targeted fallback if no unified verify entrypoint exists
+5. If verification **passes** → report success, proceed to next step
+6. If verification **fails** → **STOP immediately**:
    - Revert the step using the plan's revert strategy
-   - Run `dev-verify` again to confirm clean revert
+   - Run `dev-verify` or the targeted fallback again to confirm clean revert
    - Report the failure and what went wrong to team-lead
    - Do NOT attempt to fix forward — wait for team-lead decision
 
@@ -130,6 +141,7 @@ Task: Final review of the complete refactoring:
 - Check for missed references or dangling imports
 - Verify naming consistency across the refactored code
 - Confirm test coverage still passes and covers refactored paths
+- Check mechanical-safety compliance where relevant (Step 0 cleanup, bounded phases, rename/search coverage, explicit verification)
 - Produce report: Must Fix / Should Fix / Nits / Verdict
 
 Handover to team-lead: code review report.
@@ -142,7 +154,7 @@ Assign to: team-lead
 
 Task:
 
-1. Run full `dev-verify` one final time
+1. Run full `dev-verify` one final time, or the targeted equivalent if no unified verify entrypoint exists
 2. Verify no behavioral changes were introduced
 3. Commit changes with conventional message: `refactor(scope): description`
 4. Present summary to user: what was refactored, steps completed, any deferred items

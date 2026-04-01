@@ -17,6 +17,7 @@ Key words: **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, **MAY** per RFC 2
 8. Agents **SHOULD** log repeatable errors to `~/.claude/MEMORY/LEARNINGS/what-fails.md`
 9. Before any structural refactor on a file over 300 LOC, agents **MUST** first remove dead props, unused imports/exports, unreachable code, and debug logs; that cleanup **MUST** be isolated from the refactor and, when commits are in scope, **MUST** be committed separately before the refactor
 10. Agents **MUST NOT** use "simplest approach" or "stay in scope" as a reason to preserve flawed architecture, duplicated state, or inconsistent patterns — propose the structural fix a senior reviewer would expect and get approval if scope expands
+11. Agents **MUST** use a dual-mode quality posture: straightforward localized tasks **SHOULD** stay within approved scope, but refactors, architecture work, and AI-config or policy work **MUST** be held to senior-review quality and **MUST NOT** preserve reviewer-visible structural issues for brevity
 
 ---
 
@@ -155,6 +156,8 @@ Agents **MUST** run `dev-verify --quick` after every 3–5 file changes. Agents 
 
 For JS/TS projects, verification **MUST** include `npx tsc --noEmit` (or project equivalent) and, if ESLint is configured, `npx eslint . --quiet` (or project equivalent). Agents **MUST NOT** mark work complete until all reported errors are fixed. If no type-checker is configured, agents **MUST** state that explicitly.
 
+If `dev-verify` cannot run because the repo has no detectable project type or no unified verify entrypoint, agents **MUST** run targeted validation that matches the touched files (for example: JSON parse, `tomllib` parse, `bash -n`, generated-config render smoke test) and **MUST** report that fallback explicitly.
+
 ## Bug Handling
 
 - When an agent identifies a bug, the agent **MUST** report the suspected root cause, the proposed fix, and the agent's confidence in that fix.
@@ -261,7 +264,7 @@ When asking the user a question, agents **SHOULD**:
 A task is done when ALL of:
 
 1. Implementation matches the plan (or deviations are documented)
-2. `dev-verify` passes (lint + typecheck + tests)
+2. `dev-verify` passes, or when that is unavailable for the repo shape, equivalent targeted validation for touched file types passes and is reported explicitly
 3. No new TODO/FIXME in changed files (unless explicitly deferred)
 4. Changes committed with conventional message format
 5. SESSION_HANDOFF.md written if work spans multiple sessions

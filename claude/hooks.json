@@ -8,6 +8,11 @@
             "type": "command",
             "command": "\"$HOME/GitHub/ai-config/scripts/claude-post-edit-format.sh\" \"$CLAUDE_FILE_PATH\"",
             "timeout": 10000
+          },
+          {
+            "type": "command",
+            "command": "\"$HOME/GitHub/ai-config/scripts/claude-post-edit-verify.sh\" \"$CLAUDE_FILE_PATH\"",
+            "timeout": 30000
           }
         ]
       },

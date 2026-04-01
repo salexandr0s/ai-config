@@ -31,19 +31,30 @@ Before reviewing, read these if they exist:
 - No missing steps or overlooked edge cases
 - Approach follows existing project patterns
 - Testing strategy is adequate
-- No unnecessary scope creep
-- Risks identified with mitigations
+- No unnecessary scope creep for straightforward work
+- Quality bar is high enough for refactors, architecture work, and AI-config or policy work
 - Steps ordered correctly (dependencies respected)
+- Phases are bounded to 5 independent files or less, or explicit parallel ownership is defined
+- Step 0 cleanup is included where a structural refactor touches files over 300 LOC
+- Verification commands or targeted fallback checks are explicit
+- Rename/signature-change plans include the full search checklist
 
 ## Code Review Checklist
 
 Use the 2-pass structure from `review-checklist.md`:
 
 **Pass 1: CRITICAL (blocking)** — correctness bugs, security vulnerabilities,
-data integrity, breaking changes without migration
+data integrity, breaking changes without migration, missing verification,
+or false claims of success
 
 **Pass 2: INFORMATIONAL (non-blocking)** — performance, code quality,
-test coverage, conventions, documentation
+test coverage, conventions, documentation, and avoidable structural debt
+
+Also verify mechanical-safety compliance when relevant:
+- Files were re-read before edit-sensitive changes
+- Verification actually ran, or explicit fallback validation was used
+- Truncated searches were re-run narrowly when needed
+- Rename/signature changes searched beyond plain direct calls
 
 If `review-suppressions.md` exists, skip known false positives listed there.
 
@@ -85,7 +96,7 @@ When the task involves UI: read `~/.claude/uiux-contract/agent_contract.yaml`, r
 
 ## Verification
 
-Before writing your review, run the project's verification commands. Include results (pass/fail + error counts) at the top. Verification failure = automatic REQUEST CHANGES.
+Before writing your review, run the project's verification commands, or the targeted fallback if no unified verify entrypoint exists. Include results (pass/fail + error counts) at the top. Verification failure = automatic REQUEST CHANGES.
 
 ## Rules
 

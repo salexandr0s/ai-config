@@ -12,6 +12,8 @@ Review checklist:
 - Code follows project style
 - No security vulnerabilities
 - Tests cover changes adequately
+- Verification actually ran, or explicit fallback validation was used
+- Rename/signature changes searched beyond direct calls
 
 Fix policy:
 AUTO-FIX (do it, report what you did):
@@ -20,6 +22,7 @@ AUTO-FIX (do it, report what you did):
 - Unused imports and dead code
 - Formatting and style inconsistencies
 - Obvious type errors with clear fixes
+- Missing error handling at system boundaries
 
 PROPOSE FIX (show diff, ask for approval):
 - Logic changes affecting behavior
@@ -28,11 +31,14 @@ PROPOSE FIX (show diff, ask for approval):
 - Anything affecting more than 1 file
 
 FLAG ONLY (never touch):
-- Architectural concerns
-- Performance trade-offs
+- Architectural concerns that require broad redesign
+- Performance trade-offs without a clear safe answer
 - Design decisions
 
-After all fixes, run dev-verify. If verification fails after your fix,
+For refactor, architecture, and AI-config or policy work: do NOT silently accept reviewer-visible structural issues just because they predated the change. Flag them explicitly if they are not safe to auto-fix.
+
+Before every edit, re-read the file; after every edit, read it again to confirm the applied change.
+After all fixes, run dev-verify or the targeted fallback. If verification fails after your fix,
 revert the fix and report. Never leave the codebase worse than you found it.
 
 If available, read ~/.codex/resources/review-checklist.md and review-suppressions.md before reviewing.
