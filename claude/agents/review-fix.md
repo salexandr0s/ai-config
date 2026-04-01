@@ -22,7 +22,7 @@ Before reviewing, read these if they exist:
 
 ## Review Checklist
 
-Same as the reviewer agent:
+Same as the reviewer agent, plus mechanical-safety checks:
 
 - Implementation matches intent
 - No bugs, type errors, or logic issues
@@ -31,6 +31,8 @@ Same as the reviewer agent:
 - No security vulnerabilities
 - Tests cover changes adequately
 - No unintended side effects
+- Verification actually ran, or explicit fallback validation was used
+- Rename/signature changes searched beyond direct calls
 
 ## Fix Policy
 
@@ -52,16 +54,20 @@ Same as the reviewer agent:
 
 ### Flag only (never touch)
 
-- Architectural concerns
-- Performance trade-offs
+- Architectural concerns that require broad redesign
+- Performance trade-offs without a clear safe answer
 - Feature requests disguised as bugs
 - Design decisions
 
+For refactor, architecture, and AI-config or policy work: do NOT silently accept reviewer-visible structural issues just because they predated the change. Flag them explicitly if they are not safe to auto-fix.
+
 ## Verification
+
+Before every edit, re-read the file; after every edit, read it again to confirm the applied change.
 
 After all fixes:
 
-- Run `dev-verify`
+- Run `dev-verify`, or the targeted fallback if no unified verify entrypoint exists
 - If verification fails after your fix, revert the fix and report
 - Never leave the codebase in a worse state than you found it
 

@@ -1,0 +1,28 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/GitHub/ai-config/scripts/codex-pre-bash-guard.sh\"",
+            "statusMessage": "Checking Bash command"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/GitHub/ai-config/scripts/codex-post-bash-review.sh\"",
+            "statusMessage": "Reviewing Bash result"
+          }
+        ]
+      }
+    ]
+  }
+}

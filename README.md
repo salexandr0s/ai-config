@@ -8,35 +8,11 @@ Shared configuration for AI coding assistants — [Claude Code](https://docs.ant
 ai-config/
 ├── claude/                          # Claude Code configuration
 │   ├── agents/                      # 8 agent definitions (.md)
-│   │   ├── team-lead.md
-│   │   ├── researcher.md
-│   │   ├── planner.md
-│   │   ├── coder.md
-│   │   ├── reviewer.md
-│   │   ├── review-fix.md
-│   │   ├── phase-implementer.md
-│   │   └── ball-buster.md
-│   ├── commands/                    # 34 slash commands + 6 workflow commands
-│   │   ├── workflow-feature.md
-│   │   ├── workflow-bugfix.md
-│   │   ├── workflow-refactor.md
-│   │   ├── workflow-review-only.md
-│   │   ├── workflow-blind-review.md
-│   │   ├── workflow-ball-buster-party.md
-│   │   ├── commands.md              # Command reference table
-│   │   └── ... (28 more commands)
+│   ├── commands/                    # Slash commands, workflows, and ops prompts
 │   ├── resources/                   # Shared review resources
-│   │   ├── review-checklist.md     # Structured CRITICAL + INFORMATIONAL checklist
-│   │   └── review-suppressions.md  # Known false positive tracker
-│   ├── skills/
-│   │   └── visual-explainer/        # HTML visualization skill (diagrams, slides, diffs)
-│   ├── uiux-contract/              # Design system for agent-built UIs
-│   │   ├── agent_contract.yaml      # High-level design rules
-│   │   ├── design_tokens.json       # Colors, spacing, typography, motion (light + dark)
-│   │   ├── quality_gates.yaml       # 6 blocker + 4 major self-check gates
-│   │   ├── components/              # 11 component specs (button, input, modal, etc.)
-│   │   └── schemas/                 # JSON schemas for tokens and contracts
-│   ├── hooks.json                   # Auto-format, publish warnings, completion sound
+│   ├── skills/                      # Claude skills shipped from this repo
+│   ├── uiux-contract/               # Design system for agent-built UIs
+│   ├── hooks.json                   # Format + post-edit verification + Bash guard + stop hooks
 │   ├── mcp.example.json             # MCP servers: Playwright, Context7, shadcn
 │   ├── output-styles/               # House Concise / Technical / Review
 │   ├── settings.json                # Shared live base settings
@@ -44,33 +20,20 @@ ai-config/
 │   └── statusline-command.sh        # Shared Claude status line
 ├── codex/                           # Codex CLI configuration
 │   ├── agents/                      # 8 agent definitions (.toml)
-│   │   ├── team-lead.toml
-│   │   ├── researcher.toml
-│   │   ├── planner.toml
-│   │   ├── coder.toml
-│   │   ├── reviewer.toml
-│   │   ├── review-fix.toml
-│   │   ├── phase-implementer.toml
-│   │   └── ball-buster.toml
-│   ├── workflows/                   # 7 core workflow prompt templates
-│   │   ├── feature.md
-│   │   ├── bugfix.md
-│   │   ├── refactor.md
-│   │   ├── review-only.md
-│   │   ├── blind-review.md
-│   │   ├── ball-buster-party.md
-│   │   └── ship.md
-│   ├── skills/
-│   │   └── config-editor/           # Codex skill for AI config audit/edit/parity checks
-│   ├── rules/
-│   │   └── default.rules            # Command approval rules (Starlark)
+│   ├── workflows/                   # Workflow prompt templates and investigation helpers
+│   ├── skills/                      # Codex skills shipped from this repo
+│   ├── rules/                       # Command approval rules (Starlark)
 │   ├── instructions/                # Shared Codex style instructions
+│   ├── hooks.json                   # Experimental Codex hooks (Bash-only today)
 │   ├── config.base.toml             # Shared base config
 │   └── config.local.example.toml    # Optional machine-local overlay
 ├── scripts/
 │   ├── render-codex-config.sh       # Builds ~/.codex/config.toml from base + overlay
-│   ├── claude-post-edit-format.sh   # External hook: auto-format edited files
-│   └── claude-pre-bash-guard.sh     # External hook: warn/block on publish/deploy/push commands
+│   ├── claude-post-edit-format.sh   # Claude hook: auto-format edited files
+│   ├── claude-post-edit-verify.sh   # Claude hook: post-edit JS/TS verification
+│   ├── claude-pre-bash-guard.sh     # Claude hook: warn/block on publish/deploy/push commands
+│   ├── codex-pre-bash-guard.sh      # Codex PreToolUse Bash guard
+│   └── codex-post-bash-review.sh    # Codex PostToolUse Bash review/reminder
 ├── shared/
 │   ├── assistant-ux.md              # Cross-tool UX contract
 │   └── CLAUDE.md                    # Workspace-level standards (→ ~/GitHub/CLAUDE.md)
@@ -105,6 +68,7 @@ The installer creates symlinks from each tool's config directory into this repo,
 | `codex/agents/`                  | `~/.codex/agents/`                  |
 | `codex/instructions/`            | `~/.codex/instructions/`            |
 | `codex/rules/`                   | `~/.codex/rules/`                   |
+| `codex/hooks.json`               | `~/.codex/hooks.json`               |
 | `codex/skills/config-editor`     | `~/.codex/skills/config-editor`     |
 | `shared/CLAUDE.md`               | `~/GitHub/CLAUDE.md`                |
 
@@ -152,7 +116,7 @@ Both tools share the same 8-agent roster with identical roles. Claude Code agent
 
 ## Workflows
 
-Seven predefined multi-agent workflows are available in both tools:
+Core multi-agent workflows available in both tools include:
 
 | Workflow              | Phases                                                       | Approval gate    | Fix cycles |
 | --------------------- | ------------------------------------------------------------ | ---------------- | ---------- |
@@ -208,7 +172,7 @@ codex "Follow the workflow in workflows/ball-buster-party.md to roast: the front
 
 ## Slash Commands
 
-40 slash commands available in Claude Code. Run `/commands` to see the full reference.
+Claude Code ships dozens of slash commands. Run `/commands` to see the full reference.
 
 | Category          | Commands                                                                                                                      |
 | ----------------- | ----------------------------------------------------------------------------------------------------------------------------- |
@@ -225,11 +189,18 @@ codex "Follow the workflow in workflows/ball-buster-party.md to roast: the front
 
 ## Hooks and Status
 
-`claude/hooks.json` configures three Claude Code hooks:
+`claude/hooks.json` configures the active Claude Code hook stack:
 
 - **PostToolUse** (Write/Edit/NotebookEdit) — runs `scripts/claude-post-edit-format.sh` to detect and invoke the repo's formatter (`biome`, `prettier`, `ruff`, `swiftformat`, `rustfmt`) on the edited file
+- **PostToolUse** (Write/Edit/NotebookEdit) — then runs `scripts/claude-post-edit-verify.sh` to execute `npx tsc --noEmit` and `npx eslint . --quiet` when the repo exposes TS/JS verification config; if not configured, the hook reports that explicitly instead of implying success
 - **PreToolUse** (Bash) — runs `scripts/claude-pre-bash-guard.sh` to warn or block before production deploys, infrastructure changes, schema pushes, default-branch pushes, and external publishing commands
-- **Stop** (`*`) — calls `~/GitHub/terminal-config/bin/ai-notify` for smart completion sound with local cooldown support
+- **Stop** (`*`) — captures the session and calls `~/GitHub/terminal-config/bin/ai-notify` for smart completion sound with local cooldown support
+
+`codex/hooks.json` configures Codex hooks behind `codex_hooks = true` in `codex/config.base.toml`:
+
+- **PreToolUse** (`Bash`) — runs `scripts/codex-pre-bash-guard.sh` to warn or deny risky Bash commands using the Codex hook JSON protocol
+- **PostToolUse** (`Bash`) — runs `scripts/codex-post-bash-review.sh` to inject a reminder when a Bash command likely modified files
+- Current Codex runtime is still **Bash-only** for `PreToolUse` / `PostToolUse`, so Claude remains the stronger edit-time verification surface
 
 `claude/statusline-command.sh` provides a shared AI-only micro-dashboard with:
 
@@ -280,6 +251,7 @@ status_line = ["model-with-reasoning", "context-remaining", "current-dir"]
 
 [features]
 multi_agent = true
+codex_hooks = true
 
 [agents]
 max_threads = 6          # Max concurrent agent threads
@@ -290,6 +262,8 @@ job_max_runtime_seconds = 1800   # 30-minute timeout per agent job
 description = "..."
 config_file = "agents/<name>.toml"
 ```
+
+The installer symlinks `codex/hooks.json` to `~/.codex/hooks.json`, and the `codex_hooks = true` feature flag enables that hook file in the live Codex config.
 
 The generated live config also adds three profiles backed by files in `codex/instructions/`:
 
