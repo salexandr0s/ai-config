@@ -6,10 +6,50 @@ set -euo pipefail
 #
 # Safe: backs up existing files/dirs before overwriting.
 # Idempotent: re-running updates symlinks without duplicating backups.
+# Backups are stored outside active skill scan directories under
+# ~/.config/ai-config/backups/<timestamp>/.
 
 REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
-BACKUP_SUFFIX=".bak-$(date +%Y%m%d%H%M%S)"
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+BACKUP_STAMP="$(date +%Y%m%d%H%M%S)"
+BACKUP_ROOT="$XDG_CONFIG_HOME/ai-config/backups/$BACKUP_STAMP"
+
+backup_path() {
+  local dst="$1"
+
+  if [[ "$dst" == "$HOME/"* ]]; then
+    printf '%s/home/%s\n' "$BACKUP_ROOT" "${dst#$HOME/}"
+  else
+    printf '%s/abs/%s\n' "$BACKUP_ROOT" "${dst#/}"
+  fi
+}
+
+backup_existing() {
+  local dst="$1"
+  local backup_dst
+  backup_dst="$(backup_path "$dst")"
+
+  mkdir -p "$(dirname "$backup_dst")"
+  mv "$dst" "$backup_dst"
+  echo "  ⟳ backed up $dst -> $backup_dst"
+}
+
+migrate_stale_skill_backups() {
+  local skills_dir="$1" label="$2"
+  local found=0
+
+  [ -d "$skills_dir" ] || return 0
+
+  while IFS= read -r -d '' entry; do
+    found=1
+    backup_existing "$entry"
+    echo "  ⟳ migrated stale $label skill backup $(basename "$entry")"
+  done < <(find "$skills_dir" -mindepth 1 -maxdepth 1 -name '*.bak-*' -print0)
+
+  if [ "$found" -eq 0 ]; then
+    echo "  ✓ no stale $label skill backups"
+  fi
+}
 
 link() {
   local src="$1" dst="$2"
@@ -22,8 +62,7 @@ link() {
 
   # Backup existing file/dir/symlink
   if [ -e "$dst" ] || [ -L "$dst" ]; then
-    mv "$dst" "${dst}${BACKUP_SUFFIX}"
-    echo "  ⟳ backed up $dst"
+    backup_existing "$dst"
   fi
 
   # Ensure parent dir exists
@@ -62,6 +101,7 @@ link "$REPO_DIR/claude/resources"       "$HOME/.claude/resources"
 
 # Skills: link individual items (shadcn may be managed separately)
 mkdir -p "$HOME/.claude/skills"
+migrate_stale_skill_backups "$HOME/.claude/skills" "Claude"
 link "$REPO_DIR/claude/skills/visual-explainer" "$HOME/.claude/skills/visual-explainer"
 link "$REPO_DIR/claude/skills/repo-surgeon"    "$HOME/.claude/skills/repo-surgeon"
 link "$REPO_DIR/claude/skills/browse"        "$HOME/.claude/skills/browse"
@@ -142,6 +182,7 @@ link "$REPO_DIR/codex/instructions"     "$HOME/.codex/instructions"
 link "$REPO_DIR/codex/rules"            "$HOME/.codex/rules"
 link "$REPO_DIR/codex/hooks.json"       "$HOME/.codex/hooks.json"
 mkdir -p "$HOME/.codex/skills"
+migrate_stale_skill_backups "$HOME/.codex/skills" "Codex"
 link "$REPO_DIR/codex/skills/config-editor"  "$HOME/.codex/skills/config-editor"
 link "$REPO_DIR/codex/skills/repo-surgeon"  "$HOME/.codex/skills/repo-surgeon"
 link "$REPO_DIR/codex/skills/browse"         "$HOME/.codex/skills/browse"

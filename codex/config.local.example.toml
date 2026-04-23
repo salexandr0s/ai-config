@@ -1,5 +1,12 @@
 # Add machine-specific trust and local-only integrations here.
 # This file is appended to the generated ~/.codex/config.toml.
 
+# Optional: disable noisy or duplicate skills without deleting them.
+# Use the absolute SKILL.md path shown by scripts/audit-skills-budget.py.
+#
+# [[skills.config]]
+# path = "/Users/your-user/.codex/skills/example-skill/SKILL.md"
+# enabled = false
+
 [projects."/Users/your-user/GitHub"]
 trust_level = "trusted"

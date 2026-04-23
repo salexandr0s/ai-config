@@ -1,6 +1,6 @@
 ---
 name: repo-surgeon
-description: "Deep structural audit and modernization skill for messy or prototype codebases. Use when the user wants a codebase audit, dead code detection, folder restructuring, naming cleanup, scalability risk analysis, worst-file rewrite, or a production-grade README."
+description: "Audit and modernize messy codebases. Use for structural cleanup, dead code detection, naming or folder fixes, scalability risk review, worst-file rewrites, or README upgrades."
 metadata:
   author: nationalbank
   version: "1.0.0"
