@@ -18,6 +18,9 @@ status_line = ["model-with-reasoning", "context-remaining", "current-dir"]
 multi_agent = true
 codex_hooks = true
 
+[skills]
+include_instructions = false
+
 [agents]
 max_threads = 6
 max_depth = 1

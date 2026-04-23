@@ -271,6 +271,9 @@ status_line = ["model-with-reasoning", "context-remaining", "current-dir"]
 multi_agent = true
 codex_hooks = true
 
+[skills]
+include_instructions = false
+
 [agents]
 max_threads = 6          # Max concurrent agent threads
 max_depth = 1            # Agent nesting depth
@@ -282,6 +285,8 @@ config_file = "agents/<name>.toml"
 ```
 
 The installer symlinks `codex/hooks.json` to `~/.codex/hooks.json`, and the `codex_hooks = true` feature flag enables that hook file in the live Codex config.
+
+`skills.include_instructions = false` keeps skill discovery enabled while skipping the large automatic skills instruction block, which reduces prompt overhead on heavily customized setups.
 
 The generated live config also adds three profiles backed by files in `codex/instructions/`:
 
