@@ -1,6 +1,6 @@
 ---
 name: overdrive
-description: "Push interfaces past conventional limits with technically ambitious implementations. Whether that's a shader, a 60fps virtual table, spring physics on a dialog, or scroll-driven reveals."
+description: "Push interfaces into technically ambitious territory. Use for effects like shaders, 60fps data UI, spring physics, or scroll-driven interactions."
 argument-hint: "[TARGET=<value>]"
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: config-editor
-description: "Audit and improve AI assistant configuration and instruction docs. Use when the user wants to review or edit AGENTS.md, CLAUDE.md, TOOLS.md, Claude/Codex config, skill counts, MCP counts, parity drift, or RFC 2119 wording. Triggers on \"config editor\", \"audit my AI config\", \"check Claude/Codex parity\", \"rewrite this in RFC 2119\", \"too many skills\", \"too many MCPs\", \"clean up assistant config\"."
+description: "Audit or edit AI assistant config and policy docs. Use for Claude/Codex config, AGENTS.md or CLAUDE.md cleanup, skill or MCP overload, parity drift, or RFC 2119 rewrites."
 ---
 
 # AI Config Editor
