@@ -214,7 +214,7 @@ Claude Code ships dozens of slash commands. Run `/commands` to see the full refe
 - **PreToolUse** (Bash) — runs `scripts/claude-pre-bash-guard.sh` to warn or block before production deploys, infrastructure changes, schema pushes, default-branch pushes, and external publishing commands
 - **Stop** (`*`) — captures the session and calls `~/GitHub/terminal-config/bin/ai-notify` for smart completion sound with local cooldown support
 
-`codex/hooks.json` configures Codex hooks behind `codex_hooks = true` in `codex/config.base.toml`:
+`codex/hooks.json` configures Codex hooks behind `[features].hooks = true` in `codex/config.base.toml`:
 
 - **PreToolUse** (`Bash`) — runs `scripts/codex-pre-bash-guard.sh` to warn or deny risky Bash commands using the Codex hook JSON protocol
 - **PostToolUse** (`Bash`) — runs `scripts/codex-post-bash-review.sh` to inject a reminder when a Bash command likely modified files
@@ -269,7 +269,7 @@ status_line = ["model-with-reasoning", "context-remaining", "current-dir"]
 
 [features]
 multi_agent = true
-codex_hooks = true
+hooks = true
 
 [skills]
 include_instructions = false
@@ -284,7 +284,7 @@ description = "..."
 config_file = "agents/<name>.toml"
 ```
 
-The installer symlinks `codex/hooks.json` to `~/.codex/hooks.json`, and the `codex_hooks = true` feature flag enables that hook file in the live Codex config.
+The installer symlinks `codex/hooks.json` to `~/.codex/hooks.json`, and the `[features].hooks = true` feature flag enables that hook file in the live Codex config.
 
 `skills.include_instructions = false` keeps skill discovery enabled while skipping the large automatic skills instruction block, which reduces prompt overhead on heavily customized setups.
 
