@@ -85,6 +85,20 @@ copy_if_missing() {
   echo "  + created $dst"
 }
 
+link_skill_dirs() {
+  local src_dir="$1" dst_dir="$2" label="$3"
+  local skill_dir skill_name
+
+  mkdir -p "$dst_dir"
+  migrate_stale_skill_backups "$dst_dir" "$label"
+
+  for skill_dir in "$src_dir"/*/; do
+    [ -d "$skill_dir" ] || continue
+    skill_name="$(basename "$skill_dir")"
+    link "$(cd "$skill_dir" && pwd)" "$dst_dir/$skill_name"
+  done
+}
+
 echo "Installing ai-config symlinks..."
 echo ""
 
@@ -99,56 +113,9 @@ link "$REPO_DIR/claude/settings.json"   "$HOME/.claude/settings.json"
 link "$REPO_DIR/claude/statusline-command.sh" "$HOME/.claude/statusline-command.sh"
 link "$REPO_DIR/claude/resources"       "$HOME/.claude/resources"
 
-# Skills: link individual items (shadcn may be managed separately)
-mkdir -p "$HOME/.claude/skills"
-migrate_stale_skill_backups "$HOME/.claude/skills" "Claude"
-link "$REPO_DIR/claude/skills/visual-explainer" "$HOME/.claude/skills/visual-explainer"
-link "$REPO_DIR/claude/skills/repo-surgeon"    "$HOME/.claude/skills/repo-surgeon"
-link "$REPO_DIR/claude/skills/browse"        "$HOME/.claude/skills/browse"
-
-# OpenSpec skills (spec-driven development)
-OPENSPEC_SKILLS=(openspec-apply-change openspec-archive-change openspec-explore openspec-propose)
 echo ""
-echo "OpenSpec skills (Claude Code):"
-for skill_name in "${OPENSPEC_SKILLS[@]}"; do
-  if [ -d "$REPO_DIR/claude/skills/$skill_name" ]; then
-    link "$REPO_DIR/claude/skills/$skill_name" "$HOME/.claude/skills/$skill_name"
-  fi
-done
-
-# Impeccable design skills (bundled in ai-config)
-IMPECCABLE_SKILLS=(adapt animate arrange auditui bolder clarify colorize critique delight distill extract frontend-design harden normalize onboard optimize overdrive polish quieter teach-impeccable typeset)
-echo ""
-echo "Design skills (Claude Code):"
-for skill_name in "${IMPECCABLE_SKILLS[@]}"; do
-  if [ -d "$REPO_DIR/claude/skills/$skill_name" ]; then
-    link "$REPO_DIR/claude/skills/$skill_name" "$HOME/.claude/skills/$skill_name"
-  fi
-done
-
-# iOS Simulator skill (from sibling repo ~/GitHub/ios-simulator-skill)
-IOS_SIM_DIR="$REPO_DIR/../ios-simulator-skill"
-if [ -d "$IOS_SIM_DIR/ios-simulator-skill" ]; then
-  echo ""
-  echo "iOS Simulator Skill (Claude Code):"
-  link "$(cd "$IOS_SIM_DIR/ios-simulator-skill" && pwd)" "$HOME/.claude/skills/ios-simulator-skill"
-else
-  echo "  ⚠ ios-simulator-skill repo not found — skipping"
-fi
-
-# Platform Design Skills — HIG rules (from sibling repo ~/GitHub/platform-design-skills)
-PLATFORM_DESIGN_DIR="$REPO_DIR/../platform-design-skills"
-if [ -d "$PLATFORM_DESIGN_DIR/skills" ]; then
-  echo ""
-  echo "Platform Design Skills (Claude Code):"
-  for skill_dir in "$PLATFORM_DESIGN_DIR"/skills/*/; do
-    skill_name="$(basename "$skill_dir")"
-    # Prefix with "hig-" to namespace (e.g., hig-ios, hig-macos)
-    link "$(cd "$skill_dir" && pwd)" "$HOME/.claude/skills/hig-$skill_name"
-  done
-else
-  echo "  ⚠ platform-design-skills repo not found — skipping"
-fi
+echo "Claude Code skills:"
+link_skill_dirs "$REPO_DIR/claude/skills" "$HOME/.claude/skills" "Claude"
 
 copy_if_missing "$REPO_DIR/claude/settings.local.example.json" "$HOME/.claude/settings.local.json"
 copy_if_missing "$REPO_DIR/claude/.env.example" "$HOME/.claude/.env"
@@ -181,50 +148,10 @@ link "$REPO_DIR/codex/agents"           "$HOME/.codex/agents"
 link "$REPO_DIR/codex/instructions"     "$HOME/.codex/instructions"
 link "$REPO_DIR/codex/rules"            "$HOME/.codex/rules"
 link "$REPO_DIR/codex/hooks.json"       "$HOME/.codex/hooks.json"
-mkdir -p "$HOME/.codex/skills"
-migrate_stale_skill_backups "$HOME/.codex/skills" "Codex"
-link "$REPO_DIR/codex/skills/config-editor"  "$HOME/.codex/skills/config-editor"
-link "$REPO_DIR/codex/skills/repo-surgeon"  "$HOME/.codex/skills/repo-surgeon"
-link "$REPO_DIR/codex/skills/browse"         "$HOME/.codex/skills/browse"
 
-# OpenSpec skills for Codex
 echo ""
-echo "OpenSpec skills (Codex):"
-for skill_name in "${OPENSPEC_SKILLS[@]}"; do
-  if [ -d "$REPO_DIR/codex/skills/$skill_name" ]; then
-    link "$REPO_DIR/codex/skills/$skill_name" "$HOME/.codex/skills/$skill_name"
-  fi
-done
-
-# Impeccable design skills for Codex (bundled in ai-config)
-echo ""
-echo "Design skills (Codex):"
-for skill_name in "${IMPECCABLE_SKILLS[@]}"; do
-  if [ -d "$REPO_DIR/codex/skills/$skill_name" ]; then
-    link "$REPO_DIR/codex/skills/$skill_name" "$HOME/.codex/skills/$skill_name"
-  fi
-done
-
-# iOS Simulator skill for Codex
-if [ -d "$IOS_SIM_DIR/ios-simulator-skill" ]; then
-  echo ""
-  echo "iOS Simulator Skill (Codex):"
-  link "$(cd "$IOS_SIM_DIR/ios-simulator-skill" && pwd)" "$HOME/.codex/skills/ios-simulator-skill"
-else
-  echo "  ⚠ ios-simulator-skill repo not found — skipping"
-fi
-
-# Platform Design Skills for Codex
-if [ -d "$PLATFORM_DESIGN_DIR/skills" ]; then
-  echo ""
-  echo "Platform Design Skills (Codex):"
-  for skill_dir in "$PLATFORM_DESIGN_DIR"/skills/*/; do
-    skill_name="$(basename "$skill_dir")"
-    link "$(cd "$skill_dir" && pwd)" "$HOME/.codex/skills/hig-$skill_name"
-  done
-else
-  echo "  ⚠ platform-design-skills repo not found — skipping"
-fi
+echo "Codex skills:"
+link_skill_dirs "$REPO_DIR/codex/skills" "$HOME/.codex/skills" "Codex"
 
 copy_if_missing "$REPO_DIR/codex/config.local.example.toml" "$XDG_CONFIG_HOME/codex/config.local.toml"
 "$REPO_DIR/scripts/render-codex-config.sh"
