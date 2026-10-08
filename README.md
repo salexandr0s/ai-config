@@ -339,30 +339,25 @@ Agents must never hardcode arbitrary visual values — all colors, spacing, radi
 
 ### avoid-ai-writing
 
-Audits or rewrites prose to remove AI writing patterns, with detect-only and
-file-edit modes, voice profiles, and headline specificity guidance.
+Reviews English prose, titles, headings, and subject lines while preserving
+facts, uncertainty, voice, and the requested editing scope.
 
-The package from [salexandr0s/avoid-ai-writing](https://github.com/salexandr0s/avoid-ai-writing)
-is vendored from commit `1416dfd0388fb338f43d248d5f262fa44eefe4b2`
-(skill version 3.37.0), excluding its Git metadata and `.gitignore`. Four lines
-of inherited trailing whitespace in `detector/patterns.js` were removed;
-the remaining package contents and file modes match the source.
-`shared/skills/avoid-ai-writing/` contains the skill, references, detector,
-scripts, examples, MIT license, and attribution notice. Both tool-specific
-skill directories link to this shared source; `install.sh` links them globally.
-Update the shared package from a reviewed upstream commit to keep both tools in sync.
+Both tool directories link to one locally maintained package at
+`shared/skills/avoid-ai-writing/`; `install.sh` exposes it globally. The
+[package guide](shared/skills/avoid-ai-writing/README.md) covers usage, folder
+ownership, and updates. Its `provenance.json` records the imported source,
+canonical upstream, and local changes. The [full review](docs/avoid-ai-writing-analysis.md)
+explains the findings and verification limits.
 
-Use `/avoid-ai-writing scan this, don't rewrite` in Claude Code, or
-`$avoid-ai-writing scan this, don't rewrite` in Codex. From a shell:
+Start a fresh chat and use `/avoid-ai-writing` in Claude or `$avoid-ai-writing`
+in Codex. Codex requires explicit invocation. The mechanical tools use Node.js
+18 or newer without installing dependencies; model-only review must be labelled.
+
+Verify the package and both installed links offline:
 
 ```bash
-codex '$avoid-ai-writing scan draft.md, do not rewrite'
+python3 -B scripts/verify-avoid-ai-writing.py --check-installed
 ```
-
-Start a fresh chat after installation to load the skill. Codex retains the
-package's `allow_implicit_invocation: false` policy, so invoke it explicitly.
-The bundled tools require Node.js 18 or newer and no dependency installation.
-The writing rules are calibrated for English.
 
 ### visual-explainer
 

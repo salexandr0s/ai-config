@@ -6,19 +6,23 @@ applies **register/voice** directives and removes AI tells, on top of whatever
 (`--style ./house.json`, or a bare name matching `examples/<name>.json`): it is applied, and
 the checkable subset of its mechanics is verified deterministically (see the table below for
 which rules gate the exit code and which are advisory). The files here are *examples of that
-format*; copy one and edit it. They also serve as test fixtures: `scripts/check-style.test.js`
-resolves bare `--config` names against this directory and asserts on their contents, so editing
-or removing either file breaks `npm test`.
+format*; copy one into the document's project and edit the copy. Bare `--config`
+names resolve against this directory. ai-config's offline package verifier loads
+both examples and checks them with the bundled style checker; local tool
+regressions live in `tests/avoid-ai-writing-tools.test.js` at the ai-config root.
+The upstream `scripts/check-style.test.js` and `npm test` harness are outside
+this imported subset. From the ai-config root, run
+`python3 -B scripts/verify-avoid-ai-writing.py` to verify the local package.
 
 ## Where encoded guides live
 
-For a real published guide, don't reach for a bare name or expect a bundled config: see the
+For a published guide, see the
 README's [**House style is a different job**](https://github.com/conorbronsdon/avoid-ai-writing/blob/main/README.md#house-style-is-a-different-job)
 section, which points at [Vale](https://github.com/vale-cli/vale) (where licensed, attributed
 guide packages live) and records the licensing decision in
-[#88](https://github.com/conorbronsdon/avoid-ai-writing/issues/88). In short: Vale enforces a
-guide's mechanics; this layer adds register/voice and removes AI tells; the config format
-below is for a quick custom house style.
+[#88](https://github.com/conorbronsdon/avoid-ai-writing/issues/88). Vale enforces a
+guide's mechanics; this layer adds register/voice and removes AI tells. The config
+format below is for a custom house style.
 
 **This repo bundles no style guides.** The example files are generic and guide-neutral (no
 guide names or aliases), so nothing here claims to implement a guide or tracks its edition.
