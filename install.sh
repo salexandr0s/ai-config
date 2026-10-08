@@ -109,6 +109,7 @@ migrate_stale_skill_backups "$HOME/.claude/skills" "Claude"
 link "$REPO_DIR/claude/skills/visual-explainer" "$HOME/.claude/skills/visual-explainer"
 link "$REPO_DIR/claude/skills/repo-surgeon"    "$HOME/.claude/skills/repo-surgeon"
 link "$REPO_DIR/claude/skills/browse"        "$HOME/.claude/skills/browse"
+link "$REPO_DIR/claude/skills/avoid-ai-writing" "$HOME/.claude/skills/avoid-ai-writing"
 
 # OpenSpec skills (spec-driven development)
 OPENSPEC_SKILLS=(openspec-apply-change openspec-archive-change openspec-explore openspec-propose)
@@ -190,6 +191,7 @@ migrate_stale_skill_backups "$HOME/.codex/skills" "Codex"
 link "$REPO_DIR/codex/skills/config-editor"  "$HOME/.codex/skills/config-editor"
 link "$REPO_DIR/codex/skills/repo-surgeon"  "$HOME/.codex/skills/repo-surgeon"
 link "$REPO_DIR/codex/skills/browse"         "$HOME/.codex/skills/browse"
+link "$REPO_DIR/codex/skills/avoid-ai-writing" "$HOME/.codex/skills/avoid-ai-writing"
 
 # OpenSpec skills for Codex
 echo ""

@@ -1,4 +1,32 @@
-# Session Handoff — 2026-10-08
+# Session Handoff — 2026-10-09
+
+## Latest Work — Avoid AI Writing
+- Vendored the complete skill package from `salexandr0s/avoid-ai-writing` commit `1416dfd0388fb338f43d248d5f262fa44eefe4b2` (skill version 3.37.0) into `shared/skills/avoid-ai-writing/`, excluding Git metadata and `.gitignore`. All 15 payload files and modes match the source except four removed trailing-whitespace spans in `detector/patterns.js`. LICENSE and NOTICE.md are preserved.
+- Added relative directory aliases at `claude/skills/avoid-ai-writing` and `codex/skills/avoid-ai-writing`, both pointing to the same shared package. Added global link steps to `install.sh` and installed the two live skill links.
+- Documented provenance, updates, Node.js >=18, fresh-chat loading, and invocation in README.md. Claude: `/avoid-ai-writing`; Codex: `$avoid-ai-writing`. Preserved Codex's explicit-invocation policy.
+- Passed bash syntax, ShellCheck, diff whitespace, all five Node.js syntax checks, both JSON example parses, detector smoke checks, preservation/style/quote CLI checks, and global-link checks. Repeated the two new installer link steps successfully to verify idempotency. The upstream preservation sample reports a non-blocking large-shrink warning.
+- Codex native `skills/list` discovery with a fresh scan confirms exactly one enabled `avoid-ai-writing` user skill from both `~/GitHub` and `~/GitHub/ai-config`, with no package load errors.
+- `dev-verify --quick` and `dev-verify` cannot detect this configuration repository; targeted checks above are the fallback. No root type-checker is configured.
+- Existing user changes in `claude/settings.json` and `codex/rules/default.rules` remain untouched. No remote push was performed.
+
+## Key Files Changed
+- `shared/skills/avoid-ai-writing/` — shared package, scripts, references, examples, and notices.
+- `claude/skills/avoid-ai-writing`, `codex/skills/avoid-ai-writing` — relative aliases.
+- `install.sh`, `README.md`, `SESSION_HANDOFF.md` — installation and documentation.
+
+## Latest Resume Commands
+- `git status --short --branch`
+- `bash -n install.sh && shellcheck install.sh`
+- `git diff --check`
+- `node --check shared/skills/avoid-ai-writing/detector/patterns.js`
+
+## Latest Decisions
+- Keep one shared vendored package so Claude and Codex cannot drift; the only local adjustment is trailing-whitespace cleanup.
+- Apply only the new skill link steps locally; avoid unrelated installer side effects.
+- Start a fresh Claude/Codex chat to load the new skill.
+- The upstream detector comment defers POS-bigram log-odds and function-word z-scores; these optional upstream features remain outside this installation's scope.
+
+## Previous Work — Hooks (2026-10-08)
 
 ## Completed
 - Registered native Claude hooks directly in settings.json; removed the obsolete standalone hook file and its managed home symlink. Installer and upgrade metadata now match.
