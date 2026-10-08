@@ -7,19 +7,44 @@
           {
             "type": "command",
             "command": "\"$HOME/GitHub/ai-config/scripts/codex-pre-bash-guard.sh\"",
+            "timeout": 5,
             "statusMessage": "Checking Bash command"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash|apply_patch",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$HOME/GitHub/ai-config/scripts/hook-verification.py\" --agent codex pre",
+            "timeout": 10,
+            "statusMessage": "Recording verification baseline"
           }
         ]
       }
     ],
     "PostToolUse": [
       {
-        "matcher": "Bash",
+        "matcher": "Bash|apply_patch",
         "hooks": [
           {
             "type": "command",
             "command": "\"$HOME/GitHub/ai-config/scripts/codex-post-bash-review.sh\"",
-            "statusMessage": "Reviewing Bash result"
+            "timeout": 10,
+            "statusMessage": "Tracking changed files"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$HOME/GitHub/ai-config/scripts/hook-verification.py\" --agent codex stop",
+            "timeout": 180,
+            "statusMessage": "Verifying changed code"
           }
         ]
       }

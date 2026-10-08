@@ -18,7 +18,7 @@ backup_path() {
   local dst="$1"
 
   if [[ "$dst" == "$HOME/"* ]]; then
-    printf '%s/home/%s\n' "$BACKUP_ROOT" "${dst#$HOME/}"
+    printf '%s/home/%s\n' "$BACKUP_ROOT" "${dst#"$HOME"/}"
   else
     printf '%s/abs/%s\n' "$BACKUP_ROOT" "${dst#/}"
   fi
@@ -94,7 +94,11 @@ link "$REPO_DIR/claude/agents"          "$HOME/.claude/agents"
 link "$REPO_DIR/claude/commands"        "$HOME/.claude/commands"
 link "$REPO_DIR/claude/uiux-contract"   "$HOME/.claude/uiux-contract"
 link "$REPO_DIR/claude/output-styles"   "$HOME/.claude/output-styles"
-link "$REPO_DIR/claude/hooks.json"      "$HOME/.claude/hooks.json"
+# Hooks now live in settings.json, which Claude Code loads natively.
+if [ -L "$HOME/.claude/hooks.json" ] && [ "$(readlink "$HOME/.claude/hooks.json")" = "$REPO_DIR/claude/hooks.json" ]; then
+  rm "$HOME/.claude/hooks.json"
+  echo "  ✓ removed obsolete Claude hook symlink"
+fi
 link "$REPO_DIR/claude/settings.json"   "$HOME/.claude/settings.json"
 link "$REPO_DIR/claude/statusline-command.sh" "$HOME/.claude/statusline-command.sh"
 link "$REPO_DIR/claude/resources"       "$HOME/.claude/resources"

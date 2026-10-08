@@ -7,6 +7,6 @@ Self-update the ai-config repository and reinstall symlinks.
 5. Verify key symlinks resolve:
    - `ls -la ~/.claude/commands/` (should be symlink)
    - `ls -la ~/.claude/agents/` (should be symlink)
-   - `ls -la ~/.claude/hooks.json` (should be symlink)
    - `ls -la ~/.claude/settings.json` (should be symlink)
+   - `python3 -c 'import json,pathlib; assert json.loads((pathlib.Path.home()/".claude/settings.json").read_text()).get("hooks")'` (native hooks should be registered)
 6. Report: updated successfully, list of recent changes, any broken symlinks found

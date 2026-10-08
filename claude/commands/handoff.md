@@ -39,7 +39,7 @@ Context (optional): $ARGUMENTS
    ```
 
 4. SESSION LOGGING:
-   The session-capture hook fires automatically on session end, writing to `~/.claude/MEMORY/SESSIONS/`.
+   The `SessionEnd` session-capture hook writes metadata to `~/.claude/MEMORY/SESSIONS/` when Claude closes; this handoff records the work itself.
    No manual script call needed.
 
 Rules:
