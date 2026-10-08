@@ -12,10 +12,9 @@ ai-config/
 │   ├── resources/                   # Shared review resources
 │   ├── skills/                      # Claude skills shipped from this repo
 │   ├── uiux-contract/               # Design system for agent-built UIs
-│   ├── hooks.json                   # Format + post-edit verification + Bash guard + stop hooks
 │   ├── mcp.example.json             # MCP servers: Playwright, Context7, shadcn
 │   ├── output-styles/               # House Concise / Technical / Review
-│   ├── settings.json                # Shared live base settings
+│   ├── settings.json                # Shared live settings, including Claude hooks
 │   ├── settings.local.example.json  # Optional machine-local overlay
 │   └── statusline-command.sh        # Shared Claude status line
 ├── codex/                           # Codex CLI configuration
@@ -24,16 +23,17 @@ ai-config/
 │   ├── skills/                      # Codex skills shipped from this repo
 │   ├── rules/                       # Command approval rules (Starlark)
 │   ├── instructions/                # Shared Codex style instructions
-│   ├── hooks.json                   # Experimental Codex hooks (Bash-only today)
+│   ├── hooks.json                   # Shell/edit tracking, command guard, final verification
 │   ├── config.base.toml             # Shared base config
 │   └── config.local.example.toml    # Optional machine-local overlay
 ├── scripts/
 │   ├── render-codex-config.sh       # Builds ~/.codex/config.toml from base + overlay
 │   ├── claude-post-edit-format.sh   # Claude hook: auto-format edited files
-│   ├── claude-post-edit-verify.sh   # Claude hook: post-edit JS/TS verification
-│   ├── claude-pre-bash-guard.sh     # Claude hook: warn/block on publish/deploy/push commands
+│   ├── claude-post-edit.sh          # Format first, then track the resulting changes
+│   ├── hook-verification.py        # Shared change tracking and final quick checks
+│   ├── claude-pre-bash-guard.sh     # Claude hook: request approval for risky commands
 │   ├── codex-pre-bash-guard.sh      # Codex PreToolUse Bash guard
-│   └── codex-post-bash-review.sh    # Codex PostToolUse Bash review/reminder
+│   └── codex-post-bash-review.sh    # Codex PostToolUse change-tracking entry point
 ├── shared/
 │   ├── assistant-ux.md              # Cross-tool UX contract
 │   └── CLAUDE.md                    # Workspace-level standards (→ ~/GitHub/CLAUDE.md)
@@ -59,7 +59,6 @@ The installer creates symlinks from each tool's config directory into this repo,
 | `claude/agents/`                 | `~/.claude/agents/`                 |
 | `claude/commands/`               | `~/.claude/commands/`               |
 | `claude/uiux-contract/`          | `~/.claude/uiux-contract/`          |
-| `claude/hooks.json`              | `~/.claude/hooks.json`              |
 | `claude/output-styles/`          | `~/.claude/output-styles/`          |
 | `claude/settings.json`           | `~/.claude/settings.json`           |
 | `claude/statusline-command.sh`   | `~/.claude/statusline-command.sh`   |
@@ -207,18 +206,23 @@ Claude Code ships dozens of slash commands. Run `/commands` to see the full refe
 
 ## Hooks and Status
 
-`claude/hooks.json` configures the active Claude Code hook stack:
+Claude hooks live directly in `claude/settings.json`; a standalone user `hooks.json` is not loaded by Claude Code. The installer removes only the obsolete symlink it previously managed. Hook events are read as JSON from stdin, and timeout values are seconds.
 
-- **PostToolUse** (Write/Edit/NotebookEdit) — runs `scripts/claude-post-edit-format.sh` to detect and invoke the repo's formatter (`biome`, `prettier`, `ruff`, `swiftformat`, `rustfmt`) on the edited file
-- **PostToolUse** (Write/Edit/NotebookEdit) — then runs `scripts/claude-post-edit-verify.sh` to execute `npx tsc --noEmit` and `npx eslint . --quiet` when the repo exposes TS/JS verification config; if not configured, the hook reports that explicitly instead of implying success
-- **PreToolUse** (Bash) — runs `scripts/claude-pre-bash-guard.sh` to warn or block before production deploys, infrastructure changes, schema pushes, default-branch pushes, and external publishing commands
-- **Stop** (`*`) — captures the session and calls `~/GitHub/terminal-config/bin/ai-notify` for smart completion sound with local cooldown support
+- **PreToolUse** — records a baseline before shell commands and edits. The Bash guard requests native approval for recognized production deployments, infrastructure changes, and database/schema mutations; publishing/releases/default-branch pushes produce warnings. Version checks remain debounced to once daily. `/freeze` restricts direct edits to its selected directory.
+- **PostToolUse** — formats direct edits using installed project/PATH tools, then tracks the formatted changes in the same sequential command. Shell commands are tracked by comparing file state before and after execution. The title updater reads the actual tool name from the event.
+- **Stop** — runs `git diff --check` and existing quick project checks for code changed by the agent, then plays the existing completion sound. Formatting remains per edit; whole-project checks run at the end of a changed turn. Successful verification is quiet. Failures return actionable feedback, with repeated identical failures bounded to avoid a Stop loop. Missing project checks are reported explicitly. Hooks do not install dependencies or download formatter/checker tools.
+- **Notification** (`permission_prompt|idle_prompt`) — reuses `ai-notify` for attention sounds, retaining its cooldown while bypassing the completion minimum-duration filter.
+- **SessionEnd** — writes session metadata with the event's session ID as compact JSONL and clears session verification state. No prompts, transcript contents, or secrets are recorded.
 
-`codex/hooks.json` configures Codex hooks behind `[features].hooks = true` in `codex/config.base.toml`:
+Codex hooks remain in `codex/hooks.json`, enabled by `[features].hooks = true`. Codex 0.154.0 dispatches shell (`Bash`) and direct `apply_patch` events, so both feed the shared final verifier. Its existing `notify` config handles completion sounds.
 
-- **PreToolUse** (`Bash`) — runs `scripts/codex-pre-bash-guard.sh` to warn or deny risky Bash commands using the Codex hook JSON protocol
-- **PostToolUse** (`Bash`) — runs `scripts/codex-post-bash-review.sh` to inject a reminder when a Bash command likely modified files
-- Current Codex runtime is still **Bash-only** for `PreToolUse` / `PostToolUse`, so Claude remains the stronger edit-time verification surface
+The command guard inspects executable command words instead of raw text, so quoted examples and non-shell heredoc bodies are not treated as deployments. It handles common command wrappers, chains and literal shell commands; it does not resolve arbitrary scripts, aliases, or dynamically constructed commands. Codex 0.154.0 supports `deny` but does **not** support a hook `permissionDecision` of `ask`; actual matched risky commands remain denied there. Claude uses its supported native approval request. No approval-bypass flag is provided.
+
+Run hook regression tests without launching an assistant, network calls, or real deployment commands:
+
+```bash
+python3 -B -m unittest discover -s tests -v
+```
 
 `claude/statusline-command.sh` provides a shared AI-only micro-dashboard with:
 

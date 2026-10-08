@@ -1,7 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-file_path="${1:-${CLAUDE_FILE_PATH:-}}"
+script_dir="$(cd "$(dirname "$0")" && pwd)"
+# shellcheck source=claude-hook-input.sh
+source "$script_dir/claude-hook-input.sh"
+if [ -n "${1:-}" ]; then
+  file_path="$1"
+else
+  read_claude_hook_input || exit 2
+  file_path="$HOOK_FILE_PATH"
+  cd "$HOOK_CWD"
+fi
 
 if [ -z "$file_path" ] || [ ! -f "$file_path" ]; then
   exit 0
@@ -13,7 +22,7 @@ find_repo_root() {
   local dir="$1"
 
   while [ "$dir" != "/" ]; do
-    if [ -d "$dir/.git" ] || [ -f "$dir/package.json" ] || [ -f "$dir/pyproject.toml" ] || [ -f "$dir/Cargo.toml" ]; then
+    if [ -e "$dir/.git" ] || [ -f "$dir/package.json" ] || [ -f "$dir/pyproject.toml" ] || [ -f "$dir/Cargo.toml" ]; then
       printf '%s\n' "$dir"
       return
     fi
@@ -68,42 +77,41 @@ if [ "$ts_configured" -eq 0 ] && [ "$eslint_configured" -eq 0 ]; then
   exit 0
 fi
 
-if ! command -v npx >/dev/null 2>&1; then
-  log "NOTE npx unavailable; cannot run post-edit JS/TS verification in $repo_root"
-  exit 0
-fi
-
 failures=0
 output_file="$(mktemp)"
 trap 'rm -f "$output_file"' EXIT
 
-if [ "$ts_configured" -eq 1 ]; then
-  if run_from_root npx tsc --noEmit >"$output_file" 2>&1; then
-    log "PASS npx tsc --noEmit"
+installed_tool() {
+  local tool="$1"
+  if [ -x "$repo_root/node_modules/.bin/$tool" ]; then
+    printf '%s\n' "$repo_root/node_modules/.bin/$tool"
   else
-    failures=$((failures + 1))
-    log "FAIL npx tsc --noEmit"
-    tail -n 40 "$output_file" >&2 || true
+    command -v "$tool"
   fi
-else
-  log "NOTE no tsconfig detected"
-fi
+}
 
-: >"$output_file"
-if [ "$eslint_configured" -eq 1 ]; then
-  if run_from_root npx eslint . --quiet >"$output_file" 2>&1; then
-    log "PASS npx eslint . --quiet"
+verify_with() {
+  local name="$1"
+  shift
+  local tool
+  if ! tool="$(installed_tool "$name")"; then
+    log "FAIL $name is configured but not installed in $repo_root or on PATH"
+    failures=$((failures + 1))
+  elif run_from_root "$tool" "$@" >"$output_file" 2>&1; then
+    :
   else
     failures=$((failures + 1))
-    log "FAIL npx eslint . --quiet"
+    log "FAIL $name $*"
     tail -n 40 "$output_file" >&2 || true
   fi
-else
-  log "NOTE no ESLint config detected"
-fi
+}
+
+[ "$ts_configured" -eq 0 ] || verify_with tsc --noEmit
+[ "$eslint_configured" -eq 0 ] || verify_with eslint . --quiet
 
 if [ "$failures" -gt 0 ]; then
   log "Verification failed after edit. Do not claim success until the reported issues are fixed."
+  exit 2
 fi
 
 exit 0

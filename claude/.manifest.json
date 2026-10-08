@@ -6,7 +6,6 @@
       "paths": [
         "agents/",
         "commands/",
-        "hooks.json",
         "settings.json",
         "statusline-command.sh",
         "statusline-debug.sh",

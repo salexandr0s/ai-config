@@ -1,51 +1,43 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-tool_input="${CLAUDE_TOOL_INPUT:-}"
-
-if [ -z "$tool_input" ]; then
-  exit 0
-fi
-
 freeze_file="$HOME/.claude/freeze-dir.txt"
+[ -f "$freeze_file" ] || exit 0
 
-# No freeze active — allow everything
-if [ ! -f "$freeze_file" ]; then
-  exit 0
-fi
-
-frozen_dir="$(cat "$freeze_file")"
-
-# Extract file_path from JSON input (handles both Edit and Write tools)
-# Use python for reliable JSON parsing, fall back to grep
-file_path=""
-if command -v python3 >/dev/null 2>&1; then
-  file_path="$(printf '%s' "$tool_input" | python3 -c "import sys,json; print(json.load(sys.stdin).get('file_path',''))" 2>/dev/null || true)"
-fi
-
+script_dir="$(cd "$(dirname "$0")" && pwd)"
+# shellcheck source=claude-hook-input.sh
+source "$script_dir/claude-hook-input.sh"
+read_claude_hook_input || exit 2
+file_path="${1:-$HOOK_FILE_PATH}"
 if [ -z "$file_path" ]; then
-  # Fallback: extract with grep
-  file_path="$(printf '%s' "$tool_input" | grep -oE '"file_path"\s*:\s*"[^"]*"' | head -1 | sed 's/.*"file_path"\s*:\s*"//' | sed 's/"$//' || true)"
+  printf 'BLOCKED: Cannot determine edit path while freeze is active.\n' >&2
+  exit 2
 fi
 
-if [ -z "$file_path" ]; then
-  # Can't determine path — allow (don't break workflow)
-  exit 0
+# An active restriction must also block when its path resolver is unavailable.
+if ! command -v python3 >/dev/null 2>&1; then
+  printf 'BLOCKED: Python 3 is required to resolve paths while freeze is active.\n' >&2
+  exit 2
 fi
 
-# Resolve to absolute path
-file_path="$(cd "$(dirname "$file_path")" 2>/dev/null && pwd)/$(basename "$file_path")" 2>/dev/null || file_path="$file_path"
+# realpath resolves symlinks and .., including paths to files not yet created.
+python3 - "$freeze_file" "$file_path" "$HOOK_CWD" <<'PY'
+import os
+import sys
 
-# Check if file is under frozen directory
-case "$file_path" in
-  "$frozen_dir"/*)
-    exit 0
-    ;;
-  "$frozen_dir")
-    exit 0
-    ;;
-  *)
-    printf 'BLOCKED: Edit restricted to %s (freeze active). Use /unfreeze to remove restriction.\n' "$frozen_dir" >&2
-    exit 2
-    ;;
-esac
+try:
+    with open(sys.argv[1], encoding="utf-8") as stream:
+        frozen = stream.read().rstrip("\r\n")
+    if not frozen:
+        raise ValueError("Empty freeze directory")
+    frozen = os.path.realpath(frozen)
+    target = os.path.realpath(os.path.join(sys.argv[3], sys.argv[2]))
+    allowed = os.path.isdir(frozen) and os.path.commonpath([frozen, target]) == frozen
+except (OSError, ValueError) as error:
+    print(f"BLOCKED: Cannot resolve freeze paths: {error}", file=sys.stderr)
+    sys.exit(2)
+
+if not allowed:
+    print(f"BLOCKED: Edit restricted to {frozen} (freeze active). Use /unfreeze to remove restriction.", file=sys.stderr)
+    sys.exit(2)
+PY

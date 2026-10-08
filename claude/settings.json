@@ -107,7 +107,7 @@
       "glazing the ham",
       "mincing ginger",
       "basting the turkey",
-      "flambéing crêpes",
+      "flamb\u00e9ing cr\u00eapes",
       "infusing the oil",
       "poaching pears",
       "grilling corn",
@@ -124,16 +124,121 @@
       "pressing the tofu",
       "shucking the oysters",
       "deveining the shrimp",
-      "torching the crème brûlée",
+      "torching the cr\u00e8me br\u00fbl\u00e9e",
       "peeling the tomatoes",
       "butterflying the lamb",
       "steaming the dumplings",
       "smoking the brisket",
-      "clarifying the consommé",
+      "clarifying the consomm\u00e9",
       "tempering the eggs",
-      "bruléeing the sugar"
+      "brul\u00e9eing the sugar"
     ]
   },
   "effortLevel": "high",
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt": true,
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/GitHub/ai-config/scripts/claude-pre-bash-guard.sh\"",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "\"$HOME/GitHub/ai-config/scripts/version-check.sh\"",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/GitHub/ai-config/scripts/check-freeze.sh\"",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "Bash|Edit|Write|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$HOME/GitHub/ai-config/scripts/hook-verification.py\" --agent claude pre",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/GitHub/ai-config/scripts/claude-post-edit.sh\"",
+            "timeout": 30
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$HOME/GitHub/ai-config/scripts/hook-verification.py\" --agent claude post",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/GitHub/ai-config/scripts/tab-title-update.sh\"",
+            "timeout": 2
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/GitHub/ai-config/scripts/claude-stop.sh\"",
+            "timeout": 180
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "permission_prompt|idle_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "AI_NOTIFY_MIN_SECONDS=0 \"$HOME/GitHub/terminal-config/bin/ai-notify\" claude attention >/dev/null 2>&1 || true",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/GitHub/ai-config/scripts/claude-session-end.sh\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
 }
