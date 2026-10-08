@@ -36,6 +36,7 @@ ai-config/
 │   └── codex-post-bash-review.sh    # Codex PostToolUse change-tracking entry point
 ├── shared/
 │   ├── assistant-ux.md              # Cross-tool UX contract
+│   ├── skills/avoid-ai-writing/      # Shared writing skill, detector, and references
 │   └── CLAUDE.md                    # Workspace-level standards (→ ~/GitHub/CLAUDE.md)
 └── install.sh                       # Symlink installer (idempotent, backs up existing)
 ```
@@ -64,11 +65,13 @@ The installer creates symlinks from each tool's config directory into this repo,
 | `claude/statusline-command.sh`   | `~/.claude/statusline-command.sh`   |
 | `claude/resources/`              | `~/.claude/resources/`              |
 | `claude/skills/visual-explainer` | `~/.claude/skills/visual-explainer` |
+| `claude/skills/avoid-ai-writing` | `~/.claude/skills/avoid-ai-writing` |
 | `codex/agents/`                  | `~/.codex/agents/`                  |
 | `codex/instructions/`            | `~/.codex/instructions/`            |
 | `codex/rules/`                   | `~/.codex/rules/`                   |
 | `codex/hooks.json`               | `~/.codex/hooks.json`               |
 | `codex/skills/config-editor`     | `~/.codex/skills/config-editor`     |
+| `codex/skills/avoid-ai-writing`   | `~/.codex/skills/avoid-ai-writing`   |
 | `shared/CLAUDE.md`               | `~/GitHub/CLAUDE.md`                |
 
 ### Local overlays and generated files
@@ -333,6 +336,33 @@ Agents must never hardcode arbitrary visual values — all colors, spacing, radi
 ---
 
 ## Skills
+
+### avoid-ai-writing
+
+Audits or rewrites prose to remove AI writing patterns, with detect-only and
+file-edit modes, voice profiles, and headline specificity guidance.
+
+The package from [salexandr0s/avoid-ai-writing](https://github.com/salexandr0s/avoid-ai-writing)
+is vendored from commit `1416dfd0388fb338f43d248d5f262fa44eefe4b2`
+(skill version 3.37.0), excluding its Git metadata and `.gitignore`. Four lines
+of inherited trailing whitespace in `detector/patterns.js` were removed;
+the remaining package contents and file modes match the source.
+`shared/skills/avoid-ai-writing/` contains the skill, references, detector,
+scripts, examples, MIT license, and attribution notice. Both tool-specific
+skill directories link to this shared source; `install.sh` links them globally.
+Update the shared package from a reviewed upstream commit to keep both tools in sync.
+
+Use `/avoid-ai-writing scan this, don't rewrite` in Claude Code, or
+`$avoid-ai-writing scan this, don't rewrite` in Codex. From a shell:
+
+```bash
+codex '$avoid-ai-writing scan draft.md, do not rewrite'
+```
+
+Start a fresh chat after installation to load the skill. Codex retains the
+package's `allow_implicit_invocation: false` policy, so invoke it explicitly.
+The bundled tools require Node.js 18 or newer and no dependency installation.
+The writing rules are calibrated for English.
 
 ### visual-explainer
 
