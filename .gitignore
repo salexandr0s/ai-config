@@ -22,6 +22,8 @@ settings.local.json
 *.sqlite-shm
 telemetry/
 debug/
+!codex/skills/debug/
+!codex/skills/debug/**
 sessions/
 cache/
 
