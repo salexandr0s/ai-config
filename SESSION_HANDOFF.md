@@ -1,17 +1,21 @@
 # Session Handoff — 2026-10-11
 
 ## Completed
+- Committed the remaining Claude preferences/plugin settings and Codex command rules at the user's request.
+- Integrated origin/main's vendored-skills change, preserving both writing-skill aliases through the installer's automatic skill-linking loop.
 - Disabled Claude and Codex completion/attention audio in terminal-config/bin/ai-notify by default, including the fallback terminal bell.
 - Set tui.notifications=false in ~/.codex/config.toml and ai-config/codex/config.base.toml so generated configs retain the preference.
 - Preserved existing notification hooks and optional long-task push behavior.
 
 ## Verification State
+- All 64 hook/input tests passed; writing package, installed aliases, JavaScript syntax and smoke checks passed after the merge.
+- Merged JSON, TOML, command-rule syntax, installer/render shell syntax, and staged whitespace checks passed.
 - Bash syntax, TOML parsing, diff whitespace checks, and silent completion/attention smoke checks passed.
 - dev-verify could not detect either config repository; targeted checks were used instead. No root type-checker applies to these shell/TOML changes.
 
 ## Remaining / Known Gaps
 - Restart existing Codex terminal sessions to load the changed TUI preference. Shared notifier changes apply on the next invocation.
-- Pre-existing unrelated local edits were preserved. No remote push.
+- User authorized committing and pushing all ai-config changes to origin/main. Earlier local preference/rule edits are included; local-only Codex desktop preferences remain in ~/.config/codex/config.local.toml.
 
 ## Resume Commands
 - bash -n /Users/nationalbank/GitHub/terminal-config/bin/ai-notify
