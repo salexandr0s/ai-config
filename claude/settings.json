@@ -2,7 +2,8 @@
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
     "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "85",
-    "CLAUDE_CODE_AUTO_COMPACT_WINDOW": "400000"
+    "CLAUDE_CODE_AUTO_COMPACT_WINDOW": "400000",
+    "CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION": "3000"
   },
   "attribution": {},
   "permissions": {
@@ -68,13 +69,20 @@
   "enabledPlugins": {
     "swift-lsp@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
-    "codex@openai-codex": true
+    "codex@openai-codex": true,
+    "claude-seo@agricidaniel-claude-seo": true
   },
   "extraKnownMarketplaces": {
     "openai-codex": {
       "source": {
         "source": "github",
         "repo": "openai/codex-plugin-cc"
+      }
+    },
+    "agricidaniel-claude-seo": {
+      "source": {
+        "source": "github",
+        "repo": "AgriciDaniel/claude-seo"
       }
     }
   },
@@ -107,7 +115,7 @@
       "glazing the ham",
       "mincing ginger",
       "basting the turkey",
-      "flamb\u00e9ing cr\u00eapes",
+      "flambéing crêpes",
       "infusing the oil",
       "poaching pears",
       "grilling corn",
@@ -124,18 +132,21 @@
       "pressing the tofu",
       "shucking the oysters",
       "deveining the shrimp",
-      "torching the cr\u00e8me br\u00fbl\u00e9e",
+      "torching the crème brûlée",
       "peeling the tomatoes",
       "butterflying the lamb",
       "steaming the dumplings",
       "smoking the brisket",
-      "clarifying the consomm\u00e9",
+      "clarifying the consommé",
       "tempering the eggs",
-      "brul\u00e9eing the sugar"
+      "bruléeing the sugar"
     ]
   },
   "effortLevel": "high",
   "skipDangerousModePermissionPrompt": true,
+  "skipWorkflowUsageWarning": true,
+  "agentPushNotifEnabled": true,
+  "tui": "fullscreen",
   "hooks": {
     "PreToolUse": [
       {
