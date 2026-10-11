@@ -10,7 +10,7 @@ sandbox_mode = "danger-full-access"
 notify = ["sh", "-lc", "\"$HOME/GitHub/terminal-config/bin/ai-notify\" codex done >/dev/null 2>&1 || true"]
 
 [tui]
-notifications = true
+notifications = false
 notification_method = "auto"
 status_line = ["model-with-reasoning", "context-remaining", "current-dir"]
 

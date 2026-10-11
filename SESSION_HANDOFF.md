@@ -1,3 +1,29 @@
+# Session Handoff — 2026-10-11
+
+## Completed
+- Disabled Claude and Codex completion/attention audio in terminal-config/bin/ai-notify by default, including the fallback terminal bell.
+- Set tui.notifications=false in ~/.codex/config.toml and ai-config/codex/config.base.toml so generated configs retain the preference.
+- Preserved existing notification hooks and optional long-task push behavior.
+
+## Verification State
+- Bash syntax, TOML parsing, diff whitespace checks, and silent completion/attention smoke checks passed.
+- dev-verify could not detect either config repository; targeted checks were used instead. No root type-checker applies to these shell/TOML changes.
+
+## Remaining / Known Gaps
+- Restart existing Codex terminal sessions to load the changed TUI preference. Shared notifier changes apply on the next invocation.
+- Pre-existing unrelated local edits were preserved. No remote push.
+
+## Resume Commands
+- bash -n /Users/nationalbank/GitHub/terminal-config/bin/ai-notify
+- git status --short
+
+## Decisions Made
+- Sound is opt-in through AI_NOTIFY_SOUND_ENABLED=1; default is silent.
+
+---
+
+Previous handoff retained for context:
+
 # Session Handoff — 2026-10-09
 
 ## Completed
