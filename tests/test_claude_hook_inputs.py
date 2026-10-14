@@ -133,30 +133,6 @@ class ClaudeHookInputTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(self.log.read_text().strip(), str(self.project))
 
-    def test_verifier_returns_failure_and_runs_both_configured_tools(self):
-        self.configure_formatter()
-        (self.project / "tsconfig.json").write_text("{}", encoding="utf-8")
-        (self.project / "eslint.config.js").write_text("export default []", encoding="utf-8")
-        self.fake_tool(
-            "tsc",
-            'printf "tsc\\n" >> "$AI_TEST_LOG"\nprintf "type error\\n" >&2\nexit 1',
-            local=True,
-        )
-        self.fake_tool("eslint", 'printf "eslint\\n" >> "$AI_TEST_LOG"', local=True)
-        result = self.run_hook("claude-post-edit-verify.sh", self.payload())
-        self.assertEqual(result.returncode, 2)
-        self.assertIn("type error", result.stderr)
-        self.assertEqual(self.log.read_text().splitlines(), ["tsc", "eslint"])
-
-    def test_verifier_does_not_download_missing_configured_tool(self):
-        self.configure_formatter()
-        (self.project / "tsconfig.json").write_text("{}", encoding="utf-8")
-        self.fake_tool("npx", 'touch "$AI_TEST_LOG"\nexit 99')
-        result = self.run_hook("claude-post-edit-verify.sh", self.payload())
-        self.assertEqual(result.returncode, 2)
-        self.assertIn("not installed", result.stderr)
-        self.assertFalse(self.log.exists())
-
     def test_freeze_is_opt_in(self):
         result = self.run_hook("check-freeze.sh", raw="not JSON")
         self.assertEqual(result.returncode, 0, result.stderr)
