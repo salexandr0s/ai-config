@@ -23,17 +23,14 @@ ai-config/
 │   ├── skills/                      # Codex skills shipped from this repo
 │   ├── rules/                       # Command approval rules (Starlark)
 │   ├── instructions/                # Shared Codex style instructions
-│   ├── hooks.json                   # Shell/edit tracking, command guard, final verification
+│   ├── hooks.json                   # Codex Bash command guard
 │   ├── config.base.toml             # Shared base config
 │   └── config.local.example.toml    # Optional machine-local overlay
 ├── scripts/
 │   ├── render-codex-config.sh       # Builds ~/.codex/config.toml from base + overlay
 │   ├── claude-post-edit-format.sh   # Claude hook: auto-format edited files
-│   ├── claude-post-edit.sh          # Format first, then track the resulting changes
-│   ├── hook-verification.py        # Shared change tracking and final quick checks
 │   ├── claude-pre-bash-guard.sh     # Claude hook: request approval for risky commands
-│   ├── codex-pre-bash-guard.sh      # Codex PreToolUse Bash guard
-│   └── codex-post-bash-review.sh    # Codex PostToolUse change-tracking entry point
+│   └── codex-pre-bash-guard.sh      # Codex PreToolUse Bash guard
 ├── shared/
 │   ├── assistant-ux.md              # Cross-tool UX contract
 │   ├── skills/avoid-ai-writing/      # Shared writing skill, detector, and references
@@ -211,13 +208,13 @@ Claude Code ships dozens of slash commands. Run `/commands` to see the full refe
 
 Claude hooks live directly in `claude/settings.json`; a standalone user `hooks.json` is not loaded by Claude Code. The installer removes only the obsolete symlink it previously managed. Hook events are read as JSON from stdin, and timeout values are seconds.
 
-- **PreToolUse** — records a baseline before shell commands and edits. The Bash guard requests native approval for recognized production deployments, infrastructure changes, and database/schema mutations; publishing/releases/default-branch pushes produce warnings. Version checks remain debounced to once daily. `/freeze` restricts direct edits to its selected directory.
-- **PostToolUse** — formats direct edits using installed project/PATH tools, then tracks the formatted changes in the same sequential command. Shell commands are tracked by comparing file state before and after execution. The title updater reads the actual tool name from the event.
-- **Stop** — runs `git diff --check` and existing quick project checks for code changed by the agent, then plays the existing completion sound. Formatting remains per edit; whole-project checks run at the end of a changed turn. Successful verification is quiet. Failures return actionable feedback, with repeated identical failures bounded to avoid a Stop loop. Missing project checks are reported explicitly. Hooks do not install dependencies or download formatter/checker tools.
+- **PreToolUse** — the Bash guard requests native approval for recognized production deployments, infrastructure changes, and database/schema mutations; publishing/releases/default-branch pushes produce warnings. Version checks remain debounced to once daily. `/freeze` restricts direct edits to its selected directory.
+- **PostToolUse** — formats direct edits using installed project/PATH tools; hooks do not install dependencies or download formatters. The title updater reads the actual tool name from the event.
+- **Stop** — plays the existing completion sound through `ai-notify`.
 - **Notification** (`permission_prompt|idle_prompt`) — reuses `ai-notify` for attention sounds, retaining its cooldown while bypassing the completion minimum-duration filter.
-- **SessionEnd** — writes session metadata with the event's session ID as compact JSONL and clears session verification state. No prompts, transcript contents, or secrets are recorded.
+- **SessionEnd** — writes session metadata with the event's session ID as compact JSONL. No prompts, transcript contents, or secrets are recorded.
 
-Codex hooks remain in `codex/hooks.json`, enabled by `[features].hooks = true`. Codex 0.154.0 dispatches shell (`Bash`) and direct `apply_patch` events, so both feed the shared final verifier. Its existing `notify` config handles completion sounds.
+Codex hooks remain in `codex/hooks.json`, enabled by `[features].hooks = true`; they register only the Bash command guard. Its existing `notify` config handles completion sounds.
 
 The command guard inspects executable command words instead of raw text, so quoted examples and non-shell heredoc bodies are not treated as deployments. It handles common command wrappers, chains and literal shell commands; it does not resolve arbitrary scripts, aliases, or dynamically constructed commands. Codex 0.154.0 supports `deny` but does **not** support a hook `permissionDecision` of `ask`; actual matched risky commands remain denied there. Claude uses its supported native approval request. No approval-bypass flag is provided.
 
