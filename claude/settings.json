@@ -173,16 +173,6 @@
             "timeout": 5
           }
         ]
-      },
-      {
-        "matcher": "Bash|Edit|Write|NotebookEdit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 \"$HOME/GitHub/ai-config/scripts/hook-verification.py\" --agent claude pre",
-            "timeout": 10
-          }
-        ]
       }
     ],
     "PostToolUse": [
@@ -191,18 +181,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"$HOME/GitHub/ai-config/scripts/claude-post-edit.sh\"",
+            "command": "\"$HOME/GitHub/ai-config/scripts/claude-post-edit-format.sh\"",
             "timeout": 30
-          }
-        ]
-      },
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 \"$HOME/GitHub/ai-config/scripts/hook-verification.py\" --agent claude post",
-            "timeout": 10
           }
         ]
       },
@@ -222,8 +202,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"$HOME/GitHub/ai-config/scripts/claude-stop.sh\"",
-            "timeout": 180
+            "command": "\"$HOME/GitHub/terminal-config/bin/ai-notify\" claude stop >/dev/null 2>&1 || true",
+            "timeout": 5
           }
         ]
       }
@@ -245,7 +225,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"$HOME/GitHub/ai-config/scripts/claude-session-end.sh\"",
+            "command": "\"$HOME/GitHub/ai-config/scripts/session-capture.sh\"",
             "timeout": 5
           }
         ]
