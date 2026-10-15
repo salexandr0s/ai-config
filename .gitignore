@@ -26,6 +26,7 @@ debug/
 !codex/skills/debug/**
 sessions/
 cache/
+__pycache__/
 
 # Browse daemon
 browse/node_modules/
