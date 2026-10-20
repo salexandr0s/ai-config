@@ -153,8 +153,8 @@ def check_package(repo: Path) -> Path:
     for field in ("display_name", "short_description", "default_prompt"):
         require(re.search(rf"^  {field}:[ \t]*\S.+$", metadata, re.MULTILINE) is not None,
                 f"agents/openai.yaml: missing {field}")
-    require(re.search(r"^  allow_implicit_invocation: false[ \t]*$", metadata, re.MULTILINE) is not None,
-            "agents/openai.yaml: explicit invocation policy changed")
+    require(re.search(r"^  allow_implicit_invocation: true[ \t]*$", metadata, re.MULTILINE) is not None,
+            "agents/openai.yaml: automatic use for copy requires implicit invocation")
     for name in ("prose", "technical"):
         config = read_json(package / "examples" / f"{name}.json")
         require(isinstance(config.get("mechanics"), dict), f"{name}.json: mechanics must be an object")

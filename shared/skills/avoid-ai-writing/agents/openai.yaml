@@ -3,4 +3,4 @@ interface:
   short_description: "Scan, rewrite, or edit prose and headlines"
   default_prompt: "Use $avoid-ai-writing to scan, rewrite, or edit this prose and its headlines in the requested mode, preserving voice, facts, structure, and protected content. Save only when requested."
 policy:
-  allow_implicit_invocation: false
+  allow_implicit_invocation: true

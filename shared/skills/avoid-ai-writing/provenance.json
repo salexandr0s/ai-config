@@ -2,7 +2,7 @@
   "schema_version": 1,
   "package": "avoid-ai-writing",
   "imported_version": "3.37.0",
-  "local_revision": 1,
+  "local_revision": 2,
   "immediate_source": {
     "repository": "https://github.com/salexandr0s/avoid-ai-writing",
     "commit": "1416dfd0388fb338f43d248d5f262fa44eefe4b2"
@@ -31,7 +31,7 @@
     {
       "area": "editing policy and workflow",
       "paths": ["SKILL.md", "references/patterns.md"],
-      "changes": "Local editing contract, source fidelity, protected content, runtime guidance, and output references."
+      "changes": "Local editing contract, source fidelity, protected content, runtime guidance, and output references; automatic use for drafted and edited copy, including text embedded in structured files."
     },
     {
       "area": "titles and headings",
@@ -41,7 +41,7 @@
     {
       "area": "Codex interface copy",
       "paths": ["agents/openai.yaml"],
-      "changes": "Display name, description, and prompt aligned with the local editing scope; explicit invocation retained."
+      "changes": "Display name, description, and prompt aligned with the local editing scope; implicit invocation enabled for automatic copy review."
     },
     {
       "area": "local documentation and provenance",

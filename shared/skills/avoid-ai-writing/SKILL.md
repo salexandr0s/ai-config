@@ -1,6 +1,6 @@
 ---
 name: avoid-ai-writing
-description: Scan prose and headlines for generic AI writing patterns, rewrite supplied text, or edit a named prose file in place. Preserve voice, facts, structure, and protected content; support optional voice and house style.
+description: Use whenever drafting or editing copy, prose, UI text, titles, headings, or subject lines. Review generic AI writing patterns while preserving facts, voice, uncertainty, protected content, and the requested scope.
 version: 3.37.0
 license: MIT
 compatibility: Any AI coding assistant that supports agentskills.io SKILL.md format (Claude Code, Cursor, VS Code Copilot, Hermes Agent, OpenHands, etc.) or OpenClaw. No external tools or APIs required.
@@ -9,6 +9,24 @@ compatibility: Any AI coding assistant that supports agentskills.io SKILL.md for
 # Avoid AI Writing: Prose and Headlines
 
 You are editing content to remove AI writing patterns ("AI-isms") that make text sound machine-generated.
+
+## Use whenever copy is created or edited
+
+Apply these rules during drafting and review the final wording before delivery.
+The user does not need to name this skill. For new copy, use the supplied facts
+and requested voice; do not invent evidence, benefits, or speaker experience.
+For copy embedded in source code or configuration, review the requested text
+strings while preserving surrounding syntax and identifiers; the file-level
+prose editing workflow below does not authorize rewriting a structured file.
+Existing text remains subject to the editing contract and requested mode.
+
+When copy is part of another task, apply the editorial rules and final wording
+review within that task's normal artifact and response format. This automatic
+use has no default rewrite mode and does not require a separate audit, a
+"Final rewrite" section, or the standalone workflow's tool and verification
+reports. Use bundled checks when they help assess the copy. The modes, editing
+passes, tool steps, and output contracts below apply to requested standalone
+prose reviews, rewrites, and file edits.
 
 ## What this skill is and isn't
 

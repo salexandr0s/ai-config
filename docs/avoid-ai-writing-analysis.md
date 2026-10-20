@@ -6,6 +6,15 @@ safer with user files, and more useful for prose and titles. The review covers
 the complete skill and catalog, all five JavaScript tools, examples, metadata,
 installation links, and the relevant live Claude/Codex configuration.
 
+## Policy update on 2026-10-20
+
+The workspace now requires `avoid-ai-writing` whenever copy is drafted or
+edited, including text embedded in code. Codex's metadata sets
+`allow_implicit_invocation: true`; explicit commands remain available.
+Automatic use follows the task's normal output format. Standalone prose review
+requests retain the skill's detailed editing and reporting workflow. The audit
+below records the earlier state, including its explicit invocation policy.
+
 ## Findings and changes
 
 The existing shared folder is the right source of truth. Its two relative

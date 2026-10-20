@@ -346,8 +346,11 @@ ownership, and updates. Its `provenance.json` records the imported source,
 canonical upstream, and local changes. The [full review](docs/avoid-ai-writing-analysis.md)
 explains the findings and verification limits.
 
-Start a fresh chat and use `/avoid-ai-writing` in Claude or `$avoid-ai-writing`
-in Codex. Codex requires explicit invocation. The mechanical tools use Node.js
+The shared workspace instructions require this skill whenever agents draft or
+edit copy, including UI text embedded in code. Codex permits implicit invocation;
+neither tool requires the user to name the skill. Start a fresh chat to refresh
+changed skill metadata. `/avoid-ai-writing` in Claude and `$avoid-ai-writing`
+in Codex remain available for explicit requests. The mechanical tools use Node.js
 18 or newer without installing dependencies; model-only review must be labelled.
 
 Verify the package and both installed links offline:
@@ -390,6 +393,8 @@ Resources are symlinked to `~/.claude/resources/` by the installer.
 `shared/CLAUDE.md` is the workspace-level instruction file symlinked to `~/GitHub/CLAUDE.md`. It governs all agent behavior across both tools:
 
 - **Hard rules** — verification frequency, no mass renames, no blanket type suppressions, no weakening rules to pass checks
+- **Testing and verification** — add tests for concrete uncovered risks, reuse existing coverage, and run checks proportional to the change; required CI gates still apply
+- **Copy and prose** — always apply `avoid-ai-writing` when drafting or editing copy
 - **Session protocol** — start/end checklists, shared memory at `~/GitHub/.memory/`
 - **Dev stack defaults** — TypeScript (strict), Next.js, Fastify, TailwindCSS, Radix UI, Zod, Prisma, Vitest, Playwright
 - **Git conventions** — branch naming, conventional commits, small reviewable changes

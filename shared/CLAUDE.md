@@ -10,14 +10,15 @@ Key words: **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, **MAY** per RFC 2
 1. Agents **MUST NOT** perform mass automated renames — use small batches with verification between each
 2. Agents **MUST NOT** run destructive git operations without user confirmation — verify branch state first
 3. Agents **MUST NOT** add blanket type suppressions — each MUST have context-specific justification
-4. Agents **MUST** run checks frequently — MUST NOT accumulate 50+ changes before verifying
+4. Agents **MUST** verify at meaningful checkpoints, using checks proportional to the change and its risk
 5. Agents **MUST** respect project-level `CLAUDE.md` — project rules override workspace rules on conflict
 6. Agents **MUST NOT** weaken rules to pass checks — fix the code, not the rules
-7. Agents **MUST** verify their own work — run verification commands before marking complete
+7. Agents **MUST** verify their own work before marking complete, following the Testing and Verification policies below
 8. Agents **SHOULD** log repeatable errors to `~/.claude/MEMORY/LEARNINGS/what-fails.md`
 9. Before any structural refactor on a file over 300 LOC, agents **MUST** first remove dead props, unused imports/exports, unreachable code, and debug logs; that cleanup **MUST** be isolated from the refactor and, when commits are in scope, **MUST** be committed separately before the refactor
 10. Agents **MUST NOT** use "simplest approach" or "stay in scope" as a reason to preserve flawed architecture, duplicated state, or inconsistent patterns — propose the structural fix a senior reviewer would expect and get approval if scope expands
 11. Agents **MUST** use a dual-mode quality posture: straightforward localized tasks **SHOULD** stay within approved scope, but refactors, architecture work, and AI-config or policy work **MUST** be held to senior-review quality and **MUST NOT** preserve reviewer-visible structural issues for brevity
+12. Agents **MUST** apply `avoid-ai-writing` whenever creating or editing copy, including copy embedded in source files; no explicit skill invocation is required
 
 ---
 
@@ -91,6 +92,15 @@ Monorepos **SHOULD** use: `apps/{web,api,desktop}` + `packages/{shared,ui}`
 
 ---
 
+## Copy and Prose
+
+- Agents **MUST** use `avoid-ai-writing` for every copy task: website and marketing copy, UI labels and messages, emails, articles, documentation, reports, commit and PR descriptions, titles, headings, and subject lines. Apply it during drafting and review the final wording before delivery or saving. Automatic use follows the task's normal delivery format; a separate writing audit is only needed when requested.
+- Before drafting or editing copy, agents **MUST** read the installed skill's `SKILL.md` and `references/patterns.md`; for titles, headings, and subject lines, also read `references/headlines.md`. Read these once per session and consult them again when context is lost or the files change.
+- The installed skill is at `~/.claude/skills/avoid-ai-writing/` or `~/.codex/skills/avoid-ai-writing/`; both resolve to `~/GitHub/ai-config/shared/skills/avoid-ai-writing/`. Agents **MUST NOT** wait for `/avoid-ai-writing` or `$avoid-ai-writing` to be typed by the user.
+- Agents **MUST** preserve facts, uncertainty, voice, approved brand wording, and protected content. When copy is embedded in code or configuration, apply the writing rules to the requested strings without rewriting surrounding syntax or identifiers. English-specific detector rules **MUST NOT** be imposed mechanically on other languages.
+
+---
+
 ## Git Conventions
 
 ### Branches
@@ -106,7 +116,7 @@ Types: `feat` · `fix` · `chore` · `refactor` · `test` · `docs` · `style` �
 
 - Agents **MUST** commit logical units, not "save progress" dumps
 - Agents **MUST NOT** commit `.env`, credentials, or secrets
-- Agents **MUST** run lint + type-check before committing
+- Agents **MUST** run the applicable checks from Verification before committing
 - Commits **SHOULD** be small and reviewable
 
 ---
@@ -143,29 +153,35 @@ Use `/browse` for persistent browser interaction and `/qa --browser <url>` for b
 
 ---
 
+## Testing
+
+Agents **SHOULD** prioritize working software and a small test suite that catches meaningful failures. Test code has implementation, maintenance, and runtime costs. Coverage percentages, test counts, and test-to-production LOC ratios **MUST NOT** be treated as quality goals or arbitrary caps.
+
+- Before adding a test, agents **MUST** identify a concrete failure it would catch and check whether existing coverage already catches it. Add or extend coverage only when the additional protection justifies its cost.
+- Agents **SHOULD** test business rules, meaningful branches, boundary contracts, and regressions likely to recur. Auth, permissions, payments, data integrity, migrations, and concurrency warrant deeper coverage when affected.
+- Agents **SHOULD NOT** add tests for copy edits, styling, static markup, or reversible configuration changes unless they affect behavior with a meaningful failure risk. Existing checks, parsing, a focused smoke check, or visual inspection can be sufficient.
+- Agents **SHOULD** extend existing tests, reuse small fixtures, and choose the lowest test layer that can catch the failure reliably. Integration tests are appropriate for boundary behavior; E2E tests **SHOULD** cover a small set of critical user journeys.
+- Agents **MUST NOT** repeat the same behavior at unit, integration, and E2E layers without a distinct risk at each layer. Avoid tests that mirror implementation, verify mock wiring or framework behavior, assert incidental text or layout, or enumerate speculative edge cases and permutations.
+- Agents **MUST NOT** introduce a test framework, large fixtures, snapshot collections, or elaborate mocks solely to cover a small change. Consolidate redundant tests encountered in the touched area when their useful protection can be preserved; broad suite cleanup requires its own scope.
+- Agents **MUST** apply this policy to generic workflow and reviewer requests for more tests. Explicit user requirements and required project CI gates still apply. Agents **MUST NOT** delete useful coverage or weaken checks solely to reduce test volume.
+
 ## Verification
 
-Agents **MUST** check for a `## Verification` section in the project's `CLAUDE.md` first. If none exists:
-
-```bash
-dev-verify              # Auto-detects project type, runs lint + typecheck + tests
-dev-verify --quick      # Skip tests for rapid iteration
-```
-
-Agents **MUST** run `dev-verify --quick` after every 3–5 file changes. Agents **MUST** run full `dev-verify` before commits and before marking tasks complete.
-
-For JS/TS projects, verification **MUST** include `npx tsc --noEmit` (or project equivalent) and, if ESLint is configured, `npx eslint . --quiet` (or project equivalent). Agents **MUST NOT** mark work complete until all reported errors are fixed. If no type-checker is configured, agents **MUST** state that explicitly.
-
-If `dev-verify` cannot run because the repo has no detectable project type or no unified verify entrypoint, agents **MUST** run targeted validation that matches the touched files (for example: JSON parse, `tomllib` parse, `bash -n`, generated-config render smoke test) and **MUST** report that fallback explicitly.
+- Agents **MUST** first check the project's `AGENTS.md` / `CLAUDE.md` and required CI checks. Select validation based on changed behavior and affected dependencies.
+- During implementation, agents **SHOULD** run focused checks at meaningful checkpoints. `dev-verify --quick` is available for lint and type checks; targeted test commands **SHOULD** cover affected behavior. File counts alone do not require rerunning checks.
+- For JS/TS code changes, agents **MUST** run the configured type check and applicable lint checks. For prose, static assets, and configuration, agents **SHOULD** use relevant checks such as link review, visual inspection, JSON/TOML parsing, `bash -n`, or a render smoke check. Agents **MUST NOT** invent a type-checking setup for a repository that has none.
+- Agents **SHOULD** run the full relevant suite when a change affects shared behavior, has a broad or uncertain impact, prepares a release, or a project gate or user request requires it. Full `dev-verify` runs lint, type checks, and tests; it is **not** mandatory after every few edits, before every commit, or for every task completion.
+- Once the applicable checks pass, agents **SHOULD** stop testing. Broaden or repeat checks only when new changes, failures, or unresolved risks justify it.
+- Agents **MUST** report what was checked and any material gaps or failures. Fix failures caused by the change; identify unrelated existing failures without silently expanding scope or claiming a clean run. If `dev-verify` cannot detect the project, use and report targeted validation for the touched files.
 
 ## Bug Handling
 
 - When an agent identifies a bug, the agent **MUST** report the suspected root cause, the proposed fix, and the agent's confidence in that fix.
 - Confidence **SHOULD** be stated plainly (`high`, `medium`, or `low`) and **SHOULD** note any key assumptions or unknowns.
 - A bug **MAY** be treated as simple only when the root cause is narrow, the fix is localized, and regression risk is low.
-- For any bug that is not simple, the agent **SHOULD** create or identify a test that reproduces the bug before implementing the fix.
-- If the agent does not add a reproducing test for a non-simple bug, the agent **MUST** explain why.
-- For a simple bug, the agent **MAY** fix first and add or update regression coverage immediately after, but the agent **SHOULD** still add regression coverage when practical.
+- Agents **SHOULD** reproduce a bug with an existing test or the smallest useful check before fixing it when that helps establish the cause.
+- For bugs with meaningful recurrence risk, agents **SHOULD** add or extend focused regression coverage if existing tests do not catch the failure. Apply the Testing policy; every bug fix does not require a new test.
+- For a simple bug, agents **MAY** fix first and use a targeted check or inspection to confirm the result.
 
 ---
 
@@ -264,7 +280,7 @@ When asking the user a question, agents **SHOULD**:
 A task is done when ALL of:
 
 1. Implementation matches the plan (or deviations are documented)
-2. `dev-verify` passes, or when that is unavailable for the repo shape, equivalent targeted validation for touched file types passes and is reported explicitly
+2. Applicable checks selected under Verification pass, with any unrelated existing failures or material gaps reported explicitly
 3. No new TODO/FIXME in changed files (unless explicitly deferred)
 4. Changes committed with conventional message format
 5. SESSION_HANDOFF.md written if work spans multiple sessions

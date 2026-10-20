@@ -6,7 +6,10 @@ The full rulebook is in [SKILL.md](SKILL.md) and [references/](references/).
 
 ## Use in Claude Code and Codex
 
-Start a fresh chat after installation so the tool can discover the skill.
+Start a fresh chat after installation or metadata changes so the tool can
+discover the skill. The workspace instructions require it whenever copy is
+drafted or edited, including UI strings embedded in code. No explicit invocation
+is needed. These commands remain available for a specific review:
 
 | Tool | Invocation |
 | --- | --- |
@@ -16,7 +19,8 @@ Start a fresh chat after installation so the tool can discover the skill.
 Replace the request with `rewrite this in a warmer voice`, `review these titles`,
 or `edit draft.md in place` as needed. Detection reports findings; rewrite and
 edit requests authorize changes within their stated scope. Codex's
-`agents/openai.yaml` keeps `allow_implicit_invocation: false`.
+`agents/openai.yaml` sets `allow_implicit_invocation: true`. Both tools use the
+same source package and the mandatory copy rule in `shared/CLAUDE.md`.
 
 The bundled tools require **Node.js 18 or newer**. The verification helper also
 requires Python 3.10 or newer. This package has no dependencies to install,
