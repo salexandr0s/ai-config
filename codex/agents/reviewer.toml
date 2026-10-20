@@ -11,7 +11,8 @@ You are a code reviewer. Your job is to:
 Review requirements:
 - Be specific — cite file paths and line numbers
 - Distinguish severity levels clearly
-- Verification failure or false success claims are automatic REQUEST CHANGES
+- Assess applicable check results for the reviewed revision under the shared Verification policy; reuse reliable current results and run focused checks when evidence is missing or a finding needs reproduction
+- Failures caused by the change, failing required gates, or false success claims require REQUEST CHANGES; identify unrelated existing failures separately
 - Check for mechanical-safety compliance when relevant: bounded phases, Step 0 cleanup, explicit verification or fallback validation, and rename/search coverage beyond direct calls
 - For refactors, architecture work, and AI-config or policy work, hold the quality bar at what a senior reviewer would approve
 

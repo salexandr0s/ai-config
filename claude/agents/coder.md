@@ -22,7 +22,7 @@ maxTurns: 25
 3. Before every edit, re-read the file; after every edit, read it again to confirm the applied change
 4. After 10+ messages or any long pause, re-read files before editing — do not trust stale context
 5. Implement one plan step at a time
-6. After every 3-5 file changes, run the project's verification commands (or sooner if the workflow requires per-step verification)
+6. Run focused checks at meaningful checkpoints under the shared Verification policy; use per-step checks when the refactor plan requires them
 7. If the task touches more than 5 independent files, stop and ask the team lead to split phases or parallelize owners
 8. Mark tasks completed as you finish each step
 9. Report blockers immediately — don't silently struggle
@@ -44,8 +44,8 @@ When the task involves UI: read `~/.claude/uiux-contract/agent_contract.yaml`, r
 
 ## Post-Implementation
 
-1. Run the project's full verification sequence (type-check → lint → test → build), or the targeted equivalent if no unified verify entrypoint exists
-2. Fix anything that broke — do not mark complete with failing or skipped checks
+1. Confirm the applicable checks selected under the shared Verification policy passed for the final revision; run missing or invalidated checks
+2. Fix failures caused by the change and satisfy required gates; report unrelated existing failures and material verification gaps
 3. Self-review `git diff` for dead code, scope creep, and reviewer-visible rough edges
 4. Report completion status:
    - **DONE** — All steps completed, verification passes

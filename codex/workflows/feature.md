@@ -49,7 +49,7 @@ After user approval, spawn the **coder** agent with the approved plan:
 - Execute the plan step-by-step
 - Before every edit, re-read the file; after every edit, read it again to confirm the applied change
 - After 10+ messages or any long pause, re-read files before editing
-- Run `dev-verify --quick` every 3-5 file changes, or the plan's targeted fallback if needed
+- Run the plan's focused checks at meaningful checkpoints under the shared Verification policy
 - Stay within scope for straightforward work, but do not preserve reviewer-visible structural issues on refactor or AI-config style tasks
 - Report blockers immediately
 
@@ -59,7 +59,7 @@ Spawn the **reviewer** agent to review the coder's changes:
 
 - Check implementation against the approved plan
 - Assess correctness, security, performance, quality, and mechanical-safety compliance
-- Verify test coverage
+- Assess coverage for concrete failure risks under the shared Testing policy; require new tests only for useful uncovered risks
 - Produce a Must Fix / Should Fix / Nits / Verdict report
 
 If the reviewer finds "Must Fix" items:
@@ -69,7 +69,7 @@ If the reviewer finds "Must Fix" items:
 
 ### Phase 5: Closeout
 
-- Run full `dev-verify`, or the targeted equivalent if no unified verify entrypoint exists
+- Confirm applicable checks passed for the final revision under the shared Verification policy; run missing or invalidated checks
 - Commit with conventional message format
 - Present summary to user
 
@@ -78,5 +78,5 @@ If the reviewer finds "Must Fix" items:
 - Explorer and planner are read-only — they must not modify files
 - User approval gate between Plan and Implement is mandatory
 - Max 3 review-fix cycles before escalating to user
-- Worker must run verification every 3-5 file changes unless the plan requires a tighter cadence
+- Worker must use checks proportional to risk; file counts alone do not trigger reruns or a full suite
 - Work touching more than 5 independent files must be split into phases or parallel owners with disjoint ownership

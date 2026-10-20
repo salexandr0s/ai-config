@@ -174,6 +174,16 @@ Agents **SHOULD** prioritize working software and a small test suite that catche
 - Once the applicable checks pass, agents **SHOULD** stop testing. Broaden or repeat checks only when new changes, failures, or unresolved risks justify it.
 - Agents **MUST** report what was checked and any material gaps or failures. Fix failures caused by the change; identify unrelated existing failures without silently expanding scope or claiming a clean run. If `dev-verify` cannot detect the project, use and report targeted validation for the touched files.
 
+## CI and Deployment
+
+- Routine PRs **MUST** use verification scoped to the changed behavior and its dependencies. PR creation, merge, or deployment alone **MUST NOT** trigger a manual full-audit dispatch before or afterward; require an affected risk or explicit requirement as described below. Reuse successful applicable checks for the same revision and environment; rerun when changes, failures, or unresolved risks warrant it.
+- Before adding a required GitHub or Vercel check, merge or deployment blocker, or mandatory audit, agents **MUST** name the concrete failure risk, explain why existing checks miss it, and justify the check's scope and runtime cost. Without that justification, agents **MUST NOT** add the gate.
+- Agents **MUST** preserve useful existing required checks, branch protections, production approvals, and security controls. Speed alone does not justify removing or bypassing them.
+- CI jobs **SHOULD** run conditionally for affected paths and dependencies, including shared code, build configuration, and lockfile changes. Required check reporting **MUST** remain reliable when work is skipped. Cancel superseded PR runs when safe; **MUST NOT** interrupt production deployments or data migrations merely because a newer commit exists.
+- Agents **SHOULD** cache dependencies and reusable build outputs with keys that reflect their inputs, run independent jobs in parallel, and reuse verified artifacts where environments permit. Avoid repeating the same build or tests in GitHub and Vercel without a distinct risk or provider requirement.
+- Broad E2E, security, signature, and history audits **SHOULD** be optional or scheduled unless affected risk or explicit user or project requirements justify running them for the change. Agents **MUST** select the audits that address the named risk; a risk at one boundary does not automatically justify the entire audit matrix. Relevant triggers include auth or permission changes, payments, data migrations, dependency trust changes, release signing, and suspected compromise.
+- Deployment verification **SHOULD** use the relevant build, health, or smoke checks for the affected environment. These Testing, Verification, and CI policies govern generic agent, command, and workflow instructions; an explicitly requested full suite or audit and existing required gates still apply.
+
 ## Bug Handling
 
 - When an agent identifies a bug, the agent **MUST** report the suspected root cause, the proposed fix, and the agent's confidence in that fix.

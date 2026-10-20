@@ -58,17 +58,17 @@ Commit to a root cause.
 Fix the root cause with the narrowest reviewer-acceptable change.
 
 1. **Auto-scope-lock:** Write the affected directory to `~/.claude/freeze-dir.txt` to prevent accidental edits elsewhere
-2. Write a regression test that **fails before** the fix and **passes after** when practical; if the bug is non-simple and no reproducer is added, explain why
+2. Reuse an existing reproducer or add a focused regression test when a meaningful recurrence risk remains uncovered under the shared Testing policy
 3. Apply the narrowest reviewer-acceptable fix at the root cause — avoid symptom-only band-aids
-4. Run the regression test to confirm it passes
-5. Run `dev-verify`, or the targeted fallback if no unified verify entrypoint exists, to check for collateral damage
+4. Run the selected reproduction check to confirm the fix
+5. Run focused checks for affected dependencies under the shared Verification policy
 
 ---
 
 ## Closeout
 
 1. **Unfreeze:** Delete `~/.claude/freeze-dir.txt`
-2. Run `dev-verify` — full verification, or the targeted equivalent if no unified verify entrypoint exists
+2. Confirm applicable checks passed for the final revision under the shared Verification policy; run missing or invalidated checks
 3. Report status using one of:
    - **DONE** — Root cause identified, fix applied, tests pass, verification passes
    - **DONE_WITH_CONCERNS** — Fixed but with caveats (list each concern)
@@ -88,6 +88,6 @@ Fix the root cause with the narrowest reviewer-acceptable change.
 Before declaring done, verify:
 - [ ] Fix addresses root cause, not just the symptom
 - [ ] No new `any` types, type suppressions, or weakened checks
-- [ ] Regression test actually fails without the fix
-- [ ] `dev-verify` passes clean, or targeted fallback validation passes and is reported explicitly
+- [ ] Any added regression test actually fails without the fix
+- [ ] Applicable checks pass and material gaps or unrelated existing failures are reported explicitly
 - [ ] Freeze has been removed

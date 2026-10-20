@@ -59,9 +59,9 @@ Structured 2-pass review system. CRITICAL findings block merge; INFORMATIONAL fi
 
 ### Test Gaps
 
-- New behavior has corresponding tests
-- Edge cases covered (empty input, boundary values, error paths)
-- Integration points tested
+- Concrete failure risks have useful existing or added coverage under the shared Testing policy
+- Additional edge-case or integration tests catch a meaningful uncovered risk
+- Review requests for new tests name the failure they would catch and account for maintenance cost
 
 ### Convention Deviations
 

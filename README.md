@@ -394,6 +394,7 @@ Resources are symlinked to `~/.claude/resources/` by the installer.
 
 - **Hard rules** — verification frequency, no mass renames, no blanket type suppressions, no weakening rules to pass checks
 - **Testing and verification** — add tests for concrete uncovered risks, reuse existing coverage, and run checks proportional to the change; required CI gates still apply
+- **CI and deployment** — require a named uncovered risk for new gates, scope jobs to affected behavior, and use caching, cancellation, and parallel execution; broad audits remain optional or scheduled unless justified
 - **Copy and prose** — always apply `avoid-ai-writing` when drafting or editing copy
 - **Session protocol** — start/end checklists, shared memory at `~/GitHub/.memory/`
 - **Dev stack defaults** — TypeScript (strict), Next.js, Fastify, TailwindCSS, Radix UI, Zod, Prisma, Vitest, Playwright

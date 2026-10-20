@@ -64,7 +64,7 @@ After user approval, spawn the **coder** agent with the approved plan:
 
 - Re-read files before changing them, and re-read them again after each change to confirm the applied edit
 - Execute ONE step at a time
-- Run `dev-verify` (full, not --quick) after EVERY step, or the plan's targeted fallback if needed
+- After EVERY step, run the plan's focused checks for that step and affected dependencies under the shared Verification policy; reserve full `dev-verify` for justified broad risk or required gates
 - If verification passes: proceed to next step
 - If verification fails: REVERT the step immediately, confirm clean state, report failure
 - Do NOT fix forward — revert and report
@@ -85,7 +85,7 @@ If "Must Fix" items found: coder fixes, reviewer re-reviews (max 2 cycles).
 
 ### Phase 6: Closeout
 
-- Run full `dev-verify` one final time, or the targeted equivalent if no unified verify entrypoint exists
+- Confirm applicable checks passed for the final revision under the shared Verification policy; run missing or invalidated checks
 - Commit with message: `refactor(scope): description`
 - Present summary: what changed, steps completed, any deferred items
 

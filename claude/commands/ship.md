@@ -6,14 +6,14 @@ $ARGUMENTS
 
 1. Confirm NOT on main/master branch. STOP if on default branch.
 2. Fetch and rebase on the base branch: `git fetch origin && git rebase origin/main`
-3. Run `dev-verify` (lint + typecheck + tests). STOP on failure — fix first.
+3. Confirm the applicable checks selected under the shared Testing, Verification, and CI policies passed for this revision. Run missing or invalidated checks; use full `dev-verify` only when risk or required gates justify it. STOP on failures caused by the change or a failing required gate.
 
 ## Phase 2: Pre-Merge Review
 
 Self-review all changes (`git diff origin/main...HEAD`):
 
 - BLOCKER: debug prints (console.log used for debugging), hardcoded secrets, .env files, conflict markers (`<<<<<<<`)
-- WARNING: TODOs without ticket references, large functions (>50 lines added), missing tests for new behavior
+- WARNING: TODOs without ticket references, large functions (>50 lines added), concrete failure risks missing useful coverage
 
 Report findings. STOP on any BLOCKER — fix before continuing.
 
@@ -51,5 +51,6 @@ Report findings. STOP on any BLOCKER — fix before continuing.
 - Never run on main/master
 - Never force-push
 - User approval required for version bump (Phase 3 gate)
-- Stop on failing checks — do not skip verification
+- Stop on failures caused by the change or a failing required gate; report unrelated existing failures without treating them as additional blockers
+- Keep the review scoped to the diff; broad manual audits before or after the PR require an affected risk or explicit request.
 - If no package.json or CHANGELOG.md, skip versioning (Phase 3) entirely

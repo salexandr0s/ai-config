@@ -69,7 +69,7 @@ Task: Execute the plan step-by-step:
 - Match existing project patterns and conventions
 - Before every edit, re-read the file; after every edit, read it again to confirm the applied change
 - After 10+ messages or any long pause, re-read files before editing
-- Run `dev-verify --quick` every 3-5 file changes, or the plan's targeted fallback if no unified verify entrypoint exists
+- Run the plan's focused checks at meaningful checkpoints under the shared Verification policy
 - Report blockers immediately — do not silently struggle
 - Stay within plan scope for straightforward work, but do not preserve reviewer-visible structural issues on refactor or AI-config style tasks
 - If multiple owners were planned, keep ownership disjoint
@@ -88,7 +88,7 @@ Task: Review the implementation:
 
 - Check implementation matches the approved plan
 - Assess correctness, security, performance, and quality
-- Verify test coverage for new functionality
+- Assess coverage for concrete failure risks under the shared Testing policy; require new tests only for useful uncovered risks
 - Check for convention violations (consult CLAUDE.md)
 - Check mechanical-safety compliance where relevant (bounded phases, rename search coverage, explicit verification)
 - Produce report: Must Fix / Should Fix / Nits / Verdict
@@ -104,7 +104,7 @@ Assign to: `coder` (fix) then `reviewer` (re-review)
 For each iteration:
 
 1. Coder addresses all "Must Fix" and "Should Fix" items
-2. Coder runs `dev-verify --quick` or the targeted fallback if needed
+2. Coder runs focused checks for the fixes and affected dependencies
 3. Reviewer re-reviews only the changed areas
 4. If new "Must Fix" items → next iteration
 5. If clean → proceed to Phase 6
@@ -117,7 +117,7 @@ Assign to: team-lead
 
 Task:
 
-1. Run full `dev-verify` (lint + typecheck + tests), or the targeted equivalent if no unified verify entrypoint exists
+1. Confirm applicable checks passed for the final revision under the shared Verification policy; run missing or invalidated checks
 2. Verify all tasks are complete
 3. Commit changes with conventional message format
 4. Present summary to user: what was built, files changed, any deferred items
@@ -126,7 +126,7 @@ Task:
 
 - User approval is **REQUIRED** between Phase 2 (Plan) and Phase 3 (Implement)
 - Maximum 3 review-fix cycles — escalate after that
-- Coder **MUST** run `dev-verify --quick` every 3-5 file changes unless the plan defines a tighter cadence
+- Coder **MUST** use checks proportional to risk; file counts alone do not trigger reruns or a full suite
 - Work touching more than 5 independent files **MUST** be split into phases or parallel owners with disjoint ownership
 - All agents **MUST** use `SendMessage` for handovers, not broadcast
 - Scope changes **MUST** be flagged to user — never silently expand

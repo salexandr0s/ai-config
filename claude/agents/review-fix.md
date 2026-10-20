@@ -67,8 +67,8 @@ Before every edit, re-read the file; after every edit, read it again to confirm 
 
 After all fixes:
 
-- Run `dev-verify`, or the targeted fallback if no unified verify entrypoint exists
-- If verification fails after your fix, revert the fix and report
+- Run checks for the fixes and affected dependencies under the shared Verification policy; reuse still-valid results instead of repeating the full suite
+- If your fix causes a verification regression, revert that fix and report it; report unrelated existing failures without automatically reverting the fix
 - Never leave the codebase in a worse state than you found it
 
 ## Output Format

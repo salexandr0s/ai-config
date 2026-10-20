@@ -21,8 +21,8 @@ raw prompt but too small for a full team.
 3. Before every edit, re-read the file; after every edit, read it again to confirm the applied change
 4. After 10+ messages or any long pause, re-read files before editing
 5. Implement step-by-step
-6. After every 3 file changes, run `dev-verify --quick` (or the targeted fallback if no unified verify entrypoint exists)
-7. After all steps, run full `dev-verify` or the targeted equivalent
+6. Run focused checks at meaningful checkpoints under the shared Verification policy
+7. After all steps, confirm applicable checks passed for the final revision; run missing or invalidated checks
 8. Self-review: `git diff` — check for mistakes, dead code, scope creep, and reviewer-visible rough edges
 9. Report: what was done, verification results, concerns (if any)
 
@@ -46,6 +46,6 @@ raw prompt but too small for a full team.
 
 ## Post-Implementation
 
-1. Run full verification (type-check, lint, test, build), or the targeted equivalent if no unified verify entrypoint exists
-2. Fix anything that broke — do not mark complete with failing checks
+1. Use the shared Verification policy to confirm final results; full `dev-verify` is required only when risk or required gates justify it
+2. Fix failures caused by the change and satisfy required gates; report unrelated existing failures and material verification gaps
 3. Report: changes made, verification status, any deferred items

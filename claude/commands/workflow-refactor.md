@@ -115,15 +115,15 @@ For each step in the plan:
 1. Re-read the files you are about to change
 2. Implement the step's changes
 3. Re-read the changed files to confirm the applied change
-4. Run `dev-verify` (full, not --quick) immediately, or the plan's targeted fallback if no unified verify entrypoint exists
+4. Run the plan's focused checks for this step and affected dependencies under the shared Verification policy; reserve full `dev-verify` for justified broad risk or required gates
 5. If verification **passes** → report success, proceed to next step
 6. If verification **fails** → **STOP immediately**:
    - Revert the step using the plan's revert strategy
-   - Run `dev-verify` or the targeted fallback again to confirm clean revert
+   - Rerun the affected checks to confirm the revert restored the prior state
    - Report the failure and what went wrong to team-lead
    - Do NOT attempt to fix forward — wait for team-lead decision
 
-**Critical rule: verify after EVERY step, not every 3-5.**
+**Critical rule: verify after EVERY step with checks matched to that step's risk.**
 
 Handover to team-lead: step-by-step execution log with verification results.
 
@@ -154,7 +154,7 @@ Assign to: team-lead
 
 Task:
 
-1. Run full `dev-verify` one final time, or the targeted equivalent if no unified verify entrypoint exists
+1. Confirm applicable checks passed for the final revision under the shared Verification policy; run missing or invalidated checks
 2. Verify no behavioral changes were introduced
 3. Commit changes with conventional message: `refactor(scope): description`
 4. Present summary to user: what was refactored, steps completed, any deferred items

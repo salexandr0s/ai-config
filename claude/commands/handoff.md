@@ -6,7 +6,7 @@ Context (optional): $ARGUMENTS
    - Current branch and `git status`
    - Recent commits: `git log --oneline -10`
    - Uncommitted changes: `git diff --stat`
-   - Quick verification: `dev-verify --quick` (capture output)
+   - Verification results for the current revision; run only missing or invalidated applicable checks under the shared Verification policy
    - TODO/FIXME in recently changed files
 
 2. READ CONTEXT:

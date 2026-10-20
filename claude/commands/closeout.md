@@ -13,8 +13,8 @@ Context: $ARGUMENTS
    - Do not expand scope — only fix what's in the diff
 
 3. VERIFY:
-   - Run `dev-verify` (full: lint + typecheck + tests)
-   - All must pass. If any fail, fix and re-run.
+   - Confirm the applicable checks selected under the shared Verification policy passed for this revision; run missing or invalidated checks.
+   - Fix failures caused by the change and satisfy required gates. Report unrelated existing failures explicitly. Full `dev-verify` requires a risk or project requirement; do not repeat unchanged successful checks.
    - Check: no debug prints left, no TODO in new code, no hardcoded secrets
 
 4. COMMIT (with user approval):

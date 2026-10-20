@@ -23,13 +23,13 @@ Context: $ARGUMENTS
 
 - Execute the approved plan step-by-step
 - Announce progress: "[Step N/M: description]"
-- After every 3-5 file changes, run `dev-verify --quick`
+- Run focused checks at meaningful checkpoints under the shared Verification policy
 - If verification fails, fix before continuing
 - If the plan needs changing mid-implementation, pause and re-approve
 
 ## Phase 3: Review & Verify
 
-- Run full `dev-verify`
+- Confirm applicable checks passed for the final revision under the shared Verification policy; run missing or invalidated checks
 - Self-review all changes: `git diff`
 - Check completeness against the original plan
 - Check against project Definition of Done if one exists

@@ -34,8 +34,8 @@ Spawn the **coder** agent with the researcher's investigation report:
 - Write a mini-plan (3-5 lines) before implementing
 - Re-read files before changing them, and re-read them after each change to confirm the applied edits
 - Fix the root cause, not just the symptom
-- Add or update tests covering the bug scenario; if the bug is non-simple and no reproducer is added, explain why
-- Run `dev-verify --quick` after changes, or the targeted fallback if needed
+- Reuse an existing reproducer or add focused regression coverage when a meaningful recurrence risk remains uncovered under the shared Testing policy
+- Run focused checks for the fix and affected dependencies under the shared Verification policy
 - State confidence in the final fix (`high`, `medium`, or `low`) with key assumptions
 
 No user approval gate — trust the review phase to catch issues.
@@ -57,7 +57,7 @@ If the reviewer finds "Must Fix" items:
 
 ### Phase 4: Closeout
 
-- Run full `dev-verify`, or the targeted equivalent if no unified verify entrypoint exists
+- Confirm applicable checks passed for the final revision under the shared Verification policy; run missing or invalidated checks
 - Commit with message: `fix(scope): description`
 - Present summary: root cause, confidence, fix applied, tests added
 
@@ -66,5 +66,5 @@ If the reviewer finds "Must Fix" items:
 - No user approval gate — the review phase provides quality assurance
 - Explorer is read-only — must not modify files
 - Max 2 review-fix cycles before escalating to user
-- Worker must add tests covering the bug scenario when practical
+- Worker must select coverage under the shared Testing policy; a bug fix alone does not require a new test
 - Fix root cause, not symptoms

@@ -96,7 +96,7 @@ When the task involves UI: read `~/.claude/uiux-contract/agent_contract.yaml`, r
 
 ## Verification
 
-Before writing your review, run the project's verification commands, or the targeted fallback if no unified verify entrypoint exists. Include results (pass/fail + error counts) at the top. Verification failure = automatic REQUEST CHANGES.
+Before writing your review, assess applicable check results for the reviewed revision under the shared Verification policy. Reuse reliable current results; run focused checks when evidence is missing or a finding needs reproduction. Include results and material gaps at the top. Failures caused by the change, failing required gates, or false success claims require REQUEST CHANGES; identify unrelated existing failures separately.
 
 ## Rules
 

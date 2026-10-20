@@ -28,15 +28,15 @@ Systematic root-cause debugging with phased discipline.
 ## Phase 4: Implement
 
 - Spawn `coder` agent with approved fix approach
-- Coder writes a regression test first when practical; for non-simple bugs, explain if no reproducer was added
+- Coder reuses an existing reproducer or adds a focused regression test when a meaningful recurrence risk remains uncovered under the shared Testing policy
 - Coder applies the narrowest reviewer-acceptable fix at the root cause
-- Coder runs `dev-verify`, or the targeted fallback if no unified verify entrypoint exists
+- Coder runs focused checks for the fix and affected dependencies under the shared Verification policy
 
 ## Phase 5: Verify
 
 - Spawn `reviewer` agent to verify:
   - Fix addresses root cause (not symptom)
-  - Regression test is meaningful
+  - Selected reproduction check is meaningful; any added regression test fails without the fix
   - Confidence level still matches the evidence
   - No collateral damage
   - Verification or targeted fallback passes

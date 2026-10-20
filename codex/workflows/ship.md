@@ -18,14 +18,14 @@ You are running a pre-merge pipeline. Verify, review, version, and create a PR.
 
 1. Confirm NOT on main/master. STOP if on default branch.
 2. Fetch and rebase: `git fetch origin && git rebase origin/main`
-3. Run `dev-verify`. STOP on failure.
+3. Confirm the applicable checks selected under the shared Testing, Verification, and CI policies passed for this revision. Run missing or invalidated checks; use full `dev-verify` only when risk or required gates justify it. STOP on failures caused by the change or a failing required gate.
 
 ### Phase 2: Pre-Merge Review
 
 Self-review `git diff origin/main...HEAD`:
 
 - BLOCKER: debug prints, secrets, .env files, conflict markers
-- WARNING: TODOs without tickets, large functions, missing tests
+- WARNING: TODOs without tickets, large functions, concrete failure risks missing useful coverage
 
 STOP on any BLOCKER.
 
@@ -48,4 +48,5 @@ STOP on any BLOCKER.
 - Never on main/master
 - Never force-push
 - User approval for version bump
-- Stop on failing checks
+- Stop on failures caused by the change or a failing required gate; report unrelated existing failures without treating them as additional blockers
+- Keep the review scoped to the diff; broad manual audits before or after the PR require an affected risk or explicit request.
