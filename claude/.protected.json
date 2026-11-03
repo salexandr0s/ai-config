@@ -1,11 +1,11 @@
 {
   "version": "1.0.0",
-  "description": "Files that agents must never auto-modify without explicit user approval",
+  "description": "Manual edits require explicit user approval. settings.json is the versioned shared base; private overrides belong in settings.local.json. Runtime paths are relative to ~/.claude.",
   "protected": [
-    "user/MISSION.md",
-    "user/BELIEFS.md",
-    "user/NARRATIVES.md",
+    "USER/",
+    "MEMORY/",
     "settings.json",
-    "settings.local.json"
+    "settings.local.json",
+    ".env"
   ]
 }

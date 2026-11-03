@@ -7,8 +7,7 @@
     <key>ProgramArguments</key>
     <array>
         <string>/bin/bash</string>
-        <string>-c</string>
-        <string>$HOME/GitHub/ai-config/scripts/memory-rotate.sh</string>
+        <string>__AI_CONFIG_REPO__/scripts/memory-rotate.sh</string>
     </array>
     <key>StartCalendarInterval</key>
     <dict>
@@ -20,8 +19,8 @@
         <integer>0</integer>
     </dict>
     <key>StandardOutPath</key>
-    <string>/tmp/ai-memory-rotate.log</string>
+    <string>__AI_CONFIG_CACHE__/memory-rotate.log</string>
     <key>StandardErrorPath</key>
-    <string>/tmp/ai-memory-rotate.log</string>
+    <string>__AI_CONFIG_CACHE__/memory-rotate.log</string>
 </dict>
 </plist>

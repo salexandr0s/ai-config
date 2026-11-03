@@ -2,26 +2,30 @@
   "version": "1.0.0",
   "classification": {
     "system": {
-      "description": "Auto-upgradeable by install.sh — managed by ai-config repo",
+      "description": "Versioned defaults and templates managed by this repository",
       "paths": [
         "agents/",
         "commands/",
+        "resources/",
         "settings.json",
         "statusline-command.sh",
         "statusline-debug.sh",
         "output-styles/",
         "uiux-contract/",
         "skills/",
+        "user/",
         ".manifest.json",
+        ".protected.json",
         ".env.example"
       ]
     },
     "user": {
-      "description": "Preserved on upgrade — user-owned content",
+      "description": "Private paths under ~/.claude, preserved by install.sh",
       "paths": [
-        "user/",
+        "USER/",
+        "MEMORY/",
         "settings.local.json",
-        ".protected.json"
+        ".env"
       ]
     }
   }
