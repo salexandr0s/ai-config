@@ -4,8 +4,8 @@
     "unique_skills": 78,
     "claude_bindings": 46,
     "codex_bindings": 74,
-    "source_packages": 108,
-    "shared_packages": 16
+    "source_packages": 106,
+    "shared_packages": 18
   },
   "packages": [
     {
@@ -266,68 +266,46 @@
       "notice_sha256": {}
     },
     {
-      "path": "claude/skills/openspec-apply-change",
-      "name": "openspec-apply-change",
-      "description": "Implement tasks from an OpenSpec change. Use when the user wants to start implementing, continue implementation, or work through tasks.",
-      "tree_sha256": "b0f54a1e8a62d65294f07f7e0aba8494c2a950429b18dc9c10773fb07b1eef34",
-      "files": 1,
-      "license_files": [],
-      "declared_license": "MIT",
-      "provenance": {
-        "kind": "repository-snapshot",
-        "upstream": null,
-        "note": "Existing source; no upstream revision is asserted."
-      },
-      "license": "NOASSERTION",
-      "notice_sha256": {}
-    },
-    {
-      "path": "claude/skills/openspec-archive-change",
-      "name": "openspec-archive-change",
-      "description": "Archive a completed change in the experimental workflow. Use when the user wants to finalize and archive a change after implementation is complete.",
-      "tree_sha256": "b82c6dfe77434b1a48c5e7065e1aee7b6ebacb672c42b3aa28730bcc62518040",
-      "files": 1,
-      "license_files": [],
-      "declared_license": "MIT",
-      "provenance": {
-        "kind": "repository-snapshot",
-        "upstream": null,
-        "note": "Existing source; no upstream revision is asserted."
-      },
-      "license": "NOASSERTION",
-      "notice_sha256": {}
-    },
-    {
       "path": "claude/skills/openspec-explore",
       "name": "openspec-explore",
       "description": "Enter explore mode - a thinking partner for exploring ideas, investigating problems, and clarifying requirements. Use when the user wants to think through something before or during a change.",
-      "tree_sha256": "4181a9924d60991086baac48af1c198b40401a665a1e96e0345e313d7b5477b6",
-      "files": 1,
-      "license_files": [],
+      "tree_sha256": "2964bd2b841c06f73b48f48d7daf9c0df74b129d1b6e6be8d44b29be306a9e57",
+      "files": 2,
+      "license_files": [
+        "LICENSE"
+      ],
       "declared_license": "MIT",
       "provenance": {
         "kind": "repository-snapshot",
-        "upstream": null,
-        "note": "Existing source; no upstream revision is asserted."
+        "upstream": "https://github.com/Fission-AI/OpenSpec",
+        "note": "Existing tool-specific instructions retained. Missing upstream MIT license notice restored.",
+        "notice_source_revision": "2bd5bc3be964404657439f538857fcdf550f7398"
       },
-      "license": "NOASSERTION",
-      "notice_sha256": {}
+      "license": "MIT",
+      "notice_sha256": {
+        "LICENSE": "c3c7235bea1214ab62df643473975c2e8b8848f528901a976693f7d069713e64"
+      }
     },
     {
       "path": "claude/skills/openspec-propose",
       "name": "openspec-propose",
       "description": "Propose a new change with all artifacts generated in one step. Use when the user wants to quickly describe what they want to build and get a complete proposal with design, specs, and tasks ready for implementation.",
-      "tree_sha256": "3d960a0d2bbf2a2e9ab5952daa0d22f583e3aa8dbd7890eb8c62bf8fdd6bcacd",
-      "files": 1,
-      "license_files": [],
+      "tree_sha256": "6d9cf6da2e9b5246b708731ed50d2fed8e86121200631e7239b0a013fbe67499",
+      "files": 2,
+      "license_files": [
+        "LICENSE"
+      ],
       "declared_license": "MIT",
       "provenance": {
         "kind": "repository-snapshot",
-        "upstream": null,
-        "note": "Existing source; no upstream revision is asserted."
+        "upstream": "https://github.com/Fission-AI/OpenSpec",
+        "note": "Existing tool-specific instructions retained. Missing upstream MIT license notice restored.",
+        "notice_source_revision": "2bd5bc3be964404657439f538857fcdf550f7398"
       },
-      "license": "NOASSERTION",
-      "notice_sha256": {}
+      "license": "MIT",
+      "notice_sha256": {
+        "LICENSE": "c3c7235bea1214ab62df643473975c2e8b8848f528901a976693f7d069713e64"
+      }
     },
     {
       "path": "claude/skills/optimize",
@@ -993,68 +971,46 @@
       "notice_sha256": {}
     },
     {
-      "path": "codex/skills/openspec-apply-change",
-      "name": "openspec-apply-change",
-      "description": "Implement tasks from an OpenSpec change. Use when the user wants to start implementing, continue implementation, or work through tasks.",
-      "tree_sha256": "b0f54a1e8a62d65294f07f7e0aba8494c2a950429b18dc9c10773fb07b1eef34",
-      "files": 1,
-      "license_files": [],
-      "declared_license": "MIT",
-      "provenance": {
-        "kind": "repository-snapshot",
-        "upstream": null,
-        "note": "Existing source; no upstream revision is asserted."
-      },
-      "license": "NOASSERTION",
-      "notice_sha256": {}
-    },
-    {
-      "path": "codex/skills/openspec-archive-change",
-      "name": "openspec-archive-change",
-      "description": "Archive a completed change in the experimental workflow. Use when the user wants to finalize and archive a change after implementation is complete.",
-      "tree_sha256": "b82c6dfe77434b1a48c5e7065e1aee7b6ebacb672c42b3aa28730bcc62518040",
-      "files": 1,
-      "license_files": [],
-      "declared_license": "MIT",
-      "provenance": {
-        "kind": "repository-snapshot",
-        "upstream": null,
-        "note": "Existing source; no upstream revision is asserted."
-      },
-      "license": "NOASSERTION",
-      "notice_sha256": {}
-    },
-    {
       "path": "codex/skills/openspec-explore",
       "name": "openspec-explore",
       "description": "Enter explore mode for idea exploration, problem investigation, and requirement clarification. Use before or during a change when the user wants to think, not implement.",
-      "tree_sha256": "2b46fe856db5cd34523dafba0113431b7943bab6f9afc3c2eb49f1830340d947",
-      "files": 1,
-      "license_files": [],
+      "tree_sha256": "87538b41809acf8e55d9e05c585da90fe09afce196a724aa90aad7109164b729",
+      "files": 2,
+      "license_files": [
+        "LICENSE"
+      ],
       "declared_license": "MIT",
       "provenance": {
         "kind": "repository-snapshot",
-        "upstream": null,
-        "note": "Existing source; no upstream revision is asserted."
+        "upstream": "https://github.com/Fission-AI/OpenSpec",
+        "note": "Existing tool-specific instructions retained. Missing upstream MIT license notice restored.",
+        "notice_source_revision": "2bd5bc3be964404657439f538857fcdf550f7398"
       },
-      "license": "NOASSERTION",
-      "notice_sha256": {}
+      "license": "MIT",
+      "notice_sha256": {
+        "LICENSE": "c3c7235bea1214ab62df643473975c2e8b8848f528901a976693f7d069713e64"
+      }
     },
     {
       "path": "codex/skills/openspec-propose",
       "name": "openspec-propose",
       "description": "Propose a new change end to end. Use when the user wants one-step generation of a proposal, design, spec, and task list for implementation.",
-      "tree_sha256": "cb96d7cc7faf6dcaefb0bdfe1a2898a439f7f8d1b78b663b651646bbe5f376fe",
-      "files": 1,
-      "license_files": [],
+      "tree_sha256": "0e7ad5604db38ca7cf935154646edd56d5c31767ef35f5b34a6cc16c7eea9a12",
+      "files": 2,
+      "license_files": [
+        "LICENSE"
+      ],
       "declared_license": "MIT",
       "provenance": {
         "kind": "repository-snapshot",
-        "upstream": null,
-        "note": "Existing source; no upstream revision is asserted."
+        "upstream": "https://github.com/Fission-AI/OpenSpec",
+        "note": "Existing tool-specific instructions retained. Missing upstream MIT license notice restored.",
+        "notice_source_revision": "2bd5bc3be964404657439f538857fcdf550f7398"
       },
-      "license": "NOASSERTION",
-      "notice_sha256": {}
+      "license": "MIT",
+      "notice_sha256": {
+        "LICENSE": "c3c7235bea1214ab62df643473975c2e8b8848f528901a976693f7d069713e64"
+      }
     },
     {
       "path": "codex/skills/optimize",
@@ -1660,6 +1616,54 @@
       }
     },
     {
+      "path": "shared/skills/openspec-apply-change",
+      "name": "openspec-apply-change",
+      "description": "Implement tasks from an OpenSpec change. Use when the user wants to start implementing, continue implementation, or work through tasks.",
+      "tree_sha256": "3c6cc6090ee3ec91ceb2ee89a795dc7227624a2f9f585c6d15ac2238582b45cc",
+      "files": 2,
+      "license_files": [
+        "LICENSE"
+      ],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-consolidation",
+        "upstream": "https://github.com/Fission-AI/OpenSpec",
+        "upstream_revision": null,
+        "snapshot_sha256": "b0f54a1e8a62d65294f07f7e0aba8494c2a950429b18dc9c10773fb07b1eef34",
+        "snapshot_files": 1,
+        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied.",
+        "notice_source_revision": "2bd5bc3be964404657439f538857fcdf550f7398"
+      },
+      "license": "MIT",
+      "notice_sha256": {
+        "LICENSE": "c3c7235bea1214ab62df643473975c2e8b8848f528901a976693f7d069713e64"
+      }
+    },
+    {
+      "path": "shared/skills/openspec-archive-change",
+      "name": "openspec-archive-change",
+      "description": "Archive a completed change in the experimental workflow. Use when the user wants to finalize and archive a change after implementation is complete.",
+      "tree_sha256": "07cd408ed7414d7db5ecc609886fd6d9508b6e01e244a8ab2a3d08bfeb8d37e0",
+      "files": 2,
+      "license_files": [
+        "LICENSE"
+      ],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-consolidation",
+        "upstream": "https://github.com/Fission-AI/OpenSpec",
+        "upstream_revision": null,
+        "snapshot_sha256": "b82c6dfe77434b1a48c5e7065e1aee7b6ebacb672c42b3aa28730bcc62518040",
+        "snapshot_files": 1,
+        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied.",
+        "notice_source_revision": "2bd5bc3be964404657439f538857fcdf550f7398"
+      },
+      "license": "MIT",
+      "notice_sha256": {
+        "LICENSE": "c3c7235bea1214ab62df643473975c2e8b8848f528901a976693f7d069713e64"
+      }
+    },
+    {
       "path": "shared/skills/portless",
       "name": "portless",
       "description": "Set up and use portless for named local dev server URLs (e.g. https://myapp.localhost instead of http://localhost:3000). Use when integrating portless into a project, configuring dev server names, setting up the local proxy, working with .localhost domains, or troubleshooting port/proxy issues.",
@@ -1970,13 +1974,13 @@
         "id": "openspec-apply-change",
         "name": "openspec-apply-change",
         "path": "claude/skills/openspec-apply-change",
-        "source": "claude/skills/openspec-apply-change"
+        "source": "shared/skills/openspec-apply-change"
       },
       {
         "id": "openspec-archive-change",
         "name": "openspec-archive-change",
         "path": "claude/skills/openspec-archive-change",
-        "source": "claude/skills/openspec-archive-change"
+        "source": "shared/skills/openspec-archive-change"
       },
       {
         "id": "openspec-explore",
@@ -2350,13 +2354,13 @@
         "id": "openspec-apply-change",
         "name": "openspec-apply-change",
         "path": "codex/skills/openspec-apply-change",
-        "source": "codex/skills/openspec-apply-change"
+        "source": "shared/skills/openspec-apply-change"
       },
       {
         "id": "openspec-archive-change",
         "name": "openspec-archive-change",
         "path": "codex/skills/openspec-archive-change",
-        "source": "codex/skills/openspec-archive-change"
+        "source": "shared/skills/openspec-archive-change"
       },
       {
         "id": "openspec-explore",

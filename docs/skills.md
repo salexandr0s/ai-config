@@ -2,7 +2,7 @@
 
 [Project overview](../README.md)
 
-78 skill bindings by name, available through 46 Claude and 74 Codex entries. Shared source packages: 16. Tool-specific adaptations remain separate.
+78 skill bindings by name, available through 46 Claude and 74 Codex entries. Shared source packages: 18. Tool-specific adaptations remain separate.
 
 This file is generated from `skills-manifest.json`. Run `python3 scripts/skills-inventory.py --check` to check aliases, resources and full package hashes. After an intentional source change, review the diff and run `python3 scripts/skills-inventory.py --refresh`.
 
@@ -56,8 +56,8 @@ Binding names follow the existing tool directories. Some upstream skills declare
 | `new-project` |  | ✓ | [codex](../codex/skills/new-project) |
 | `normalize` | ✓ | ✓ | [claude](../claude/skills/normalize) · [codex](../codex/skills/normalize) |
 | `onboard` | ✓ | ✓ | [claude](../claude/skills/onboard) · [codex](../codex/skills/onboard) |
-| `openspec-apply-change` | ✓ | ✓ | [claude](../claude/skills/openspec-apply-change) · [codex](../codex/skills/openspec-apply-change) |
-| `openspec-archive-change` | ✓ | ✓ | [claude](../claude/skills/openspec-archive-change) · [codex](../codex/skills/openspec-archive-change) |
+| `openspec-apply-change` | ✓ | ✓ | [shared](../shared/skills/openspec-apply-change) |
+| `openspec-archive-change` | ✓ | ✓ | [shared](../shared/skills/openspec-archive-change) |
 | `openspec-explore` | ✓ | ✓ | [claude](../claude/skills/openspec-explore) · [codex](../codex/skills/openspec-explore) |
 | `openspec-propose` | ✓ | ✓ | [claude](../claude/skills/openspec-propose) · [codex](../codex/skills/openspec-propose) |
 | `optimize` | ✓ | ✓ | [claude](../claude/skills/optimize) · [codex](../codex/skills/optimize) |
