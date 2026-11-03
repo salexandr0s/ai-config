@@ -4,8 +4,8 @@
     "unique_skills": 78,
     "claude_bindings": 46,
     "codex_bindings": 74,
-    "source_packages": 106,
-    "shared_packages": 18
+    "source_packages": 105,
+    "shared_packages": 19
   },
   "packages": [
     {
@@ -211,22 +211,6 @@
       "tree_sha256": "17c8d5c0692b4ffd767e6f978c3912bcce159a6d104a68dedaa4f2ac4b29cf9e",
       "files": 1,
       "license_files": [],
-      "provenance": {
-        "kind": "repository-snapshot",
-        "upstream": null,
-        "note": "Existing source; no upstream revision is asserted."
-      },
-      "license": "NOASSERTION",
-      "notice_sha256": {}
-    },
-    {
-      "path": "claude/skills/ios-simulator-skill",
-      "name": "ios-simulator-skill",
-      "description": "21 production-ready scripts for iOS app testing, building, and automation. Provides semantic UI navigation, build automation, accessibility testing, and simulator lifecycle management. Optimized for AI agents with minimal token output.",
-      "tree_sha256": "e662920a8d33e0a8a7b046d1a5e12bff8ff3c9d3955f3422e75fea0ddeee8f60",
-      "files": 35,
-      "license_files": [],
-      "version": "1.3.0",
       "provenance": {
         "kind": "repository-snapshot",
         "upstream": null,
@@ -867,22 +851,6 @@
       "tree_sha256": "92ab0b4dc0cf508716e0558bd67351776524f19b3dae0a2393c056c32d1b4531",
       "files": 1,
       "license_files": [],
-      "provenance": {
-        "kind": "repository-snapshot",
-        "upstream": null,
-        "note": "Existing source; no upstream revision is asserted."
-      },
-      "license": "NOASSERTION",
-      "notice_sha256": {}
-    },
-    {
-      "path": "codex/skills/ios-simulator-skill",
-      "name": "ios-simulator-skill",
-      "description": "21 production-ready scripts for iOS app testing, building, and automation. Provides semantic UI navigation, build automation, accessibility testing, and simulator lifecycle management. Optimized for AI agents with minimal token output.",
-      "tree_sha256": "e662920a8d33e0a8a7b046d1a5e12bff8ff3c9d3955f3422e75fea0ddeee8f60",
-      "files": 35,
-      "license_files": [],
-      "version": "1.3.0",
       "provenance": {
         "kind": "repository-snapshot",
         "upstream": null,
@@ -1616,6 +1584,29 @@
       }
     },
     {
+      "path": "shared/skills/ios-simulator-skill",
+      "name": "ios-simulator-skill",
+      "description": "21 production-ready scripts for iOS app testing, building, and automation. Provides semantic UI navigation, build automation, accessibility testing, and simulator lifecycle management. Optimized for AI agents with minimal token output.",
+      "tree_sha256": "d694db823af92f41386ff074cc6ae5fb628f3a1da02d9ccab3db73d3be112452",
+      "files": 36,
+      "license_files": [
+        "LICENSE.md"
+      ],
+      "version": "1.3.0",
+      "provenance": {
+        "kind": "repository-consolidation",
+        "upstream": "https://github.com/salexandr0s/ios-simulator-skill",
+        "upstream_revision": null,
+        "snapshot_sha256": "e662920a8d33e0a8a7b046d1a5e12bff8ff3c9d3955f3422e75fea0ddeee8f60",
+        "snapshot_files": 35,
+        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied."
+      },
+      "license": "MIT",
+      "notice_sha256": {
+        "LICENSE.md": "c85c6f44a27a6c05102eacbb1f81fdb4a59a4253e594a93cf7fe1e11960464ea"
+      }
+    },
+    {
       "path": "shared/skills/openspec-apply-change",
       "name": "openspec-apply-change",
       "description": "Implement tasks from an OpenSpec change. Use when the user wants to start implementing, continue implementation, or work through tasks.",
@@ -1956,7 +1947,7 @@
         "id": "ios-simulator-skill",
         "name": "ios-simulator-skill",
         "path": "claude/skills/ios-simulator-skill",
-        "source": "claude/skills/ios-simulator-skill"
+        "source": "shared/skills/ios-simulator-skill"
       },
       {
         "id": "normalize",
@@ -2318,7 +2309,7 @@
         "id": "ios-simulator-skill",
         "name": "ios-simulator-skill",
         "path": "codex/skills/ios-simulator-skill",
-        "source": "codex/skills/ios-simulator-skill"
+        "source": "shared/skills/ios-simulator-skill"
       },
       {
         "id": "lint",

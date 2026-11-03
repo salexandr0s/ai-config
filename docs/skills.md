@@ -2,7 +2,7 @@
 
 [Project overview](../README.md)
 
-78 skill bindings by name, available through 46 Claude and 74 Codex entries. Shared source packages: 18. Tool-specific adaptations remain separate.
+78 skill bindings by name, available through 46 Claude and 74 Codex entries. Shared source packages: 19. Tool-specific adaptations remain separate.
 
 This file is generated from `skills-manifest.json`. Run `python3 scripts/skills-inventory.py --check` to check aliases, resources and full package hashes. After an intentional source change, review the diff and run `python3 scripts/skills-inventory.py --refresh`.
 
@@ -50,7 +50,7 @@ Binding names follow the existing tool directories. Some upstream skills declare
 | `hig-visionos` | ✓ | ✓ | [shared](../shared/skills/hig-visionos) |
 | `hig-watchos` | ✓ | ✓ | [shared](../shared/skills/hig-watchos) |
 | `hig-web` | ✓ | ✓ | [shared](../shared/skills/hig-web) |
-| `ios-simulator-skill` | ✓ | ✓ | [claude](../claude/skills/ios-simulator-skill) · [codex](../codex/skills/ios-simulator-skill) |
+| `ios-simulator-skill` | ✓ | ✓ | [shared](../shared/skills/ios-simulator-skill) |
 | `lint` |  | ✓ | [codex](../codex/skills/lint) |
 | `migrate-to-codex` |  | ✓ | [codex](../codex/skills/migrate-to-codex) |
 | `new-project` |  | ✓ | [codex](../codex/skills/new-project) |
