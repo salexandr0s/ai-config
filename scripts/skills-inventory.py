@@ -46,7 +46,8 @@ def tree(path: Path, root: Path | None = None) -> tuple[str, int]:
                     raise InventoryError(f"Invalid relative skill alias: {logical}")
                 value = "link:" + target
             else:
-                value = "file:" + hashlib.sha256(item.read_bytes()).hexdigest()
+                executable = "x" if item.stat().st_mode & 0o111 else "-"
+                value = "file:" + executable + ":" + hashlib.sha256(item.read_bytes()).hexdigest()
             records.append((logical, value))
     encoded = json.dumps(sorted(records), separators=(",", ":"), ensure_ascii=False).encode()
     return hashlib.sha256(encoded).hexdigest(), len(records)

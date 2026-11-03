@@ -2,7 +2,7 @@
 
 [Project overview](../README.md)
 
-69 skill bindings by name, available through 39 Claude and 69 Codex entries. Shared source packages: 1. Tool-specific adaptations remain separate.
+70 skill bindings by name, available through 40 Claude and 70 Codex entries. Shared source packages: 2. Tool-specific adaptations remain separate.
 
 This file is generated from `skills-manifest.json`. Run `python3 scripts/skills-inventory.py --check` to check aliases, resources and full package hashes. After an intentional source change, review the diff and run `python3 scripts/skills-inventory.py --refresh`.
 
@@ -73,6 +73,7 @@ Binding names follow the existing tool directories. Some upstream skills declare
 | `securecoding` |  | ✓ | [codex](../codex/skills/securecoding) |
 | `shadcn` | ✓ | ✓ | [claude](../claude/skills/shadcn) · [codex](../codex/skills/shadcn) |
 | `spec` |  | ✓ | [codex](../codex/skills/spec) |
+| `stageshow` | ✓ | ✓ | [shared](../shared/skills/stageshow) |
 | `status` |  | ✓ | [codex](../codex/skills/status) |
 | `storygen` |  | ✓ | [codex](../codex/skills/storygen) |
 | `supplychain` |  | ✓ | [codex](../codex/skills/supplychain) |

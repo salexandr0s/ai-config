@@ -1,18 +1,18 @@
 {
   "schema_version": 1,
   "counts": {
-    "unique_skills": 69,
-    "claude_bindings": 39,
-    "codex_bindings": 69,
-    "source_packages": 107,
-    "shared_packages": 1
+    "unique_skills": 70,
+    "claude_bindings": 40,
+    "codex_bindings": 70,
+    "source_packages": 108,
+    "shared_packages": 2
   },
   "packages": [
     {
       "path": "claude/skills/adapt",
       "name": "adapt",
       "description": "Adapt designs to work across different screen sizes, devices, contexts, or platforms. Ensures consistent experience across varied environments.",
-      "tree_sha256": "7a1958a2c285bf7275f2f85ad13f2c3f8e9506e300f54b91021c18cc36c5254a",
+      "tree_sha256": "795a2024148d21205829621a2502906a78441e3d2e21198a64028f7e33da6eac",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -27,7 +27,7 @@
       "path": "claude/skills/animate",
       "name": "animate",
       "description": "Review a feature and enhance it with purposeful animations, micro-interactions, and motion effects that improve usability and delight.",
-      "tree_sha256": "3628d30859d6c4d14a5ea58f8479b6434b5a25bb9251294e8dbf96a3e31df2a6",
+      "tree_sha256": "3079e77845021aabbf8372a1073198d3a7eba9fbae424c20c2b5df1e3ccda87c",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -42,7 +42,7 @@
       "path": "claude/skills/arrange",
       "name": "arrange",
       "description": "Improve layout, spacing, and visual rhythm. Fixes monotonous grids, inconsistent spacing, and weak visual hierarchy to create intentional compositions.",
-      "tree_sha256": "55e8dfdda3237a70da603030552de003950bc93eb277f7340d282dbfd8465050",
+      "tree_sha256": "c35c4a0690dd739dc1debf432a9fda9d023a44c8c4109a34a0fe6400a35a542e",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -57,7 +57,7 @@
       "path": "claude/skills/auditui",
       "name": "auditui",
       "description": "Perform comprehensive audit of interface quality across accessibility, performance, theming, and responsive design. Generates detailed report of issues with severity ratings and recommendations.",
-      "tree_sha256": "76c6cc13ffb8b925ad64cc9ebd1936a6edec7867b6303dc5666d56d31094445c",
+      "tree_sha256": "1f96f3ed8a3484b99678c94177fc6bb2a8d17f3b5b71d14937e8d90a647bb07e",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -72,7 +72,7 @@
       "path": "claude/skills/bolder",
       "name": "bolder",
       "description": "Amplify safe or boring designs to make them more visually interesting and stimulating. Increases impact while maintaining usability.",
-      "tree_sha256": "fed21f02b3cf7d60eaff022ef6392a7e1cb45c9c7a567a757b5ca2a397d0e97a",
+      "tree_sha256": "4254a985ae892cef855ae73a823ced4d0f8ba4ae643cd879d1ea4e2893288530",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -87,7 +87,7 @@
       "path": "claude/skills/browse",
       "name": "browse",
       "description": "Persistent headless browser for web interaction, QA testing, and scraping. ~100ms per command after first call. Use when the user needs to interact with a live website, verify UI, fill forms, extract data, or test visually.",
-      "tree_sha256": "b619587d08df23dbf24b3f664135328d0adf2ff2e5dccb85d495d70cd4cc1d82",
+      "tree_sha256": "843d088013337e40448cd4d059a552b6e8c2499014db7a665c3bec2967bfcbe7",
       "files": 4,
       "license_files": [],
       "provenance": {
@@ -102,7 +102,7 @@
       "path": "claude/skills/clarify",
       "name": "clarify",
       "description": "Improve unclear UX copy, error messages, microcopy, labels, and instructions. Makes interfaces easier to understand and use.",
-      "tree_sha256": "9d058442cbe3142c1564f1af928598b842b75d90b17bc3ef68b0de9da10f35ec",
+      "tree_sha256": "82dd1e99a1c157296c26621e37ef3d43ce45953cc1b4dfe0eb4753a7a26b31a9",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -117,7 +117,7 @@
       "path": "claude/skills/colorize",
       "name": "colorize",
       "description": "Add strategic color to features that are too monochromatic or lack visual interest. Makes interfaces more engaging and expressive.",
-      "tree_sha256": "a017c39001f962ef9429b4b3449ebf6e2c3e7b0a9c365ea1daaf45d958d3f7ea",
+      "tree_sha256": "6e55825ba3e4914b134284236c59b82ac29dc6998acfb492f28771e10481d18f",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -132,7 +132,7 @@
       "path": "claude/skills/critique",
       "name": "critique",
       "description": "Evaluate design effectiveness from a UX perspective. Assesses visual hierarchy, information architecture, emotional resonance, and overall design quality with actionable feedback.",
-      "tree_sha256": "f5f7c3fd8479344ac7c99a3ffdaffe2dd35f2e5ebf28d55f1107f604160198d2",
+      "tree_sha256": "950ff5fc349a2cc6e7393d67ab591a176149b1c8bb677a1b3a720635ab796778",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -147,7 +147,7 @@
       "path": "claude/skills/delight",
       "name": "delight",
       "description": "Add moments of joy, personality, and unexpected touches that make interfaces memorable and enjoyable to use. Elevates functional to delightful.",
-      "tree_sha256": "e824be27c04c097ae3ce0d3be659935ad0c043fb407e0f259dad5fb5125fcad4",
+      "tree_sha256": "3269ff7a9949ced9dae2a9973b4ed6fc736a14560aeb8ebea7c5796c90b403f6",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -162,7 +162,7 @@
       "path": "claude/skills/distill",
       "name": "distill",
       "description": "Strip designs to their essence by removing unnecessary complexity. Great design is simple, powerful, and clean.",
-      "tree_sha256": "a7597f5ae8460a6c7b806984f5cfd91419a78f15f6e356b45954f8f4f3f67d00",
+      "tree_sha256": "b372682de610c0b0e3bb1a240c521b33f655ed0f5e91f2f8dc162bdff7f97759",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -177,7 +177,7 @@
       "path": "claude/skills/extract",
       "name": "extract",
       "description": "Extract and consolidate reusable components, design tokens, and patterns into your design system. Identifies opportunities for systematic reuse and enriches your component library.",
-      "tree_sha256": "49fe98c29fd0043864a9b342e369454a6ea7e1015cdb35a0f80f1cf7b1f15f94",
+      "tree_sha256": "8fcc31939ee80cca2af63456cb37b06fc89bef4ab75f2f268f81818eb290c17a",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -192,7 +192,7 @@
       "path": "claude/skills/frontend-design",
       "name": "frontend-design",
       "description": "Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, artifacts, posters, or applications. Generates creative, polished code that avoids generic AI aesthetics.",
-      "tree_sha256": "7a521b669501520b694230c522ddf456932a92515d627da4c2b2e10a0ddb42d3",
+      "tree_sha256": "d2dda201bae9382ef8cb64ddefd060353375bf52536258ca452786da18e03dd3",
       "files": 8,
       "license_files": [],
       "declared_license": "Apache 2.0. Based on Anthropic's frontend-design skill. See NOTICE.md for attribution.",
@@ -208,7 +208,7 @@
       "path": "claude/skills/harden",
       "name": "harden",
       "description": "Improve interface resilience through better error handling, i18n support, text overflow handling, and edge case management. Makes interfaces robust and production-ready.",
-      "tree_sha256": "89c3238ef591470eeb21b53a17dd284ad6c7ade144588195a9e765aae4f18705",
+      "tree_sha256": "17c8d5c0692b4ffd767e6f978c3912bcce159a6d104a68dedaa4f2ac4b29cf9e",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -223,7 +223,7 @@
       "path": "claude/skills/hig-android",
       "name": "android-design-guidelines",
       "description": "Material Design 3 and Android platform guidelines. Use when building Android apps with Jetpack Compose or XML layouts, implementing Material You, navigation, or accessibility. Triggers on tasks involving Android UI, Compose components, dynamic color, or Material Design compliance.",
-      "tree_sha256": "bb69396ecccfd2116177ff26bf78cb3affbb40d54ecd787bb04d665295e68637",
+      "tree_sha256": "e9e89e4550d91a5343aeb0e0a6fb04d9888579a5170f1e2980b341204f44f8d4",
       "files": 4,
       "license_files": [],
       "declared_license": "MIT",
@@ -239,7 +239,7 @@
       "path": "claude/skills/hig-ios",
       "name": "ios-design-guidelines",
       "description": "Apple Human Interface Guidelines for iPhone. Use when building, reviewing, or refactoring SwiftUI/UIKit interfaces for iOS. Triggers on tasks involving iPhone UI, iOS components, accessibility, Dynamic Type, Dark Mode, or HIG compliance.",
-      "tree_sha256": "524d501a422ddf4cbee5bfe85b6646a513ae5f4530cb07b43c7c89cf32cb74f2",
+      "tree_sha256": "7128e43a06d5ff036260e712fbcf003bea92c0d162c0eb53e334ed7c44826b15",
       "files": 4,
       "license_files": [],
       "declared_license": "MIT",
@@ -255,7 +255,7 @@
       "path": "claude/skills/hig-ipados",
       "name": "ipados-design-guidelines",
       "description": "Apple Human Interface Guidelines for iPad. Use when building iPad-optimized interfaces, implementing multitasking, pointer support, keyboard shortcuts, or responsive layouts. Triggers on tasks involving iPad, Split View, Stage Manager, sidebar navigation, or trackpad support.",
-      "tree_sha256": "75bf9ccab60206477496e0b3ceb2f1b681d7c30f364337b6c90a31d2bbb96984",
+      "tree_sha256": "b39ac93c447d3650067f3d0cecde2aa183ee496f8cf1e03aefdf0f93b58e59ac",
       "files": 4,
       "license_files": [],
       "declared_license": "MIT",
@@ -271,7 +271,7 @@
       "path": "claude/skills/hig-macos",
       "name": "macos-design-guidelines",
       "description": "Apple Human Interface Guidelines for Mac. Use when building macOS apps with SwiftUI or AppKit, implementing menu bars, toolbars, window management, or keyboard shortcuts. Triggers on tasks involving Mac UI, desktop apps, or Mac Catalyst.",
-      "tree_sha256": "0cad69d9dea9d345f023934a120298525184c54d7f559142e74450dcd6223854",
+      "tree_sha256": "c7ac6649ab5578e4837fc943385f173a9360df093bfa7eec8841ba525fa511af",
       "files": 4,
       "license_files": [],
       "declared_license": "MIT",
@@ -287,7 +287,7 @@
       "path": "claude/skills/hig-tvos",
       "name": "tvos-design-guidelines",
       "description": "Apple Human Interface Guidelines for Apple TV. Use when building tvOS apps with focus-based navigation, Siri Remote input, or living room viewing experiences. Triggers on tasks involving Apple TV, tvOS, 10-foot UI, or media playback.",
-      "tree_sha256": "cff3019e09db90379629fc42d6f562641eacaed7b8dafbc6706c7feabec63b79",
+      "tree_sha256": "fc18296b1fb96ab4e8536832a7697c37c21d1d098e49170dd0dfeaa9d6492f61",
       "files": 4,
       "license_files": [],
       "declared_license": "MIT",
@@ -303,7 +303,7 @@
       "path": "claude/skills/hig-visionos",
       "name": "visionos-design-guidelines",
       "description": "Apple Human Interface Guidelines for Apple Vision Pro. Use when building spatial computing apps, implementing eye/hand input, or designing immersive experiences. Triggers on tasks involving visionOS, RealityKit, spatial UI, or mixed reality.",
-      "tree_sha256": "1aa20338f8b6384f43f482bfbab70e9a73c8b6669e4e5254e0d52e2265b781ff",
+      "tree_sha256": "b22b010594e9a4976538348fe48323e8ccab140d4b5c4b2faedf6b478a585d2b",
       "files": 4,
       "license_files": [],
       "declared_license": "MIT",
@@ -319,7 +319,7 @@
       "path": "claude/skills/hig-watchos",
       "name": "watchos-design-guidelines",
       "description": "Apple Human Interface Guidelines for Apple Watch. Use when building watchOS apps, complications, or workout features. Triggers on tasks involving Watch UI, Digital Crown, glanceable interfaces, or wrist-based interactions.",
-      "tree_sha256": "5b8e393afeb172b3ba11ef9d7321d91ba206c783604685c175cea3b6c288954b",
+      "tree_sha256": "f6b12809ea0e09f251d03a64c61d2164eeed915050093793fcfb52e1efc91e6a",
       "files": 4,
       "license_files": [],
       "declared_license": "MIT",
@@ -335,7 +335,7 @@
       "path": "claude/skills/hig-web",
       "name": "web-design-guidelines",
       "description": "Web platform design and accessibility guidelines. Use when building web interfaces, auditing accessibility, implementing responsive layouts, or reviewing web UI code. Triggers on tasks involving HTML, CSS, web components, WCAG compliance, responsive design, or web performance.",
-      "tree_sha256": "b53cb3c1ba8d2c04b39d1f2415a22576faecd054a9bfd9352705da53afaffee0",
+      "tree_sha256": "223abe90e27b9f08c02afbcf3e7466952c2292e5f389a1a3a2e9240ffeb8d7c8",
       "files": 4,
       "license_files": [],
       "declared_license": "MIT",
@@ -351,7 +351,7 @@
       "path": "claude/skills/ios-simulator-skill",
       "name": "ios-simulator-skill",
       "description": "21 production-ready scripts for iOS app testing, building, and automation. Provides semantic UI navigation, build automation, accessibility testing, and simulator lifecycle management. Optimized for AI agents with minimal token output.",
-      "tree_sha256": "570f04c798a2c237fa316d37eaf6605cf11c981b79133937ffaab617ec75906d",
+      "tree_sha256": "e662920a8d33e0a8a7b046d1a5e12bff8ff3c9d3955f3422e75fea0ddeee8f60",
       "files": 35,
       "license_files": [],
       "version": "1.3.0",
@@ -367,7 +367,7 @@
       "path": "claude/skills/normalize",
       "name": "normalize",
       "description": "Normalize design to match your design system and ensure consistency",
-      "tree_sha256": "9d9ca960cba8aeb49a751545098af023d26efaf20cbec0e73dbcfa7dfc1ae4e4",
+      "tree_sha256": "d5ec289d72d41982b67aeb1e2c4a7d885427af4175bffad34d5701ce68a179c0",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -382,7 +382,7 @@
       "path": "claude/skills/onboard",
       "name": "onboard",
       "description": "Design or improve onboarding flows, empty states, and first-time user experiences. Helps users get started successfully and understand value quickly.",
-      "tree_sha256": "4647e111536a0a0b2ae9109441de77a6ef79245d8211a96caa09d4a11d90322e",
+      "tree_sha256": "12af77e3fcfe0baa287abdf326cc3c213097caa0147b20d045fe938d02a06341",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -397,7 +397,7 @@
       "path": "claude/skills/openspec-apply-change",
       "name": "openspec-apply-change",
       "description": "Implement tasks from an OpenSpec change. Use when the user wants to start implementing, continue implementation, or work through tasks.",
-      "tree_sha256": "8270f971a24241a92c302a183bb5331d49ee5508d70d5a263419842b65dbcb4b",
+      "tree_sha256": "b0f54a1e8a62d65294f07f7e0aba8494c2a950429b18dc9c10773fb07b1eef34",
       "files": 1,
       "license_files": [],
       "declared_license": "MIT",
@@ -413,7 +413,7 @@
       "path": "claude/skills/openspec-archive-change",
       "name": "openspec-archive-change",
       "description": "Archive a completed change in the experimental workflow. Use when the user wants to finalize and archive a change after implementation is complete.",
-      "tree_sha256": "3317f65ec7a5c724b816bb431829393e986fb458a647748366778046cba76ad6",
+      "tree_sha256": "b82c6dfe77434b1a48c5e7065e1aee7b6ebacb672c42b3aa28730bcc62518040",
       "files": 1,
       "license_files": [],
       "declared_license": "MIT",
@@ -429,7 +429,7 @@
       "path": "claude/skills/openspec-explore",
       "name": "openspec-explore",
       "description": "Enter explore mode - a thinking partner for exploring ideas, investigating problems, and clarifying requirements. Use when the user wants to think through something before or during a change.",
-      "tree_sha256": "9da72d2051d28513e10b7f3d6d6eabf538263533cebc31ba8231bdd18e101144",
+      "tree_sha256": "4181a9924d60991086baac48af1c198b40401a665a1e96e0345e313d7b5477b6",
       "files": 1,
       "license_files": [],
       "declared_license": "MIT",
@@ -445,7 +445,7 @@
       "path": "claude/skills/openspec-propose",
       "name": "openspec-propose",
       "description": "Propose a new change with all artifacts generated in one step. Use when the user wants to quickly describe what they want to build and get a complete proposal with design, specs, and tasks ready for implementation.",
-      "tree_sha256": "e087945d4d8c0ed1e235464ccb2d01c83e673af965f1c7c450cca27214c2aaff",
+      "tree_sha256": "3d960a0d2bbf2a2e9ab5952daa0d22f583e3aa8dbd7890eb8c62bf8fdd6bcacd",
       "files": 1,
       "license_files": [],
       "declared_license": "MIT",
@@ -461,7 +461,7 @@
       "path": "claude/skills/optimize",
       "name": "optimize",
       "description": "Improve interface performance across loading speed, rendering, animations, images, and bundle size. Makes experiences faster and smoother.",
-      "tree_sha256": "7edf083f8c0fdf27c0e34695eec557dc4c7faf6a9a11ca1e1460f6b27e230f08",
+      "tree_sha256": "4aeda5c9e12950c55a5021d78f77c206f5ef493eaea952a2cc2b40581c200b4c",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -476,7 +476,7 @@
       "path": "claude/skills/overdrive",
       "name": "overdrive",
       "description": "Push interfaces past conventional limits with technically ambitious implementations. Whether that's a shader, a 60fps virtual table, spring physics on a dialog, or scroll-driven reveals.",
-      "tree_sha256": "c5d26441a22ce4372eb2b35a876fca84148a209244af3c1b81953538a380bab8",
+      "tree_sha256": "105f9bc4d2ff8677c62d0c9381215433666d8551564a6abbbb4656a90cad8cdb",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -491,7 +491,7 @@
       "path": "claude/skills/polish",
       "name": "polish",
       "description": "Final quality pass before shipping. Fixes alignment, spacing, consistency, and detail issues that separate good from great.",
-      "tree_sha256": "571300561eeb0370aad9b3391f45e4fc4c18d76b78935bce5c27ca2108998f0e",
+      "tree_sha256": "757819b07fe12ffa4a13454302e50d91be7a0052cba409cfba2056184b1e98ee",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -506,7 +506,7 @@
       "path": "claude/skills/quieter",
       "name": "quieter",
       "description": "Tone down overly bold or visually aggressive designs. Reduces intensity while maintaining design quality and impact.",
-      "tree_sha256": "8a357b7e25755af6b213c1c6340f83333ee3dfe661c5fd2291f0c62ec07f508f",
+      "tree_sha256": "4f92793cec9056af4397ed303d2cd5174fbd59600baed83db124a25da76e3f56",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -521,7 +521,7 @@
       "path": "claude/skills/repo-surgeon",
       "name": "repo-surgeon",
       "description": "Audit and modernize messy codebases. Use for structural cleanup, dead code detection, naming or folder fixes, scalability risk review, worst-file rewrites, or README upgrades.",
-      "tree_sha256": "a3e932fff178a21b2b3f58700397a531ce82a95ef0326e6bc55011bcb8d61ae8",
+      "tree_sha256": "217dbc6004cf288c23c6ca05abc5f203841b9f78a5a8c5baa9ee97c04799e86c",
       "files": 2,
       "license_files": [],
       "provenance": {
@@ -536,7 +536,7 @@
       "path": "claude/skills/shadcn",
       "name": "shadcn",
       "description": "Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI. Provides project context, component docs, and usage examples. Applies when working with shadcn/ui, component registries, presets, --preset codes, or any project with a components.json file. Also triggers for \"shadcn init\", \"create an app with --preset\", or \"switch to --preset\".",
-      "tree_sha256": "a27377ea1b9ee10708f563877be0ef2d4c3e94566b597a9ac2ced556cf950023",
+      "tree_sha256": "d84aac24ea3dfd81eab668b25db16580de6bc9379331367e3fc620fe08a4e514",
       "files": 13,
       "license_files": [],
       "provenance": {
@@ -551,7 +551,7 @@
       "path": "claude/skills/teach-impeccable",
       "name": "teach-impeccable",
       "description": "One-time setup that gathers design context for your project and saves it to your AI config file. Run once to establish persistent design guidelines.",
-      "tree_sha256": "828cb102c2c8b3753147871175d57935aa6270c169632632ce42dc2c770625ae",
+      "tree_sha256": "d333a6079d0f19e8fc4a09aa3c06bc3eebea56ae0b1d3e39b75f29a1c6e9e65a",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -566,7 +566,7 @@
       "path": "claude/skills/typeset",
       "name": "typeset",
       "description": "Improve typography by fixing font choices, hierarchy, sizing, weight consistency, and readability. Makes text feel intentional and polished.",
-      "tree_sha256": "ef3fea12ad590909eb29b4095fd8e795991cc1642c0f77885ceb096e3eeb4769",
+      "tree_sha256": "264340f4de18336736c0a73d104c08bb0bbc7f13c3d3268c99f75cba3afa7959",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -581,7 +581,7 @@
       "path": "claude/skills/visual-explainer",
       "name": "visual-explainer",
       "description": "Generate beautiful, self-contained HTML pages that visually explain systems, code changes, plans, and data. Use when the user asks for a diagram, architecture overview, diff review, plan review, project recap, comparison table, or any visual explanation of technical concepts. Also use proactively when you are about to render a complex ASCII table (4+ rows or 3+ columns) — present it as a styled HTML page instead.",
-      "tree_sha256": "a0df7ba54bb8c7f5921d7e70fbf38d53eb8795cbba583e8ac47e69c78a5f47c9",
+      "tree_sha256": "e360a0d022d13b7cb26d54e85b6387b46fe2ebb43c56e2d200f064aefc68e2ac",
       "files": 22,
       "license_files": [
         "LICENSE"
@@ -601,7 +601,7 @@
       "path": "codex/skills/adapt",
       "name": "adapt",
       "description": "Adapt designs to work across different screen sizes, devices, contexts, or platforms. Ensures consistent experience across varied environments.",
-      "tree_sha256": "3ab53429758bd403d93dba774472dfeb5ae7d8d88a9b97db90c7193c1dc5e232",
+      "tree_sha256": "ac0fbf68f78c48f2b3a9b26699463a993e8f85d312ec56b55d2c95e8a1a1632b",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -616,7 +616,7 @@
       "path": "codex/skills/adr",
       "name": "adr",
       "description": "Write an Architecture Decision Record (ADR) with options, tradeoffs, and a recommended decision. Use when the user needs to document an architectural choice, compare technical approaches, or create a formal decision record. Triggers on \"ADR\", \"architecture decision\", \"document this decision\", \"compare approaches\".",
-      "tree_sha256": "a8540ce4a5d78944e87ca465692b37f872348b9500be7238d0ce4998c84c139d",
+      "tree_sha256": "c0085dfcc8676ef85c7a38a74702efb195481e6c1fae4b0f7ab98e9b32f061b9",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -631,7 +631,7 @@
       "path": "codex/skills/animate",
       "name": "animate",
       "description": "Review a feature and enhance it with purposeful animations, micro-interactions, and motion effects that improve usability and delight.",
-      "tree_sha256": "5073e31345fc26912a5e11cab28df79c7544674b6dce71166c5e3738185f4d99",
+      "tree_sha256": "b470b119e5972c8ead78c8a504d9a8b020242107a7f29f541db4cd0dac39c10a",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -646,7 +646,7 @@
       "path": "codex/skills/arrange",
       "name": "arrange",
       "description": "Improve layout, spacing, and visual rhythm. Fixes monotonous grids, inconsistent spacing, and weak visual hierarchy to create intentional compositions.",
-      "tree_sha256": "bde7a60637acd484dcd79a02add0bec3c8f510207b7498f4a2574f324c28df25",
+      "tree_sha256": "f04518e1cb4c795a0a3f793b401481e61f9c4d03cd8ec4951e752b8b6c57b53c",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -661,7 +661,7 @@
       "path": "codex/skills/audit",
       "name": "audit",
       "description": "Quick project audit for quality, security, and release readiness. Produces a prioritized \"get to green\" checklist. Use when the user wants a health check on their project covering build health, dependency risks, secret handling, and basic security posture. Triggers on \"audit this project\", \"quality check\", \"is this ready to ship\", \"project health audit\".",
-      "tree_sha256": "11c3add6cf30bf10ee1d2a07a3a3f68a9ab0616be702f00f76a6df67de01f4a3",
+      "tree_sha256": "db0e082057f9c21ea7a8224d700082129f70125b0d40c4aa9a0298176ad4d15c",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -676,7 +676,7 @@
       "path": "codex/skills/auditdeep",
       "name": "auditdeep",
       "description": "Comprehensive security audit using OWASP Top 10 and ASVS as verification frameworks. Use when the user needs a thorough security assessment, penetration test plan, or compliance-oriented audit for systems they own. Triggers on \"deep audit\", \"security audit\", \"OWASP audit\", \"comprehensive security review\", \"ASVS verification\".",
-      "tree_sha256": "6bb50f14ab2170adf6e9eb7ff2a4c7e28391b7db87e2b2a89ba3ca436ddb5282",
+      "tree_sha256": "6071e2131605e0a6ffedf2ae09180439bb0f8e2888f8f377104b0ee40441a34b",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -691,7 +691,7 @@
       "path": "codex/skills/auditui",
       "name": "auditui",
       "description": "Audit interface quality across accessibility, performance, theming, and responsive design. Produces a prioritized report with severity ratings and recommendations.",
-      "tree_sha256": "4870366aaea39e81c26c4f46547429dba1030ecb3c7ebfa2bd41fff841167126",
+      "tree_sha256": "d790b44f94519a255e53b463c659870fdb6836bd054107c24fb9399da17246ca",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -706,7 +706,7 @@
       "path": "codex/skills/bolder",
       "name": "bolder",
       "description": "Amplify safe or boring designs to make them more visually interesting and stimulating. Increases impact while maintaining usability.",
-      "tree_sha256": "4b8ad1b90289b2c585c045c07a6114b6d6c6ad360a67e4d96c2f6009340dce89",
+      "tree_sha256": "99359ab6cf83d46d966b6742240312c0d6ebda2b15df2acc5bc6afc4dade310a",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -721,7 +721,7 @@
       "path": "codex/skills/browse",
       "name": "browse",
       "description": "Persistent headless browser for web interaction, QA testing, and scraping. ~100ms per command after first call. Use when the user needs to interact with a live website, verify UI, fill forms, extract data, or test visually.",
-      "tree_sha256": "8d9a4392c46a50f7a2cd368d967df8ece48b9aa75d4de8d8bddd65a0ffb0c28c",
+      "tree_sha256": "364a29b155f62ef779fd1bbd0d3ec9af713f52472ea8b11f2b34079d45115f3c",
       "files": 2,
       "license_files": [],
       "provenance": {
@@ -736,7 +736,7 @@
       "path": "codex/skills/clarify",
       "name": "clarify",
       "description": "Improve unclear UX copy, error messages, microcopy, labels, and instructions. Makes interfaces easier to understand and use.",
-      "tree_sha256": "d8f06ebd062c1dcd1c42bee6ab65fc18310bc4318b1985667bda8e868df2bd6e",
+      "tree_sha256": "225cf4b19e739076ee7678e20d12f9359bc09fdadaeaa8ae3c495afc1063654f",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -751,7 +751,7 @@
       "path": "codex/skills/colorize",
       "name": "colorize",
       "description": "Add strategic color to features that are too monochromatic or lack visual interest. Makes interfaces more engaging and expressive.",
-      "tree_sha256": "c07bf377e031d8c1fbe0391ab76006810c6857ca7dbee2fb635f3f9d6b29e451",
+      "tree_sha256": "62c9296a86e3119b2c60b2d8b2224d6b2ce3158aca5a3f83cdb72059e0099db6",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -766,7 +766,7 @@
       "path": "codex/skills/commands",
       "name": "commands",
       "description": "Print a quick-reference table of all available slash commands. Triggers on \"list commands\", \"what commands\", \"help\", \"show commands\".",
-      "tree_sha256": "dd0c8ecac476680d27d38dacc6293335e217779b4125cafde09c032c975c7c90",
+      "tree_sha256": "0c333db4ba0f4a491f9b3fd749ba2f53f0d00111949874b4959c717e2eeba746",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -781,7 +781,7 @@
       "path": "codex/skills/condense",
       "name": "condense",
       "description": "Make code shorter without changing behavior — removes dead code, duplication, verbosity, and over-abstraction. Triggers on \"condense\", \"make this shorter\", \"reduce code\", \"trim\", \"simplify this code\".",
-      "tree_sha256": "5c324d2f9898b73ef5d545c41ef86e6a5961192f9bded3b8c52742c49d5d2045",
+      "tree_sha256": "39d2ea3b6fe7ed655f8462c760ecdd3a9cd6096d3349282992a9787213d7fd09",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -796,7 +796,7 @@
       "path": "codex/skills/config-editor",
       "name": "config-editor",
       "description": "Audit or edit AI assistant config and policy docs. Use for Claude/Codex config, AGENTS.md or CLAUDE.md cleanup, skill or MCP overload, parity drift, or RFC 2119 rewrites.",
-      "tree_sha256": "6b9c099ebf086e1634b9e7f2b869869e8fcf2ff23863fd9d4dc0d17edf0027d2",
+      "tree_sha256": "0eea849382ef04ddb04b99f40618e60768eed186692f244381ad7bb37abdeec5",
       "files": 2,
       "license_files": [],
       "provenance": {
@@ -811,7 +811,7 @@
       "path": "codex/skills/critique",
       "name": "critique",
       "description": "Evaluate design effectiveness from a UX perspective. Assesses visual hierarchy, information architecture, emotional resonance, and overall design quality with actionable feedback.",
-      "tree_sha256": "a683838cf07438b817150304c1cf0b90207fad13d46a8ca53a8f7bc938f16a6f",
+      "tree_sha256": "40918914e384bf3b936c69e170cd68700b7481bad20c0bc49903653e6f5ded1b",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -826,7 +826,7 @@
       "path": "codex/skills/debug",
       "name": "debug",
       "description": "Systematic debugging partner using repro-first, hypothesis-driven approach. Use when the user reports a bug, error, or unexpected behavior and needs help diagnosing and fixing it. Triggers on \"debug this\", \"why is this failing\", \"help me fix this bug\", \"investigate this error\".",
-      "tree_sha256": "7efa186ab59e925b1482f6d71825d76dc8c5ec4bd02588864db73846c1273e28",
+      "tree_sha256": "028a01233d9c2831a243cac7a5f9fc9de23596d687b9647edf250f741ad626ae",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -841,7 +841,7 @@
       "path": "codex/skills/delight",
       "name": "delight",
       "description": "Add moments of joy, personality, and unexpected touches that make interfaces memorable and enjoyable to use. Elevates functional to delightful.",
-      "tree_sha256": "61964b92ea5b914d5ec239a57f929cdf15117ae2d740caf21a42c3dec6f5a30a",
+      "tree_sha256": "1a66cdf3000cc0b4bf3bb83ada15233ae0d645530055176321a8e102fc4e8c56",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -856,7 +856,7 @@
       "path": "codex/skills/deploy-check",
       "name": "deploy-check",
       "description": "Run pre-deployment verification without actually deploying. Checks git status, quality gates (lint, types, tests, build), and common deployment issues. Use when the user is about to deploy and wants to verify readiness. Triggers on \"deploy check\", \"pre-deploy\", \"ready to deploy\", \"deployment verification\".",
-      "tree_sha256": "92c2861c9ed895e2b4fc291345cf72a8d527242c22b70c80cdfecafef2a3ab9c",
+      "tree_sha256": "185d8b20b21f85b83e032bdb1672cf9a7face884490c5f2db47523401c9f6bd8",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -871,7 +871,7 @@
       "path": "codex/skills/distill",
       "name": "distill",
       "description": "Strip designs to their essence by removing unnecessary complexity. Great design is simple, powerful, and clean.",
-      "tree_sha256": "81a4ee32ded69773937256b4ca9e25e243c7405bd4b99ad92d29e8cd51865aa7",
+      "tree_sha256": "7b9d3ac2e883904c0d35d060b73e59f02ac7d9832870599542974c75105803b7",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -886,7 +886,7 @@
       "path": "codex/skills/dod",
       "name": "dod",
       "description": "Create or refine a Definition of Done for a project with tiered checklists (MVP/Standard/High-assurance). Use when the user wants to define quality standards, acceptance criteria for work completion, or a DoD checklist. Triggers on \"definition of done\", \"DoD\", \"what does done look like\", \"quality checklist\", \"done criteria\".",
-      "tree_sha256": "dabb4557f6558bd77e417f79c941b5184fe4fbf62f7533994c9078db5ce285fb",
+      "tree_sha256": "154f2785b79602f87146a5d1cf01a6b1cda89c055063ea0d082a0485690aa8a2",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -901,7 +901,7 @@
       "path": "codex/skills/extract",
       "name": "extract",
       "description": "Extract and consolidate reusable components, design tokens, and patterns into your design system. Identifies opportunities for systematic reuse and enriches your component library.",
-      "tree_sha256": "9e43f6fd7bc926b6a701db2cc0638b94a7dc23dadae364a603e07979e7159694",
+      "tree_sha256": "8f077cae412c1b0b1e0e411d49ca619b42efdfaf5f51220cf3d670144ab203ab",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -916,7 +916,7 @@
       "path": "codex/skills/fix",
       "name": "fix",
       "description": "Investigate and fix a described issue end-to-end. Use when the user reports a specific problem, error, or broken behavior that needs to be diagnosed and resolved. Triggers on \"fix this\", \"fix the bug\", \"this is broken\", \"something's wrong with\".",
-      "tree_sha256": "f6392f0ff19b259833d418c3c57e6fdf13696b1f9fde4bd4f357780fdbc071d0",
+      "tree_sha256": "cf9dba12cf36b9a83e49cd6f72ded4a6e87c3ce36dd59ebe6cd9b1026f91e163",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -931,7 +931,7 @@
       "path": "codex/skills/focus",
       "name": "focus",
       "description": "Pragmatic prioritization assistant. Scans git state, TODOs, open branches, and tasks to recommend what to work on next. Triggers on \"what should I work on\", \"focus\", \"prioritize\", \"what's next\".",
-      "tree_sha256": "e909cf88c41d7b31e8570d12c3ea6d2e754555a7889996bb54b080abf321d924",
+      "tree_sha256": "a96623f21f817de578bc2025be6cc890fb3dd2cd7e082e41424db68014850b9a",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -946,7 +946,7 @@
       "path": "codex/skills/frontend-design",
       "name": "frontend-design",
       "description": "Design and build polished frontend UI. Use for web components, pages, artifacts, posters, or apps that need strong visual quality and non-generic design.",
-      "tree_sha256": "bd6dc74e122e48c5086868e93535dccbe424c7d2e84bf6ef6a3764ce4f9f5376",
+      "tree_sha256": "6d9bd07ef481f8f73255a7a37d8fdc614f4985f46f0e5bd3e09230c4ce74cbd9",
       "files": 8,
       "license_files": [],
       "declared_license": "Apache 2.0. Based on Anthropic's frontend-design skill. See NOTICE.md for attribution.",
@@ -962,7 +962,7 @@
       "path": "codex/skills/green",
       "name": "green",
       "description": "Produce a practical greenfield blueprint for a new project or feature. Use when the user has an idea and wants an architecture plan with options, tradeoffs, and milestones. Triggers on phrases like \"greenfield blueprint\", \"architect this\", \"design this system\", or \"give me a blueprint\".",
-      "tree_sha256": "642ea1001277287cc205f3698572c22a27e08e7bcbd14323a7746cb55fb31181",
+      "tree_sha256": "93a23204e274ab033be49654e161274ade0a07a0e39ea3b2580033b8eaf32ad8",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -977,7 +977,7 @@
       "path": "codex/skills/greeniv",
       "name": "greeniv",
       "description": "Run a greenfield interview to remove ambiguity before proposing solutions. Use when the user wants to explore a new project idea, asks for help scoping a new feature, or wants structured discovery questions before building something. Triggers on phrases like \"greenfield interview\", \"scope this idea\", \"help me think through this project\", or \"what questions should I ask\".",
-      "tree_sha256": "80ffe01a2dc1435ad46aaafd91a0c3f023812f768501128ea16d97420f4925c1",
+      "tree_sha256": "56dae74b1832135abd8dca67e9acdde365b8eb250eac55a7196045d28704d9c8",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -992,7 +992,7 @@
       "path": "codex/skills/harden",
       "name": "harden",
       "description": "Improve interface resilience through better error handling, i18n support, text overflow handling, and edge case management. Makes interfaces robust and production-ready.",
-      "tree_sha256": "a3181c6fad875e4e6debd65a12d266ccd8225cb4bd734a68fd07b3c197d63aa5",
+      "tree_sha256": "92ab0b4dc0cf508716e0558bd67351776524f19b3dae0a2393c056c32d1b4531",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -1007,7 +1007,7 @@
       "path": "codex/skills/hig-android",
       "name": "android-design-guidelines",
       "description": "Material Design 3 and Android platform guidelines. Use when building Android apps with Jetpack Compose or XML layouts, implementing Material You, navigation, or accessibility. Triggers on tasks involving Android UI, Compose components, dynamic color, or Material Design compliance.",
-      "tree_sha256": "bb69396ecccfd2116177ff26bf78cb3affbb40d54ecd787bb04d665295e68637",
+      "tree_sha256": "e9e89e4550d91a5343aeb0e0a6fb04d9888579a5170f1e2980b341204f44f8d4",
       "files": 4,
       "license_files": [],
       "declared_license": "MIT",
@@ -1023,7 +1023,7 @@
       "path": "codex/skills/hig-ios",
       "name": "ios-design-guidelines",
       "description": "Apple Human Interface Guidelines for iPhone. Use when building, reviewing, or refactoring SwiftUI/UIKit interfaces for iOS. Triggers on tasks involving iPhone UI, iOS components, accessibility, Dynamic Type, Dark Mode, or HIG compliance.",
-      "tree_sha256": "524d501a422ddf4cbee5bfe85b6646a513ae5f4530cb07b43c7c89cf32cb74f2",
+      "tree_sha256": "7128e43a06d5ff036260e712fbcf003bea92c0d162c0eb53e334ed7c44826b15",
       "files": 4,
       "license_files": [],
       "declared_license": "MIT",
@@ -1039,7 +1039,7 @@
       "path": "codex/skills/hig-ipados",
       "name": "ipados-design-guidelines",
       "description": "Apple Human Interface Guidelines for iPad. Use when building iPad-optimized interfaces, implementing multitasking, pointer support, keyboard shortcuts, or responsive layouts. Triggers on tasks involving iPad, Split View, Stage Manager, sidebar navigation, or trackpad support.",
-      "tree_sha256": "75bf9ccab60206477496e0b3ceb2f1b681d7c30f364337b6c90a31d2bbb96984",
+      "tree_sha256": "b39ac93c447d3650067f3d0cecde2aa183ee496f8cf1e03aefdf0f93b58e59ac",
       "files": 4,
       "license_files": [],
       "declared_license": "MIT",
@@ -1055,7 +1055,7 @@
       "path": "codex/skills/hig-macos",
       "name": "macos-design-guidelines",
       "description": "Apple Human Interface Guidelines for Mac. Use when building macOS apps with SwiftUI or AppKit, implementing menu bars, toolbars, window management, or keyboard shortcuts. Triggers on tasks involving Mac UI, desktop apps, or Mac Catalyst.",
-      "tree_sha256": "0cad69d9dea9d345f023934a120298525184c54d7f559142e74450dcd6223854",
+      "tree_sha256": "c7ac6649ab5578e4837fc943385f173a9360df093bfa7eec8841ba525fa511af",
       "files": 4,
       "license_files": [],
       "declared_license": "MIT",
@@ -1071,7 +1071,7 @@
       "path": "codex/skills/hig-tvos",
       "name": "tvos-design-guidelines",
       "description": "Apple Human Interface Guidelines for Apple TV. Use when building tvOS apps with focus-based navigation, Siri Remote input, or living room viewing experiences. Triggers on tasks involving Apple TV, tvOS, 10-foot UI, or media playback.",
-      "tree_sha256": "cff3019e09db90379629fc42d6f562641eacaed7b8dafbc6706c7feabec63b79",
+      "tree_sha256": "fc18296b1fb96ab4e8536832a7697c37c21d1d098e49170dd0dfeaa9d6492f61",
       "files": 4,
       "license_files": [],
       "declared_license": "MIT",
@@ -1087,7 +1087,7 @@
       "path": "codex/skills/hig-visionos",
       "name": "visionos-design-guidelines",
       "description": "Apple Human Interface Guidelines for Apple Vision Pro. Use when building spatial computing apps, implementing eye/hand input, or designing immersive experiences. Triggers on tasks involving visionOS, RealityKit, spatial UI, or mixed reality.",
-      "tree_sha256": "1aa20338f8b6384f43f482bfbab70e9a73c8b6669e4e5254e0d52e2265b781ff",
+      "tree_sha256": "b22b010594e9a4976538348fe48323e8ccab140d4b5c4b2faedf6b478a585d2b",
       "files": 4,
       "license_files": [],
       "declared_license": "MIT",
@@ -1103,7 +1103,7 @@
       "path": "codex/skills/hig-watchos",
       "name": "watchos-design-guidelines",
       "description": "Apple Human Interface Guidelines for Apple Watch. Use when building watchOS apps, complications, or workout features. Triggers on tasks involving Watch UI, Digital Crown, glanceable interfaces, or wrist-based interactions.",
-      "tree_sha256": "5b8e393afeb172b3ba11ef9d7321d91ba206c783604685c175cea3b6c288954b",
+      "tree_sha256": "f6b12809ea0e09f251d03a64c61d2164eeed915050093793fcfb52e1efc91e6a",
       "files": 4,
       "license_files": [],
       "declared_license": "MIT",
@@ -1119,7 +1119,7 @@
       "path": "codex/skills/hig-web",
       "name": "web-design-guidelines",
       "description": "Web platform design and accessibility guidelines. Use when building web interfaces, auditing accessibility, implementing responsive layouts, or reviewing web UI code. Triggers on tasks involving HTML, CSS, web components, WCAG compliance, responsive design, or web performance.",
-      "tree_sha256": "b53cb3c1ba8d2c04b39d1f2415a22576faecd054a9bfd9352705da53afaffee0",
+      "tree_sha256": "223abe90e27b9f08c02afbcf3e7466952c2292e5f389a1a3a2e9240ffeb8d7c8",
       "files": 4,
       "license_files": [],
       "declared_license": "MIT",
@@ -1135,7 +1135,7 @@
       "path": "codex/skills/ios-simulator-skill",
       "name": "ios-simulator-skill",
       "description": "21 production-ready scripts for iOS app testing, building, and automation. Provides semantic UI navigation, build automation, accessibility testing, and simulator lifecycle management. Optimized for AI agents with minimal token output.",
-      "tree_sha256": "570f04c798a2c237fa316d37eaf6605cf11c981b79133937ffaab617ec75906d",
+      "tree_sha256": "e662920a8d33e0a8a7b046d1a5e12bff8ff3c9d3955f3422e75fea0ddeee8f60",
       "files": 35,
       "license_files": [],
       "version": "1.3.0",
@@ -1151,7 +1151,7 @@
       "path": "codex/skills/lint",
       "name": "lint",
       "description": "Run all code quality checks and fix auto-fixable issues. Detects project type and runs the appropriate linter, formatter, and type checker. Use when the user wants to clean up code quality, fix lint errors, or run formatting. Triggers on \"lint\", \"run linter\", \"fix formatting\", \"code quality check\", \"format the code\".",
-      "tree_sha256": "efba60ef326c8773f4c09105ac978522627781e8310505c5c502bafd316407d3",
+      "tree_sha256": "b3475085316e64fa36242497a54cf72ea18994d39c05042b3569e8d6be8fa720",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -1166,7 +1166,7 @@
       "path": "codex/skills/migrate-to-codex",
       "name": "migrate-to-codex",
       "description": "Migrate supported instruction files, skills, agents, and MCP config into Codex project and global files.",
-      "tree_sha256": "adb51b15bf887b69038cdc69b4b4930078681cfcc8dd679873c3ff824a3c873a",
+      "tree_sha256": "7254d8666e6a5b78d932e394dcb9d91c9437d3d2f4f6fa613616263c046fd217",
       "files": 19,
       "license_files": [
         "LICENSE.txt"
@@ -1185,7 +1185,7 @@
       "path": "codex/skills/new-project",
       "name": "new-project",
       "description": "Scaffold a new project using the workspace's default stack (Next.js, TypeScript, Tailwind, Vitest). Use when the user wants to start a new project, create a new app, or bootstrap a codebase. Triggers on \"new project\", \"scaffold\", \"create a new app\", \"bootstrap\", \"start a project\".",
-      "tree_sha256": "2b4f64ff249602f2cec3a02d4711cfdc5d3f63df8aa796cf148113a3a97d35af",
+      "tree_sha256": "7d7d48b2576c092e4ce05eb78555b187bbc9ce4c95d81646caa57157498f280d",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -1200,7 +1200,7 @@
       "path": "codex/skills/normalize",
       "name": "normalize",
       "description": "Normalize design to match your design system and ensure consistency",
-      "tree_sha256": "dc6f9b1c3c46f043649b2560c6e6126015c94ea18c02c98a8fea88bd2ae5ac85",
+      "tree_sha256": "c66dc4679d64ba952168ef9fb709b9dba4c8f5e0f84b857747cf64fa1d2645ff",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -1215,7 +1215,7 @@
       "path": "codex/skills/onboard",
       "name": "onboard",
       "description": "Design or improve onboarding flows, empty states, and first-time user experiences. Helps users get started successfully and understand value quickly.",
-      "tree_sha256": "e55bef634c078af7503b7fcc61420fd8574c4531fa379321dae4643b2fa09a49",
+      "tree_sha256": "b3c70865f6f3c88f74230cb3979f03f41f28e76378c5fe266cb68b0e07cd6636",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -1230,7 +1230,7 @@
       "path": "codex/skills/openspec-apply-change",
       "name": "openspec-apply-change",
       "description": "Implement tasks from an OpenSpec change. Use when the user wants to start implementing, continue implementation, or work through tasks.",
-      "tree_sha256": "8270f971a24241a92c302a183bb5331d49ee5508d70d5a263419842b65dbcb4b",
+      "tree_sha256": "b0f54a1e8a62d65294f07f7e0aba8494c2a950429b18dc9c10773fb07b1eef34",
       "files": 1,
       "license_files": [],
       "declared_license": "MIT",
@@ -1246,7 +1246,7 @@
       "path": "codex/skills/openspec-archive-change",
       "name": "openspec-archive-change",
       "description": "Archive a completed change in the experimental workflow. Use when the user wants to finalize and archive a change after implementation is complete.",
-      "tree_sha256": "3317f65ec7a5c724b816bb431829393e986fb458a647748366778046cba76ad6",
+      "tree_sha256": "b82c6dfe77434b1a48c5e7065e1aee7b6ebacb672c42b3aa28730bcc62518040",
       "files": 1,
       "license_files": [],
       "declared_license": "MIT",
@@ -1262,7 +1262,7 @@
       "path": "codex/skills/openspec-explore",
       "name": "openspec-explore",
       "description": "Enter explore mode for idea exploration, problem investigation, and requirement clarification. Use before or during a change when the user wants to think, not implement.",
-      "tree_sha256": "d1aafca94a8e0d6194feb91b5b9bcae438b6f1457eb132f6cfe3be7b240b5a27",
+      "tree_sha256": "2b46fe856db5cd34523dafba0113431b7943bab6f9afc3c2eb49f1830340d947",
       "files": 1,
       "license_files": [],
       "declared_license": "MIT",
@@ -1278,7 +1278,7 @@
       "path": "codex/skills/openspec-propose",
       "name": "openspec-propose",
       "description": "Propose a new change end to end. Use when the user wants one-step generation of a proposal, design, spec, and task list for implementation.",
-      "tree_sha256": "16a0c043c627925d47b58fe738e879cb95656d47ca219e6bf0bc0ea173b08028",
+      "tree_sha256": "cb96d7cc7faf6dcaefb0bdfe1a2898a439f7f8d1b78b663b651646bbe5f376fe",
       "files": 1,
       "license_files": [],
       "declared_license": "MIT",
@@ -1294,7 +1294,7 @@
       "path": "codex/skills/optimize",
       "name": "optimize",
       "description": "Improve interface performance across loading speed, rendering, animations, images, and bundle size. Makes experiences faster and smoother.",
-      "tree_sha256": "dbd84072651b32fd43579b2be038be952fc4e1fe28c5f12bf405ea7e63a675b3",
+      "tree_sha256": "7091eca5ee3f2536fd740dbef02254e65784fd2a33f5474abb195de0a130a88a",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -1309,7 +1309,7 @@
       "path": "codex/skills/overdrive",
       "name": "overdrive",
       "description": "Push interfaces into technically ambitious territory. Use for effects like shaders, 60fps data UI, spring physics, or scroll-driven interactions.",
-      "tree_sha256": "b7316e7656463ea6d28e1112cbde193324f439e550a433f2cc64345df02136f7",
+      "tree_sha256": "0a8fe810abad07ad71e61dc646a676e51af77cf6da67d264f094597b46d95564",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -1324,7 +1324,7 @@
       "path": "codex/skills/polish",
       "name": "polish",
       "description": "Final quality pass before shipping. Fixes alignment, spacing, consistency, and detail issues that separate good from great.",
-      "tree_sha256": "905b87fb34674bdac7c7f28a16db846ce2a31861b65db7d1695fd603d7ebf1cb",
+      "tree_sha256": "686cd7a57805e3c37e31a151d90f43d75b40bf7eb3c4bc329b8955f154a7d2d4",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -1339,7 +1339,7 @@
       "path": "codex/skills/postmortem",
       "name": "postmortem",
       "description": "Draft a blameless incident postmortem with timeline, root causes, and corrective actions. Use when the user needs to document an incident, outage, or failure with structured analysis and action items. Triggers on \"postmortem\", \"incident report\", \"write up this outage\", \"blameless retro\", \"incident analysis\".",
-      "tree_sha256": "3efd36d501a1b47e7906fe6c865c780a9802ead212b156c46bd5793efc176119",
+      "tree_sha256": "fe6eec5bc1094f0ee4fbef143ec7568baf6f3181254f887ac206c9b56cef1203",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -1354,7 +1354,7 @@
       "path": "codex/skills/pr",
       "name": "pr",
       "description": "Create a pull request for the current branch with auto-generated title and description. Use when the user wants to open a PR, submit changes for review, or push and create a pull request. Triggers on \"create a PR\", \"open a pull request\", \"submit for review\", \"push and PR\".",
-      "tree_sha256": "88eab23facb44e6b94ef8f3724df19acc4dda2f4f48ab1354cb0a83a17845001",
+      "tree_sha256": "d7d0c53e22e45813228d9cfdcaa6a75baf89356f2d5e9dd860d85e957942059a",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -1369,7 +1369,7 @@
       "path": "codex/skills/quieter",
       "name": "quieter",
       "description": "Tone down overly bold or visually aggressive designs. Reduces intensity while maintaining design quality and impact.",
-      "tree_sha256": "67cec2da96884a73fe556ec6044853ffcb1ca47e5b0a7a6ad5c56508c14dad32",
+      "tree_sha256": "398944f4401602a0c1c5c81a10eba5c4becb84b3a687c3b0be4af223c7791afb",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -1384,7 +1384,7 @@
       "path": "codex/skills/refactor",
       "name": "refactor",
       "description": "Plan a safe, incremental refactor with tests and rollback strategy. Use when the user wants to restructure code, improve architecture, or clean up tech debt without breaking things. Triggers on \"refactor this\", \"clean up this code\", \"restructure\", \"improve this architecture\".",
-      "tree_sha256": "87a686c45f0f1ed3bfc19bf492e8bebcbd213762dc68f12a1165e3bf12d8a0b2",
+      "tree_sha256": "7b93099524871132e07d19a3edbf338e64067eaf005a79550c1765432294eaec",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -1399,7 +1399,7 @@
       "path": "codex/skills/release",
       "name": "release",
       "description": "Generate a release readiness checklist with rollback plan and monitoring strategy. Use when the user is preparing to ship, deploy, or release and wants a structured go/no-go checklist. Triggers on \"release checklist\", \"ready to ship\", \"release readiness\", \"go/no-go\", \"pre-release check\".",
-      "tree_sha256": "7a1515c3a241eab60d2fdb5653029580e89ad1261b783441c9cad9a8c00110b4",
+      "tree_sha256": "bec60ecf665bdd2c2cfe398f4fbfc38c82106263109b0124817a74ebe863513d",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -1414,7 +1414,7 @@
       "path": "codex/skills/repo-surgeon",
       "name": "repo-surgeon",
       "description": "Audit and modernize messy codebases. Use for structural cleanup, dead code detection, naming or folder fixes, scalability risk review, worst-file rewrites, or README upgrades.",
-      "tree_sha256": "0b56c6a26edc4319bc093990868f6fa0c3486f4adf4346a73f3edaa933e2d690",
+      "tree_sha256": "54c40ef430ccb3204374aab8bbeea3437316fd45ed1afe9e12165baf9b38b272",
       "files": 2,
       "license_files": [],
       "provenance": {
@@ -1429,7 +1429,7 @@
       "path": "codex/skills/reqwording",
       "name": "reqwording",
       "description": "Rewrite requirements to be unambiguous and testable using RFC 2119 keywords (MUST/SHOULD/MAY). Use when the user has vague or ambiguous requirements that need to be tightened into precise, verifiable statements. Triggers on \"rewrite requirements\", \"make these testable\", \"RFC 2119\", \"tighten these requirements\", \"requirement wording\".",
-      "tree_sha256": "3f950b11a39d247d0352a89309ede0ef18ed774e29297ad06efdeee4725d5865",
+      "tree_sha256": "d1a8b85cd98e509ef245346b701cafc09169f923492ca241aeb0c5f555f46752",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -1444,7 +1444,7 @@
       "path": "codex/skills/review",
       "name": "review",
       "description": "Perform a pragmatic code review on current changes. Use when the user asks to review a diff, PR, or current uncommitted changes. Triggers on \"review my changes\", \"code review\", \"review this PR\", \"check my diff\", \"review the code\".",
-      "tree_sha256": "f982e016178408a2415396ea64c952ebfde0b52913d6c4a5b542d68063b7dfc4",
+      "tree_sha256": "fff6f6bb1a7cc9fe42618e1b2d82c614a52e82c53409a3df730059f15e140c7d",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -1459,7 +1459,7 @@
       "path": "codex/skills/reviewdeep",
       "name": "reviewdeep",
       "description": "Perform a thorough code review focusing on design, maintainability, and testing strategy. Use when the user wants an in-depth review beyond surface-level checks — covering architecture fit, complexity, backward compatibility, and long-term code health. Triggers on \"deep review\", \"thorough review\", \"review for code health\", \"design review\".",
-      "tree_sha256": "5be5b709eb5b660df12ffc4e5ce5eeb1a9312f5b25c2a02ebf6bb48f9853317c",
+      "tree_sha256": "26eefb825e131439a58fa034499ee8df33a761ed82a3e09ef9afcf0c4ce92780",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -1474,7 +1474,7 @@
       "path": "codex/skills/securecoding",
       "name": "securecoding",
       "description": "Scan code for secure coding gaps using a tech-agnostic checklist. Use when the user wants to find security vulnerabilities in their code covering input validation, auth, sessions, access control, crypto, error handling, and data protection. Triggers on \"secure coding review\", \"find security issues\", \"check for vulnerabilities\", \"security scan\".",
-      "tree_sha256": "60e7b1ace1805f4c6e91934c745a768cc1c4892da2788ff3d7cc6f9279447a7f",
+      "tree_sha256": "c28ea864534a43f64cd79b4ecf7798e220d5b402e113544d5b34f3b3d7f7f4c0",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -1489,7 +1489,7 @@
       "path": "codex/skills/shadcn",
       "name": "shadcn",
       "description": "Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI. Provides project context, component docs, and usage examples. Applies when working with shadcn/ui, component registries, presets, --preset codes, or any project with a components.json file. Also triggers for \"shadcn init\", \"create an app with --preset\", or \"switch to --preset\".",
-      "tree_sha256": "a27377ea1b9ee10708f563877be0ef2d4c3e94566b597a9ac2ced556cf950023",
+      "tree_sha256": "d84aac24ea3dfd81eab668b25db16580de6bc9379331367e3fc620fe08a4e514",
       "files": 13,
       "license_files": [],
       "provenance": {
@@ -1504,7 +1504,7 @@
       "path": "codex/skills/spec",
       "name": "spec",
       "description": "Write a PRD/spec with user stories and acceptance criteria. Use when the user wants a product specification, requirements document, or needs to turn an idea into a structured spec with testable acceptance criteria. Triggers on \"write a spec\", \"PRD\", \"product requirements\", \"spec this out\".",
-      "tree_sha256": "670a7696616614eb7edcd904cef55ba4c41ebb972a4287a5b3ce48a188cf1a0a",
+      "tree_sha256": "ade0d2a7be79a27509b7e87e87d4290dad7694a2945e3a269e85c959de4a15b7",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -1519,7 +1519,7 @@
       "path": "codex/skills/status",
       "name": "status",
       "description": "Quick project health check covering git state, dependencies, quality, tests, and build. Use when the user wants to know the current state of a project or check if everything is working. Triggers on \"project status\", \"health check\", \"how's the project\", \"is everything working\", \"status check\".",
-      "tree_sha256": "92cd2bc08189f0506a678de7aad74a5be99064c8e9f68dcaecc3a4ea27bfb5af",
+      "tree_sha256": "48566e9e511238b9ff6f1d8ff9c190bce0f76e70555698280e5ec49868bdb8f1",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -1534,7 +1534,7 @@
       "path": "codex/skills/storygen",
       "name": "storygen",
       "description": "Turn ideas into user stories with acceptance criteria. Use when the user has feature ideas, requirements, or concepts that need to be broken down into actionable user stories with testable acceptance criteria. Triggers on \"turn this into stories\", \"write user stories\", \"break this into stories\", \"story generation\", \"create epics\".",
-      "tree_sha256": "ae4938f2a57023adab3b87d73c136367dc0561bb16c7ea6969a1e02efcdd05a4",
+      "tree_sha256": "edce1b296cf96f4f4f3053ec77efdab7203e1365bbf14fa0561dfc2b5ab2a5d9",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -1549,7 +1549,7 @@
       "path": "codex/skills/supplychain",
       "name": "supplychain",
       "description": "Audit software supply chain security covering dependencies, builds, provenance, and SBOM. Use when the user wants to assess dependency risks, build integrity, or artifact trust. Triggers on \"supply chain audit\", \"dependency audit\", \"SBOM\", \"build provenance\", \"dependency security\".",
-      "tree_sha256": "7fe8d802506c5021728a597ea29364767e6641873b9d205967d3c82c537958a2",
+      "tree_sha256": "646d6eb8ed2245f53162c92cd280c537b7749ac4972e8070b9e43ada7d3fb69f",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -1564,7 +1564,7 @@
       "path": "codex/skills/teach-impeccable",
       "name": "teach-impeccable",
       "description": "One-time setup that gathers design context for your project and saves it to your AI config file. Run once to establish persistent design guidelines.",
-      "tree_sha256": "0dd702992e1fb5cb89be1732a5e072fa3feb20c7d59e3937b03debdaef1fe7a8",
+      "tree_sha256": "ecdf8d7ba5a9d8c73ce28b8f97f73b077e46c2d59e78beb65bbc5f67bcc10d85",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -1579,7 +1579,7 @@
       "path": "codex/skills/test",
       "name": "test",
       "description": "Detect the project type and run the appropriate test suite (Vitest, Jest, Playwright, pytest, cargo test). Use when the user wants to run tests, check test results, or verify a specific test file. Triggers on \"run tests\", \"run the test suite\", \"check tests\", \"test this\".",
-      "tree_sha256": "662e5d3ba8abafbbe4e4f1d5698a7baaa4a22c8482d5e293eca2c2cbdee55f22",
+      "tree_sha256": "6192fdf1f16f2d2e12f71bb969913af0eee27dbd666b0b5611530efc8a01de96",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -1594,7 +1594,7 @@
       "path": "codex/skills/threatmodel",
       "name": "threatmodel",
       "description": "Create a STRIDE threat model with mitigations and security tests. Use when the user wants to identify threats to a system, map trust boundaries, or produce a structured threat analysis. Triggers on \"threat model\", \"STRIDE analysis\", \"identify threats\", \"security threat analysis\", \"map trust boundaries\".",
-      "tree_sha256": "dbfe0dd72cd4181b5ff5385b27ffd895985cdff37fefd9c6641b268a10125243",
+      "tree_sha256": "30d092c4f74290045308539222021e0913836491d5ab1f3d22d069287679b763",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -1609,7 +1609,7 @@
       "path": "codex/skills/typeset",
       "name": "typeset",
       "description": "Improve typography by fixing font choices, hierarchy, sizing, weight consistency, and readability. Makes text feel intentional and polished.",
-      "tree_sha256": "df0e2132dc00e15d78ad381a1085ad4905bd74270433e9be97fde25a1f03e01b",
+      "tree_sha256": "a5137bfb3ca64be3591b1a2a87d7d2f2af6692286be6688ed0d00ac9075806c4",
       "files": 1,
       "license_files": [],
       "provenance": {
@@ -1624,7 +1624,7 @@
       "path": "codex/skills/visual-explainer",
       "name": "visual-explainer",
       "description": "Generate beautiful, self-contained HTML pages that visually explain systems, code changes, plans, and data. Use when the user asks for a diagram, architecture overview, diff review, plan review, project recap, comparison table, or any visual explanation of technical concepts. Also use proactively when you are about to render a complex ASCII table (4+ rows or 3+ columns) — present it as a styled HTML page instead.",
-      "tree_sha256": "1cfa87b45facfce1e6d729384a9c1ad51a9755724a3a0dd7621908b45b372350",
+      "tree_sha256": "10122db103c75852ec8682ed1749b7278fb9941447eb7ad984ba29a0f957fb43",
       "files": 22,
       "license_files": [
         "LICENSE"
@@ -1644,7 +1644,7 @@
       "path": "shared/skills/avoid-ai-writing",
       "name": "avoid-ai-writing",
       "description": "Use whenever drafting or editing copy, prose, UI text, titles, headings, or subject lines. Review generic AI writing patterns while preserving facts, voice, uncertainty, protected content, and the requested scope.",
-      "tree_sha256": "69ebe8a2cd0da9d43be066f09cdee75767602d879ad59f604d9dcd5225b37b86",
+      "tree_sha256": "b017f41737dd081c85c494ebb167e17051a2b4606393af11871828d2f0f2cc10",
       "files": 17,
       "license_files": [
         "LICENSE",
@@ -1661,6 +1661,31 @@
       "notice_sha256": {
         "LICENSE": "4da9b9f0bb899269b6e79fb383b4c3f24ebcadf7352f970871bae3e215401589",
         "NOTICE.md": "cced9e526a6fcdd9f3fcf47e282227c768b644db82e17b6dec886d9b3e8ce709"
+      }
+    },
+    {
+      "path": "shared/skills/stageshow",
+      "name": "stageshow",
+      "description": "Build faux product UI that looks like a real product, as a still illustration or an animated demo with a cursor. Browser and app windows, dashboards, phones, notifications, terminals, bento grids and cursor walkthroughs, framed, masked and cropped the way a marketing page, feature card or docs hero needs them. Use whenever someone wants a fake or mocked UI, a product demo or walkthrough animation, a hero or feature-card illustration of an app, a product shot in the style of a polished marketing site, or an animated cursor doing things in an interface, even if they never say \"faux UI\". React and plain CSS.",
+      "tree_sha256": "3f47cfbde91d98a518036b407ebfa5678434ca1fe25f936df52a3f8207b91f58",
+      "files": 358,
+      "license_files": [
+        "LICENSE",
+        "NOTICE.md"
+      ],
+      "provenance": {
+        "kind": "installed-snapshot",
+        "upstream": "https://github.com/benjitaylor/skills",
+        "upstream_path": "stageshow",
+        "upstream_revision": null,
+        "snapshot_sha256": "3f47cfbde91d98a518036b407ebfa5678434ca1fe25f936df52a3f8207b91f58",
+        "snapshot_files": 358,
+        "note": "Exact installed bundle, including the MIT license and third-party notices. The installed skill matches the project copy; no remote update was performed."
+      },
+      "license": "MIT",
+      "notice_sha256": {
+        "LICENSE": "f9420246652580af24aa2bc48531c17f0f377b064bc7ea218afeb983923ef643",
+        "NOTICE.md": "eb8eb167a987a8d95f4254a504af138368719a7863bf1d11a4a7e3b662b331d3"
       }
     }
   ],
@@ -1881,6 +1906,12 @@
         "name": "shadcn",
         "path": "claude/skills/shadcn",
         "source": "claude/skills/shadcn"
+      },
+      {
+        "id": "stageshow",
+        "name": "stageshow",
+        "path": "claude/skills/stageshow",
+        "source": "shared/skills/stageshow"
       },
       {
         "id": "teach-impeccable",
@@ -2267,6 +2298,12 @@
         "name": "spec",
         "path": "codex/skills/spec",
         "source": "codex/skills/spec"
+      },
+      {
+        "id": "stageshow",
+        "name": "stageshow",
+        "path": "codex/skills/stageshow",
+        "source": "shared/skills/stageshow"
       },
       {
         "id": "status",
