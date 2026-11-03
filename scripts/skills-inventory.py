@@ -119,9 +119,16 @@ def scan(root: Path) -> dict:
             packages[path] = {
                 "path": path, "name": fields["name"], "description": fields["description"],
                 "tree_sha256": digest, "files": count,
-                "license_files": sorted(p.name for p in source.iterdir()
-                                        if p.is_file() and p.name.lower().startswith(("license", "notice"))),
+                "license_files": sorted(p.relative_to(source).as_posix() for p in source.rglob("*")
+                                        if p.is_file() and p.name.lower().startswith(("license", "notice"))
+                                        and not SKIP_DIRS.intersection(p.relative_to(source).parts)),
             }
+            package_json = source / "package.json"
+            if package_json.is_file():
+                package = json.loads(package_json.read_text())
+                if not isinstance(package, dict) or not isinstance(package.get("name"), str):
+                    raise InventoryError(f"{path}: package.json requires a package name")
+                packages[path]["package"] = {key: package[key] for key in ("name", "version", "private") if key in package}
             if fields.get("version"):
                 packages[path]["version"] = fields["version"]
             if fields.get("license"):
@@ -148,11 +155,12 @@ def assemble(root: Path, previous: dict) -> dict:
         item["provenance"] = old.get("provenance", {"kind": "repository-snapshot", "upstream": None,
                                                    "note": "Existing source; no upstream revision is asserted."})
         item["license"] = old.get("license", "NOASSERTION")
-        notices = old.get("notice_sha256", {})
-        if not notices:
-            notices = {name: hashlib.sha256((root / item["path"] / name).read_bytes()).hexdigest()
-                       for name in item["license_files"]}
+        notices = dict(old.get("notice_sha256", {}))
+        for name in item["license_files"]:
+            notices.setdefault(name, hashlib.sha256((root / item["path"] / name).read_bytes()).hexdigest())
         for name, digest in notices.items():
+            if Path(name).is_absolute() or ".." in Path(name).parts:
+                raise InventoryError("Preserved notice path must stay inside its package")
             notice = root / item["path"] / name
             if not notice.is_file() or hashlib.sha256(notice.read_bytes()).hexdigest() != digest:
                 raise InventoryError(f"Preserved notice changed or missing: {item['path']}/{name}")

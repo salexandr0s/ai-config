@@ -192,17 +192,25 @@
       "path": "claude/skills/frontend-design",
       "name": "frontend-design",
       "description": "Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, artifacts, posters, or applications. Generates creative, polished code that avoids generic AI aesthetics.",
-      "tree_sha256": "d2dda201bae9382ef8cb64ddefd060353375bf52536258ca452786da18e03dd3",
-      "files": 8,
-      "license_files": [],
+      "tree_sha256": "218c5cbe5599fac7d5696c9d4fedcdabca20018f4419a7b701ed223b9d0f1812",
+      "files": 10,
+      "license_files": [
+        "LICENSE",
+        "NOTICE.md"
+      ],
       "declared_license": "Apache 2.0. Based on Anthropic's frontend-design skill. See NOTICE.md for attribution.",
       "provenance": {
         "kind": "repository-snapshot",
-        "upstream": null,
-        "note": "Existing source; no upstream revision is asserted."
+        "upstream": "https://github.com/pbakaus/impeccable",
+        "upstream_revision": null,
+        "notice_source_revision": "9fadc41729c38fd47d7ae622b501558653f9d2e9",
+        "note": "Existing tool-specific instructions preserved. Restored the Apache license and attribution notice referenced by the skill header."
       },
-      "license": "NOASSERTION",
-      "notice_sha256": {}
+      "license": "Apache-2.0",
+      "notice_sha256": {
+        "LICENSE": "02bb8c3b4e70190e3986c0404ad2fd8d639b4f534252d82379cc1b502b6d1812",
+        "NOTICE.md": "c60a093c2845fd9fb82f9c6f742ece31f379f8190b535309d32d66c45ccffdcb"
+      }
     },
     {
       "path": "claude/skills/harden",
@@ -358,6 +366,10 @@
       "tree_sha256": "217dbc6004cf288c23c6ca05abc5f203841b9f78a5a8c5baa9ee97c04799e86c",
       "files": 2,
       "license_files": [],
+      "package": {
+        "name": "repo-surgeon",
+        "version": "1.0.0"
+      },
       "provenance": {
         "kind": "repository-snapshot",
         "upstream": null,
@@ -405,13 +417,17 @@
       "license_files": [
         "LICENSE"
       ],
+      "package": {
+        "name": "visual-explainer",
+        "version": "0.4.3"
+      },
       "declared_license": "MIT",
       "provenance": {
         "kind": "repository-snapshot",
         "upstream": null,
         "note": "Existing source; no upstream revision is asserted."
       },
-      "license": "NOASSERTION",
+      "license": "MIT",
       "notice_sha256": {
         "LICENSE": "871b3c6c64e030c0647ca33543716bdae9511ae2d6a85d6f4ce63783bab52c8f"
       }
@@ -787,17 +803,25 @@
       "path": "codex/skills/frontend-design",
       "name": "frontend-design",
       "description": "Design and build polished frontend UI. Use for web components, pages, artifacts, posters, or apps that need strong visual quality and non-generic design.",
-      "tree_sha256": "6d9bd07ef481f8f73255a7a37d8fdc614f4985f46f0e5bd3e09230c4ce74cbd9",
-      "files": 8,
-      "license_files": [],
+      "tree_sha256": "959deef3c74526ee040120cb9b06ce203331124f15379d53ccedef2ed8d2ca74",
+      "files": 10,
+      "license_files": [
+        "LICENSE",
+        "NOTICE.md"
+      ],
       "declared_license": "Apache 2.0. Based on Anthropic's frontend-design skill. See NOTICE.md for attribution.",
       "provenance": {
         "kind": "repository-snapshot",
-        "upstream": null,
-        "note": "Existing source; no upstream revision is asserted."
+        "upstream": "https://github.com/pbakaus/impeccable",
+        "upstream_revision": null,
+        "notice_source_revision": "9fadc41729c38fd47d7ae622b501558653f9d2e9",
+        "note": "Existing tool-specific instructions preserved. Restored the Apache license and attribution notice referenced by the skill header."
       },
-      "license": "NOASSERTION",
-      "notice_sha256": {}
+      "license": "Apache-2.0",
+      "notice_sha256": {
+        "LICENSE": "02bb8c3b4e70190e3986c0404ad2fd8d639b4f534252d82379cc1b502b6d1812",
+        "NOTICE.md": "c60a093c2845fd9fb82f9c6f742ece31f379f8190b535309d32d66c45ccffdcb"
+      }
     },
     {
       "path": "codex/skills/green",
@@ -873,7 +897,7 @@
         "upstream": null,
         "note": "Existing source; no upstream revision is asserted."
       },
-      "license": "NOASSERTION",
+      "license": "Apache-2.0",
       "notice_sha256": {
         "LICENSE.txt": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd"
       }
@@ -1311,13 +1335,17 @@
       "license_files": [
         "LICENSE"
       ],
+      "package": {
+        "name": "visual-explainer",
+        "version": "0.4.3"
+      },
       "declared_license": "MIT",
       "provenance": {
         "kind": "repository-snapshot",
         "upstream": null,
         "note": "Existing source; no upstream revision is asserted."
       },
-      "license": "NOASSERTION",
+      "license": "MIT",
       "notice_sha256": {
         "LICENSE": "871b3c6c64e030c0647ca33543716bdae9511ae2d6a85d6f4ce63783bab52c8f"
       }
@@ -1339,7 +1367,7 @@
         "upstream": null,
         "note": "Existing source; no upstream revision is asserted."
       },
-      "license": "NOASSERTION",
+      "license": "MIT",
       "notice_sha256": {
         "LICENSE": "4da9b9f0bb899269b6e79fb383b4c3f24ebcadf7352f970871bae3e215401589",
         "NOTICE.md": "cced9e526a6fcdd9f3fcf47e282227c768b644db82e17b6dec886d9b3e8ce709"
@@ -1385,7 +1413,8 @@
         "upstream_revision": null,
         "snapshot_sha256": "e9e89e4550d91a5343aeb0e0a6fb04d9888579a5170f1e2980b341204f44f8d4",
         "snapshot_files": 4,
-        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied."
+        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied.",
+        "notice_source_revision": "ee5ca4cce77a8bab339aa7a0b6afa164bd5203b3"
       },
       "license": "MIT",
       "notice_sha256": {
@@ -1408,7 +1437,8 @@
         "upstream_revision": null,
         "snapshot_sha256": "7128e43a06d5ff036260e712fbcf003bea92c0d162c0eb53e334ed7c44826b15",
         "snapshot_files": 4,
-        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied."
+        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied.",
+        "notice_source_revision": "ee5ca4cce77a8bab339aa7a0b6afa164bd5203b3"
       },
       "license": "MIT",
       "notice_sha256": {
@@ -1431,7 +1461,8 @@
         "upstream_revision": null,
         "snapshot_sha256": "b39ac93c447d3650067f3d0cecde2aa183ee496f8cf1e03aefdf0f93b58e59ac",
         "snapshot_files": 4,
-        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied."
+        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied.",
+        "notice_source_revision": "ee5ca4cce77a8bab339aa7a0b6afa164bd5203b3"
       },
       "license": "MIT",
       "notice_sha256": {
@@ -1454,7 +1485,8 @@
         "upstream_revision": null,
         "snapshot_sha256": "c7ac6649ab5578e4837fc943385f173a9360df093bfa7eec8841ba525fa511af",
         "snapshot_files": 4,
-        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied."
+        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied.",
+        "notice_source_revision": "ee5ca4cce77a8bab339aa7a0b6afa164bd5203b3"
       },
       "license": "MIT",
       "notice_sha256": {
@@ -1477,7 +1509,8 @@
         "upstream_revision": null,
         "snapshot_sha256": "fc18296b1fb96ab4e8536832a7697c37c21d1d098e49170dd0dfeaa9d6492f61",
         "snapshot_files": 4,
-        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied."
+        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied.",
+        "notice_source_revision": "ee5ca4cce77a8bab339aa7a0b6afa164bd5203b3"
       },
       "license": "MIT",
       "notice_sha256": {
@@ -1500,7 +1533,8 @@
         "upstream_revision": null,
         "snapshot_sha256": "b22b010594e9a4976538348fe48323e8ccab140d4b5c4b2faedf6b478a585d2b",
         "snapshot_files": 4,
-        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied."
+        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied.",
+        "notice_source_revision": "ee5ca4cce77a8bab339aa7a0b6afa164bd5203b3"
       },
       "license": "MIT",
       "notice_sha256": {
@@ -1523,7 +1557,8 @@
         "upstream_revision": null,
         "snapshot_sha256": "f6b12809ea0e09f251d03a64c61d2164eeed915050093793fcfb52e1efc91e6a",
         "snapshot_files": 4,
-        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied."
+        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied.",
+        "notice_source_revision": "ee5ca4cce77a8bab339aa7a0b6afa164bd5203b3"
       },
       "license": "MIT",
       "notice_sha256": {
@@ -1546,7 +1581,8 @@
         "upstream_revision": null,
         "snapshot_sha256": "223abe90e27b9f08c02afbcf3e7466952c2292e5f389a1a3a2e9240ffeb8d7c8",
         "snapshot_files": 4,
-        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied."
+        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied.",
+        "notice_source_revision": "ee5ca4cce77a8bab339aa7a0b6afa164bd5203b3"
       },
       "license": "MIT",
       "notice_sha256": {
@@ -1569,7 +1605,8 @@
         "upstream_revision": null,
         "snapshot_sha256": "e662920a8d33e0a8a7b046d1a5e12bff8ff3c9d3955f3422e75fea0ddeee8f60",
         "snapshot_files": 35,
-        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied."
+        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied.",
+        "notice_source_revision": "08f54491f435f546a41af9f34fa9e4eae174f4c8"
       },
       "license": "MIT",
       "notice_sha256": {
@@ -1665,7 +1702,8 @@
         "upstream_revision": null,
         "snapshot_sha256": "d84aac24ea3dfd81eab668b25db16580de6bc9379331367e3fc620fe08a4e514",
         "snapshot_files": 13,
-        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied."
+        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied.",
+        "notice_source_revision": "4aaea19d9cff3e0908e12a8c1d504b8c5ec34610"
       },
       "license": "MIT",
       "notice_sha256": {
@@ -1680,8 +1718,17 @@
       "files": 358,
       "license_files": [
         "LICENSE",
-        "NOTICE.md"
+        "NOTICE.md",
+        "kit/brands/LICENSE-CRYPTO-FLAT.txt",
+        "kit/brands/LICENSE-PAYMENT-ICONS.txt",
+        "kit/brands/LICENSE-SIMPLE-ICONS.txt",
+        "kit/brands/LICENSE-SVGL.txt"
       ],
+      "package": {
+        "name": "stageshow",
+        "version": "0.1.0",
+        "private": true
+      },
       "provenance": {
         "kind": "installed-snapshot",
         "upstream": "https://github.com/benjitaylor/skills",
@@ -1694,7 +1741,11 @@
       "license": "MIT",
       "notice_sha256": {
         "LICENSE": "f9420246652580af24aa2bc48531c17f0f377b064bc7ea218afeb983923ef643",
-        "NOTICE.md": "eb8eb167a987a8d95f4254a504af138368719a7863bf1d11a4a7e3b662b331d3"
+        "NOTICE.md": "eb8eb167a987a8d95f4254a504af138368719a7863bf1d11a4a7e3b662b331d3",
+        "kit/brands/LICENSE-CRYPTO-FLAT.txt": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+        "kit/brands/LICENSE-PAYMENT-ICONS.txt": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+        "kit/brands/LICENSE-SIMPLE-ICONS.txt": "9046848b63a5c92bff14e4accca80bd987e0623b74adf9226ce5198d312b79d5",
+        "kit/brands/LICENSE-SVGL.txt": "8140f413cb8bf477735c35b7b1c1e0a5731a5b41406c042304a98c39e6b8ba47"
       }
     },
     {

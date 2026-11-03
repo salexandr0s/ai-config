@@ -72,6 +72,23 @@ class SkillsInventoryTests(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("Preserved notice changed or missing", result.stderr)
 
+    def test_nested_third_party_notice_cannot_be_removed_during_refresh(self):
+        notice = self.source / "references/LICENSE.txt"
+        notice.write_text("Third-party license retained by the package.\n")
+        self.refresh()
+        notice.unlink()
+        result = self.run_cli("--refresh")
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("Preserved notice changed or missing", result.stderr)
+
+    def test_new_skill_requires_inventory_refresh(self):
+        source = self.root / "codex/skills/another"
+        source.mkdir()
+        (source / "SKILL.md").write_text("---\nname: another\ndescription: Another skill.\n---\n")
+        result = self.run_cli("--check")
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("manifest differs", result.stderr)
+
     def test_installed_comparison_accounts_for_external_tools_without_writes(self):
         install = self.root.parent / "installed"
         install.mkdir()
