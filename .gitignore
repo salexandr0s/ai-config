@@ -4,11 +4,19 @@
 # Secrets — never commit
 .credentials.json
 .env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.p12
+*.pfx
+*.key
 *.keychain*
 auth.json
 secrets/
 
 # Personal state
+SESSION_HANDOFF.md
 .claude.json
 config.toml
 settings.json
@@ -17,6 +25,10 @@ settings.local.json
 .mcp.json
 
 # Runtime
+.artifacts/
+.claude/worktrees/
+.codex/
+*.log
 *.sqlite
 *.sqlite-wal
 *.sqlite-shm

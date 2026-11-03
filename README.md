@@ -1,426 +1,121 @@
+<div align="center">
+
 # ai-config
 
-Shared configuration for AI coding assistants — [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and [Codex CLI](https://github.com/openai/codex). This repo owns the assistant-native defaults, output styles, status surfaces, and shared rules. Claude uses a versioned base settings file plus native local overlay. Codex uses a versioned base config plus a rendered local overlay.
+### Shared skills and workflows for Claude Code and Codex.
 
-## Structure
+A versioned setup for coding assistants: matching agent roles, reusable skills,<br />
+workflow prompts, hooks, and design standards. Personal state stays local.
 
-```
-ai-config/
-├── claude/                          # Claude Code configuration
-│   ├── agents/                      # 8 agent definitions (.md)
-│   ├── commands/                    # Slash commands, workflows, and ops prompts
-│   ├── resources/                   # Shared review resources
-│   ├── skills/                      # Claude skills shipped from this repo
-│   ├── uiux-contract/               # Design system for agent-built UIs
-│   ├── mcp.example.json             # MCP servers: Playwright, Context7, shadcn
-│   ├── output-styles/               # House Concise / Technical / Review
-│   ├── settings.json                # Shared live settings, including Claude hooks
-│   ├── settings.local.example.json  # Optional machine-local overlay
-│   └── statusline-command.sh        # Shared Claude status line
-├── codex/                           # Codex CLI configuration
-│   ├── agents/                      # 8 agent definitions (.toml)
-│   ├── workflows/                   # Workflow prompt templates and investigation helpers
-│   ├── skills/                      # Codex skills shipped from this repo
-│   ├── rules/                       # Command approval rules (Starlark)
-│   ├── instructions/                # Shared Codex style instructions
-│   ├── hooks.json                   # Codex Bash command guard
-│   ├── config.base.toml             # Shared base config
-│   └── config.local.example.toml    # Optional machine-local overlay
-├── scripts/
-│   ├── render-codex-config.sh       # Builds ~/.codex/config.toml from base + overlay
-│   ├── claude-post-edit-format.sh   # Claude hook: auto-format edited files
-│   ├── claude-pre-bash-guard.sh     # Claude hook: request approval for risky commands
-│   └── codex-pre-bash-guard.sh      # Codex PreToolUse Bash guard
-├── shared/
-│   ├── assistant-ux.md              # Cross-tool UX contract
-│   ├── skills/avoid-ai-writing/      # Shared writing skill, detector, and references
-│   └── CLAUDE.md                    # Workspace-level standards (→ ~/GitHub/CLAUDE.md)
-└── install.sh                       # Symlink installer (idempotent, backs up existing)
-```
+[**Get started**](#install) · [Skill catalog](docs/skills.md) · [Configuration guide](docs/configuration.md)
 
----
+**78** bundled skills &nbsp; / &nbsp; **8** agent roles &nbsp; / &nbsp; **2** assistants
 
-## Installation
+</div>
 
-```bash
-git clone https://github.com/salexandr0s/ai-config.git ~/GitHub/ai-config
-cd ~/GitHub/ai-config
+<br />
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/overview-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="docs/images/overview-light.svg" />
+  <img src="docs/images/overview-light.svg" alt="Shared skills and standards feed Claude Code and Codex; private overrides, credentials, and memory stay local." width="840" />
+</picture>
+
+## What it provides
+
+| Part | Purpose |
+| :--- | :--- |
+| **Skills** | Design, writing, security, debugging, Apple platforms, deployment, and project maintenance |
+| **Agent roles** | A matching eight-role roster for planning, implementation, review, and coordination |
+| **Workflows** | Claude slash commands and installed Codex prompt templates for features, fixes, and reviews |
+| **Configuration** | Shared defaults, response styles, hook wiring, and private local overlays |
+| **Design standards** | Typed visual tokens, component specifications, and UI quality checks |
+| **Installer** | Relocatable links, backups, config validation, and optional browser/LaunchAgent setup |
+
+The [skill catalog](docs/skills.md) lists every binding, its assistant availability, source, and attribution. There are 46 Claude bindings and 74 Codex bindings; identical shared packages have one canonical source. Tool-specific adaptations remain separate.
+
+## Install
+
+macOS-first. Requires **Bash, Git, and Python 3.11+**. Install Claude Code, Codex, or both separately. Node.js 18+ runs the bundled writing tools; the configured shadcn MCP integration also needs a compatible Node/npm installation on PATH. Bun is optional.
+
+The supplied Codex base uses `danger-full-access` and approval policy `never`. Review [runtime preferences](docs/configuration.md#public-defaults-and-private-state) before installing, and keep personal overrides in the private local configuration.
+
+```sh
+git clone https://github.com/salexandr0s/ai-config.git
+cd ai-config
 ./install.sh
 ```
 
-The installer creates symlinks from each tool's config directory into this repo, creates local overlay templates when missing, and renders the live Codex config. Existing files are backed up under `~/.config/ai-config/backups/<timestamp>/`, outside active skill-scan directories. Re-running is safe and idempotent.
+Managed tool-link replacements are backed up. Codex configuration is merged, validated, and regenerated; private overlays and personal context are preserved. The default setup links configuration, skills, commands, and workflows without building the browser daemon or starting a background job.
 
-### What gets symlinked
-
-| Source                           | Target                              |
-| -------------------------------- | ----------------------------------- |
-| `claude/agents/`                 | `~/.claude/agents/`                 |
-| `claude/commands/`               | `~/.claude/commands/`               |
-| `claude/uiux-contract/`          | `~/.claude/uiux-contract/`          |
-| `claude/output-styles/`          | `~/.claude/output-styles/`          |
-| `claude/settings.json`           | `~/.claude/settings.json`           |
-| `claude/statusline-command.sh`   | `~/.claude/statusline-command.sh`   |
-| `claude/resources/`              | `~/.claude/resources/`              |
-| `claude/skills/visual-explainer` | `~/.claude/skills/visual-explainer` |
-| `claude/skills/avoid-ai-writing` | `~/.claude/skills/avoid-ai-writing` |
-| `codex/agents/`                  | `~/.codex/agents/`                  |
-| `codex/instructions/`            | `~/.codex/instructions/`            |
-| `codex/rules/`                   | `~/.codex/rules/`                   |
-| `codex/hooks.json`               | `~/.codex/hooks.json`               |
-| `codex/skills/config-editor`     | `~/.codex/skills/config-editor`     |
-| `codex/skills/avoid-ai-writing`   | `~/.codex/skills/avoid-ai-writing`   |
-| `shared/CLAUDE.md`               | `~/GitHub/CLAUDE.md`                |
-
-### Local overlays and generated files
-
-These are created if missing and stay machine-local:
-
-```bash
-cp claude/settings.local.example.json ~/.claude/settings.local.json
-cp codex/config.local.example.toml ~/.config/codex/config.local.toml
+```sh
+./install.sh --with-browse       # Optional: build the browser daemon with Bun
+./install.sh --with-launchagent  # Optional: weekly memory rotation on macOS
 ```
 
-The live Codex config is generated by:
+To install workspace instructions somewhere other than an existing `~/GitHub`, use `./install.sh --workspace "$HOME/Projects"`. See [installation and configuration](docs/configuration.md) for file destinations, local overrides, and runtime preferences.
 
-```bash
-./scripts/render-codex-config.sh
+## Use it
+
+In Claude Code:
+
+```text
+/workflow-feature add a settings page
+/workflow-bugfix investigate a failed save
+/workflow-review-only review the authentication module
 ```
 
-Edit `codex/config.base.toml` and `~/.config/codex/config.local.toml`, not `~/.codex/config.toml` directly.
+In Codex CLI:
 
-### Auditing skill-context overhead
-
-If Codex warns about skill-context budget pressure, run:
-
-```bash
-./scripts/audit-skills-budget.py
+```sh
+codex '$config-editor audit the current configuration'
+codex "Follow $HOME/.codex/workflows/feature.md to implement a settings page"
 ```
 
-The audit reports:
+Skill availability differs by assistant. The catalog includes writing with [avoid-ai-writing](shared/skills/avoid-ai-writing), product demonstrations with [Stageshow](shared/skills/stageshow), security review with [deepsec](shared/skills/deepsec), and the complete platform/design/deployment inventory. The locally installed `aside-browser` skill is listed as external because its upstream bundle has no redistribution license; it is preserved locally and not vendored here.
 
-- discoverable skills by scope
-- stale `.bak-*` skills still sitting in scanned folders
-- duplicate skill names
-- longest descriptions
-- optional `[[skills.config]]` disables for local cleanup
+## How it's organized
 
-Use `codex/config.local.example.toml` as the template for local skill disables.
+| Directory | Owns |
+| :--- | :--- |
+| [`shared/`](shared) | Canonical shared skills, workspace instructions, and assistant UX conventions |
+| [`claude/`](claude) | Claude agents, commands, skill bindings, settings, resources, and UI contracts |
+| [`codex/`](codex) | Codex agents, skill bindings, workflows, rules, styles, and base TOML |
+| [`scripts/`](scripts) | Installation helpers, config rendering, inventory checks, and maintenance tools |
+| [`browse/`](browse) | Optional browser daemon source |
+| [`tests/`](tests) | Regression checks for hooks, configuration, installation, and skill packaging |
 
----
+[skills-manifest.json](skills-manifest.json) records skill provenance and package hashes. The [generated catalog](docs/skills.md) is checked against it, including relative aliases and required resources.
 
-## Agents
+## Private configuration
 
-Both tools share the same 8-agent roster with identical roles. Claude Code agents are defined in Markdown (`.md`), Codex agents in TOML (`.toml`).
+Shared defaults belong in this repository. Credentials, local settings, trusted project paths, personal identity files, memory, sessions, caches, and session journals stay outside Git.
 
-| Agent               | Role                                                             | Writes code | Sandbox (Codex)   |
-| ------------------- | ---------------------------------------------------------------- | ----------- | ----------------- |
-| `team-lead`         | Orchestrates teams, manages phases and gates                     | No          | `read-only`       |
-| `researcher`        | Read-only codebase explorer — maps architecture and dependencies | No          | `read-only`       |
-| `planner`           | Designs implementation plans with steps and testing              | No          | `read-only`       |
-| `coder`             | Implements approved plans, runs verification checks              | Yes         | `workspace-write` |
-| `reviewer`          | Critiques plans and reviews code (Must Fix / Should Fix / Nits)  | No          | `read-only`       |
-| `review-fix`        | Reviews code and autonomously patches safe issues                | Yes         | `workspace-write` |
-| `phase-implementer` | Self-plans and executes a scoped task without team overhead      | Yes         | `workspace-write` |
-| `ball-buster`       | Brutally honest codebase critic — questions every decision       | No          | `read-only`       |
+| Public source | Private local counterpart |
+| :--- | :--- |
+| `claude/settings.json` | `~/.claude/settings.local.json` |
+| `codex/config.base.toml` | `~/.config/codex/config.local.toml` |
+| Blank `claude/user/` templates | `~/.claude/USER/` personal context |
 
-### Agent categories
+Codex configuration is merged and validated before replacing the live file. Invalid local TOML leaves the previous config intact. See the [privacy review](docs/privacy.md) for source boundaries and historical cleanup scope.
 
-- **Read-only** (team-lead, researcher, planner, reviewer, ball-buster) — explore, plan, and critique without modifying files
-- **Write-capable** (coder, review-fix, phase-implementer) — implement changes and run verification
-- **Autonomous** (review-fix, phase-implementer) — self-direct within defined boundaries without needing team coordination
+## Verify and maintain
 
----
-
-## Workflows
-
-Core multi-agent workflows available in both tools include:
-
-| Workflow              | Phases                                                       | Approval gate    | Fix cycles |
-| --------------------- | ------------------------------------------------------------ | ---------------- | ---------- |
-| **feature**           | research → plan → implement → review → closeout              | Before implement | Max 3      |
-| **bugfix**            | investigate → fix → review → closeout                        | None             | Max 2      |
-| **refactor**          | map impact → plan → review plan → implement → review → close | Before implement | Max 2      |
-| **review-only**       | explore → review → report                                    | N/A (read-only)  | N/A        |
-| **blind-review**      | 3 parallel reviewers → combine → validate                    | N/A (read-only)  | N/A        |
-| **ball-buster-party** | scout → parallel ball-busters (1 per feature) → combine      | N/A (read-only)  | N/A        |
-| **ship**              | verify → review → version → PR                               | Before PR        | Max 2      |
-
-### Config Audit Capability
-
-Claude Code provides this as a slash command:
-
-```
-/config-editor
-/config-editor apply
-```
-
-Codex provides the equivalent as a skill:
-
-```bash
-codex "$config-editor audit the current AI config"
-codex "$config-editor audit the current AI config and apply fixes"
-```
-
-### Usage
-
-**Claude Code** — workflows are slash commands:
-
-```
-/workflow-feature add dark mode toggle to the settings page
-/workflow-bugfix login fails when email contains a plus sign
-/workflow-refactor extract auth logic into a shared module
-/workflow-review-only the authentication module
-/workflow-blind-review
-/workflow-ball-buster-party the entire frontend
-```
-
-**Codex CLI** — workflows are prompt templates:
-
-```bash
-codex "Follow the workflow in workflows/feature.md to implement: dark mode toggle"
-codex "Follow the workflow in workflows/bugfix.md to fix: login plus sign bug"
-codex "Follow the workflow in workflows/refactor.md to refactor: extract auth module"
-codex "Follow the workflow in workflows/review-only.md to review: auth module"
-codex "Follow the workflow in workflows/blind-review.md to blind-review changes"
-codex "Follow the workflow in workflows/ball-buster-party.md to roast: the frontend"
-```
-
----
-
-## Slash Commands
-
-Claude Code ships dozens of slash commands. Run `/commands` to see the full reference.
-
-| Category          | Commands                                                                                                                      |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| **Workflows**     | workflow-feature, workflow-bugfix, workflow-refactor, workflow-review-only, workflow-blind-review, workflow-ball-buster-party |
-| **Planning**      | spec, interview, dod, reqwording, storygen, phase                                                                             |
-| **Quality**       | closeout, lint, test, qa, deploy-check, fact-check, condense                                                                  |
-| **Config**        | config-editor, upgrade                                                                                                        |
-| **Security**      | auditdeep, securecoding, threatmodel, supplychain, green                                                                      |
-| **Operations**    | debug, focus, doctor, release, pr, ship, retro                                                                                |
-| **Documentation** | adr, postmortem, handoff, visualize                                                                                           |
-| **Project**       | new-project, commands, openclaw-triage                                                                                        |
-
----
-
-## Hooks and Status
-
-Claude hooks live directly in `claude/settings.json`; a standalone user `hooks.json` is not loaded by Claude Code. The installer removes only the obsolete symlink it previously managed. Hook events are read as JSON from stdin, and timeout values are seconds.
-
-- **PreToolUse** — the Bash guard requests native approval for recognized production deployments, infrastructure changes, and database/schema mutations; publishing/releases/default-branch pushes produce warnings. Version checks remain debounced to once daily. `/freeze` restricts direct edits to its selected directory.
-- **PostToolUse** — formats direct edits using installed project/PATH tools; hooks do not install dependencies or download formatters. The title updater reads the actual tool name from the event.
-- **Stop** — plays the existing completion sound through `ai-notify`.
-- **Notification** (`permission_prompt|idle_prompt`) — reuses `ai-notify` for attention sounds, retaining its cooldown while bypassing the completion minimum-duration filter.
-- **SessionEnd** — writes session metadata with the event's session ID as compact JSONL. No prompts, transcript contents, or secrets are recorded.
-
-Codex hooks remain in `codex/hooks.json`, enabled by `[features].hooks = true`; they register only the Bash command guard. Its existing `notify` config handles completion sounds.
-
-The command guard inspects executable command words instead of raw text, so quoted examples and non-shell heredoc bodies are not treated as deployments. It handles common command wrappers, chains and literal shell commands; it does not resolve arbitrary scripts, aliases, or dynamically constructed commands. Codex 0.154.0 supports `deny` but does **not** support a hook `permissionDecision` of `ask`; actual matched risky commands remain denied there. Claude uses its supported native approval request. No approval-bypass flag is provided.
-
-Run hook regression tests without launching an assistant, network calls, or real deployment commands:
-
-```bash
+```sh
+python3 scripts/skills-inventory.py --check
+python3 scripts/skills-inventory.py --installed
+python3 -B scripts/verify-avoid-ai-writing.py
 python3 -B -m unittest discover -s tests -v
 ```
 
-`claude/statusline-command.sh` provides a shared AI-only micro-dashboard with:
+`--installed` reports differences without replacing local skills. After an intentional skill change, review the source and notices, then run `python3 scripts/skills-inventory.py --refresh`. Re-run the installer to refresh links; private overlays are retained.
 
-- model
-- style
-- shared execution mode (`fast` / `normal` / `deep`)
-- safety mode
-- context percentage + 20-cell bar
-- total cost
-- total duration
-- API time
+## Documentation
 
-Repo metadata stays in the shell prompt rather than the assistant footer.
+- [Installation, local overlays, hooks, agents, and workflows](docs/configuration.md)
+- [Complete skill catalog and external integrations](docs/skills.md)
+- [Privacy boundary and history review](docs/privacy.md)
+- [UI/UX design contract](claude/uiux-contract/README.md)
+- [Shared writing skill and its verification tools](shared/skills/avoid-ai-writing/README.md)
 
----
-
-## MCP Servers
-
-`claude/mcp.example.json` configures three MCP plugins:
-
-| Plugin         | Purpose                            |
-| -------------- | ---------------------------------- |
-| **Playwright** | Browser automation and E2E testing |
-| **Context7**   | Up-to-date library documentation   |
-| **shadcn**     | Component registry browse/install  |
-
----
-
-## Codex Rules
-
-`codex/rules/default.rules` defines command-level permissions using Starlark `prefix_rule()` syntax. Rules are evaluated most-restrictive-wins: `forbidden > prompt > allow`.
-
-| Decision      | Applies to                                                                                                                                           |
-| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **forbidden** | Destructive operations — force push, rm -rf, sudo, dd, mkfs, killall, npm unpublish                                                                  |
-| **allow**     | Safe dev tools — git (non-destructive), npm, node, linters, test runners, file utilities, Docker (non-destructive), dev-verify/dev-format/dev-status |
-
----
-
-## Codex Base Config
-
-`codex/config.base.toml` includes the shared Codex defaults:
-
-```toml
-[tui]
-notifications = true
-status_line = ["model-with-reasoning", "context-remaining", "current-dir"]
-
-[features]
-multi_agent = true
-hooks = true
-
-[skills]
-include_instructions = false
-
-[agents]
-max_threads = 6          # Max concurrent agent threads
-max_depth = 1            # Agent nesting depth
-job_max_runtime_seconds = 1800   # 30-minute timeout per agent job
-
-[agents.<name>]
-description = "..."
-config_file = "agents/<name>.toml"
-```
-
-The installer symlinks `codex/hooks.json` to `~/.codex/hooks.json`, and the `[features].hooks = true` feature flag enables that hook file in the live Codex config.
-
-`skills.include_instructions = false` keeps skill discovery enabled while skipping the large automatic skills instruction block, which reduces prompt overhead on heavily customized setups.
-
-The generated live config also adds three profiles backed by files in `codex/instructions/`:
-
-- `concise`
-- `technical`
-- `review`
-
-Terminal launchers layer the shared execution mode on top of those style profiles:
-
-- `cx-fast` -> `concise` profile + `model_reasoning_effort = "low"`
-- `cx` -> `concise` profile + `model_reasoning_effort = "xhigh"`
-- `cx-deep` -> `concise` profile + `model_reasoning_effort = "xhigh"`
-
-Codex plan mode is also pinned separately via `plan_mode_reasoning_effort = "high"`.
-
-Each agent TOML defines: `model`, `model_reasoning_effort`, `sandbox_mode`, and `developer_instructions`.
-
-Codex footer note:
-
-- Codex supports a native configurable footer via `tui.status_line` and `/statusline`
-- This supports built-in item identifiers only; it is not a Claude-style custom script renderer
-- The shared config keeps the native Codex footer focused on `model`, `context`, and `current-dir`
-
----
-
-## UI/UX Design System
-
-`claude/uiux-contract/` is a machine-readable design system (Apple Minimal) that agents must follow for any UI work:
-
-| File                    | Purpose                                                                                               |
-| ----------------------- | ----------------------------------------------------------------------------------------------------- |
-| `agent_contract.yaml`   | High-level design rules and principles                                                                |
-| `design_tokens.json`    | Colors, spacing, radii, shadows, typography, motion (light + dark modes)                              |
-| `quality_gates.yaml`    | 6 blocker + 4 major self-check gates                                                                  |
-| `components/*.yaml`     | 11 component specs (button, input, dropdown, modal, navbar, sidebar, table, tabs, toast, card, badge) |
-| `schemas/*.schema.json` | JSON schemas for validation                                                                           |
-
-Agents must never hardcode arbitrary visual values — all colors, spacing, radii, shadows, font sizes, and motion timings must use design tokens.
-
----
-
-## Skills
-
-### avoid-ai-writing
-
-Reviews English prose, titles, headings, and subject lines while preserving
-facts, uncertainty, voice, and the requested editing scope.
-
-Both tool directories link to one locally maintained package at
-`shared/skills/avoid-ai-writing/`; `install.sh` exposes it globally. The
-[package guide](shared/skills/avoid-ai-writing/README.md) covers usage, folder
-ownership, and updates. Its `provenance.json` records the imported source,
-canonical upstream, and local changes. The [full review](docs/avoid-ai-writing-analysis.md)
-explains the findings and verification limits.
-
-The shared workspace instructions require this skill whenever agents draft or
-edit copy, including UI text embedded in code. Codex permits implicit invocation;
-neither tool requires the user to name the skill. Start a fresh chat to refresh
-changed skill metadata. `/avoid-ai-writing` in Claude and `$avoid-ai-writing`
-in Codex remain available for explicit requests. The mechanical tools use Node.js
-18 or newer without installing dependencies; model-only review must be labelled.
-
-Verify the package and both installed links offline:
-
-```bash
-python3 -B scripts/verify-avoid-ai-writing.py --check-installed
-```
-
-### visual-explainer
-
-Custom Claude Code skill for generating self-contained HTML visualizations:
-
-- Architecture diagrams
-- Slide decks
-- Diff reviews
-- Plan reviews
-- Project recaps
-- Data tables
-- Fact-check reports
-
-Includes Mermaid.js support, responsive templates, and CSS pattern references. Invoked via `/visualize <type>`.
-
----
-
-## Resources
-
-`claude/resources/` contains shared review resources used by reviewer agents:
-
-| File                     | Purpose                                                                      |
-| ------------------------ | ---------------------------------------------------------------------------- |
-| `review-checklist.md`    | Structured 2-pass review: CRITICAL (blocking) + INFORMATIONAL (non-blocking) |
-| `review-suppressions.md` | Known false positive tracker — prevents repeated noise                       |
-
-Resources are symlinked to `~/.claude/resources/` by the installer.
-
----
-
-## Shared Standards
-
-`shared/CLAUDE.md` is the workspace-level instruction file symlinked to `~/GitHub/CLAUDE.md`. It governs all agent behavior across both tools:
-
-- **Hard rules** — verification frequency, no mass renames, no blanket type suppressions, no weakening rules to pass checks
-- **Testing and verification** — add tests for concrete uncovered risks, reuse existing coverage, and run checks proportional to the change; required CI gates still apply
-- **CI and deployment** — require a named uncovered risk for new gates, scope jobs to affected behavior, and use caching, cancellation, and parallel execution; broad audits remain optional or scheduled unless justified
-- **Copy and prose** — always apply `avoid-ai-writing` when drafting or editing copy
-- **Session protocol** — start/end checklists, shared memory at `~/GitHub/.memory/`
-- **Dev stack defaults** — TypeScript (strict), Next.js, Fastify, TailwindCSS, Radix UI, Zod, Prisma, Vitest, Playwright
-- **Git conventions** — branch naming, conventional commits, small reviewable changes
-- **Team workflow** — phase gates, user approval before implementation, verification before completion
-- **Coding style** — strict mode, no `any`, Zod at boundaries, kebab-case files, named exports
-- **UI/UX contract** — all UI work must follow design tokens and quality gates
-- **Dev scripts** — `dev-verify`, `dev-format`, `dev-status` (auto-detect project type)
-- **Secrets** — macOS Keychain vault (`claudecodex.keychain-db`), per-project `.env` files
-
----
-
-## Settings
-
-`claude/settings.json` configures the shared Claude base:
-
-- **Environment** — `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` (enables team orchestration)
-- **Permissions** — allow-list for all tools (Bash, Read, Edit, Write, Glob, Grep, WebFetch, WebSearch, Team/Task tools) and deny-list for destructive operations (force push, rm -rf, sudo, etc.)
-- **Status line** — shared `statusLine` command at `~/.claude/statusline-command.sh`
-- **Output style** — defaults to `House Concise`
-- **Effort level** — `high`
-
-Machine-local Claude plugin toggles or marketplace entries belong in `~/.claude/settings.local.json`.
-
-`shared/assistant-ux.md` defines the cross-tool mapping:
-
-- `House Concise` ↔ `concise`
-- `House Technical` ↔ `technical`
-- `House Review` ↔ `review`
+Third-party skills retain their own licenses and notices, recorded in their packages and the manifest. This repository does not apply one blanket license to those sources.

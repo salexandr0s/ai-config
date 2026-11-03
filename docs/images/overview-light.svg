@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="416" viewBox="0 0 840 416" role="img" aria-labelledby="overview-title overview-description">
+  <title id="overview-title">Shared configuration for Claude Code and Codex</title>
+  <desc id="overview-description">Shared skills and workspace standards connect to Claude Code agents, commands and hooks, and Codex agents, workflows and rules. Private overrides, credentials and memory stay on the local machine, separate from the shared source.</desc>
+  <!-- Colors, type, borders and spacing follow claude/uiux-contract/design_tokens.json. -->
+  <style>
+    :root { --bg: #FFFFFF; --surface: #FAFAFA; --ink: #18181B; --muted: #52525B; --border: #E4E4E7; --line: #71717A; --shared: #EFF6FF; --shared-border: #BFDBFE; --shared-ink: #0062BF; }
+    text { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji'; fill: var(--ink); }
+    .background { fill: var(--bg); }
+    .shared { fill: var(--shared); stroke: var(--shared-border); stroke-width: 1; }
+    .tool { fill: var(--surface); stroke: var(--border); stroke-width: 1; }
+    .connector { fill: none; stroke: var(--line); stroke-width: 2; }
+    .shared-title { fill: var(--shared-ink); font-size: 24px; font-weight: 600; }
+    .source { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; fill: var(--shared-ink); font-size: 16px; }
+    .tool-title { font-size: 30px; font-weight: 600; letter-spacing: -0.01em; }
+    .detail { fill: var(--muted); font-size: 18px; }
+    .boundary { stroke: var(--border); stroke-width: 1; stroke-dasharray: 4 8; }
+    .private-title { font-size: 20px; font-weight: 500; }
+    .private-detail { fill: var(--muted); font-size: 16px; }
+    .compact { display: none; }
+    @media (max-width: 640px) {
+      .desktop { display: none; }
+      .compact { display: initial; }
+      .shared-title { font-size: 36px; }
+      .tool-title { font-size: 36px; }
+      .private-title { font-size: 36px; }
+      .private-detail { font-size: 24px; }
+    }
+  </style>
+  <rect class="background" width="840" height="416" />
+  <path class="connector" d="M420 128V160M212 160H628M212 160V192M628 160V192" />
+  <rect class="shared" x="200" y="32" width="440" height="96" rx="14" />
+  <g text-anchor="middle">
+    <text class="shared-title desktop" x="420" y="74">Shared skills &amp; standards</text>
+    <text class="source desktop" x="420" y="106">shared/</text>
+    <text class="shared-title compact" x="420" y="72">Shared skills</text>
+    <text class="shared-title compact" x="420" y="112">&amp; standards</text>
+  </g>
+  <rect class="tool" x="32" y="192" width="360" height="96" rx="14" />
+  <rect class="tool" x="448" y="192" width="360" height="96" rx="14" />
+  <g text-anchor="middle">
+    <text class="tool-title desktop" x="212" y="232">Claude Code</text>
+    <text class="detail desktop" x="212" y="264">agents · commands · hooks</text>
+    <text class="tool-title desktop" x="628" y="232">Codex</text>
+    <text class="detail desktop" x="628" y="264">agents · workflows · rules</text>
+    <text class="tool-title compact" x="212" y="252">Claude Code</text>
+    <text class="tool-title compact" x="628" y="252">Codex</text>
+  </g>
+  <line class="boundary" x1="32" y1="320" x2="808" y2="320" />
+  <g text-anchor="middle">
+    <text class="private-title" x="420" y="360">Private on your machine</text>
+    <text class="private-detail" x="420" y="392">Overrides · credentials · memory</text>
+  </g>
+</svg>
