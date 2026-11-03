@@ -4,8 +4,8 @@
     "unique_skills": 78,
     "claude_bindings": 46,
     "codex_bindings": 74,
-    "source_packages": 116,
-    "shared_packages": 8
+    "source_packages": 114,
+    "shared_packages": 10
   },
   "packages": [
     {
@@ -224,38 +224,6 @@
       "name": "android-design-guidelines",
       "description": "Material Design 3 and Android platform guidelines. Use when building Android apps with Jetpack Compose or XML layouts, implementing Material You, navigation, or accessibility. Triggers on tasks involving Android UI, Compose components, dynamic color, or Material Design compliance.",
       "tree_sha256": "e9e89e4550d91a5343aeb0e0a6fb04d9888579a5170f1e2980b341204f44f8d4",
-      "files": 4,
-      "license_files": [],
-      "declared_license": "MIT",
-      "provenance": {
-        "kind": "repository-snapshot",
-        "upstream": null,
-        "note": "Existing source; no upstream revision is asserted."
-      },
-      "license": "NOASSERTION",
-      "notice_sha256": {}
-    },
-    {
-      "path": "claude/skills/hig-ios",
-      "name": "ios-design-guidelines",
-      "description": "Apple Human Interface Guidelines for iPhone. Use when building, reviewing, or refactoring SwiftUI/UIKit interfaces for iOS. Triggers on tasks involving iPhone UI, iOS components, accessibility, Dynamic Type, Dark Mode, or HIG compliance.",
-      "tree_sha256": "7128e43a06d5ff036260e712fbcf003bea92c0d162c0eb53e334ed7c44826b15",
-      "files": 4,
-      "license_files": [],
-      "declared_license": "MIT",
-      "provenance": {
-        "kind": "repository-snapshot",
-        "upstream": null,
-        "note": "Existing source; no upstream revision is asserted."
-      },
-      "license": "NOASSERTION",
-      "notice_sha256": {}
-    },
-    {
-      "path": "claude/skills/hig-ipados",
-      "name": "ipados-design-guidelines",
-      "description": "Apple Human Interface Guidelines for iPad. Use when building iPad-optimized interfaces, implementing multitasking, pointer support, keyboard shortcuts, or responsive layouts. Triggers on tasks involving iPad, Split View, Stage Manager, sidebar navigation, or trackpad support.",
-      "tree_sha256": "b39ac93c447d3650067f3d0cecde2aa183ee496f8cf1e03aefdf0f93b58e59ac",
       "files": 4,
       "license_files": [],
       "declared_license": "MIT",
@@ -1042,38 +1010,6 @@
       "notice_sha256": {}
     },
     {
-      "path": "codex/skills/hig-ios",
-      "name": "ios-design-guidelines",
-      "description": "Apple Human Interface Guidelines for iPhone. Use when building, reviewing, or refactoring SwiftUI/UIKit interfaces for iOS. Triggers on tasks involving iPhone UI, iOS components, accessibility, Dynamic Type, Dark Mode, or HIG compliance.",
-      "tree_sha256": "7128e43a06d5ff036260e712fbcf003bea92c0d162c0eb53e334ed7c44826b15",
-      "files": 4,
-      "license_files": [],
-      "declared_license": "MIT",
-      "provenance": {
-        "kind": "repository-snapshot",
-        "upstream": null,
-        "note": "Existing source; no upstream revision is asserted."
-      },
-      "license": "NOASSERTION",
-      "notice_sha256": {}
-    },
-    {
-      "path": "codex/skills/hig-ipados",
-      "name": "ipados-design-guidelines",
-      "description": "Apple Human Interface Guidelines for iPad. Use when building iPad-optimized interfaces, implementing multitasking, pointer support, keyboard shortcuts, or responsive layouts. Triggers on tasks involving iPad, Split View, Stage Manager, sidebar navigation, or trackpad support.",
-      "tree_sha256": "b39ac93c447d3650067f3d0cecde2aa183ee496f8cf1e03aefdf0f93b58e59ac",
-      "files": 4,
-      "license_files": [],
-      "declared_license": "MIT",
-      "provenance": {
-        "kind": "repository-snapshot",
-        "upstream": null,
-        "note": "Existing source; no upstream revision is asserted."
-      },
-      "license": "NOASSERTION",
-      "notice_sha256": {}
-    },
-    {
       "path": "codex/skills/hig-macos",
       "name": "macos-design-guidelines",
       "description": "Apple Human Interface Guidelines for Mac. Use when building macOS apps with SwiftUI or AppKit, implementing menu bars, toolbars, window management, or keyboard shortcuts. Triggers on tasks involving Mac UI, desktop apps, or Mac Catalyst.",
@@ -1732,6 +1668,52 @@
       }
     },
     {
+      "path": "shared/skills/hig-ios",
+      "name": "ios-design-guidelines",
+      "description": "Apple Human Interface Guidelines for iPhone. Use when building, reviewing, or refactoring SwiftUI/UIKit interfaces for iOS. Triggers on tasks involving iPhone UI, iOS components, accessibility, Dynamic Type, Dark Mode, or HIG compliance.",
+      "tree_sha256": "195a24446a788fb6e46d1791741012a8b5879993d778036d5bbc08f394bee4f1",
+      "files": 5,
+      "license_files": [
+        "LICENSE"
+      ],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-consolidation",
+        "upstream": "https://github.com/salexandr0s/platform-design-skills",
+        "upstream_revision": null,
+        "snapshot_sha256": "7128e43a06d5ff036260e712fbcf003bea92c0d162c0eb53e334ed7c44826b15",
+        "snapshot_files": 4,
+        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied."
+      },
+      "license": "MIT",
+      "notice_sha256": {
+        "LICENSE": "1126322e2cc8d165adc4c792eeb195717de2bcc7b39be1ce77959d78e87ef685"
+      }
+    },
+    {
+      "path": "shared/skills/hig-ipados",
+      "name": "ipados-design-guidelines",
+      "description": "Apple Human Interface Guidelines for iPad. Use when building iPad-optimized interfaces, implementing multitasking, pointer support, keyboard shortcuts, or responsive layouts. Triggers on tasks involving iPad, Split View, Stage Manager, sidebar navigation, or trackpad support.",
+      "tree_sha256": "772ddedccc2a9372b0f5f21abfb7594646645e7e97e6dceef21ccba83164a8b7",
+      "files": 5,
+      "license_files": [
+        "LICENSE"
+      ],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-consolidation",
+        "upstream": "https://github.com/salexandr0s/platform-design-skills",
+        "upstream_revision": null,
+        "snapshot_sha256": "b39ac93c447d3650067f3d0cecde2aa183ee496f8cf1e03aefdf0f93b58e59ac",
+        "snapshot_files": 4,
+        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied."
+      },
+      "license": "MIT",
+      "notice_sha256": {
+        "LICENSE": "1126322e2cc8d165adc4c792eeb195717de2bcc7b39be1ce77959d78e87ef685"
+      }
+    },
+    {
       "path": "shared/skills/portless",
       "name": "portless",
       "description": "Set up and use portless for named local dev server URLs (e.g. https://myapp.localhost instead of http://localhost:3000). Use when integrating portless into a project, configuring dev server names, setting up the local proxy, working with .localhost domains, or troubleshooting port/proxy issues.",
@@ -1982,13 +1964,13 @@
         "id": "hig-ios",
         "name": "ios-design-guidelines",
         "path": "claude/skills/hig-ios",
-        "source": "claude/skills/hig-ios"
+        "source": "shared/skills/hig-ios"
       },
       {
         "id": "hig-ipados",
         "name": "ipados-design-guidelines",
         "path": "claude/skills/hig-ipados",
-        "source": "claude/skills/hig-ipados"
+        "source": "shared/skills/hig-ipados"
       },
       {
         "id": "hig-macos",
@@ -2344,13 +2326,13 @@
         "id": "hig-ios",
         "name": "ios-design-guidelines",
         "path": "codex/skills/hig-ios",
-        "source": "codex/skills/hig-ios"
+        "source": "shared/skills/hig-ios"
       },
       {
         "id": "hig-ipados",
         "name": "ipados-design-guidelines",
         "path": "codex/skills/hig-ipados",
-        "source": "codex/skills/hig-ipados"
+        "source": "shared/skills/hig-ipados"
       },
       {
         "id": "hig-macos",
