@@ -4,8 +4,8 @@
     "unique_skills": 78,
     "claude_bindings": 46,
     "codex_bindings": 74,
-    "source_packages": 110,
-    "shared_packages": 14
+    "source_packages": 108,
+    "shared_packages": 16
   },
   "packages": [
     {
@@ -211,38 +211,6 @@
       "tree_sha256": "17c8d5c0692b4ffd767e6f978c3912bcce159a6d104a68dedaa4f2ac4b29cf9e",
       "files": 1,
       "license_files": [],
-      "provenance": {
-        "kind": "repository-snapshot",
-        "upstream": null,
-        "note": "Existing source; no upstream revision is asserted."
-      },
-      "license": "NOASSERTION",
-      "notice_sha256": {}
-    },
-    {
-      "path": "claude/skills/hig-visionos",
-      "name": "visionos-design-guidelines",
-      "description": "Apple Human Interface Guidelines for Apple Vision Pro. Use when building spatial computing apps, implementing eye/hand input, or designing immersive experiences. Triggers on tasks involving visionOS, RealityKit, spatial UI, or mixed reality.",
-      "tree_sha256": "b22b010594e9a4976538348fe48323e8ccab140d4b5c4b2faedf6b478a585d2b",
-      "files": 4,
-      "license_files": [],
-      "declared_license": "MIT",
-      "provenance": {
-        "kind": "repository-snapshot",
-        "upstream": null,
-        "note": "Existing source; no upstream revision is asserted."
-      },
-      "license": "NOASSERTION",
-      "notice_sha256": {}
-    },
-    {
-      "path": "claude/skills/hig-web",
-      "name": "web-design-guidelines",
-      "description": "Web platform design and accessibility guidelines. Use when building web interfaces, auditing accessibility, implementing responsive layouts, or reviewing web UI code. Triggers on tasks involving HTML, CSS, web components, WCAG compliance, responsive design, or web performance.",
-      "tree_sha256": "223abe90e27b9f08c02afbcf3e7466952c2292e5f389a1a3a2e9240ffeb8d7c8",
-      "files": 4,
-      "license_files": [],
-      "declared_license": "MIT",
       "provenance": {
         "kind": "repository-snapshot",
         "upstream": null,
@@ -921,38 +889,6 @@
       "tree_sha256": "92ab0b4dc0cf508716e0558bd67351776524f19b3dae0a2393c056c32d1b4531",
       "files": 1,
       "license_files": [],
-      "provenance": {
-        "kind": "repository-snapshot",
-        "upstream": null,
-        "note": "Existing source; no upstream revision is asserted."
-      },
-      "license": "NOASSERTION",
-      "notice_sha256": {}
-    },
-    {
-      "path": "codex/skills/hig-visionos",
-      "name": "visionos-design-guidelines",
-      "description": "Apple Human Interface Guidelines for Apple Vision Pro. Use when building spatial computing apps, implementing eye/hand input, or designing immersive experiences. Triggers on tasks involving visionOS, RealityKit, spatial UI, or mixed reality.",
-      "tree_sha256": "b22b010594e9a4976538348fe48323e8ccab140d4b5c4b2faedf6b478a585d2b",
-      "files": 4,
-      "license_files": [],
-      "declared_license": "MIT",
-      "provenance": {
-        "kind": "repository-snapshot",
-        "upstream": null,
-        "note": "Existing source; no upstream revision is asserted."
-      },
-      "license": "NOASSERTION",
-      "notice_sha256": {}
-    },
-    {
-      "path": "codex/skills/hig-web",
-      "name": "web-design-guidelines",
-      "description": "Web platform design and accessibility guidelines. Use when building web interfaces, auditing accessibility, implementing responsive layouts, or reviewing web UI code. Triggers on tasks involving HTML, CSS, web components, WCAG compliance, responsive design, or web performance.",
-      "tree_sha256": "223abe90e27b9f08c02afbcf3e7466952c2292e5f389a1a3a2e9240ffeb8d7c8",
-      "files": 4,
-      "license_files": [],
-      "declared_license": "MIT",
       "provenance": {
         "kind": "repository-snapshot",
         "upstream": null,
@@ -1655,6 +1591,29 @@
       }
     },
     {
+      "path": "shared/skills/hig-visionos",
+      "name": "visionos-design-guidelines",
+      "description": "Apple Human Interface Guidelines for Apple Vision Pro. Use when building spatial computing apps, implementing eye/hand input, or designing immersive experiences. Triggers on tasks involving visionOS, RealityKit, spatial UI, or mixed reality.",
+      "tree_sha256": "e3e7e2155511796948b2cdb0cf1df0017633839e963c831b9aaf9cbbfa7e0440",
+      "files": 5,
+      "license_files": [
+        "LICENSE"
+      ],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-consolidation",
+        "upstream": "https://github.com/salexandr0s/platform-design-skills",
+        "upstream_revision": null,
+        "snapshot_sha256": "b22b010594e9a4976538348fe48323e8ccab140d4b5c4b2faedf6b478a585d2b",
+        "snapshot_files": 4,
+        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied."
+      },
+      "license": "MIT",
+      "notice_sha256": {
+        "LICENSE": "1126322e2cc8d165adc4c792eeb195717de2bcc7b39be1ce77959d78e87ef685"
+      }
+    },
+    {
       "path": "shared/skills/hig-watchos",
       "name": "watchos-design-guidelines",
       "description": "Apple Human Interface Guidelines for Apple Watch. Use when building watchOS apps, complications, or workout features. Triggers on tasks involving Watch UI, Digital Crown, glanceable interfaces, or wrist-based interactions.",
@@ -1669,6 +1628,29 @@
         "upstream": "https://github.com/salexandr0s/platform-design-skills",
         "upstream_revision": null,
         "snapshot_sha256": "f6b12809ea0e09f251d03a64c61d2164eeed915050093793fcfb52e1efc91e6a",
+        "snapshot_files": 4,
+        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied."
+      },
+      "license": "MIT",
+      "notice_sha256": {
+        "LICENSE": "1126322e2cc8d165adc4c792eeb195717de2bcc7b39be1ce77959d78e87ef685"
+      }
+    },
+    {
+      "path": "shared/skills/hig-web",
+      "name": "web-design-guidelines",
+      "description": "Web platform design and accessibility guidelines. Use when building web interfaces, auditing accessibility, implementing responsive layouts, or reviewing web UI code. Triggers on tasks involving HTML, CSS, web components, WCAG compliance, responsive design, or web performance.",
+      "tree_sha256": "0202f9a78c8e8f65c15c6f271d1a55c4debbe1236efbee7ff203657d47fb0589",
+      "files": 5,
+      "license_files": [
+        "LICENSE"
+      ],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-consolidation",
+        "upstream": "https://github.com/salexandr0s/platform-design-skills",
+        "upstream_revision": null,
+        "snapshot_sha256": "223abe90e27b9f08c02afbcf3e7466952c2292e5f389a1a3a2e9240ffeb8d7c8",
         "snapshot_files": 4,
         "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied."
       },
@@ -1952,7 +1934,7 @@
         "id": "hig-visionos",
         "name": "visionos-design-guidelines",
         "path": "claude/skills/hig-visionos",
-        "source": "claude/skills/hig-visionos"
+        "source": "shared/skills/hig-visionos"
       },
       {
         "id": "hig-watchos",
@@ -1964,7 +1946,7 @@
         "id": "hig-web",
         "name": "web-design-guidelines",
         "path": "claude/skills/hig-web",
-        "source": "claude/skills/hig-web"
+        "source": "shared/skills/hig-web"
       },
       {
         "id": "ios-simulator-skill",
@@ -2314,7 +2296,7 @@
         "id": "hig-visionos",
         "name": "visionos-design-guidelines",
         "path": "codex/skills/hig-visionos",
-        "source": "codex/skills/hig-visionos"
+        "source": "shared/skills/hig-visionos"
       },
       {
         "id": "hig-watchos",
@@ -2326,7 +2308,7 @@
         "id": "hig-web",
         "name": "web-design-guidelines",
         "path": "codex/skills/hig-web",
-        "source": "codex/skills/hig-web"
+        "source": "shared/skills/hig-web"
       },
       {
         "id": "ios-simulator-skill",
