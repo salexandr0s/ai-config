@@ -2,7 +2,7 @@
 
 [Project overview](../README.md)
 
-70 skill bindings by name, available through 40 Claude and 70 Codex entries. Shared source packages: 2. Tool-specific adaptations remain separate.
+72 skill bindings by name, available through 42 Claude and 72 Codex entries. Shared source packages: 4. Tool-specific adaptations remain separate.
 
 This file is generated from `skills-manifest.json`. Run `python3 scripts/skills-inventory.py --check` to check aliases, resources and full package hashes. After an intentional source change, review the diff and run `python3 scripts/skills-inventory.py --refresh`.
 
@@ -29,6 +29,7 @@ Binding names follow the existing tool directories. Some upstream skills declare
 | `config-editor` |  | ✓ | [codex](../codex/skills/config-editor) |
 | `critique` | ✓ | ✓ | [claude](../claude/skills/critique) · [codex](../codex/skills/critique) |
 | `debug` |  | ✓ | [codex](../codex/skills/debug) |
+| `deepsec` | ✓ | ✓ | [shared](../shared/skills/deepsec) |
 | `delight` | ✓ | ✓ | [claude](../claude/skills/delight) · [codex](../codex/skills/delight) |
 | `deploy-check` |  | ✓ | [codex](../codex/skills/deploy-check) |
 | `distill` | ✓ | ✓ | [claude](../claude/skills/distill) · [codex](../codex/skills/distill) |
@@ -61,6 +62,7 @@ Binding names follow the existing tool directories. Some upstream skills declare
 | `optimize` | ✓ | ✓ | [claude](../claude/skills/optimize) · [codex](../codex/skills/optimize) |
 | `overdrive` | ✓ | ✓ | [claude](../claude/skills/overdrive) · [codex](../codex/skills/overdrive) |
 | `polish` | ✓ | ✓ | [claude](../claude/skills/polish) · [codex](../codex/skills/polish) |
+| `portless` | ✓ | ✓ | [shared](../shared/skills/portless) |
 | `postmortem` |  | ✓ | [codex](../codex/skills/postmortem) |
 | `pr` |  | ✓ | [codex](../codex/skills/pr) |
 | `quieter` | ✓ | ✓ | [claude](../claude/skills/quieter) · [codex](../codex/skills/quieter) |

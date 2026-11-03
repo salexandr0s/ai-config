@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "counts": {
-    "unique_skills": 70,
-    "claude_bindings": 40,
-    "codex_bindings": 70,
-    "source_packages": 108,
-    "shared_packages": 2
+    "unique_skills": 72,
+    "claude_bindings": 42,
+    "codex_bindings": 72,
+    "source_packages": 110,
+    "shared_packages": 4
   },
   "packages": [
     {
@@ -1664,6 +1664,56 @@
       }
     },
     {
+      "path": "shared/skills/deepsec",
+      "name": "deepsec",
+      "description": "Run deepsec, an AI-powered cyber-security vulnerability scanner. Activates when the user invokes /deepsec, asks to run deepsec, or wants to scan their repo, branch, or uncommitted changes for vulnerabilities.",
+      "tree_sha256": "ed759acc8b29fd3c4a5683f4a12ace3681c6b91664e2de54f0f23d4cc0f5993c",
+      "files": 3,
+      "license_files": [
+        "LICENSE",
+        "NOTICE"
+      ],
+      "provenance": {
+        "kind": "installed-snapshot",
+        "upstream": null,
+        "upstream_revision": null,
+        "snapshot_sha256": "ed759acc8b29fd3c4a5683f4a12ace3681c6b91664e2de54f0f23d4cc0f5993c",
+        "snapshot_files": 3,
+        "note": "Exact installed instruction bundle; no remote skill update was performed."
+      },
+      "license": "Apache-2.0",
+      "notice_sha256": {
+        "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "NOTICE": "4ea4a3e9c0f6f61931030caccf7cf10f4bf04a0b2818471930df8568f8dcdac8"
+      }
+    },
+    {
+      "path": "shared/skills/portless",
+      "name": "portless",
+      "description": "Set up and use portless for named local dev server URLs (e.g. https://myapp.localhost instead of http://localhost:3000). Use when integrating portless into a project, configuring dev server names, setting up the local proxy, working with .localhost domains, or troubleshooting port/proxy issues.",
+      "tree_sha256": "39d481abf95918135b96c663eae719b31d69b642d08684942a12ac7478e4ca7d",
+      "files": 2,
+      "license_files": [
+        "LICENSE"
+      ],
+      "provenance": {
+        "kind": "installed-snapshot",
+        "upstream": "https://github.com/vercel-labs/portless",
+        "upstream_revision": null,
+        "snapshot_sha256": "95f3f5c9d8268a31a9eb657312b6aa9f352e44803ceef02fe149e0ac13bd1f9b",
+        "snapshot_files": 1,
+        "note": "Exact installed instruction bundle; no remote skill update was performed.",
+        "notice_source_revision": "02206465c023dee2cdb1fe416dd65a3a1c65be21",
+        "notice_additions": [
+          "LICENSE"
+        ]
+      },
+      "license": "Apache-2.0",
+      "notice_sha256": {
+        "LICENSE": "014bb31e83d5c2e76aea1cc6e82217346ab41362f32cb355ad0f5c10aa0aeaff"
+      }
+    },
+    {
       "path": "shared/skills/stageshow",
       "name": "stageshow",
       "description": "Build faux product UI that looks like a real product, as a still illustration or an animated demo with a cursor. Browser and app windows, dashboards, phones, notifications, terminals, bento grids and cursor walkthroughs, framed, masked and cropped the way a marketing page, feature card or docs hero needs them. Use whenever someone wants a fake or mocked UI, a product demo or walkthrough animation, a hero or feature-card illustration of an app, a product shot in the style of a polished marketing site, or an animated cursor doing things in an interface, even if they never say \"faux UI\". React and plain CSS.",
@@ -1750,6 +1800,12 @@
         "name": "critique",
         "path": "claude/skills/critique",
         "source": "claude/skills/critique"
+      },
+      {
+        "id": "deepsec",
+        "name": "deepsec",
+        "path": "claude/skills/deepsec",
+        "source": "shared/skills/deepsec"
       },
       {
         "id": "delight",
@@ -1888,6 +1944,12 @@
         "name": "polish",
         "path": "claude/skills/polish",
         "source": "claude/skills/polish"
+      },
+      {
+        "id": "portless",
+        "name": "portless",
+        "path": "claude/skills/portless",
+        "source": "shared/skills/portless"
       },
       {
         "id": "quieter",
@@ -2034,6 +2096,12 @@
         "name": "debug",
         "path": "codex/skills/debug",
         "source": "codex/skills/debug"
+      },
+      {
+        "id": "deepsec",
+        "name": "deepsec",
+        "path": "codex/skills/deepsec",
+        "source": "shared/skills/deepsec"
       },
       {
         "id": "delight",
@@ -2226,6 +2294,12 @@
         "name": "polish",
         "path": "codex/skills/polish",
         "source": "codex/skills/polish"
+      },
+      {
+        "id": "portless",
+        "name": "portless",
+        "path": "codex/skills/portless",
+        "source": "shared/skills/portless"
       },
       {
         "id": "postmortem",
