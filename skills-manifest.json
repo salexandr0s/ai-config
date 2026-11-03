@@ -4,8 +4,8 @@
     "unique_skills": 78,
     "claude_bindings": 46,
     "codex_bindings": 74,
-    "source_packages": 105,
-    "shared_packages": 19
+    "source_packages": 104,
+    "shared_packages": 20
   },
   "packages": [
     {
@@ -357,21 +357,6 @@
       "description": "Audit and modernize messy codebases. Use for structural cleanup, dead code detection, naming or folder fixes, scalability risk review, worst-file rewrites, or README upgrades.",
       "tree_sha256": "217dbc6004cf288c23c6ca05abc5f203841b9f78a5a8c5baa9ee97c04799e86c",
       "files": 2,
-      "license_files": [],
-      "provenance": {
-        "kind": "repository-snapshot",
-        "upstream": null,
-        "note": "Existing source; no upstream revision is asserted."
-      },
-      "license": "NOASSERTION",
-      "notice_sha256": {}
-    },
-    {
-      "path": "claude/skills/shadcn",
-      "name": "shadcn",
-      "description": "Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI. Provides project context, component docs, and usage examples. Applies when working with shadcn/ui, component registries, presets, --preset codes, or any project with a components.json file. Also triggers for \"shadcn init\", \"create an app with --preset\", or \"switch to --preset\".",
-      "tree_sha256": "d84aac24ea3dfd81eab668b25db16580de6bc9379331367e3fc620fe08a4e514",
-      "files": 13,
       "license_files": [],
       "provenance": {
         "kind": "repository-snapshot",
@@ -1176,21 +1161,6 @@
       "notice_sha256": {}
     },
     {
-      "path": "codex/skills/shadcn",
-      "name": "shadcn",
-      "description": "Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI. Provides project context, component docs, and usage examples. Applies when working with shadcn/ui, component registries, presets, --preset codes, or any project with a components.json file. Also triggers for \"shadcn init\", \"create an app with --preset\", or \"switch to --preset\".",
-      "tree_sha256": "d84aac24ea3dfd81eab668b25db16580de6bc9379331367e3fc620fe08a4e514",
-      "files": 13,
-      "license_files": [],
-      "provenance": {
-        "kind": "repository-snapshot",
-        "upstream": null,
-        "note": "Existing source; no upstream revision is asserted."
-      },
-      "license": "NOASSERTION",
-      "notice_sha256": {}
-    },
-    {
       "path": "codex/skills/spec",
       "name": "spec",
       "description": "Write a PRD/spec with user stories and acceptance criteria. Use when the user wants a product specification, requirements document, or needs to turn an idea into a structured spec with testable acceptance criteria. Triggers on \"write a spec\", \"PRD\", \"product requirements\", \"spec this out\".",
@@ -1681,6 +1651,28 @@
       }
     },
     {
+      "path": "shared/skills/shadcn",
+      "name": "shadcn",
+      "description": "Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI. Provides project context, component docs, and usage examples. Applies when working with shadcn/ui, component registries, presets, --preset codes, or any project with a components.json file. Also triggers for \"shadcn init\", \"create an app with --preset\", or \"switch to --preset\".",
+      "tree_sha256": "8a6eb9ea2b37a839d1056aebcbd5b1268cdc03e193ff88616cb762176ac6dba2",
+      "files": 14,
+      "license_files": [
+        "LICENSE.md"
+      ],
+      "provenance": {
+        "kind": "repository-consolidation",
+        "upstream": "https://github.com/shadcn-ui/ui",
+        "upstream_revision": null,
+        "snapshot_sha256": "d84aac24ea3dfd81eab668b25db16580de6bc9379331367e3fc620fe08a4e514",
+        "snapshot_files": 13,
+        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied."
+      },
+      "license": "MIT",
+      "notice_sha256": {
+        "LICENSE.md": "1564074e13439397221ffd522e2e504d56561994a23d371aa5e3ad43e4f5423f"
+      }
+    },
+    {
       "path": "shared/skills/stageshow",
       "name": "stageshow",
       "description": "Build faux product UI that looks like a real product, as a still illustration or an animated demo with a cursor. Browser and app windows, dashboards, phones, notifications, terminals, bento grids and cursor walkthroughs, framed, masked and cropped the way a marketing page, feature card or docs hero needs them. Use whenever someone wants a fake or mocked UI, a product demo or walkthrough animation, a hero or feature-card illustration of an app, a product shot in the style of a polished marketing site, or an animated cursor doing things in an interface, even if they never say \"faux UI\". React and plain CSS.",
@@ -2025,7 +2017,7 @@
         "id": "shadcn",
         "name": "shadcn",
         "path": "claude/skills/shadcn",
-        "source": "claude/skills/shadcn"
+        "source": "shared/skills/shadcn"
       },
       {
         "id": "stageshow",
@@ -2453,7 +2445,7 @@
         "id": "shadcn",
         "name": "shadcn",
         "path": "codex/skills/shadcn",
-        "source": "codex/skills/shadcn"
+        "source": "shared/skills/shadcn"
       },
       {
         "id": "spec",
