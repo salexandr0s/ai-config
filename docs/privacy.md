@@ -26,7 +26,7 @@ The prepared cleanup replaces the known personal-context blobs with approved bla
 
 Publishing that cleanup rewrites commit IDs and requires explicit maintainer approval. Old clones must not merge the original history back into the cleaned branch. GitHub may retain cached old-commit views or other copies after a branch rewrite; GitHub's [sensitive-data removal guide](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository) explains those limits and the support process.
 
-The repository is kept private while the historical cleanup is being reviewed. No automatic force push, credential rotation, or public visibility change is performed by the installer.
+The original repository was made private during review. When GitHub retains old commit objects after a rewrite, that repository stays private; public distribution uses an independent repository populated only with verified clean history. Old-object access is checked before publication. The installer never changes GitHub history or visibility.
 
 ## Maintaining the boundary
 
