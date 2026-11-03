@@ -2,7 +2,7 @@
 
 [Project overview](../README.md)
 
-78 skill bindings by name, available through 46 Claude and 74 Codex entries. Shared source packages: 12. Tool-specific adaptations remain separate.
+78 skill bindings by name, available through 46 Claude and 74 Codex entries. Shared source packages: 14. Tool-specific adaptations remain separate.
 
 This file is generated from `skills-manifest.json`. Run `python3 scripts/skills-inventory.py --check` to check aliases, resources and full package hashes. After an intentional source change, review the diff and run `python3 scripts/skills-inventory.py --refresh`.
 
@@ -46,9 +46,9 @@ Binding names follow the existing tool directories. Some upstream skills declare
 | `hig-ios` | ✓ | ✓ | [shared](../shared/skills/hig-ios) |
 | `hig-ipados` | ✓ | ✓ | [shared](../shared/skills/hig-ipados) |
 | `hig-macos` | ✓ | ✓ | [shared](../shared/skills/hig-macos) |
-| `hig-tvos` | ✓ | ✓ | [claude](../claude/skills/hig-tvos) · [codex](../codex/skills/hig-tvos) |
+| `hig-tvos` | ✓ | ✓ | [shared](../shared/skills/hig-tvos) |
 | `hig-visionos` | ✓ | ✓ | [claude](../claude/skills/hig-visionos) · [codex](../codex/skills/hig-visionos) |
-| `hig-watchos` | ✓ | ✓ | [claude](../claude/skills/hig-watchos) · [codex](../codex/skills/hig-watchos) |
+| `hig-watchos` | ✓ | ✓ | [shared](../shared/skills/hig-watchos) |
 | `hig-web` | ✓ | ✓ | [claude](../claude/skills/hig-web) · [codex](../codex/skills/hig-web) |
 | `ios-simulator-skill` | ✓ | ✓ | [claude](../claude/skills/ios-simulator-skill) · [codex](../codex/skills/ios-simulator-skill) |
 | `lint` |  | ✓ | [codex](../codex/skills/lint) |

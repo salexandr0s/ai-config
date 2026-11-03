@@ -4,8 +4,8 @@
     "unique_skills": 78,
     "claude_bindings": 46,
     "codex_bindings": 74,
-    "source_packages": 112,
-    "shared_packages": 12
+    "source_packages": 110,
+    "shared_packages": 14
   },
   "packages": [
     {
@@ -220,42 +220,10 @@
       "notice_sha256": {}
     },
     {
-      "path": "claude/skills/hig-tvos",
-      "name": "tvos-design-guidelines",
-      "description": "Apple Human Interface Guidelines for Apple TV. Use when building tvOS apps with focus-based navigation, Siri Remote input, or living room viewing experiences. Triggers on tasks involving Apple TV, tvOS, 10-foot UI, or media playback.",
-      "tree_sha256": "fc18296b1fb96ab4e8536832a7697c37c21d1d098e49170dd0dfeaa9d6492f61",
-      "files": 4,
-      "license_files": [],
-      "declared_license": "MIT",
-      "provenance": {
-        "kind": "repository-snapshot",
-        "upstream": null,
-        "note": "Existing source; no upstream revision is asserted."
-      },
-      "license": "NOASSERTION",
-      "notice_sha256": {}
-    },
-    {
       "path": "claude/skills/hig-visionos",
       "name": "visionos-design-guidelines",
       "description": "Apple Human Interface Guidelines for Apple Vision Pro. Use when building spatial computing apps, implementing eye/hand input, or designing immersive experiences. Triggers on tasks involving visionOS, RealityKit, spatial UI, or mixed reality.",
       "tree_sha256": "b22b010594e9a4976538348fe48323e8ccab140d4b5c4b2faedf6b478a585d2b",
-      "files": 4,
-      "license_files": [],
-      "declared_license": "MIT",
-      "provenance": {
-        "kind": "repository-snapshot",
-        "upstream": null,
-        "note": "Existing source; no upstream revision is asserted."
-      },
-      "license": "NOASSERTION",
-      "notice_sha256": {}
-    },
-    {
-      "path": "claude/skills/hig-watchos",
-      "name": "watchos-design-guidelines",
-      "description": "Apple Human Interface Guidelines for Apple Watch. Use when building watchOS apps, complications, or workout features. Triggers on tasks involving Watch UI, Digital Crown, glanceable interfaces, or wrist-based interactions.",
-      "tree_sha256": "f6b12809ea0e09f251d03a64c61d2164eeed915050093793fcfb52e1efc91e6a",
       "files": 4,
       "license_files": [],
       "declared_license": "MIT",
@@ -962,42 +930,10 @@
       "notice_sha256": {}
     },
     {
-      "path": "codex/skills/hig-tvos",
-      "name": "tvos-design-guidelines",
-      "description": "Apple Human Interface Guidelines for Apple TV. Use when building tvOS apps with focus-based navigation, Siri Remote input, or living room viewing experiences. Triggers on tasks involving Apple TV, tvOS, 10-foot UI, or media playback.",
-      "tree_sha256": "fc18296b1fb96ab4e8536832a7697c37c21d1d098e49170dd0dfeaa9d6492f61",
-      "files": 4,
-      "license_files": [],
-      "declared_license": "MIT",
-      "provenance": {
-        "kind": "repository-snapshot",
-        "upstream": null,
-        "note": "Existing source; no upstream revision is asserted."
-      },
-      "license": "NOASSERTION",
-      "notice_sha256": {}
-    },
-    {
       "path": "codex/skills/hig-visionos",
       "name": "visionos-design-guidelines",
       "description": "Apple Human Interface Guidelines for Apple Vision Pro. Use when building spatial computing apps, implementing eye/hand input, or designing immersive experiences. Triggers on tasks involving visionOS, RealityKit, spatial UI, or mixed reality.",
       "tree_sha256": "b22b010594e9a4976538348fe48323e8ccab140d4b5c4b2faedf6b478a585d2b",
-      "files": 4,
-      "license_files": [],
-      "declared_license": "MIT",
-      "provenance": {
-        "kind": "repository-snapshot",
-        "upstream": null,
-        "note": "Existing source; no upstream revision is asserted."
-      },
-      "license": "NOASSERTION",
-      "notice_sha256": {}
-    },
-    {
-      "path": "codex/skills/hig-watchos",
-      "name": "watchos-design-guidelines",
-      "description": "Apple Human Interface Guidelines for Apple Watch. Use when building watchOS apps, complications, or workout features. Triggers on tasks involving Watch UI, Digital Crown, glanceable interfaces, or wrist-based interactions.",
-      "tree_sha256": "f6b12809ea0e09f251d03a64c61d2164eeed915050093793fcfb52e1efc91e6a",
       "files": 4,
       "license_files": [],
       "declared_license": "MIT",
@@ -1696,6 +1632,52 @@
       }
     },
     {
+      "path": "shared/skills/hig-tvos",
+      "name": "tvos-design-guidelines",
+      "description": "Apple Human Interface Guidelines for Apple TV. Use when building tvOS apps with focus-based navigation, Siri Remote input, or living room viewing experiences. Triggers on tasks involving Apple TV, tvOS, 10-foot UI, or media playback.",
+      "tree_sha256": "e951ae012569615436f549f2e1352beb4aceaf8daadcb515baad8950f7bab1c4",
+      "files": 5,
+      "license_files": [
+        "LICENSE"
+      ],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-consolidation",
+        "upstream": "https://github.com/salexandr0s/platform-design-skills",
+        "upstream_revision": null,
+        "snapshot_sha256": "fc18296b1fb96ab4e8536832a7697c37c21d1d098e49170dd0dfeaa9d6492f61",
+        "snapshot_files": 4,
+        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied."
+      },
+      "license": "MIT",
+      "notice_sha256": {
+        "LICENSE": "1126322e2cc8d165adc4c792eeb195717de2bcc7b39be1ce77959d78e87ef685"
+      }
+    },
+    {
+      "path": "shared/skills/hig-watchos",
+      "name": "watchos-design-guidelines",
+      "description": "Apple Human Interface Guidelines for Apple Watch. Use when building watchOS apps, complications, or workout features. Triggers on tasks involving Watch UI, Digital Crown, glanceable interfaces, or wrist-based interactions.",
+      "tree_sha256": "17bb52cb8618e8a3929dc0987f29b3676da58e04cdc6acd13b92dd78641876c9",
+      "files": 5,
+      "license_files": [
+        "LICENSE"
+      ],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-consolidation",
+        "upstream": "https://github.com/salexandr0s/platform-design-skills",
+        "upstream_revision": null,
+        "snapshot_sha256": "f6b12809ea0e09f251d03a64c61d2164eeed915050093793fcfb52e1efc91e6a",
+        "snapshot_files": 4,
+        "note": "Both existing tool trees were byte-identical before consolidation. Their original source bytes are retained; a missing upstream license notice is restored when supplied."
+      },
+      "license": "MIT",
+      "notice_sha256": {
+        "LICENSE": "1126322e2cc8d165adc4c792eeb195717de2bcc7b39be1ce77959d78e87ef685"
+      }
+    },
+    {
       "path": "shared/skills/portless",
       "name": "portless",
       "description": "Set up and use portless for named local dev server URLs (e.g. https://myapp.localhost instead of http://localhost:3000). Use when integrating portless into a project, configuring dev server names, setting up the local proxy, working with .localhost domains, or troubleshooting port/proxy issues.",
@@ -1964,7 +1946,7 @@
         "id": "hig-tvos",
         "name": "tvos-design-guidelines",
         "path": "claude/skills/hig-tvos",
-        "source": "claude/skills/hig-tvos"
+        "source": "shared/skills/hig-tvos"
       },
       {
         "id": "hig-visionos",
@@ -1976,7 +1958,7 @@
         "id": "hig-watchos",
         "name": "watchos-design-guidelines",
         "path": "claude/skills/hig-watchos",
-        "source": "claude/skills/hig-watchos"
+        "source": "shared/skills/hig-watchos"
       },
       {
         "id": "hig-web",
@@ -2326,7 +2308,7 @@
         "id": "hig-tvos",
         "name": "tvos-design-guidelines",
         "path": "codex/skills/hig-tvos",
-        "source": "codex/skills/hig-tvos"
+        "source": "shared/skills/hig-tvos"
       },
       {
         "id": "hig-visionos",
@@ -2338,7 +2320,7 @@
         "id": "hig-watchos",
         "name": "watchos-design-guidelines",
         "path": "codex/skills/hig-watchos",
-        "source": "codex/skills/hig-watchos"
+        "source": "shared/skills/hig-watchos"
       },
       {
         "id": "hig-web",
