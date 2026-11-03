@@ -24,9 +24,10 @@ class HookWiringTests(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.home = Path(self.temp.name)
-        self.scripts = self.home / "GitHub/ai-config/scripts"
+        self.config_home = self.home / "custom config"
+        self.scripts = self.config_home / "ai-config/repo/scripts"
         self.scripts.mkdir(parents=True)
-        self.env = {**os.environ, "HOME": str(self.home)}
+        self.env = {**os.environ, "HOME": str(self.home), "XDG_CONFIG_HOME": str(self.config_home)}
         self.payload = {"session_id": "wiring-test", "cwd": str(self.home)}
 
     def install_script(self, name, text):
@@ -55,10 +56,17 @@ class HookWiringTests(unittest.TestCase):
         )
 
     def test_registered_scripts_exist(self):
+        matched = []
         for path in HOOK_FILES:
             for command in registered_commands(path):
-                for name in re.findall(r"\$HOME/GitHub/ai-config/scripts/([\w.-]+)", command):
+                for name in re.findall(r"\$\{XDG_CONFIG_HOME:-\$HOME/\.config\}/ai-config/repo/scripts/([\w.-]+)", command):
+                    matched.append(name)
                     self.assertTrue((ROOT / "scripts" / name).is_file(), f"{path.name}: {command}")
+        self.assertEqual(set(matched), {
+            "claude-pre-bash-guard.sh", "codex-pre-bash-guard.sh", "version-check.sh",
+            "check-freeze.sh", "claude-post-edit-format.sh", "tab-title-update.sh",
+            "session-capture.sh",
+        })
 
     def test_stop_uses_existing_notifier(self):
         self.install_notifier()

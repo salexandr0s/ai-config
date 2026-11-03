@@ -2,17 +2,70 @@
 set -euo pipefail
 
 # ai-config installer — creates symlinks from tool config dirs to this repo
-# Usage: ./install.sh
+# Usage: ./install.sh [--workspace DIR] [--with-browse] [--with-launchagent]
 #
 # Safe: backs up existing files/dirs before overwriting.
 # Idempotent: re-running updates symlinks without duplicating backups.
 # Backups are stored outside active skill scan directories under
 # ~/.config/ai-config/backups/<timestamp>/.
 
-REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_DIR="$(cd "$(dirname "$0")" && pwd -P)"
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 BACKUP_STAMP="$(date +%Y%m%d%H%M%S)"
-BACKUP_ROOT="$XDG_CONFIG_HOME/ai-config/backups/$BACKUP_STAMP"
+BACKUP_ROOT=""
+REPO_LINK="$XDG_CONFIG_HOME/ai-config/repo"
+WORKSPACE_DIR="$HOME/GitHub"
+WORKSPACE_REQUESTED=0
+BUILD_BROWSE=0
+INSTALL_LAUNCHAGENT=0
+
+usage() {
+  cat <<'USAGE'
+Usage: ./install.sh [options]
+  --workspace DIR       Install shared workspace instructions in DIR
+  --with-browse         Install/build the optional Browse daemon using Bun
+  --with-launchagent    Register weekly memory rotation with macOS launchd
+  --skip-browse         Skip the optional Browse build (default)
+  --skip-launchagent    Skip launchd registration (default)
+  --help                Show this help
+
+Requires Bash and Python 3.11+. Local overlays and user content are preserved.
+USAGE
+}
+
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    --workspace)
+      [ "$#" -ge 2 ] && [ -n "$2" ] || { echo "--workspace requires a directory" >&2; exit 2; }
+      WORKSPACE_DIR="$2"
+      WORKSPACE_REQUESTED=1
+      shift 2 ;;
+    --with-browse) BUILD_BROWSE=1; shift ;;
+    --skip-browse) BUILD_BROWSE=0; shift ;;
+    --with-launchagent) INSTALL_LAUNCHAGENT=1; shift ;;
+    --skip-launchagent) INSTALL_LAUNCHAGENT=0; shift ;;
+    --help|-h) usage; exit 0 ;;
+    *) echo "Unknown option: $1" >&2; usage >&2; exit 2 ;;
+  esac
+done
+
+case "$XDG_CONFIG_HOME" in
+  /*) ;;
+  *) echo "XDG_CONFIG_HOME must be an absolute path" >&2; exit 2 ;;
+esac
+if ! command -v python3 >/dev/null 2>&1 || ! python3 -c 'import sys, tomllib; assert sys.version_info >= (3, 11)' >/dev/null 2>&1; then
+  echo "Install Python 3.11 or later before running install.sh." >&2
+  exit 1
+fi
+if [ "$BUILD_BROWSE" -eq 1 ] && ! command -v bun >/dev/null 2>&1; then
+  echo "--with-browse requires Bun on PATH." >&2
+  exit 1
+fi
+if [ "$INSTALL_LAUNCHAGENT" -eq 1 ] && { [ "$(uname -s)" != "Darwin" ] || ! command -v launchctl >/dev/null 2>&1; }; then
+  echo "--with-launchagent requires macOS and launchctl." >&2
+  exit 1
+fi
+umask 077
 
 backup_path() {
   local dst="$1"
@@ -27,6 +80,10 @@ backup_path() {
 backup_existing() {
   local dst="$1"
   local backup_dst
+  if [ -z "$BACKUP_ROOT" ]; then
+    mkdir -p "$XDG_CONFIG_HOME/ai-config/backups"
+    BACKUP_ROOT="$(mktemp -d "$XDG_CONFIG_HOME/ai-config/backups/$BACKUP_STAMP.XXXXXX")"
+  fi
   backup_dst="$(backup_path "$dst")"
 
   mkdir -p "$(dirname "$backup_dst")"
@@ -53,6 +110,12 @@ migrate_stale_skill_backups() {
 
 link() {
   local src="$1" dst="$2"
+
+  # A checkout may itself live at the managed alias path.
+  if [ -e "$dst" ] && [ "$src" -ef "$dst" ]; then
+    echo "  ✓ $dst (already linked)"
+    return
+  fi
 
   # Already correct symlink — skip
   if [ -L "$dst" ] && [ "$(readlink "$dst")" = "$src" ]; then
@@ -101,6 +164,7 @@ link_skill_dirs() {
 
 echo "Installing ai-config symlinks..."
 echo ""
+link "$REPO_DIR" "$REPO_LINK"
 
 # ── Claude Code ──
 echo "Claude Code:"
@@ -124,13 +188,16 @@ link_skill_dirs "$REPO_DIR/claude/skills" "$HOME/.claude/skills" "Claude"
 copy_if_missing "$REPO_DIR/claude/settings.local.example.json" "$HOME/.claude/settings.local.json"
 copy_if_missing "$REPO_DIR/claude/.env.example" "$HOME/.claude/.env"
 
-# USER/ directory: copy if missing (preserve user content on upgrade)
+# USER/ is private runtime content, copied from templates rather than linked.
 if [ -d "$REPO_DIR/claude/user" ]; then
-  if [ ! -e "$HOME/.claude/USER" ] && [ ! -L "$HOME/.claude/USER" ]; then
-    cp -r "$REPO_DIR/claude/user" "$HOME/.claude/USER"
-    echo "  + created ~/.claude/USER/ (TELOS identity files)"
+  if [ -L "$HOME/.claude/USER" ]; then
+    echo "  USER is a symlink; left unchanged. Keep writable context outside the checkout."
+  elif [ -e "$HOME/.claude/USER" ] && [ ! -d "$HOME/.claude/USER" ]; then
+    echo "  USER is not a directory; left unchanged."
   else
-    echo "  ✓ ~/.claude/USER/ (already present — preserved)"
+    while IFS= read -r -d '' user_template; do
+      copy_if_missing "$user_template" "$HOME/.claude/USER/${user_template#"$REPO_DIR/claude/user/"}"
+    done < <(find "$REPO_DIR/claude/user" -type f -print0)
   fi
 fi
 
@@ -150,6 +217,7 @@ echo ""
 echo "Codex:"
 link "$REPO_DIR/codex/agents"           "$HOME/.codex/agents"
 link "$REPO_DIR/codex/instructions"     "$HOME/.codex/instructions"
+link "$REPO_DIR/codex/workflows"        "$HOME/.codex/workflows"
 link "$REPO_DIR/codex/rules"            "$HOME/.codex/rules"
 link "$REPO_DIR/codex/hooks.json"       "$HOME/.codex/hooks.json"
 
@@ -164,34 +232,48 @@ echo ""
 
 # ── Shared (workspace-level) ──
 echo "Shared:"
-GITHUB_DIR="$HOME/GitHub"
-if [ -d "$GITHUB_DIR" ]; then
-  # Use relative symlink so it works if ~/GitHub moves
-  cd "$GITHUB_DIR"
-  link "ai-config/shared/CLAUDE.md" "$GITHUB_DIR/CLAUDE.md"
-
-  # AGENTS.md → CLAUDE.md (standard alias)
-  if [ ! -L "$GITHUB_DIR/AGENTS.md" ]; then
-    link "CLAUDE.md" "$GITHUB_DIR/AGENTS.md"
-  else
-    echo "  ✓ $GITHUB_DIR/AGENTS.md (already linked)"
-  fi
-  cd - > /dev/null
+if [ "$WORKSPACE_REQUESTED" -eq 1 ]; then
+  mkdir -p "$WORKSPACE_DIR"
+fi
+if [ -d "$WORKSPACE_DIR" ]; then
+  WORKSPACE_DIR="$(cd "$WORKSPACE_DIR" && pwd -P)"
+  link "$REPO_LINK/shared/CLAUDE.md" "$WORKSPACE_DIR/CLAUDE.md"
+  link "$WORKSPACE_DIR/CLAUDE.md" "$WORKSPACE_DIR/AGENTS.md"
 else
-  echo "  ⚠ ~/GitHub not found — skipping shared CLAUDE.md"
+  echo "  Skipped workspace instructions; choose a directory with --workspace DIR."
 fi
 
 # ── LaunchAgents ──
 echo ""
 echo "LaunchAgents:"
-mkdir -p "$HOME/Library/LaunchAgents"
 plist_src="$REPO_DIR/launchagents/com.ai-config.memory-rotate.plist"
 plist_dst="$HOME/Library/LaunchAgents/com.ai-config.memory-rotate.plist"
-if [ -f "$plist_src" ]; then
+if [ "$INSTALL_LAUNCHAGENT" -eq 1 ]; then
+  mkdir -p "$HOME/Library/LaunchAgents" "$HOME/.cache/ai-config"
+  plist_temp="$(mktemp "$XDG_CONFIG_HOME/ai-config/memory-rotate.XXXXXX")"
+  python3 - "$plist_src" "$plist_temp" "$REPO_LINK" "$HOME/.cache/ai-config" <<'PY'
+from pathlib import Path
+import plistlib
+import sys
+
+source, temporary, repository, cache = map(Path, sys.argv[1:])
+with source.open("rb") as stream:
+    job = plistlib.load(stream)
+job["ProgramArguments"] = ["/bin/bash", str(repository / "scripts/memory-rotate.sh")]
+job["StandardOutPath"] = str(cache / "memory-rotate.log")
+job["StandardErrorPath"] = str(cache / "memory-rotate.log")
+with temporary.open("wb") as stream:
+    plistlib.dump(job, stream)
+PY
   launchctl unload "$plist_dst" 2>/dev/null || true
-  sed "s|\$HOME|$HOME|g" "$plist_src" > "$plist_dst"
-  launchctl load "$plist_dst" 2>/dev/null || true
+  if [ -e "$plist_dst" ] && ! cmp -s "$plist_temp" "$plist_dst"; then
+    backup_existing "$plist_dst"
+  fi
+  mv "$plist_temp" "$plist_dst"
+  launchctl load "$plist_dst"
   echo "  ✓ memory-rotate LaunchAgent (weekly Sunday 3am)"
+else
+  echo "  Skipped (enable on macOS with --with-launchagent)."
 fi
 
 echo ""
@@ -202,8 +284,8 @@ link "$REPO_DIR/scripts/dev-status.sh" "$HOME/.local/bin/dev-status"
 
 echo ""
 echo "Browse daemon:"
-mkdir -p "$HOME/.browse"
-if command -v bun >/dev/null 2>&1; then
+if [ "$BUILD_BROWSE" -eq 1 ]; then
+  mkdir -p "$HOME/.browse"
   "$REPO_DIR/scripts/build-browse.sh"
   # Symlink browse and browse-ctl onto PATH
   mkdir -p "$HOME/.local/bin"
@@ -212,9 +294,7 @@ if command -v bun >/dev/null 2>&1; then
     link "$REPO_DIR/browse/dist/browse" "$HOME/.local/bin/browse"
   fi
 else
-  echo "  ⚠ Bun not found — browse daemon not compiled."
-  echo "    Install Bun (https://bun.sh) then re-run install.sh"
-  echo "    Note: browse and browse-ctl will not be on PATH until compiled."
+  echo "  Skipped (enable with --with-browse after installing Bun)."
 fi
 
 echo ""

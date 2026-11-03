@@ -154,12 +154,12 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"$HOME/GitHub/ai-config/scripts/claude-pre-bash-guard.sh\"",
+            "command": "\"${XDG_CONFIG_HOME:-$HOME/.config}/ai-config/repo/scripts/claude-pre-bash-guard.sh\"",
             "timeout": 5
           },
           {
             "type": "command",
-            "command": "\"$HOME/GitHub/ai-config/scripts/version-check.sh\"",
+            "command": "\"${XDG_CONFIG_HOME:-$HOME/.config}/ai-config/repo/scripts/version-check.sh\"",
             "timeout": 5
           }
         ]
@@ -169,7 +169,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"$HOME/GitHub/ai-config/scripts/check-freeze.sh\"",
+            "command": "\"${XDG_CONFIG_HOME:-$HOME/.config}/ai-config/repo/scripts/check-freeze.sh\"",
             "timeout": 5
           }
         ]
@@ -181,7 +181,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"$HOME/GitHub/ai-config/scripts/claude-post-edit-format.sh\"",
+            "command": "\"${XDG_CONFIG_HOME:-$HOME/.config}/ai-config/repo/scripts/claude-post-edit-format.sh\"",
             "timeout": 30
           }
         ]
@@ -191,7 +191,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"$HOME/GitHub/ai-config/scripts/tab-title-update.sh\"",
+            "command": "\"${XDG_CONFIG_HOME:-$HOME/.config}/ai-config/repo/scripts/tab-title-update.sh\"",
             "timeout": 2
           }
         ]
@@ -225,7 +225,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"$HOME/GitHub/ai-config/scripts/session-capture.sh\"",
+            "command": "\"${XDG_CONFIG_HOME:-$HOME/.config}/ai-config/repo/scripts/session-capture.sh\"",
             "timeout": 5
           }
         ]

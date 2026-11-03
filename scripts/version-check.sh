@@ -17,8 +17,8 @@ if [ -f "$debounce_file" ]; then
 fi
 
 # Fetch latest tags (quiet, bounded timeout)
-ai_config_dir="$HOME/GitHub/ai-config"
-[ -d "$ai_config_dir/.git" ] || exit 0
+ai_config_dir="$(cd "$(dirname "$0")/.." && pwd -P)"
+git -C "$ai_config_dir" rev-parse --is-inside-work-tree >/dev/null 2>&1 || exit 0
 
 GIT_HTTP_LOW_SPEED_LIMIT=1000 GIT_HTTP_LOW_SPEED_TIME=3 \
   git -C "$ai_config_dir" fetch --tags --quiet 2>/dev/null || exit 0

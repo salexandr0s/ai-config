@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"$HOME/GitHub/ai-config/scripts/codex-pre-bash-guard.sh\"",
+            "command": "\"${XDG_CONFIG_HOME:-$HOME/.config}/ai-config/repo/scripts/codex-pre-bash-guard.sh\"",
             "timeout": 5,
             "statusMessage": "Checking Bash command"
           }
