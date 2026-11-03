@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "counts": {
-    "unique_skills": 72,
-    "claude_bindings": 42,
+    "unique_skills": 76,
+    "claude_bindings": 46,
     "codex_bindings": 72,
-    "source_packages": 110,
-    "shared_packages": 4
+    "source_packages": 114,
+    "shared_packages": 8
   },
   "packages": [
     {
@@ -1737,6 +1737,97 @@
         "LICENSE": "f9420246652580af24aa2bc48531c17f0f377b064bc7ea218afeb983923ef643",
         "NOTICE.md": "eb8eb167a987a8d95f4254a504af138368719a7863bf1d11a4a7e3b662b331d3"
       }
+    },
+    {
+      "path": "shared/skills/swift-concurrency-pro",
+      "name": "swift-concurrency-pro",
+      "description": "Reviews Swift code for concurrency correctness, modern API usage, and common async/await pitfalls. Use when reading, writing, or reviewing Swift concurrency code.",
+      "tree_sha256": "6765cb00818e19808f49502ca242eea6a7b678d8896549de19fb6ce848f60ba2",
+      "files": 17,
+      "license_files": [
+        "LICENSE"
+      ],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "installed-snapshot",
+        "upstream": "https://github.com/twostraws/Swift-Concurrency-Agent-Skill",
+        "upstream_revision": null,
+        "snapshot_sha256": "6765cb00818e19808f49502ca242eea6a7b678d8896549de19fb6ce848f60ba2",
+        "snapshot_files": 17,
+        "note": "Exact licensed installed bundle. Claude binding preserved; no remote update or new tool binding was introduced."
+      },
+      "license": "MIT",
+      "notice_sha256": {
+        "LICENSE": "b9b479e6df9f27cbc8e7abe91f771b396f3f0fa114d070c7c0b02c820c6b74dc"
+      }
+    },
+    {
+      "path": "shared/skills/swift-testing-pro",
+      "name": "swift-testing-pro",
+      "description": "Writes, reviews, and improves Swift Testing code using modern APIs and best practices. Use when reading, writing, or reviewing projects that use Swift Testing.",
+      "tree_sha256": "a693772048591de097c976a205268aae221db753ab8fa1963c2ead990d48edcc",
+      "files": 10,
+      "license_files": [
+        "LICENSE"
+      ],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "installed-snapshot",
+        "upstream": "https://github.com/twostraws/Swift-Testing-Agent-Skill",
+        "upstream_revision": null,
+        "snapshot_sha256": "a693772048591de097c976a205268aae221db753ab8fa1963c2ead990d48edcc",
+        "snapshot_files": 10,
+        "note": "Exact licensed installed bundle. Claude binding preserved; no remote update or new tool binding was introduced."
+      },
+      "license": "MIT",
+      "notice_sha256": {
+        "LICENSE": "b9b479e6df9f27cbc8e7abe91f771b396f3f0fa114d070c7c0b02c820c6b74dc"
+      }
+    },
+    {
+      "path": "shared/skills/swiftui-performance-audit",
+      "name": "swiftui-performance-audit",
+      "description": "Audit and improve SwiftUI runtime performance from code review and architecture. Use for requests to diagnose slow rendering, janky scrolling, high CPU/memory usage, excessive view updates, or layout thrash in SwiftUI apps, and to provide guidance for user-run Instruments profiling when code review alone is insufficient.",
+      "tree_sha256": "d353bf25a4084fcd65eaa2281f7d5ced67c079efd13a50a3c9eea2a0624c83c8",
+      "files": 10,
+      "license_files": [
+        "LICENSE"
+      ],
+      "provenance": {
+        "kind": "installed-snapshot",
+        "upstream": null,
+        "upstream_revision": null,
+        "snapshot_sha256": "d353bf25a4084fcd65eaa2281f7d5ced67c079efd13a50a3c9eea2a0624c83c8",
+        "snapshot_files": 10,
+        "note": "Exact licensed installed bundle. Claude binding preserved; no remote update or new tool binding was introduced."
+      },
+      "license": "MIT",
+      "notice_sha256": {
+        "LICENSE": "df17aae89ce4705d0a6e5f7b46eeea3b9023967ecad948f8779b47039eb55a8b"
+      }
+    },
+    {
+      "path": "shared/skills/swiftui-pro",
+      "name": "swiftui-pro",
+      "description": "Comprehensively reviews SwiftUI code for best practices on modern APIs, maintainability, and performance. Use when reading, writing, or reviewing SwiftUI projects.",
+      "tree_sha256": "1af959d123d2cda401d7e96cb239d98f3ddc4372c271f5928c818e2e1eb10fb1",
+      "files": 17,
+      "license_files": [
+        "LICENSE"
+      ],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "installed-snapshot",
+        "upstream": "https://github.com/twostraws/SwiftUI-Agent-Skill",
+        "upstream_revision": null,
+        "snapshot_sha256": "1af959d123d2cda401d7e96cb239d98f3ddc4372c271f5928c818e2e1eb10fb1",
+        "snapshot_files": 17,
+        "note": "Exact licensed installed bundle. Claude binding preserved; no remote update or new tool binding was introduced."
+      },
+      "license": "MIT",
+      "notice_sha256": {
+        "LICENSE": "b9b479e6df9f27cbc8e7abe91f771b396f3f0fa114d070c7c0b02c820c6b74dc"
+      }
     }
   ],
   "bindings": {
@@ -1974,6 +2065,30 @@
         "name": "stageshow",
         "path": "claude/skills/stageshow",
         "source": "shared/skills/stageshow"
+      },
+      {
+        "id": "swift-concurrency-pro",
+        "name": "swift-concurrency-pro",
+        "path": "claude/skills/swift-concurrency-pro",
+        "source": "shared/skills/swift-concurrency-pro"
+      },
+      {
+        "id": "swift-testing-pro",
+        "name": "swift-testing-pro",
+        "path": "claude/skills/swift-testing-pro",
+        "source": "shared/skills/swift-testing-pro"
+      },
+      {
+        "id": "swiftui-performance-audit",
+        "name": "swiftui-performance-audit",
+        "path": "claude/skills/swiftui-performance-audit",
+        "source": "shared/skills/swiftui-performance-audit"
+      },
+      {
+        "id": "swiftui-pro",
+        "name": "swiftui-pro",
+        "path": "claude/skills/swiftui-pro",
+        "source": "shared/skills/swiftui-pro"
       },
       {
         "id": "teach-impeccable",

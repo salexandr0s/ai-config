@@ -2,7 +2,7 @@
 
 [Project overview](../README.md)
 
-72 skill bindings by name, available through 42 Claude and 72 Codex entries. Shared source packages: 4. Tool-specific adaptations remain separate.
+76 skill bindings by name, available through 46 Claude and 72 Codex entries. Shared source packages: 8. Tool-specific adaptations remain separate.
 
 This file is generated from `skills-manifest.json`. Run `python3 scripts/skills-inventory.py --check` to check aliases, resources and full package hashes. After an intentional source change, review the diff and run `python3 scripts/skills-inventory.py --refresh`.
 
@@ -79,6 +79,10 @@ Binding names follow the existing tool directories. Some upstream skills declare
 | `status` |  | ✓ | [codex](../codex/skills/status) |
 | `storygen` |  | ✓ | [codex](../codex/skills/storygen) |
 | `supplychain` |  | ✓ | [codex](../codex/skills/supplychain) |
+| `swift-concurrency-pro` | ✓ |  | [shared](../shared/skills/swift-concurrency-pro) |
+| `swift-testing-pro` | ✓ |  | [shared](../shared/skills/swift-testing-pro) |
+| `swiftui-performance-audit` | ✓ |  | [shared](../shared/skills/swiftui-performance-audit) |
+| `swiftui-pro` | ✓ |  | [shared](../shared/skills/swiftui-pro) |
 | `teach-impeccable` | ✓ | ✓ | [claude](../claude/skills/teach-impeccable) · [codex](../codex/skills/teach-impeccable) |
 | `test` |  | ✓ | [codex](../codex/skills/test) |
 | `threatmodel` |  | ✓ | [codex](../codex/skills/threatmodel) |
