@@ -2,7 +2,7 @@
 
 [Project overview](../README.md)
 
-78 skill bindings by name, available through 46 Claude and 74 Codex entries. Shared source packages: 10. Tool-specific adaptations remain separate.
+78 skill bindings by name, available through 46 Claude and 74 Codex entries. Shared source packages: 12. Tool-specific adaptations remain separate.
 
 This file is generated from `skills-manifest.json`. Run `python3 scripts/skills-inventory.py --check` to check aliases, resources and full package hashes. After an intentional source change, review the diff and run `python3 scripts/skills-inventory.py --refresh`.
 
@@ -42,10 +42,10 @@ Binding names follow the existing tool directories. Some upstream skills declare
 | `green` |  | ✓ | [codex](../codex/skills/green) |
 | `greeniv` |  | ✓ | [codex](../codex/skills/greeniv) |
 | `harden` | ✓ | ✓ | [claude](../claude/skills/harden) · [codex](../codex/skills/harden) |
-| `hig-android` | ✓ | ✓ | [claude](../claude/skills/hig-android) · [codex](../codex/skills/hig-android) |
+| `hig-android` | ✓ | ✓ | [shared](../shared/skills/hig-android) |
 | `hig-ios` | ✓ | ✓ | [shared](../shared/skills/hig-ios) |
 | `hig-ipados` | ✓ | ✓ | [shared](../shared/skills/hig-ipados) |
-| `hig-macos` | ✓ | ✓ | [claude](../claude/skills/hig-macos) · [codex](../codex/skills/hig-macos) |
+| `hig-macos` | ✓ | ✓ | [shared](../shared/skills/hig-macos) |
 | `hig-tvos` | ✓ | ✓ | [claude](../claude/skills/hig-tvos) · [codex](../codex/skills/hig-tvos) |
 | `hig-visionos` | ✓ | ✓ | [claude](../claude/skills/hig-visionos) · [codex](../codex/skills/hig-visionos) |
 | `hig-watchos` | ✓ | ✓ | [claude](../claude/skills/hig-watchos) · [codex](../codex/skills/hig-watchos) |
