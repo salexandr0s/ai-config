@@ -1,0 +1,2329 @@
+{
+  "schema_version": 1,
+  "counts": {
+    "unique_skills": 69,
+    "claude_bindings": 39,
+    "codex_bindings": 69,
+    "source_packages": 107,
+    "shared_packages": 1
+  },
+  "packages": [
+    {
+      "path": "claude/skills/adapt",
+      "name": "adapt",
+      "description": "Adapt designs to work across different screen sizes, devices, contexts, or platforms. Ensures consistent experience across varied environments.",
+      "tree_sha256": "7a1958a2c285bf7275f2f85ad13f2c3f8e9506e300f54b91021c18cc36c5254a",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/animate",
+      "name": "animate",
+      "description": "Review a feature and enhance it with purposeful animations, micro-interactions, and motion effects that improve usability and delight.",
+      "tree_sha256": "3628d30859d6c4d14a5ea58f8479b6434b5a25bb9251294e8dbf96a3e31df2a6",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/arrange",
+      "name": "arrange",
+      "description": "Improve layout, spacing, and visual rhythm. Fixes monotonous grids, inconsistent spacing, and weak visual hierarchy to create intentional compositions.",
+      "tree_sha256": "55e8dfdda3237a70da603030552de003950bc93eb277f7340d282dbfd8465050",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/auditui",
+      "name": "auditui",
+      "description": "Perform comprehensive audit of interface quality across accessibility, performance, theming, and responsive design. Generates detailed report of issues with severity ratings and recommendations.",
+      "tree_sha256": "76c6cc13ffb8b925ad64cc9ebd1936a6edec7867b6303dc5666d56d31094445c",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/bolder",
+      "name": "bolder",
+      "description": "Amplify safe or boring designs to make them more visually interesting and stimulating. Increases impact while maintaining usability.",
+      "tree_sha256": "fed21f02b3cf7d60eaff022ef6392a7e1cb45c9c7a567a757b5ca2a397d0e97a",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/browse",
+      "name": "browse",
+      "description": "Persistent headless browser for web interaction, QA testing, and scraping. ~100ms per command after first call. Use when the user needs to interact with a live website, verify UI, fill forms, extract data, or test visually.",
+      "tree_sha256": "b619587d08df23dbf24b3f664135328d0adf2ff2e5dccb85d495d70cd4cc1d82",
+      "files": 4,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/clarify",
+      "name": "clarify",
+      "description": "Improve unclear UX copy, error messages, microcopy, labels, and instructions. Makes interfaces easier to understand and use.",
+      "tree_sha256": "9d058442cbe3142c1564f1af928598b842b75d90b17bc3ef68b0de9da10f35ec",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/colorize",
+      "name": "colorize",
+      "description": "Add strategic color to features that are too monochromatic or lack visual interest. Makes interfaces more engaging and expressive.",
+      "tree_sha256": "a017c39001f962ef9429b4b3449ebf6e2c3e7b0a9c365ea1daaf45d958d3f7ea",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/critique",
+      "name": "critique",
+      "description": "Evaluate design effectiveness from a UX perspective. Assesses visual hierarchy, information architecture, emotional resonance, and overall design quality with actionable feedback.",
+      "tree_sha256": "f5f7c3fd8479344ac7c99a3ffdaffe2dd35f2e5ebf28d55f1107f604160198d2",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/delight",
+      "name": "delight",
+      "description": "Add moments of joy, personality, and unexpected touches that make interfaces memorable and enjoyable to use. Elevates functional to delightful.",
+      "tree_sha256": "e824be27c04c097ae3ce0d3be659935ad0c043fb407e0f259dad5fb5125fcad4",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/distill",
+      "name": "distill",
+      "description": "Strip designs to their essence by removing unnecessary complexity. Great design is simple, powerful, and clean.",
+      "tree_sha256": "a7597f5ae8460a6c7b806984f5cfd91419a78f15f6e356b45954f8f4f3f67d00",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/extract",
+      "name": "extract",
+      "description": "Extract and consolidate reusable components, design tokens, and patterns into your design system. Identifies opportunities for systematic reuse and enriches your component library.",
+      "tree_sha256": "49fe98c29fd0043864a9b342e369454a6ea7e1015cdb35a0f80f1cf7b1f15f94",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/frontend-design",
+      "name": "frontend-design",
+      "description": "Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, artifacts, posters, or applications. Generates creative, polished code that avoids generic AI aesthetics.",
+      "tree_sha256": "7a521b669501520b694230c522ddf456932a92515d627da4c2b2e10a0ddb42d3",
+      "files": 8,
+      "license_files": [],
+      "declared_license": "Apache 2.0. Based on Anthropic's frontend-design skill. See NOTICE.md for attribution.",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/harden",
+      "name": "harden",
+      "description": "Improve interface resilience through better error handling, i18n support, text overflow handling, and edge case management. Makes interfaces robust and production-ready.",
+      "tree_sha256": "89c3238ef591470eeb21b53a17dd284ad6c7ade144588195a9e765aae4f18705",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/hig-android",
+      "name": "android-design-guidelines",
+      "description": "Material Design 3 and Android platform guidelines. Use when building Android apps with Jetpack Compose or XML layouts, implementing Material You, navigation, or accessibility. Triggers on tasks involving Android UI, Compose components, dynamic color, or Material Design compliance.",
+      "tree_sha256": "bb69396ecccfd2116177ff26bf78cb3affbb40d54ecd787bb04d665295e68637",
+      "files": 4,
+      "license_files": [],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/hig-ios",
+      "name": "ios-design-guidelines",
+      "description": "Apple Human Interface Guidelines for iPhone. Use when building, reviewing, or refactoring SwiftUI/UIKit interfaces for iOS. Triggers on tasks involving iPhone UI, iOS components, accessibility, Dynamic Type, Dark Mode, or HIG compliance.",
+      "tree_sha256": "524d501a422ddf4cbee5bfe85b6646a513ae5f4530cb07b43c7c89cf32cb74f2",
+      "files": 4,
+      "license_files": [],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/hig-ipados",
+      "name": "ipados-design-guidelines",
+      "description": "Apple Human Interface Guidelines for iPad. Use when building iPad-optimized interfaces, implementing multitasking, pointer support, keyboard shortcuts, or responsive layouts. Triggers on tasks involving iPad, Split View, Stage Manager, sidebar navigation, or trackpad support.",
+      "tree_sha256": "75bf9ccab60206477496e0b3ceb2f1b681d7c30f364337b6c90a31d2bbb96984",
+      "files": 4,
+      "license_files": [],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/hig-macos",
+      "name": "macos-design-guidelines",
+      "description": "Apple Human Interface Guidelines for Mac. Use when building macOS apps with SwiftUI or AppKit, implementing menu bars, toolbars, window management, or keyboard shortcuts. Triggers on tasks involving Mac UI, desktop apps, or Mac Catalyst.",
+      "tree_sha256": "0cad69d9dea9d345f023934a120298525184c54d7f559142e74450dcd6223854",
+      "files": 4,
+      "license_files": [],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/hig-tvos",
+      "name": "tvos-design-guidelines",
+      "description": "Apple Human Interface Guidelines for Apple TV. Use when building tvOS apps with focus-based navigation, Siri Remote input, or living room viewing experiences. Triggers on tasks involving Apple TV, tvOS, 10-foot UI, or media playback.",
+      "tree_sha256": "cff3019e09db90379629fc42d6f562641eacaed7b8dafbc6706c7feabec63b79",
+      "files": 4,
+      "license_files": [],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/hig-visionos",
+      "name": "visionos-design-guidelines",
+      "description": "Apple Human Interface Guidelines for Apple Vision Pro. Use when building spatial computing apps, implementing eye/hand input, or designing immersive experiences. Triggers on tasks involving visionOS, RealityKit, spatial UI, or mixed reality.",
+      "tree_sha256": "1aa20338f8b6384f43f482bfbab70e9a73c8b6669e4e5254e0d52e2265b781ff",
+      "files": 4,
+      "license_files": [],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/hig-watchos",
+      "name": "watchos-design-guidelines",
+      "description": "Apple Human Interface Guidelines for Apple Watch. Use when building watchOS apps, complications, or workout features. Triggers on tasks involving Watch UI, Digital Crown, glanceable interfaces, or wrist-based interactions.",
+      "tree_sha256": "5b8e393afeb172b3ba11ef9d7321d91ba206c783604685c175cea3b6c288954b",
+      "files": 4,
+      "license_files": [],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/hig-web",
+      "name": "web-design-guidelines",
+      "description": "Web platform design and accessibility guidelines. Use when building web interfaces, auditing accessibility, implementing responsive layouts, or reviewing web UI code. Triggers on tasks involving HTML, CSS, web components, WCAG compliance, responsive design, or web performance.",
+      "tree_sha256": "b53cb3c1ba8d2c04b39d1f2415a22576faecd054a9bfd9352705da53afaffee0",
+      "files": 4,
+      "license_files": [],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/ios-simulator-skill",
+      "name": "ios-simulator-skill",
+      "description": "21 production-ready scripts for iOS app testing, building, and automation. Provides semantic UI navigation, build automation, accessibility testing, and simulator lifecycle management. Optimized for AI agents with minimal token output.",
+      "tree_sha256": "570f04c798a2c237fa316d37eaf6605cf11c981b79133937ffaab617ec75906d",
+      "files": 35,
+      "license_files": [],
+      "version": "1.3.0",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/normalize",
+      "name": "normalize",
+      "description": "Normalize design to match your design system and ensure consistency",
+      "tree_sha256": "9d9ca960cba8aeb49a751545098af023d26efaf20cbec0e73dbcfa7dfc1ae4e4",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/onboard",
+      "name": "onboard",
+      "description": "Design or improve onboarding flows, empty states, and first-time user experiences. Helps users get started successfully and understand value quickly.",
+      "tree_sha256": "4647e111536a0a0b2ae9109441de77a6ef79245d8211a96caa09d4a11d90322e",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/openspec-apply-change",
+      "name": "openspec-apply-change",
+      "description": "Implement tasks from an OpenSpec change. Use when the user wants to start implementing, continue implementation, or work through tasks.",
+      "tree_sha256": "8270f971a24241a92c302a183bb5331d49ee5508d70d5a263419842b65dbcb4b",
+      "files": 1,
+      "license_files": [],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/openspec-archive-change",
+      "name": "openspec-archive-change",
+      "description": "Archive a completed change in the experimental workflow. Use when the user wants to finalize and archive a change after implementation is complete.",
+      "tree_sha256": "3317f65ec7a5c724b816bb431829393e986fb458a647748366778046cba76ad6",
+      "files": 1,
+      "license_files": [],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/openspec-explore",
+      "name": "openspec-explore",
+      "description": "Enter explore mode - a thinking partner for exploring ideas, investigating problems, and clarifying requirements. Use when the user wants to think through something before or during a change.",
+      "tree_sha256": "9da72d2051d28513e10b7f3d6d6eabf538263533cebc31ba8231bdd18e101144",
+      "files": 1,
+      "license_files": [],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/openspec-propose",
+      "name": "openspec-propose",
+      "description": "Propose a new change with all artifacts generated in one step. Use when the user wants to quickly describe what they want to build and get a complete proposal with design, specs, and tasks ready for implementation.",
+      "tree_sha256": "e087945d4d8c0ed1e235464ccb2d01c83e673af965f1c7c450cca27214c2aaff",
+      "files": 1,
+      "license_files": [],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/optimize",
+      "name": "optimize",
+      "description": "Improve interface performance across loading speed, rendering, animations, images, and bundle size. Makes experiences faster and smoother.",
+      "tree_sha256": "7edf083f8c0fdf27c0e34695eec557dc4c7faf6a9a11ca1e1460f6b27e230f08",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/overdrive",
+      "name": "overdrive",
+      "description": "Push interfaces past conventional limits with technically ambitious implementations. Whether that's a shader, a 60fps virtual table, spring physics on a dialog, or scroll-driven reveals.",
+      "tree_sha256": "c5d26441a22ce4372eb2b35a876fca84148a209244af3c1b81953538a380bab8",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/polish",
+      "name": "polish",
+      "description": "Final quality pass before shipping. Fixes alignment, spacing, consistency, and detail issues that separate good from great.",
+      "tree_sha256": "571300561eeb0370aad9b3391f45e4fc4c18d76b78935bce5c27ca2108998f0e",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/quieter",
+      "name": "quieter",
+      "description": "Tone down overly bold or visually aggressive designs. Reduces intensity while maintaining design quality and impact.",
+      "tree_sha256": "8a357b7e25755af6b213c1c6340f83333ee3dfe661c5fd2291f0c62ec07f508f",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/repo-surgeon",
+      "name": "repo-surgeon",
+      "description": "Audit and modernize messy codebases. Use for structural cleanup, dead code detection, naming or folder fixes, scalability risk review, worst-file rewrites, or README upgrades.",
+      "tree_sha256": "a3e932fff178a21b2b3f58700397a531ce82a95ef0326e6bc55011bcb8d61ae8",
+      "files": 2,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/shadcn",
+      "name": "shadcn",
+      "description": "Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI. Provides project context, component docs, and usage examples. Applies when working with shadcn/ui, component registries, presets, --preset codes, or any project with a components.json file. Also triggers for \"shadcn init\", \"create an app with --preset\", or \"switch to --preset\".",
+      "tree_sha256": "a27377ea1b9ee10708f563877be0ef2d4c3e94566b597a9ac2ced556cf950023",
+      "files": 13,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/teach-impeccable",
+      "name": "teach-impeccable",
+      "description": "One-time setup that gathers design context for your project and saves it to your AI config file. Run once to establish persistent design guidelines.",
+      "tree_sha256": "828cb102c2c8b3753147871175d57935aa6270c169632632ce42dc2c770625ae",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/typeset",
+      "name": "typeset",
+      "description": "Improve typography by fixing font choices, hierarchy, sizing, weight consistency, and readability. Makes text feel intentional and polished.",
+      "tree_sha256": "ef3fea12ad590909eb29b4095fd8e795991cc1642c0f77885ceb096e3eeb4769",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "claude/skills/visual-explainer",
+      "name": "visual-explainer",
+      "description": "Generate beautiful, self-contained HTML pages that visually explain systems, code changes, plans, and data. Use when the user asks for a diagram, architecture overview, diff review, plan review, project recap, comparison table, or any visual explanation of technical concepts. Also use proactively when you are about to render a complex ASCII table (4+ rows or 3+ columns) — present it as a styled HTML page instead.",
+      "tree_sha256": "a0df7ba54bb8c7f5921d7e70fbf38d53eb8795cbba583e8ac47e69c78a5f47c9",
+      "files": 22,
+      "license_files": [
+        "LICENSE"
+      ],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {
+        "LICENSE": "871b3c6c64e030c0647ca33543716bdae9511ae2d6a85d6f4ce63783bab52c8f"
+      }
+    },
+    {
+      "path": "codex/skills/adapt",
+      "name": "adapt",
+      "description": "Adapt designs to work across different screen sizes, devices, contexts, or platforms. Ensures consistent experience across varied environments.",
+      "tree_sha256": "3ab53429758bd403d93dba774472dfeb5ae7d8d88a9b97db90c7193c1dc5e232",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/adr",
+      "name": "adr",
+      "description": "Write an Architecture Decision Record (ADR) with options, tradeoffs, and a recommended decision. Use when the user needs to document an architectural choice, compare technical approaches, or create a formal decision record. Triggers on \"ADR\", \"architecture decision\", \"document this decision\", \"compare approaches\".",
+      "tree_sha256": "a8540ce4a5d78944e87ca465692b37f872348b9500be7238d0ce4998c84c139d",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/animate",
+      "name": "animate",
+      "description": "Review a feature and enhance it with purposeful animations, micro-interactions, and motion effects that improve usability and delight.",
+      "tree_sha256": "5073e31345fc26912a5e11cab28df79c7544674b6dce71166c5e3738185f4d99",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/arrange",
+      "name": "arrange",
+      "description": "Improve layout, spacing, and visual rhythm. Fixes monotonous grids, inconsistent spacing, and weak visual hierarchy to create intentional compositions.",
+      "tree_sha256": "bde7a60637acd484dcd79a02add0bec3c8f510207b7498f4a2574f324c28df25",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/audit",
+      "name": "audit",
+      "description": "Quick project audit for quality, security, and release readiness. Produces a prioritized \"get to green\" checklist. Use when the user wants a health check on their project covering build health, dependency risks, secret handling, and basic security posture. Triggers on \"audit this project\", \"quality check\", \"is this ready to ship\", \"project health audit\".",
+      "tree_sha256": "11c3add6cf30bf10ee1d2a07a3a3f68a9ab0616be702f00f76a6df67de01f4a3",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/auditdeep",
+      "name": "auditdeep",
+      "description": "Comprehensive security audit using OWASP Top 10 and ASVS as verification frameworks. Use when the user needs a thorough security assessment, penetration test plan, or compliance-oriented audit for systems they own. Triggers on \"deep audit\", \"security audit\", \"OWASP audit\", \"comprehensive security review\", \"ASVS verification\".",
+      "tree_sha256": "6bb50f14ab2170adf6e9eb7ff2a4c7e28391b7db87e2b2a89ba3ca436ddb5282",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/auditui",
+      "name": "auditui",
+      "description": "Audit interface quality across accessibility, performance, theming, and responsive design. Produces a prioritized report with severity ratings and recommendations.",
+      "tree_sha256": "4870366aaea39e81c26c4f46547429dba1030ecb3c7ebfa2bd41fff841167126",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/bolder",
+      "name": "bolder",
+      "description": "Amplify safe or boring designs to make them more visually interesting and stimulating. Increases impact while maintaining usability.",
+      "tree_sha256": "4b8ad1b90289b2c585c045c07a6114b6d6c6ad360a67e4d96c2f6009340dce89",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/browse",
+      "name": "browse",
+      "description": "Persistent headless browser for web interaction, QA testing, and scraping. ~100ms per command after first call. Use when the user needs to interact with a live website, verify UI, fill forms, extract data, or test visually.",
+      "tree_sha256": "8d9a4392c46a50f7a2cd368d967df8ece48b9aa75d4de8d8bddd65a0ffb0c28c",
+      "files": 2,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/clarify",
+      "name": "clarify",
+      "description": "Improve unclear UX copy, error messages, microcopy, labels, and instructions. Makes interfaces easier to understand and use.",
+      "tree_sha256": "d8f06ebd062c1dcd1c42bee6ab65fc18310bc4318b1985667bda8e868df2bd6e",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/colorize",
+      "name": "colorize",
+      "description": "Add strategic color to features that are too monochromatic or lack visual interest. Makes interfaces more engaging and expressive.",
+      "tree_sha256": "c07bf377e031d8c1fbe0391ab76006810c6857ca7dbee2fb635f3f9d6b29e451",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/commands",
+      "name": "commands",
+      "description": "Print a quick-reference table of all available slash commands. Triggers on \"list commands\", \"what commands\", \"help\", \"show commands\".",
+      "tree_sha256": "dd0c8ecac476680d27d38dacc6293335e217779b4125cafde09c032c975c7c90",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/condense",
+      "name": "condense",
+      "description": "Make code shorter without changing behavior — removes dead code, duplication, verbosity, and over-abstraction. Triggers on \"condense\", \"make this shorter\", \"reduce code\", \"trim\", \"simplify this code\".",
+      "tree_sha256": "5c324d2f9898b73ef5d545c41ef86e6a5961192f9bded3b8c52742c49d5d2045",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/config-editor",
+      "name": "config-editor",
+      "description": "Audit or edit AI assistant config and policy docs. Use for Claude/Codex config, AGENTS.md or CLAUDE.md cleanup, skill or MCP overload, parity drift, or RFC 2119 rewrites.",
+      "tree_sha256": "6b9c099ebf086e1634b9e7f2b869869e8fcf2ff23863fd9d4dc0d17edf0027d2",
+      "files": 2,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/critique",
+      "name": "critique",
+      "description": "Evaluate design effectiveness from a UX perspective. Assesses visual hierarchy, information architecture, emotional resonance, and overall design quality with actionable feedback.",
+      "tree_sha256": "a683838cf07438b817150304c1cf0b90207fad13d46a8ca53a8f7bc938f16a6f",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/debug",
+      "name": "debug",
+      "description": "Systematic debugging partner using repro-first, hypothesis-driven approach. Use when the user reports a bug, error, or unexpected behavior and needs help diagnosing and fixing it. Triggers on \"debug this\", \"why is this failing\", \"help me fix this bug\", \"investigate this error\".",
+      "tree_sha256": "7efa186ab59e925b1482f6d71825d76dc8c5ec4bd02588864db73846c1273e28",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/delight",
+      "name": "delight",
+      "description": "Add moments of joy, personality, and unexpected touches that make interfaces memorable and enjoyable to use. Elevates functional to delightful.",
+      "tree_sha256": "61964b92ea5b914d5ec239a57f929cdf15117ae2d740caf21a42c3dec6f5a30a",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/deploy-check",
+      "name": "deploy-check",
+      "description": "Run pre-deployment verification without actually deploying. Checks git status, quality gates (lint, types, tests, build), and common deployment issues. Use when the user is about to deploy and wants to verify readiness. Triggers on \"deploy check\", \"pre-deploy\", \"ready to deploy\", \"deployment verification\".",
+      "tree_sha256": "92c2861c9ed895e2b4fc291345cf72a8d527242c22b70c80cdfecafef2a3ab9c",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/distill",
+      "name": "distill",
+      "description": "Strip designs to their essence by removing unnecessary complexity. Great design is simple, powerful, and clean.",
+      "tree_sha256": "81a4ee32ded69773937256b4ca9e25e243c7405bd4b99ad92d29e8cd51865aa7",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/dod",
+      "name": "dod",
+      "description": "Create or refine a Definition of Done for a project with tiered checklists (MVP/Standard/High-assurance). Use when the user wants to define quality standards, acceptance criteria for work completion, or a DoD checklist. Triggers on \"definition of done\", \"DoD\", \"what does done look like\", \"quality checklist\", \"done criteria\".",
+      "tree_sha256": "dabb4557f6558bd77e417f79c941b5184fe4fbf62f7533994c9078db5ce285fb",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/extract",
+      "name": "extract",
+      "description": "Extract and consolidate reusable components, design tokens, and patterns into your design system. Identifies opportunities for systematic reuse and enriches your component library.",
+      "tree_sha256": "9e43f6fd7bc926b6a701db2cc0638b94a7dc23dadae364a603e07979e7159694",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/fix",
+      "name": "fix",
+      "description": "Investigate and fix a described issue end-to-end. Use when the user reports a specific problem, error, or broken behavior that needs to be diagnosed and resolved. Triggers on \"fix this\", \"fix the bug\", \"this is broken\", \"something's wrong with\".",
+      "tree_sha256": "f6392f0ff19b259833d418c3c57e6fdf13696b1f9fde4bd4f357780fdbc071d0",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/focus",
+      "name": "focus",
+      "description": "Pragmatic prioritization assistant. Scans git state, TODOs, open branches, and tasks to recommend what to work on next. Triggers on \"what should I work on\", \"focus\", \"prioritize\", \"what's next\".",
+      "tree_sha256": "e909cf88c41d7b31e8570d12c3ea6d2e754555a7889996bb54b080abf321d924",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/frontend-design",
+      "name": "frontend-design",
+      "description": "Design and build polished frontend UI. Use for web components, pages, artifacts, posters, or apps that need strong visual quality and non-generic design.",
+      "tree_sha256": "bd6dc74e122e48c5086868e93535dccbe424c7d2e84bf6ef6a3764ce4f9f5376",
+      "files": 8,
+      "license_files": [],
+      "declared_license": "Apache 2.0. Based on Anthropic's frontend-design skill. See NOTICE.md for attribution.",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/green",
+      "name": "green",
+      "description": "Produce a practical greenfield blueprint for a new project or feature. Use when the user has an idea and wants an architecture plan with options, tradeoffs, and milestones. Triggers on phrases like \"greenfield blueprint\", \"architect this\", \"design this system\", or \"give me a blueprint\".",
+      "tree_sha256": "642ea1001277287cc205f3698572c22a27e08e7bcbd14323a7746cb55fb31181",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/greeniv",
+      "name": "greeniv",
+      "description": "Run a greenfield interview to remove ambiguity before proposing solutions. Use when the user wants to explore a new project idea, asks for help scoping a new feature, or wants structured discovery questions before building something. Triggers on phrases like \"greenfield interview\", \"scope this idea\", \"help me think through this project\", or \"what questions should I ask\".",
+      "tree_sha256": "80ffe01a2dc1435ad46aaafd91a0c3f023812f768501128ea16d97420f4925c1",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/harden",
+      "name": "harden",
+      "description": "Improve interface resilience through better error handling, i18n support, text overflow handling, and edge case management. Makes interfaces robust and production-ready.",
+      "tree_sha256": "a3181c6fad875e4e6debd65a12d266ccd8225cb4bd734a68fd07b3c197d63aa5",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/hig-android",
+      "name": "android-design-guidelines",
+      "description": "Material Design 3 and Android platform guidelines. Use when building Android apps with Jetpack Compose or XML layouts, implementing Material You, navigation, or accessibility. Triggers on tasks involving Android UI, Compose components, dynamic color, or Material Design compliance.",
+      "tree_sha256": "bb69396ecccfd2116177ff26bf78cb3affbb40d54ecd787bb04d665295e68637",
+      "files": 4,
+      "license_files": [],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/hig-ios",
+      "name": "ios-design-guidelines",
+      "description": "Apple Human Interface Guidelines for iPhone. Use when building, reviewing, or refactoring SwiftUI/UIKit interfaces for iOS. Triggers on tasks involving iPhone UI, iOS components, accessibility, Dynamic Type, Dark Mode, or HIG compliance.",
+      "tree_sha256": "524d501a422ddf4cbee5bfe85b6646a513ae5f4530cb07b43c7c89cf32cb74f2",
+      "files": 4,
+      "license_files": [],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/hig-ipados",
+      "name": "ipados-design-guidelines",
+      "description": "Apple Human Interface Guidelines for iPad. Use when building iPad-optimized interfaces, implementing multitasking, pointer support, keyboard shortcuts, or responsive layouts. Triggers on tasks involving iPad, Split View, Stage Manager, sidebar navigation, or trackpad support.",
+      "tree_sha256": "75bf9ccab60206477496e0b3ceb2f1b681d7c30f364337b6c90a31d2bbb96984",
+      "files": 4,
+      "license_files": [],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/hig-macos",
+      "name": "macos-design-guidelines",
+      "description": "Apple Human Interface Guidelines for Mac. Use when building macOS apps with SwiftUI or AppKit, implementing menu bars, toolbars, window management, or keyboard shortcuts. Triggers on tasks involving Mac UI, desktop apps, or Mac Catalyst.",
+      "tree_sha256": "0cad69d9dea9d345f023934a120298525184c54d7f559142e74450dcd6223854",
+      "files": 4,
+      "license_files": [],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/hig-tvos",
+      "name": "tvos-design-guidelines",
+      "description": "Apple Human Interface Guidelines for Apple TV. Use when building tvOS apps with focus-based navigation, Siri Remote input, or living room viewing experiences. Triggers on tasks involving Apple TV, tvOS, 10-foot UI, or media playback.",
+      "tree_sha256": "cff3019e09db90379629fc42d6f562641eacaed7b8dafbc6706c7feabec63b79",
+      "files": 4,
+      "license_files": [],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/hig-visionos",
+      "name": "visionos-design-guidelines",
+      "description": "Apple Human Interface Guidelines for Apple Vision Pro. Use when building spatial computing apps, implementing eye/hand input, or designing immersive experiences. Triggers on tasks involving visionOS, RealityKit, spatial UI, or mixed reality.",
+      "tree_sha256": "1aa20338f8b6384f43f482bfbab70e9a73c8b6669e4e5254e0d52e2265b781ff",
+      "files": 4,
+      "license_files": [],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/hig-watchos",
+      "name": "watchos-design-guidelines",
+      "description": "Apple Human Interface Guidelines for Apple Watch. Use when building watchOS apps, complications, or workout features. Triggers on tasks involving Watch UI, Digital Crown, glanceable interfaces, or wrist-based interactions.",
+      "tree_sha256": "5b8e393afeb172b3ba11ef9d7321d91ba206c783604685c175cea3b6c288954b",
+      "files": 4,
+      "license_files": [],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/hig-web",
+      "name": "web-design-guidelines",
+      "description": "Web platform design and accessibility guidelines. Use when building web interfaces, auditing accessibility, implementing responsive layouts, or reviewing web UI code. Triggers on tasks involving HTML, CSS, web components, WCAG compliance, responsive design, or web performance.",
+      "tree_sha256": "b53cb3c1ba8d2c04b39d1f2415a22576faecd054a9bfd9352705da53afaffee0",
+      "files": 4,
+      "license_files": [],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/ios-simulator-skill",
+      "name": "ios-simulator-skill",
+      "description": "21 production-ready scripts for iOS app testing, building, and automation. Provides semantic UI navigation, build automation, accessibility testing, and simulator lifecycle management. Optimized for AI agents with minimal token output.",
+      "tree_sha256": "570f04c798a2c237fa316d37eaf6605cf11c981b79133937ffaab617ec75906d",
+      "files": 35,
+      "license_files": [],
+      "version": "1.3.0",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/lint",
+      "name": "lint",
+      "description": "Run all code quality checks and fix auto-fixable issues. Detects project type and runs the appropriate linter, formatter, and type checker. Use when the user wants to clean up code quality, fix lint errors, or run formatting. Triggers on \"lint\", \"run linter\", \"fix formatting\", \"code quality check\", \"format the code\".",
+      "tree_sha256": "efba60ef326c8773f4c09105ac978522627781e8310505c5c502bafd316407d3",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/migrate-to-codex",
+      "name": "migrate-to-codex",
+      "description": "Migrate supported instruction files, skills, agents, and MCP config into Codex project and global files.",
+      "tree_sha256": "adb51b15bf887b69038cdc69b4b4930078681cfcc8dd679873c3ff824a3c873a",
+      "files": 19,
+      "license_files": [
+        "LICENSE.txt"
+      ],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {
+        "LICENSE.txt": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd"
+      }
+    },
+    {
+      "path": "codex/skills/new-project",
+      "name": "new-project",
+      "description": "Scaffold a new project using the workspace's default stack (Next.js, TypeScript, Tailwind, Vitest). Use when the user wants to start a new project, create a new app, or bootstrap a codebase. Triggers on \"new project\", \"scaffold\", \"create a new app\", \"bootstrap\", \"start a project\".",
+      "tree_sha256": "2b4f64ff249602f2cec3a02d4711cfdc5d3f63df8aa796cf148113a3a97d35af",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/normalize",
+      "name": "normalize",
+      "description": "Normalize design to match your design system and ensure consistency",
+      "tree_sha256": "dc6f9b1c3c46f043649b2560c6e6126015c94ea18c02c98a8fea88bd2ae5ac85",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/onboard",
+      "name": "onboard",
+      "description": "Design or improve onboarding flows, empty states, and first-time user experiences. Helps users get started successfully and understand value quickly.",
+      "tree_sha256": "e55bef634c078af7503b7fcc61420fd8574c4531fa379321dae4643b2fa09a49",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/openspec-apply-change",
+      "name": "openspec-apply-change",
+      "description": "Implement tasks from an OpenSpec change. Use when the user wants to start implementing, continue implementation, or work through tasks.",
+      "tree_sha256": "8270f971a24241a92c302a183bb5331d49ee5508d70d5a263419842b65dbcb4b",
+      "files": 1,
+      "license_files": [],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/openspec-archive-change",
+      "name": "openspec-archive-change",
+      "description": "Archive a completed change in the experimental workflow. Use when the user wants to finalize and archive a change after implementation is complete.",
+      "tree_sha256": "3317f65ec7a5c724b816bb431829393e986fb458a647748366778046cba76ad6",
+      "files": 1,
+      "license_files": [],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/openspec-explore",
+      "name": "openspec-explore",
+      "description": "Enter explore mode for idea exploration, problem investigation, and requirement clarification. Use before or during a change when the user wants to think, not implement.",
+      "tree_sha256": "d1aafca94a8e0d6194feb91b5b9bcae438b6f1457eb132f6cfe3be7b240b5a27",
+      "files": 1,
+      "license_files": [],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/openspec-propose",
+      "name": "openspec-propose",
+      "description": "Propose a new change end to end. Use when the user wants one-step generation of a proposal, design, spec, and task list for implementation.",
+      "tree_sha256": "16a0c043c627925d47b58fe738e879cb95656d47ca219e6bf0bc0ea173b08028",
+      "files": 1,
+      "license_files": [],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/optimize",
+      "name": "optimize",
+      "description": "Improve interface performance across loading speed, rendering, animations, images, and bundle size. Makes experiences faster and smoother.",
+      "tree_sha256": "dbd84072651b32fd43579b2be038be952fc4e1fe28c5f12bf405ea7e63a675b3",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/overdrive",
+      "name": "overdrive",
+      "description": "Push interfaces into technically ambitious territory. Use for effects like shaders, 60fps data UI, spring physics, or scroll-driven interactions.",
+      "tree_sha256": "b7316e7656463ea6d28e1112cbde193324f439e550a433f2cc64345df02136f7",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/polish",
+      "name": "polish",
+      "description": "Final quality pass before shipping. Fixes alignment, spacing, consistency, and detail issues that separate good from great.",
+      "tree_sha256": "905b87fb34674bdac7c7f28a16db846ce2a31861b65db7d1695fd603d7ebf1cb",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/postmortem",
+      "name": "postmortem",
+      "description": "Draft a blameless incident postmortem with timeline, root causes, and corrective actions. Use when the user needs to document an incident, outage, or failure with structured analysis and action items. Triggers on \"postmortem\", \"incident report\", \"write up this outage\", \"blameless retro\", \"incident analysis\".",
+      "tree_sha256": "3efd36d501a1b47e7906fe6c865c780a9802ead212b156c46bd5793efc176119",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/pr",
+      "name": "pr",
+      "description": "Create a pull request for the current branch with auto-generated title and description. Use when the user wants to open a PR, submit changes for review, or push and create a pull request. Triggers on \"create a PR\", \"open a pull request\", \"submit for review\", \"push and PR\".",
+      "tree_sha256": "88eab23facb44e6b94ef8f3724df19acc4dda2f4f48ab1354cb0a83a17845001",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/quieter",
+      "name": "quieter",
+      "description": "Tone down overly bold or visually aggressive designs. Reduces intensity while maintaining design quality and impact.",
+      "tree_sha256": "67cec2da96884a73fe556ec6044853ffcb1ca47e5b0a7a6ad5c56508c14dad32",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/refactor",
+      "name": "refactor",
+      "description": "Plan a safe, incremental refactor with tests and rollback strategy. Use when the user wants to restructure code, improve architecture, or clean up tech debt without breaking things. Triggers on \"refactor this\", \"clean up this code\", \"restructure\", \"improve this architecture\".",
+      "tree_sha256": "87a686c45f0f1ed3bfc19bf492e8bebcbd213762dc68f12a1165e3bf12d8a0b2",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/release",
+      "name": "release",
+      "description": "Generate a release readiness checklist with rollback plan and monitoring strategy. Use when the user is preparing to ship, deploy, or release and wants a structured go/no-go checklist. Triggers on \"release checklist\", \"ready to ship\", \"release readiness\", \"go/no-go\", \"pre-release check\".",
+      "tree_sha256": "7a1515c3a241eab60d2fdb5653029580e89ad1261b783441c9cad9a8c00110b4",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/repo-surgeon",
+      "name": "repo-surgeon",
+      "description": "Audit and modernize messy codebases. Use for structural cleanup, dead code detection, naming or folder fixes, scalability risk review, worst-file rewrites, or README upgrades.",
+      "tree_sha256": "0b56c6a26edc4319bc093990868f6fa0c3486f4adf4346a73f3edaa933e2d690",
+      "files": 2,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/reqwording",
+      "name": "reqwording",
+      "description": "Rewrite requirements to be unambiguous and testable using RFC 2119 keywords (MUST/SHOULD/MAY). Use when the user has vague or ambiguous requirements that need to be tightened into precise, verifiable statements. Triggers on \"rewrite requirements\", \"make these testable\", \"RFC 2119\", \"tighten these requirements\", \"requirement wording\".",
+      "tree_sha256": "3f950b11a39d247d0352a89309ede0ef18ed774e29297ad06efdeee4725d5865",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/review",
+      "name": "review",
+      "description": "Perform a pragmatic code review on current changes. Use when the user asks to review a diff, PR, or current uncommitted changes. Triggers on \"review my changes\", \"code review\", \"review this PR\", \"check my diff\", \"review the code\".",
+      "tree_sha256": "f982e016178408a2415396ea64c952ebfde0b52913d6c4a5b542d68063b7dfc4",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/reviewdeep",
+      "name": "reviewdeep",
+      "description": "Perform a thorough code review focusing on design, maintainability, and testing strategy. Use when the user wants an in-depth review beyond surface-level checks — covering architecture fit, complexity, backward compatibility, and long-term code health. Triggers on \"deep review\", \"thorough review\", \"review for code health\", \"design review\".",
+      "tree_sha256": "5be5b709eb5b660df12ffc4e5ce5eeb1a9312f5b25c2a02ebf6bb48f9853317c",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/securecoding",
+      "name": "securecoding",
+      "description": "Scan code for secure coding gaps using a tech-agnostic checklist. Use when the user wants to find security vulnerabilities in their code covering input validation, auth, sessions, access control, crypto, error handling, and data protection. Triggers on \"secure coding review\", \"find security issues\", \"check for vulnerabilities\", \"security scan\".",
+      "tree_sha256": "60e7b1ace1805f4c6e91934c745a768cc1c4892da2788ff3d7cc6f9279447a7f",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/shadcn",
+      "name": "shadcn",
+      "description": "Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI. Provides project context, component docs, and usage examples. Applies when working with shadcn/ui, component registries, presets, --preset codes, or any project with a components.json file. Also triggers for \"shadcn init\", \"create an app with --preset\", or \"switch to --preset\".",
+      "tree_sha256": "a27377ea1b9ee10708f563877be0ef2d4c3e94566b597a9ac2ced556cf950023",
+      "files": 13,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/spec",
+      "name": "spec",
+      "description": "Write a PRD/spec with user stories and acceptance criteria. Use when the user wants a product specification, requirements document, or needs to turn an idea into a structured spec with testable acceptance criteria. Triggers on \"write a spec\", \"PRD\", \"product requirements\", \"spec this out\".",
+      "tree_sha256": "670a7696616614eb7edcd904cef55ba4c41ebb972a4287a5b3ce48a188cf1a0a",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/status",
+      "name": "status",
+      "description": "Quick project health check covering git state, dependencies, quality, tests, and build. Use when the user wants to know the current state of a project or check if everything is working. Triggers on \"project status\", \"health check\", \"how's the project\", \"is everything working\", \"status check\".",
+      "tree_sha256": "92cd2bc08189f0506a678de7aad74a5be99064c8e9f68dcaecc3a4ea27bfb5af",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/storygen",
+      "name": "storygen",
+      "description": "Turn ideas into user stories with acceptance criteria. Use when the user has feature ideas, requirements, or concepts that need to be broken down into actionable user stories with testable acceptance criteria. Triggers on \"turn this into stories\", \"write user stories\", \"break this into stories\", \"story generation\", \"create epics\".",
+      "tree_sha256": "ae4938f2a57023adab3b87d73c136367dc0561bb16c7ea6969a1e02efcdd05a4",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/supplychain",
+      "name": "supplychain",
+      "description": "Audit software supply chain security covering dependencies, builds, provenance, and SBOM. Use when the user wants to assess dependency risks, build integrity, or artifact trust. Triggers on \"supply chain audit\", \"dependency audit\", \"SBOM\", \"build provenance\", \"dependency security\".",
+      "tree_sha256": "7fe8d802506c5021728a597ea29364767e6641873b9d205967d3c82c537958a2",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/teach-impeccable",
+      "name": "teach-impeccable",
+      "description": "One-time setup that gathers design context for your project and saves it to your AI config file. Run once to establish persistent design guidelines.",
+      "tree_sha256": "0dd702992e1fb5cb89be1732a5e072fa3feb20c7d59e3937b03debdaef1fe7a8",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/test",
+      "name": "test",
+      "description": "Detect the project type and run the appropriate test suite (Vitest, Jest, Playwright, pytest, cargo test). Use when the user wants to run tests, check test results, or verify a specific test file. Triggers on \"run tests\", \"run the test suite\", \"check tests\", \"test this\".",
+      "tree_sha256": "662e5d3ba8abafbbe4e4f1d5698a7baaa4a22c8482d5e293eca2c2cbdee55f22",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/threatmodel",
+      "name": "threatmodel",
+      "description": "Create a STRIDE threat model with mitigations and security tests. Use when the user wants to identify threats to a system, map trust boundaries, or produce a structured threat analysis. Triggers on \"threat model\", \"STRIDE analysis\", \"identify threats\", \"security threat analysis\", \"map trust boundaries\".",
+      "tree_sha256": "dbfe0dd72cd4181b5ff5385b27ffd895985cdff37fefd9c6641b268a10125243",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/typeset",
+      "name": "typeset",
+      "description": "Improve typography by fixing font choices, hierarchy, sizing, weight consistency, and readability. Makes text feel intentional and polished.",
+      "tree_sha256": "df0e2132dc00e15d78ad381a1085ad4905bd74270433e9be97fde25a1f03e01b",
+      "files": 1,
+      "license_files": [],
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/visual-explainer",
+      "name": "visual-explainer",
+      "description": "Generate beautiful, self-contained HTML pages that visually explain systems, code changes, plans, and data. Use when the user asks for a diagram, architecture overview, diff review, plan review, project recap, comparison table, or any visual explanation of technical concepts. Also use proactively when you are about to render a complex ASCII table (4+ rows or 3+ columns) — present it as a styled HTML page instead.",
+      "tree_sha256": "1cfa87b45facfce1e6d729384a9c1ad51a9755724a3a0dd7621908b45b372350",
+      "files": 22,
+      "license_files": [
+        "LICENSE"
+      ],
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {
+        "LICENSE": "871b3c6c64e030c0647ca33543716bdae9511ae2d6a85d6f4ce63783bab52c8f"
+      }
+    },
+    {
+      "path": "shared/skills/avoid-ai-writing",
+      "name": "avoid-ai-writing",
+      "description": "Use whenever drafting or editing copy, prose, UI text, titles, headings, or subject lines. Review generic AI writing patterns while preserving facts, voice, uncertainty, protected content, and the requested scope.",
+      "tree_sha256": "69ebe8a2cd0da9d43be066f09cdee75767602d879ad59f604d9dcd5225b37b86",
+      "files": 17,
+      "license_files": [
+        "LICENSE",
+        "NOTICE.md"
+      ],
+      "version": "3.37.0",
+      "declared_license": "MIT",
+      "provenance": {
+        "kind": "repository-snapshot",
+        "upstream": null,
+        "note": "Existing source; no upstream revision is asserted."
+      },
+      "license": "NOASSERTION",
+      "notice_sha256": {
+        "LICENSE": "4da9b9f0bb899269b6e79fb383b4c3f24ebcadf7352f970871bae3e215401589",
+        "NOTICE.md": "cced9e526a6fcdd9f3fcf47e282227c768b644db82e17b6dec886d9b3e8ce709"
+      }
+    }
+  ],
+  "bindings": {
+    "claude": [
+      {
+        "id": "adapt",
+        "name": "adapt",
+        "path": "claude/skills/adapt",
+        "source": "claude/skills/adapt"
+      },
+      {
+        "id": "animate",
+        "name": "animate",
+        "path": "claude/skills/animate",
+        "source": "claude/skills/animate"
+      },
+      {
+        "id": "arrange",
+        "name": "arrange",
+        "path": "claude/skills/arrange",
+        "source": "claude/skills/arrange"
+      },
+      {
+        "id": "auditui",
+        "name": "auditui",
+        "path": "claude/skills/auditui",
+        "source": "claude/skills/auditui"
+      },
+      {
+        "id": "avoid-ai-writing",
+        "name": "avoid-ai-writing",
+        "path": "claude/skills/avoid-ai-writing",
+        "source": "shared/skills/avoid-ai-writing"
+      },
+      {
+        "id": "bolder",
+        "name": "bolder",
+        "path": "claude/skills/bolder",
+        "source": "claude/skills/bolder"
+      },
+      {
+        "id": "browse",
+        "name": "browse",
+        "path": "claude/skills/browse",
+        "source": "claude/skills/browse"
+      },
+      {
+        "id": "clarify",
+        "name": "clarify",
+        "path": "claude/skills/clarify",
+        "source": "claude/skills/clarify"
+      },
+      {
+        "id": "colorize",
+        "name": "colorize",
+        "path": "claude/skills/colorize",
+        "source": "claude/skills/colorize"
+      },
+      {
+        "id": "critique",
+        "name": "critique",
+        "path": "claude/skills/critique",
+        "source": "claude/skills/critique"
+      },
+      {
+        "id": "delight",
+        "name": "delight",
+        "path": "claude/skills/delight",
+        "source": "claude/skills/delight"
+      },
+      {
+        "id": "distill",
+        "name": "distill",
+        "path": "claude/skills/distill",
+        "source": "claude/skills/distill"
+      },
+      {
+        "id": "extract",
+        "name": "extract",
+        "path": "claude/skills/extract",
+        "source": "claude/skills/extract"
+      },
+      {
+        "id": "frontend-design",
+        "name": "frontend-design",
+        "path": "claude/skills/frontend-design",
+        "source": "claude/skills/frontend-design"
+      },
+      {
+        "id": "harden",
+        "name": "harden",
+        "path": "claude/skills/harden",
+        "source": "claude/skills/harden"
+      },
+      {
+        "id": "hig-android",
+        "name": "android-design-guidelines",
+        "path": "claude/skills/hig-android",
+        "source": "claude/skills/hig-android"
+      },
+      {
+        "id": "hig-ios",
+        "name": "ios-design-guidelines",
+        "path": "claude/skills/hig-ios",
+        "source": "claude/skills/hig-ios"
+      },
+      {
+        "id": "hig-ipados",
+        "name": "ipados-design-guidelines",
+        "path": "claude/skills/hig-ipados",
+        "source": "claude/skills/hig-ipados"
+      },
+      {
+        "id": "hig-macos",
+        "name": "macos-design-guidelines",
+        "path": "claude/skills/hig-macos",
+        "source": "claude/skills/hig-macos"
+      },
+      {
+        "id": "hig-tvos",
+        "name": "tvos-design-guidelines",
+        "path": "claude/skills/hig-tvos",
+        "source": "claude/skills/hig-tvos"
+      },
+      {
+        "id": "hig-visionos",
+        "name": "visionos-design-guidelines",
+        "path": "claude/skills/hig-visionos",
+        "source": "claude/skills/hig-visionos"
+      },
+      {
+        "id": "hig-watchos",
+        "name": "watchos-design-guidelines",
+        "path": "claude/skills/hig-watchos",
+        "source": "claude/skills/hig-watchos"
+      },
+      {
+        "id": "hig-web",
+        "name": "web-design-guidelines",
+        "path": "claude/skills/hig-web",
+        "source": "claude/skills/hig-web"
+      },
+      {
+        "id": "ios-simulator-skill",
+        "name": "ios-simulator-skill",
+        "path": "claude/skills/ios-simulator-skill",
+        "source": "claude/skills/ios-simulator-skill"
+      },
+      {
+        "id": "normalize",
+        "name": "normalize",
+        "path": "claude/skills/normalize",
+        "source": "claude/skills/normalize"
+      },
+      {
+        "id": "onboard",
+        "name": "onboard",
+        "path": "claude/skills/onboard",
+        "source": "claude/skills/onboard"
+      },
+      {
+        "id": "openspec-apply-change",
+        "name": "openspec-apply-change",
+        "path": "claude/skills/openspec-apply-change",
+        "source": "claude/skills/openspec-apply-change"
+      },
+      {
+        "id": "openspec-archive-change",
+        "name": "openspec-archive-change",
+        "path": "claude/skills/openspec-archive-change",
+        "source": "claude/skills/openspec-archive-change"
+      },
+      {
+        "id": "openspec-explore",
+        "name": "openspec-explore",
+        "path": "claude/skills/openspec-explore",
+        "source": "claude/skills/openspec-explore"
+      },
+      {
+        "id": "openspec-propose",
+        "name": "openspec-propose",
+        "path": "claude/skills/openspec-propose",
+        "source": "claude/skills/openspec-propose"
+      },
+      {
+        "id": "optimize",
+        "name": "optimize",
+        "path": "claude/skills/optimize",
+        "source": "claude/skills/optimize"
+      },
+      {
+        "id": "overdrive",
+        "name": "overdrive",
+        "path": "claude/skills/overdrive",
+        "source": "claude/skills/overdrive"
+      },
+      {
+        "id": "polish",
+        "name": "polish",
+        "path": "claude/skills/polish",
+        "source": "claude/skills/polish"
+      },
+      {
+        "id": "quieter",
+        "name": "quieter",
+        "path": "claude/skills/quieter",
+        "source": "claude/skills/quieter"
+      },
+      {
+        "id": "repo-surgeon",
+        "name": "repo-surgeon",
+        "path": "claude/skills/repo-surgeon",
+        "source": "claude/skills/repo-surgeon"
+      },
+      {
+        "id": "shadcn",
+        "name": "shadcn",
+        "path": "claude/skills/shadcn",
+        "source": "claude/skills/shadcn"
+      },
+      {
+        "id": "teach-impeccable",
+        "name": "teach-impeccable",
+        "path": "claude/skills/teach-impeccable",
+        "source": "claude/skills/teach-impeccable"
+      },
+      {
+        "id": "typeset",
+        "name": "typeset",
+        "path": "claude/skills/typeset",
+        "source": "claude/skills/typeset"
+      },
+      {
+        "id": "visual-explainer",
+        "name": "visual-explainer",
+        "path": "claude/skills/visual-explainer",
+        "source": "claude/skills/visual-explainer"
+      }
+    ],
+    "codex": [
+      {
+        "id": "adapt",
+        "name": "adapt",
+        "path": "codex/skills/adapt",
+        "source": "codex/skills/adapt"
+      },
+      {
+        "id": "adr",
+        "name": "adr",
+        "path": "codex/skills/adr",
+        "source": "codex/skills/adr"
+      },
+      {
+        "id": "animate",
+        "name": "animate",
+        "path": "codex/skills/animate",
+        "source": "codex/skills/animate"
+      },
+      {
+        "id": "arrange",
+        "name": "arrange",
+        "path": "codex/skills/arrange",
+        "source": "codex/skills/arrange"
+      },
+      {
+        "id": "audit",
+        "name": "audit",
+        "path": "codex/skills/audit",
+        "source": "codex/skills/audit"
+      },
+      {
+        "id": "auditdeep",
+        "name": "auditdeep",
+        "path": "codex/skills/auditdeep",
+        "source": "codex/skills/auditdeep"
+      },
+      {
+        "id": "auditui",
+        "name": "auditui",
+        "path": "codex/skills/auditui",
+        "source": "codex/skills/auditui"
+      },
+      {
+        "id": "avoid-ai-writing",
+        "name": "avoid-ai-writing",
+        "path": "codex/skills/avoid-ai-writing",
+        "source": "shared/skills/avoid-ai-writing"
+      },
+      {
+        "id": "bolder",
+        "name": "bolder",
+        "path": "codex/skills/bolder",
+        "source": "codex/skills/bolder"
+      },
+      {
+        "id": "browse",
+        "name": "browse",
+        "path": "codex/skills/browse",
+        "source": "codex/skills/browse"
+      },
+      {
+        "id": "clarify",
+        "name": "clarify",
+        "path": "codex/skills/clarify",
+        "source": "codex/skills/clarify"
+      },
+      {
+        "id": "colorize",
+        "name": "colorize",
+        "path": "codex/skills/colorize",
+        "source": "codex/skills/colorize"
+      },
+      {
+        "id": "commands",
+        "name": "commands",
+        "path": "codex/skills/commands",
+        "source": "codex/skills/commands"
+      },
+      {
+        "id": "condense",
+        "name": "condense",
+        "path": "codex/skills/condense",
+        "source": "codex/skills/condense"
+      },
+      {
+        "id": "config-editor",
+        "name": "config-editor",
+        "path": "codex/skills/config-editor",
+        "source": "codex/skills/config-editor"
+      },
+      {
+        "id": "critique",
+        "name": "critique",
+        "path": "codex/skills/critique",
+        "source": "codex/skills/critique"
+      },
+      {
+        "id": "debug",
+        "name": "debug",
+        "path": "codex/skills/debug",
+        "source": "codex/skills/debug"
+      },
+      {
+        "id": "delight",
+        "name": "delight",
+        "path": "codex/skills/delight",
+        "source": "codex/skills/delight"
+      },
+      {
+        "id": "deploy-check",
+        "name": "deploy-check",
+        "path": "codex/skills/deploy-check",
+        "source": "codex/skills/deploy-check"
+      },
+      {
+        "id": "distill",
+        "name": "distill",
+        "path": "codex/skills/distill",
+        "source": "codex/skills/distill"
+      },
+      {
+        "id": "dod",
+        "name": "dod",
+        "path": "codex/skills/dod",
+        "source": "codex/skills/dod"
+      },
+      {
+        "id": "extract",
+        "name": "extract",
+        "path": "codex/skills/extract",
+        "source": "codex/skills/extract"
+      },
+      {
+        "id": "fix",
+        "name": "fix",
+        "path": "codex/skills/fix",
+        "source": "codex/skills/fix"
+      },
+      {
+        "id": "focus",
+        "name": "focus",
+        "path": "codex/skills/focus",
+        "source": "codex/skills/focus"
+      },
+      {
+        "id": "frontend-design",
+        "name": "frontend-design",
+        "path": "codex/skills/frontend-design",
+        "source": "codex/skills/frontend-design"
+      },
+      {
+        "id": "green",
+        "name": "green",
+        "path": "codex/skills/green",
+        "source": "codex/skills/green"
+      },
+      {
+        "id": "greeniv",
+        "name": "greeniv",
+        "path": "codex/skills/greeniv",
+        "source": "codex/skills/greeniv"
+      },
+      {
+        "id": "harden",
+        "name": "harden",
+        "path": "codex/skills/harden",
+        "source": "codex/skills/harden"
+      },
+      {
+        "id": "hig-android",
+        "name": "android-design-guidelines",
+        "path": "codex/skills/hig-android",
+        "source": "codex/skills/hig-android"
+      },
+      {
+        "id": "hig-ios",
+        "name": "ios-design-guidelines",
+        "path": "codex/skills/hig-ios",
+        "source": "codex/skills/hig-ios"
+      },
+      {
+        "id": "hig-ipados",
+        "name": "ipados-design-guidelines",
+        "path": "codex/skills/hig-ipados",
+        "source": "codex/skills/hig-ipados"
+      },
+      {
+        "id": "hig-macos",
+        "name": "macos-design-guidelines",
+        "path": "codex/skills/hig-macos",
+        "source": "codex/skills/hig-macos"
+      },
+      {
+        "id": "hig-tvos",
+        "name": "tvos-design-guidelines",
+        "path": "codex/skills/hig-tvos",
+        "source": "codex/skills/hig-tvos"
+      },
+      {
+        "id": "hig-visionos",
+        "name": "visionos-design-guidelines",
+        "path": "codex/skills/hig-visionos",
+        "source": "codex/skills/hig-visionos"
+      },
+      {
+        "id": "hig-watchos",
+        "name": "watchos-design-guidelines",
+        "path": "codex/skills/hig-watchos",
+        "source": "codex/skills/hig-watchos"
+      },
+      {
+        "id": "hig-web",
+        "name": "web-design-guidelines",
+        "path": "codex/skills/hig-web",
+        "source": "codex/skills/hig-web"
+      },
+      {
+        "id": "ios-simulator-skill",
+        "name": "ios-simulator-skill",
+        "path": "codex/skills/ios-simulator-skill",
+        "source": "codex/skills/ios-simulator-skill"
+      },
+      {
+        "id": "lint",
+        "name": "lint",
+        "path": "codex/skills/lint",
+        "source": "codex/skills/lint"
+      },
+      {
+        "id": "migrate-to-codex",
+        "name": "migrate-to-codex",
+        "path": "codex/skills/migrate-to-codex",
+        "source": "codex/skills/migrate-to-codex"
+      },
+      {
+        "id": "new-project",
+        "name": "new-project",
+        "path": "codex/skills/new-project",
+        "source": "codex/skills/new-project"
+      },
+      {
+        "id": "normalize",
+        "name": "normalize",
+        "path": "codex/skills/normalize",
+        "source": "codex/skills/normalize"
+      },
+      {
+        "id": "onboard",
+        "name": "onboard",
+        "path": "codex/skills/onboard",
+        "source": "codex/skills/onboard"
+      },
+      {
+        "id": "openspec-apply-change",
+        "name": "openspec-apply-change",
+        "path": "codex/skills/openspec-apply-change",
+        "source": "codex/skills/openspec-apply-change"
+      },
+      {
+        "id": "openspec-archive-change",
+        "name": "openspec-archive-change",
+        "path": "codex/skills/openspec-archive-change",
+        "source": "codex/skills/openspec-archive-change"
+      },
+      {
+        "id": "openspec-explore",
+        "name": "openspec-explore",
+        "path": "codex/skills/openspec-explore",
+        "source": "codex/skills/openspec-explore"
+      },
+      {
+        "id": "openspec-propose",
+        "name": "openspec-propose",
+        "path": "codex/skills/openspec-propose",
+        "source": "codex/skills/openspec-propose"
+      },
+      {
+        "id": "optimize",
+        "name": "optimize",
+        "path": "codex/skills/optimize",
+        "source": "codex/skills/optimize"
+      },
+      {
+        "id": "overdrive",
+        "name": "overdrive",
+        "path": "codex/skills/overdrive",
+        "source": "codex/skills/overdrive"
+      },
+      {
+        "id": "polish",
+        "name": "polish",
+        "path": "codex/skills/polish",
+        "source": "codex/skills/polish"
+      },
+      {
+        "id": "postmortem",
+        "name": "postmortem",
+        "path": "codex/skills/postmortem",
+        "source": "codex/skills/postmortem"
+      },
+      {
+        "id": "pr",
+        "name": "pr",
+        "path": "codex/skills/pr",
+        "source": "codex/skills/pr"
+      },
+      {
+        "id": "quieter",
+        "name": "quieter",
+        "path": "codex/skills/quieter",
+        "source": "codex/skills/quieter"
+      },
+      {
+        "id": "refactor",
+        "name": "refactor",
+        "path": "codex/skills/refactor",
+        "source": "codex/skills/refactor"
+      },
+      {
+        "id": "release",
+        "name": "release",
+        "path": "codex/skills/release",
+        "source": "codex/skills/release"
+      },
+      {
+        "id": "repo-surgeon",
+        "name": "repo-surgeon",
+        "path": "codex/skills/repo-surgeon",
+        "source": "codex/skills/repo-surgeon"
+      },
+      {
+        "id": "reqwording",
+        "name": "reqwording",
+        "path": "codex/skills/reqwording",
+        "source": "codex/skills/reqwording"
+      },
+      {
+        "id": "review",
+        "name": "review",
+        "path": "codex/skills/review",
+        "source": "codex/skills/review"
+      },
+      {
+        "id": "reviewdeep",
+        "name": "reviewdeep",
+        "path": "codex/skills/reviewdeep",
+        "source": "codex/skills/reviewdeep"
+      },
+      {
+        "id": "securecoding",
+        "name": "securecoding",
+        "path": "codex/skills/securecoding",
+        "source": "codex/skills/securecoding"
+      },
+      {
+        "id": "shadcn",
+        "name": "shadcn",
+        "path": "codex/skills/shadcn",
+        "source": "codex/skills/shadcn"
+      },
+      {
+        "id": "spec",
+        "name": "spec",
+        "path": "codex/skills/spec",
+        "source": "codex/skills/spec"
+      },
+      {
+        "id": "status",
+        "name": "status",
+        "path": "codex/skills/status",
+        "source": "codex/skills/status"
+      },
+      {
+        "id": "storygen",
+        "name": "storygen",
+        "path": "codex/skills/storygen",
+        "source": "codex/skills/storygen"
+      },
+      {
+        "id": "supplychain",
+        "name": "supplychain",
+        "path": "codex/skills/supplychain",
+        "source": "codex/skills/supplychain"
+      },
+      {
+        "id": "teach-impeccable",
+        "name": "teach-impeccable",
+        "path": "codex/skills/teach-impeccable",
+        "source": "codex/skills/teach-impeccable"
+      },
+      {
+        "id": "test",
+        "name": "test",
+        "path": "codex/skills/test",
+        "source": "codex/skills/test"
+      },
+      {
+        "id": "threatmodel",
+        "name": "threatmodel",
+        "path": "codex/skills/threatmodel",
+        "source": "codex/skills/threatmodel"
+      },
+      {
+        "id": "typeset",
+        "name": "typeset",
+        "path": "codex/skills/typeset",
+        "source": "codex/skills/typeset"
+      },
+      {
+        "id": "visual-explainer",
+        "name": "visual-explainer",
+        "path": "codex/skills/visual-explainer",
+        "source": "codex/skills/visual-explainer"
+      }
+    ]
+  },
+  "external_skills": [
+    {
+      "id": "aside-browser",
+      "source_label": "cskwork/aside-browser-skill",
+      "source": "https://github.com/cskwork/aside-browser-skill",
+      "reason": "No redistribution license is supplied in the installed snapshot or the upstream repository. Keep the existing local installation outside this bundle."
+    }
+  ]
+}
