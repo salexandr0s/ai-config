@@ -2,7 +2,7 @@
 
 [Project overview](../README.md)
 
-76 skill bindings by name, available through 46 Claude and 72 Codex entries. Shared source packages: 8. Tool-specific adaptations remain separate.
+78 skill bindings by name, available through 46 Claude and 74 Codex entries. Shared source packages: 8. Tool-specific adaptations remain separate.
 
 This file is generated from `skills-manifest.json`. Run `python3 scripts/skills-inventory.py --check` to check aliases, resources and full package hashes. After an intentional source change, review the diff and run `python3 scripts/skills-inventory.py --refresh`.
 
@@ -23,6 +23,7 @@ Binding names follow the existing tool directories. Some upstream skills declare
 | `bolder` | ✓ | ✓ | [claude](../claude/skills/bolder) · [codex](../codex/skills/bolder) |
 | `browse` | ✓ | ✓ | [claude](../claude/skills/browse) · [codex](../codex/skills/browse) |
 | `clarify` | ✓ | ✓ | [claude](../claude/skills/clarify) · [codex](../codex/skills/clarify) |
+| `cloudflare-deploy` |  | ✓ | [codex](../codex/skills/cloudflare-deploy) |
 | `colorize` | ✓ | ✓ | [claude](../claude/skills/colorize) · [codex](../codex/skills/colorize) |
 | `commands` |  | ✓ | [codex](../codex/skills/commands) |
 | `condense` |  | ✓ | [codex](../codex/skills/condense) |
@@ -87,6 +88,7 @@ Binding names follow the existing tool directories. Some upstream skills declare
 | `test` |  | ✓ | [codex](../codex/skills/test) |
 | `threatmodel` |  | ✓ | [codex](../codex/skills/threatmodel) |
 | `typeset` | ✓ | ✓ | [claude](../claude/skills/typeset) · [codex](../codex/skills/typeset) |
+| `vercel-deploy` |  | ✓ | [codex](../codex/skills/vercel-deploy) |
 | `visual-explainer` | ✓ | ✓ | [claude](../claude/skills/visual-explainer) · [codex](../codex/skills/visual-explainer) |
 
 ## External skills

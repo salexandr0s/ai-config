@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "counts": {
-    "unique_skills": 76,
+    "unique_skills": 78,
     "claude_bindings": 46,
-    "codex_bindings": 72,
-    "source_packages": 114,
+    "codex_bindings": 74,
+    "source_packages": 116,
     "shared_packages": 8
   },
   "packages": [
@@ -746,6 +746,28 @@
       },
       "license": "NOASSERTION",
       "notice_sha256": {}
+    },
+    {
+      "path": "codex/skills/cloudflare-deploy",
+      "name": "cloudflare-deploy",
+      "description": "Deploy applications and infrastructure to Cloudflare using Workers, Pages, and related platform services. Use when the user asks to deploy, host, publish, or set up a project on Cloudflare.",
+      "tree_sha256": "3ca0096247e5d6bcc2e462e67d2a05fa39336a862c82f7f9ff387b8ff6904083",
+      "files": 312,
+      "license_files": [
+        "LICENSE.txt"
+      ],
+      "provenance": {
+        "kind": "installed-snapshot",
+        "upstream": null,
+        "upstream_revision": null,
+        "snapshot_sha256": "3ca0096247e5d6bcc2e462e67d2a05fa39336a862c82f7f9ff387b8ff6904083",
+        "snapshot_files": 312,
+        "note": "Exact installed Codex bundle with its existing LICENSE.txt; no remote update was performed."
+      },
+      "license": "Apache-2.0",
+      "notice_sha256": {
+        "LICENSE.txt": "4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9"
+      }
     },
     {
       "path": "codex/skills/colorize",
@@ -1621,6 +1643,28 @@
       "notice_sha256": {}
     },
     {
+      "path": "codex/skills/vercel-deploy",
+      "name": "vercel-deploy",
+      "description": "Deploy applications and websites to Vercel. Use when the user requests deployment actions like \"deploy my app\", \"deploy and give me the link\", \"push this live\", or \"create a preview deployment\".",
+      "tree_sha256": "d52e661e9cf315f6988a047dd1a2a30244922628357dc2f928cd20d11c291003",
+      "files": 6,
+      "license_files": [
+        "LICENSE.txt"
+      ],
+      "provenance": {
+        "kind": "installed-snapshot",
+        "upstream": null,
+        "upstream_revision": null,
+        "snapshot_sha256": "d52e661e9cf315f6988a047dd1a2a30244922628357dc2f928cd20d11c291003",
+        "snapshot_files": 6,
+        "note": "Exact installed Codex bundle with its existing LICENSE.txt; no remote update was performed."
+      },
+      "license": "MIT",
+      "notice_sha256": {
+        "LICENSE.txt": "e0fad1e120e56b02bb8e65745ff5be6d3234368f2df9d0dd183183879e595fc1"
+      }
+    },
+    {
       "path": "codex/skills/visual-explainer",
       "name": "visual-explainer",
       "description": "Generate beautiful, self-contained HTML pages that visually explain systems, code changes, plans, and data. Use when the user asks for a diagram, architecture overview, diff review, plan review, project recap, comparison table, or any visual explanation of technical concepts. Also use proactively when you are about to render a complex ASCII table (4+ rows or 3+ columns) — present it as a styled HTML page instead.",
@@ -2177,6 +2221,12 @@
         "source": "codex/skills/clarify"
       },
       {
+        "id": "cloudflare-deploy",
+        "name": "cloudflare-deploy",
+        "path": "codex/skills/cloudflare-deploy",
+        "source": "codex/skills/cloudflare-deploy"
+      },
+      {
         "id": "colorize",
         "name": "colorize",
         "path": "codex/skills/colorize",
@@ -2535,6 +2585,12 @@
         "name": "typeset",
         "path": "codex/skills/typeset",
         "source": "codex/skills/typeset"
+      },
+      {
+        "id": "vercel-deploy",
+        "name": "vercel-deploy",
+        "path": "codex/skills/vercel-deploy",
+        "source": "codex/skills/vercel-deploy"
       },
       {
         "id": "visual-explainer",
