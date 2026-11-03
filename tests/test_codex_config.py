@@ -38,6 +38,7 @@ class CodexConfigTests(unittest.TestCase):
         self.target.write_text('''
 model = "old-base-value"
 custom_value = "retain me"
+custom_control = "\\u007f"
 [features]
 custom_native_option = true
 [projects."/workspace/other"]
@@ -69,6 +70,7 @@ enabled = false
         self.assertTrue(config["tui"]["notifications"])
         self.assertIn("status_line", config["tui"])
         self.assertEqual(config["custom_value"], "retain me")
+        self.assertEqual(config["custom_control"], "\x7f")
         self.assertTrue(config["features"]["custom_native_option"])
         self.assertEqual(config["projects"]["/workspace/other"]["trust_level"], "trusted")
         self.assertEqual(config["projects"]["/workspace/new project"]["trust_level"], "untrusted")

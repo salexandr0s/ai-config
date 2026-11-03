@@ -23,7 +23,8 @@ def merge(base, override):
 
 
 def quoted(value):
-    return json.dumps(value, ensure_ascii=False)
+    # TOML forbids literal DEL; JSON leaves it raw with ensure_ascii=False.
+    return json.dumps(value, ensure_ascii=False).replace("\x7f", "\\u007f")
 
 
 def toml_value(value):
